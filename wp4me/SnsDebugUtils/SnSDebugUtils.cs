@@ -1,4 +1,6 @@
-﻿namespace wp4me.SnsDebugUtils
+﻿using System;
+
+namespace wp4me.SnsDebugUtils
 {
     /// <summary>
     /// Class that provides function to work debugs tools.
@@ -6,12 +8,12 @@
     public sealed class SnSDebugUtils
     {
         /// <summary>
-        /// Method that write text into the console.
+        /// Method that writes text into the console.
         /// </summary>
         /// <param name="text"></param>
         public static void ConsoleWriteLine(string text)
         {
-            System.Diagnostics.Debug.WriteLine(text);
+            System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString("HH:mm:ss") + " " + text);
         }
     }
 }
