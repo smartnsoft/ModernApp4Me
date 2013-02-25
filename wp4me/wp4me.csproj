@@ -90,6 +90,10 @@
     <Compile Include="SnSMultiResolutionUtils\SnSMultiResImageChooser.cs" />
     <Compile Include="SnSMultiResolutionUtils\SnSResolutionHelper.cs" />
     <Compile Include="SnSNetworkUtils\SnsNetworkUtils.cs" />
+    <Compile Include="SnSTileUtils\SnSSecondaryTileUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
