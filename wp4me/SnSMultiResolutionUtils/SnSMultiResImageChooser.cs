@@ -8,6 +8,9 @@ namespace wp4me.SnSMultiResolutionUtils
     /// </summary>
     public sealed class SnSMultiResImageChooser
     {
+        /*******************************************************/
+        /** METHODS AND FUNCTIONS.
+        /*******************************************************/
         /// <summary>
         /// Method that returns the best resolution image according to the phone resolution.
         /// </summary>

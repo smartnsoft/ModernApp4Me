@@ -3,13 +3,20 @@ using System.Windows;
 
 namespace wp4me.SnSMultiResolutionUtils
 {
+    /// <summary>
+    /// Enumeration
+    /// </summary>
     public enum Resolutions { WVGA, WXGA, HD720P };
+
 
     /// <summary>
     /// Class that provides functions to work with the phone's resolution.
     /// </summary>
     public static class ResolutionHelper
     {
+        /*******************************************************/
+        /** PRIVATE PROPERTIES.
+        /*******************************************************/
         private static bool IsWvga
         {
             get
@@ -34,6 +41,10 @@ namespace wp4me.SnSMultiResolutionUtils
             }
         }
 
+
+        /*******************************************************/
+        /** PUBLIC PROPERTIES.
+        /*******************************************************/
         public static Resolutions CurrentResolution
         {
             get

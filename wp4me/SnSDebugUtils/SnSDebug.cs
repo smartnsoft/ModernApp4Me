@@ -4,10 +4,13 @@ using System.Diagnostics;
 namespace wp4me.SnSDebugUtils
 {
     /// <summary>
-    /// Class that provides function to work debugs tools.
+    /// Class that provides function to work with debugs tools.
     /// </summary>
     public sealed class SnSDebug
     {
+        /*******************************************************/
+        /** METHODS AND FUNCTIONS.
+        /*******************************************************/
         /// <summary>
         /// Method that writes text into the console.
         /// </summary>

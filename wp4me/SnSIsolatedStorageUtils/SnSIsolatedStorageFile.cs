@@ -10,6 +10,9 @@ namespace wp4me.SnSIsolatedStorageUtils
     /// </summary>
     public sealed class SnSIsolatedStorageFile
     {
+        /*******************************************************/
+        /** METHODS AND FUNCTIONS.
+        /*******************************************************/
         /// <summary>
         /// Function that read the param file's content.
         /// </summary>

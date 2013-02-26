@@ -8,6 +8,9 @@ namespace wp4me.SnSNetworkUtils
     /// </summary>
     public sealed class SnSNetwork
     {
+        /*******************************************************/
+        /** METHODS AND FUNCTIONS.
+        /*******************************************************/
         /// <summary>
         /// Methods that indicates if the phone has a network connection (edge, 3G, wifi, etc.).
         /// </summary>

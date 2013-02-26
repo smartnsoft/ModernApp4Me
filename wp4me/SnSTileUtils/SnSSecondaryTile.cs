@@ -10,6 +10,9 @@ namespace wp4me.SnSTileUtils
     /// </summary>
     public sealed class SnSSecondaryTile
     {
+        /*******************************************************/
+        /** METHODS AND FUNCTIONS.
+        /*******************************************************/
         /// <summary>
         /// Check is a secondary tile exists.
         /// </summary>

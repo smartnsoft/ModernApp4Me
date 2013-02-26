@@ -9,6 +9,9 @@ namespace wp4me.SnSIsolatedStorageUtils
     /// </summary>
     public sealed class SnsIsolatedStorageSettings
     {
+        /*******************************************************/
+        /** METHODS AND FUNCTIONS.
+        /*******************************************************/
         /// <summary>
         /// Method that saves a value into ApplicationSettings.
         /// </summary>
