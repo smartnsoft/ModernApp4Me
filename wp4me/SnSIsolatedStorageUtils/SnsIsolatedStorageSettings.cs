@@ -1,11 +1,13 @@
-﻿using System.IO.IsolatedStorage;
+﻿using System.Collections.Generic;
+using System.IO.IsolatedStorage;
+using wp4me.SnSDebugUtils;
 
-namespace wp4me.SnsIsolatedStorageUtils
+namespace wp4me.SnSIsolatedStorageUtils
 {
     /// <summary>
     /// Class that provides functions to work with the IsolatedStorageSettings.
     /// </summary>
-    public sealed class SnsIsolatedStorageSettingsUtils
+    public sealed class SnsIsolatedStorageSettings
     {
         /// <summary>
         /// Method that saves a value into ApplicationSettings.
@@ -14,7 +16,9 @@ namespace wp4me.SnsIsolatedStorageUtils
         /// <param name="value"></param>
         public static void SetApplicationSettings(string key, object value)
         {
-            IsolatedStorageSettings.ApplicationSettings[key] = value;
+            var settings = IsolatedStorageSettings.ApplicationSettings;
+            settings[key] = value;
+            settings.Save();
         }
 
         /// <summary>
@@ -24,7 +28,15 @@ namespace wp4me.SnsIsolatedStorageUtils
         /// <returns>value</returns>
         public static object GetApplicationSettings(string key)
         {
-            return IsolatedStorageSettings.ApplicationSettings[key];
+            try
+            {
+                return IsolatedStorageSettings.ApplicationSettings[key];
+            }
+            catch (KeyNotFoundException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return null;
+            }
         }
     }
 }

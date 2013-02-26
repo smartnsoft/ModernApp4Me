@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Phone.Shell;
-using wp4me.SnsDebugUtils;
+using wp4me.SnSDebugUtils;
 
-namespace wp4me.SnsTileUtils
+namespace wp4me.SnSTileUtils
 {
     /// <summary>
     /// Class that provides functions to manipulate secondary tiles.
     /// </summary>
-    public sealed class SnSSecondaryTileUtils
+    public sealed class SnSSecondaryTile
     {
         /// <summary>
         /// Check is a secondary tile exists.
@@ -39,7 +39,7 @@ namespace wp4me.SnsTileUtils
             }
             catch (Exception e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
 
@@ -64,7 +64,7 @@ namespace wp4me.SnsTileUtils
             }
             catch (Exception e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
 

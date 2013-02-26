@@ -1,14 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.IO.IsolatedStorage;
-using wp4me.SnsDebugUtils;
+using wp4me.SnSDebugUtils;
 
-namespace wp4me.SnsIsolatedStorageUtils
+namespace wp4me.SnSIsolatedStorageUtils
 {
     /// <summary>
     /// Class that provides functions to write or read files from the IsolatedStorage.
     /// </summary>
-    public sealed class SnSIsolatedStorageFileUtils
+    public sealed class SnSIsolatedStorageFile
     {
         /// <summary>
         /// Function that read the param file's content.
@@ -41,38 +41,38 @@ namespace wp4me.SnsIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return null;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return null;
             }
             catch (ArgumentException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return null;
             }
             catch (OutOfMemoryException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return null;
             }
             catch (FileNotFoundException e)
             {
-                SnSDebugUtils.ConsoleWriteLine("File not found : " + e.FileName);
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("File not found : " + e.FileName);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return null;
             }
             catch (IOException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return null;
             }
             catch (Exception e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return null;
             }
 
@@ -103,32 +103,32 @@ namespace wp4me.SnsIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (ArgumentException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (ObjectDisposedException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (IOException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
 
@@ -154,27 +154,27 @@ namespace wp4me.SnsIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (ArgumentException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (ObjectDisposedException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
 
@@ -196,12 +196,12 @@ namespace wp4me.SnsIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
 
@@ -224,17 +224,17 @@ namespace wp4me.SnsIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (ObjectDisposedException e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebugUtils.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
         }

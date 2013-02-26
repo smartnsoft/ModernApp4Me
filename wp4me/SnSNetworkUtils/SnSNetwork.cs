@@ -1,12 +1,12 @@
 ﻿using Microsoft.Phone.Net.NetworkInformation;
-using wp4me.SnsIsolatedStorageUtils;
+using wp4me.SnSIsolatedStorageUtils;
 
 namespace wp4me.SnSNetworkUtils
 {
     /// <summary>
     /// Class that provides functions to work with network information.
     /// </summary>
-    public sealed class SnsNetworkUtils
+    public sealed class SnSNetwork
     {
         /// <summary>
         /// Methods that indicates if the phone has a network connection (edge, 3G, wifi, etc.).

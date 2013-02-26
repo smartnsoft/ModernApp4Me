@@ -84,13 +84,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SnsDebugUtils\SnSDebugUtils.cs" />
-    <Compile Include="SnsIsolatedStorageUtils\SnSIsolatedStorageFileUtils.cs" />
-    <Compile Include="SnsIsolatedStorageUtils\SnsIsolatedStorageSettingsUtils.cs" />
+    <Compile Include="SnSDebugUtils\SnSDebug.cs" />
+    <Compile Include="SnSIsolatedStorageUtils\SnSIsolatedStorageFile.cs" />
+    <Compile Include="SnSIsolatedStorageUtils\SnsIsolatedStorageSettings.cs" />
     <Compile Include="SnSMultiResolutionUtils\SnSMultiResImageChooser.cs" />
     <Compile Include="SnSMultiResolutionUtils\SnSResolutionHelper.cs" />
-    <Compile Include="SnSNetworkUtils\SnsNetworkUtils.cs" />
-    <Compile Include="SnSTileUtils\SnSSecondaryTileUtils.cs" />
+    <Compile Include="SnSNetworkUtils\SnSNetwork.cs" />
+    <Compile Include="SnSTileUtils\SnSSecondaryTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
