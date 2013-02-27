@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.IO.IsolatedStorage;
+using ImageTools;
+using ImageTools.IO.Png;
 using wp4me.SnSDebugUtils;
+using System.Windows.Media.Imaging;
 
 namespace wp4me.SnSIsolatedStorageUtils
 {
@@ -240,6 +243,54 @@ namespace wp4me.SnSIsolatedStorageUtils
                 SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Function that saves a PNG Image into the isolated storage.
+        /// </summary>
+        /// <param name="imageName"></param>
+        /// <param name="image"></param>
+        /// <param name="fileMode"></param>
+        /// <returns></returns>
+        public static bool WriteImageAsPng(string imageName, BitmapImage image, FileMode fileMode)
+        {
+            try
+            {
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    using (var fileStream = new IsolatedStorageFileStream(imageName, fileMode, isf))
+                    {
+                        using (var streamWriter = new StreamWriter(fileStream))
+                        {
+                            var encoder = new PngEncoder();
+                            var writeableBitmap = new WriteableBitmap(image);
+                            encoder.Encode(writeableBitmap.ToImage(), streamWriter.BaseStream);
+                        }
+                    }
+                }
+            }
+            catch (IsolatedStorageException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ArgumentNullException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (Exception e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+
+            return true;
         }
     }
 }

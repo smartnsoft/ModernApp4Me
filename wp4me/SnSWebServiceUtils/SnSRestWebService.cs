@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Windows.Media.Imaging;
+using wp4me.SnSDebugUtils;
 
 namespace wp4me.SnSWebServiceUtils
 {
@@ -15,13 +17,13 @@ namespace wp4me.SnSWebServiceUtils
         /// <summary>
         /// Function that calls a REST web service with the action GET.
         /// </summary>
-        /// <param name="url"></param>
+        /// <param name="uri"></param>
         /// <returns>the result as a string (more often XML or JSON)</returns>
-        public static string GetRequest(string url)
+        public static string GetRequest(Uri uri)
         {
-            string response = "";
+            var response = "";
 
-            var request = (HttpWebRequest) WebRequest.CreateHttp(new Uri(url, UriKind.Absolute));
+            var request = WebRequest.CreateHttp(uri);
 
             request.BeginGetResponse(r =>
             {
@@ -35,6 +37,24 @@ namespace wp4me.SnSWebServiceUtils
             }, request);
 
             return response;
+        }
+
+        /// <summary>
+        /// Functions that download an image from the Internet.
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns>the image</returns>
+        public static BitmapImage DownloadImage(Uri uri)
+        {
+            try
+            {
+                return new BitmapImage(uri);
+            }
+            catch (Exception e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return null;
+            }
         }
     }
 }
