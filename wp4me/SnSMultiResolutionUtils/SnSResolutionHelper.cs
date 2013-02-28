@@ -12,7 +12,7 @@ namespace wp4me.SnSMultiResolutionUtils
     /// <summary>
     /// Class that provides functions to work with the phone's resolution.
     /// </summary>
-    public static class ResolutionHelper
+    public static class SnSResolutionHelper
     {
         /*******************************************************/
         /** PRIVATE PROPERTIES.

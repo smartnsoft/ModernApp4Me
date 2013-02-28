@@ -18,12 +18,18 @@ namespace wp4me.SnSWebServiceUtils
         /// Function that calls a REST web service with the action GET.
         /// </summary>
         /// <param name="uri"></param>
+        /// <param name="userAgent"></param>
         /// <returns>the result as a string (more often XML or JSON)</returns>
-        public static string GetRequest(Uri uri)
+        public static string GetRequest(Uri uri, string userAgent = "default")
         {
             var response = "";
 
             var request = WebRequest.CreateHttp(uri);
+
+            if (userAgent != "default")
+            {
+                request.Headers["UserAgent"] = userAgent;
+            }
 
             request.BeginGetResponse(r =>
             {

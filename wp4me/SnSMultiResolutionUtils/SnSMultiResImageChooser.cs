@@ -16,7 +16,7 @@ namespace wp4me.SnSMultiResolutionUtils
         /// </summary>
         /// <param name="imageName">Path of the image</param>
         /// 
-        public Uri BestResolutionImage(string imageName)
+        public static Uri BestResolutionImage(string imageName)
         {
             var imageArray = imageName.Split('.');
             var dictionaryImage = new Dictionary<string, string>();
@@ -24,7 +24,7 @@ namespace wp4me.SnSMultiResolutionUtils
             dictionaryImage["name"] = imageArray[0];
             dictionaryImage["extension"] = imageArray[1];
 
-            switch (ResolutionHelper.CurrentResolution)
+            switch (SnSResolutionHelper.CurrentResolution)
             {
                 case Resolutions.HD720P:
                     return new Uri(dictionaryImage["name"] + "-720p." + dictionaryImage["extension"], UriKind.Relative);
