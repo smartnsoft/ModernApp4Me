@@ -93,6 +93,15 @@
     <Compile Include="SnSNetworkUtils\SnSNetwork.cs" />
     <Compile Include="SnSTileUtils\SnSSecondaryTile.cs" />
     <Compile Include="SnSWebServiceUtils\SnSRestWebService.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelector.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelectorItem.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSListLoopingDataSource.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSLoopingDataSourceBase.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSPhysicsConstants.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSSafeRaise.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelector.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelectorItem.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSListWizardDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -122,6 +131,10 @@
     <Reference Include="ImageTools.Utils">
       <HintPath>packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Utils.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\WPtoolkit.4.2012.10.30\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="PhoneCodeContractsAssemblies">
       <HintPath>packages\ImageTools.0.3.1\lib\sl3-wp\PhoneCodeContractsAssemblies.dll</HintPath>
     </Reference>
@@ -129,6 +142,20 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="SnSTheme\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />
