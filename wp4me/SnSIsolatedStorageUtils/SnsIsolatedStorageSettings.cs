@@ -7,7 +7,7 @@ namespace wp4me.SnSIsolatedStorageUtils
     /// <summary>
     /// Class that provides functions to work with the IsolatedStorageSettings.
     /// </summary>
-    public sealed class SnsIsolatedStorageSettings
+    public sealed class SnSIsolatedStorageSettings
     {
         /*******************************************************/
         /** METHODS AND FUNCTIONS.

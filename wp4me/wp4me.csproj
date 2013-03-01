@@ -86,12 +86,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SnSDebugUtils\SnSDebug.cs" />
     <Compile Include="SnSIsolatedStorageUtils\SnSIsolatedStorageFile.cs" />
-    <Compile Include="SnSIsolatedStorageUtils\SnsIsolatedStorageSettings.cs" />
+    <Compile Include="SnSIsolatedStorageUtils\SnSIsolatedStorageSettings.cs" />
+    <Compile Include="SnSMultiResolutionUtils\SnSMultiResolutionBrushConverter.cs" />
     <Compile Include="SnSMultiResolutionUtils\SnSMultiResImageChooser.cs" />
-    <Compile Include="SnSMultiResolutionUtils\SnSMultiResolutionConverter.cs" />
+    <Compile Include="SnSMultiResolutionUtils\SnSMultiResolutionImageConverter.cs" />
     <Compile Include="SnSMultiResolutionUtils\SnSResolutionHelper.cs" />
     <Compile Include="SnSNetworkUtils\SnSNetwork.cs" />
+    <Compile Include="SnSApplicationLifeCycleUtils\SnSApplicationLifeCycle.cs" />
     <Compile Include="SnSTileUtils\SnSSecondaryTile.cs" />
+    <Compile Include="SnSWebServiceUtils\SnSHttpExtensions.cs" />
     <Compile Include="SnSWebServiceUtils\SnSRestWebService.cs" />
     <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelector.cs" />
     <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelectorItem.cs" />

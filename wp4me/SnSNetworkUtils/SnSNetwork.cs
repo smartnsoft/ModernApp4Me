@@ -1,5 +1,4 @@
-﻿using Microsoft.Phone.Net.NetworkInformation;
-using wp4me.SnSIsolatedStorageUtils;
+﻿using System.Net.NetworkInformation;
 
 namespace wp4me.SnSNetworkUtils
 {
@@ -17,7 +16,7 @@ namespace wp4me.SnSNetworkUtils
         /// <returns>true or false depending on the phone's network connection</returns>
         public static bool HasNetworkConnection()
         {
-            return NetworkInterface.NetworkInterfaceType == NetworkInterfaceType.None;
+            return NetworkInterface.GetIsNetworkAvailable();
         }
     }
 }

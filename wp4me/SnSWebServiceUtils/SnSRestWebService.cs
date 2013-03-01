@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using wp4me.SnSDebugUtils;
 
@@ -20,9 +21,26 @@ namespace wp4me.SnSWebServiceUtils
         /// <param name="uri"></param>
         /// <param name="userAgent"></param>
         /// <returns>the result as a string (more often XML or JSON)</returns>
-        public static string GetRequest(Uri uri, string userAgent = "default")
+        public async static Task<string> GetRequest(Uri uri, string userAgent = "default")
         {
-            var response = "";
+            try
+            {
+                var request = (HttpWebRequest) WebRequest.Create(uri);
+                request.Method = "GET";
+
+                var response = await request.GetResponseAsync();
+
+                using (var sr = new StreamReader(response.GetResponseStream()))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+            catch (Exception e)
+            {
+                return "";
+            }
+
+            /*var response = "";
 
             var request = WebRequest.CreateHttp(uri);
 
@@ -42,7 +60,7 @@ namespace wp4me.SnSWebServiceUtils
                 }
             }, request);
 
-            return response;
+            return response;*/
         }
 
         /// <summary>

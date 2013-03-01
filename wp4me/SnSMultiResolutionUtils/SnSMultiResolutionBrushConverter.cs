@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace wp4me.SnSMultiResolutionUtils
@@ -9,7 +10,7 @@ namespace wp4me.SnSMultiResolutionUtils
     /// Converter that call the MultiResImageChooser class according to the parameter.
     /// This converter permits an easy data binding.
     /// </summary>
-    public sealed class SnSMultiResolutionConverter : IValueConverter
+    public sealed class SnSMultiResolutionBrushConverter : IValueConverter
     {
         /// <summary>
         /// This function call the BestResolutionImage function of the class SnSMultiResImageChooser and return a BitmapImage.
@@ -21,7 +22,7 @@ namespace wp4me.SnSMultiResolutionUtils
         /// <returns>the image to display</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return new BitmapImage(SnSMultiResImageChooser.BestResolutionImage((string)parameter));
+             return new ImageBrush { ImageSource = new BitmapImage(SnSMultiResImageChooser.BestResolutionImage((string)parameter)) };
         }
 
         /// <summary>

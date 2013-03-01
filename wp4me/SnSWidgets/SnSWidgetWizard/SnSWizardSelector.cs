@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Controls.Primitives;
+using wp4me.SnSDebugUtils;
 using wp4me.SnSWidgets.SnSWidgetLoopingSelector.SnSWidgetLoopingSelectorCore;
 
 namespace wp4me.SnSWidgets.SnSWidgetWizard
@@ -296,8 +298,6 @@ namespace wp4me.SnSWidgets.SnSWidgetWizard
 
         void listener_Flick(object sender, FlickGestureEventArgs e)
         {
-            //Debug.WriteLine("listener_Flick");
-
             if (e.Direction == Orientation.Horizontal)
             {
                 _state = State.Flicking;
@@ -308,7 +308,19 @@ namespace wp4me.SnSWidgets.SnSWidgetWizard
                     IsExpanded = true;
                 }
 
-                var velocity = new Point(e.HorizontalVelocity, 0);
+                int horizontalVelocity;
+
+                if (e.HorizontalVelocity > 0)
+                {
+                    horizontalVelocity = 300;
+                }
+                else
+                {
+                    horizontalVelocity = -250;
+                }
+
+                //var velocity = new Point(e.HorizontalVelocity, 0);
+                var velocity = new Point(horizontalVelocity, 0);
                 double flickDuration = SnSPhysicsConstants.GetStopTime(velocity);
                 Point flickEndPoint = SnSPhysicsConstants.GetStopPoint(velocity);
                 IEasingFunction flickEase = SnSPhysicsConstants.GetEasingFunction(flickDuration);
