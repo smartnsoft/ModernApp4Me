@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.IO.IsolatedStorage;
+using System.Text;
 using ImageTools;
 using ImageTools.IO.Png;
 using wp4me.SnSDebugUtils;
@@ -67,7 +68,6 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (FileNotFoundException e)
             {
-                SnSDebug.ConsoleWriteLine("File not found : " + e.FileName);
                 SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return null;
             }
@@ -96,6 +96,12 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
+                //The file name includes the directory
+                if (fileName.Split('/').Length > 0)
+                {
+                    CreateDirectoryFromFilePath(fileName);
+                }
+
                 using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                 {
                     using (var fileStream = new IsolatedStorageFileStream(fileName, fileMode, isf))
@@ -256,6 +262,12 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
+                //The image name includes the directory
+                if (imageName.Split('/').Length > 0)
+                {
+                    CreateDirectoryFromFilePath(imageName);
+                }
+
                 using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                 {
                     using (var fileStream = new IsolatedStorageFileStream(imageName, fileMode, isf))
@@ -291,6 +303,154 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Function that saves a PNG Image into the isolated storage.
+        /// </summary>
+        /// <param name="imageName"></param>
+        /// <param name="image"></param>
+        /// <param name="fileMode"></param>
+        /// <returns></returns>
+        public static bool WriteImageAsPng(string imageName, ExtendedImage image, FileMode fileMode)
+        {
+            try
+            {
+                //The image name includes the directory
+                if (imageName.Split('/').Length > 0)
+                {
+                    CreateDirectoryFromFilePath(imageName);
+                }
+
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    using (var fileStream = new IsolatedStorageFileStream(imageName, fileMode, isf))
+                    {
+                        using (var streamWriter = new StreamWriter(fileStream))
+                        {
+                            var encoder = new PngEncoder();
+                            var writeableBitmap = image.ToBitmap();
+                            encoder.Encode(writeableBitmap.ToImage(), streamWriter.BaseStream);
+                        }
+                    }
+                }
+            }
+            catch (IsolatedStorageException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ArgumentNullException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (Exception e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Create a directory.
+        /// </summary>
+        /// <param name="directoryName"></param>
+        /// <returns>true in case of success</returns>
+        public static bool CreateDirectory(string directoryName)
+        {
+            try
+            {
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    isf.CreateDirectory(directoryName);
+                    return true;
+                }
+            }
+            catch (IsolatedStorageException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ArgumentNullException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ObjectDisposedException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (Exception e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Create a directory from the complete file path.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns>true in case of success</returns>
+        public static bool CreateDirectoryFromFilePath(string filePath)
+        {
+            try
+            {
+                //Building the directory path
+                var directoryPathTab = filePath.Split('/');
+                var directoryPath = new StringBuilder("/");
+
+                for (int i = 0; i < directoryPathTab.Length - 1; i++)
+                {
+                    directoryPath.Append(directoryPathTab[i]);
+                    directoryPath.Append('/');
+                }
+
+                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                    {
+                        isf.CreateDirectory(directoryPath.ToString());
+                        return true;
+                    }
+            }
+            catch (IsolatedStorageException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ArgumentNullException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (ObjectDisposedException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
+            catch (Exception e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return false;
+            }
         }
     }
 }

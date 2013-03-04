@@ -84,6 +84,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SnSDateUtils\SnSDate.cs" />
     <Compile Include="SnSDebugUtils\SnSDebug.cs" />
     <Compile Include="SnSIsolatedStorageUtils\SnSIsolatedStorageFile.cs" />
     <Compile Include="SnSIsolatedStorageUtils\SnSIsolatedStorageSettings.cs" />

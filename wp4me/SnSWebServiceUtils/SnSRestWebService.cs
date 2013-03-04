@@ -3,7 +3,9 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using ImageTools;
 using wp4me.SnSDebugUtils;
+using wp4me.SnSIsolatedStorageUtils;
 
 namespace wp4me.SnSWebServiceUtils
 {
@@ -37,6 +39,7 @@ namespace wp4me.SnSWebServiceUtils
             }
             catch (Exception e)
             {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return "";
             }
 
@@ -64,7 +67,7 @@ namespace wp4me.SnSWebServiceUtils
         }
 
         /// <summary>
-        /// Functions that download an image from the Internet.
+        /// Functions that downloads an image from the Internet.
         /// </summary>
         /// <param name="uri"></param>
         /// <returns>the image</returns>
@@ -78,6 +81,26 @@ namespace wp4me.SnSWebServiceUtils
             {
                 SnSDebug.ConsoleWriteLine(e.StackTrace);
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Functions that downloads and saves an image from the Internet.
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <param name="imageName"></param>
+        /// <param name="fileMode"></param>
+        public static void DownloadAndSaveImage(Uri uri, string imageName, FileMode fileMode)
+        {
+            try
+            {
+                var image = new ExtendedImage();
+                image.LoadingCompleted += (sender, args) => SnSIsolatedStorageFile.WriteImageAsPng(imageName, image, fileMode);
+                image.UriSource = uri;
+            }
+            catch (Exception e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
             }
         }
     }
