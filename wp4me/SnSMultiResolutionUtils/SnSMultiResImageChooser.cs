@@ -27,13 +27,13 @@ namespace wp4me.SnSMultiResolutionUtils
             switch (SnSResolutionHelper.CurrentResolution)
             {
                 case Resolutions.HD720P:
-                    return new Uri(dictionaryImage["name"] + "-720p." + dictionaryImage["extension"], UriKind.Relative);
+                    return new Uri(dictionaryImage["name"] + "_720." + dictionaryImage["extension"], UriKind.Relative);
 
                 case Resolutions.WXGA:
-                    return new Uri(dictionaryImage["name"] + "-wxga." + dictionaryImage["extension"], UriKind.Relative);
+                    return new Uri(dictionaryImage["name"] + "_WXGA." + dictionaryImage["extension"], UriKind.Relative);
 
                 case Resolutions.WVGA:
-                    return new Uri(dictionaryImage["name"] + "-wvga." + dictionaryImage["extension"], UriKind.Relative);
+                    return new Uri(dictionaryImage["name"] + "_WVGA." + dictionaryImage["extension"], UriKind.Relative);
 
                 default:
                     throw new InvalidOperationException("Unknown resolution type");

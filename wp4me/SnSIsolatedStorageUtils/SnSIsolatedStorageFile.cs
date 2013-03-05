@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Text;
+using System.Windows;
 using ImageTools;
 using ImageTools.IO.Png;
 using wp4me.SnSDebugUtils;
@@ -14,6 +15,8 @@ namespace wp4me.SnSIsolatedStorageUtils
     /// </summary>
     public sealed class SnSIsolatedStorageFile
     {
+        private static readonly object InstanceLock = new Object();
+
         /*******************************************************/
         /** METHODS AND FUNCTIONS.
         /*******************************************************/
@@ -316,23 +319,31 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
-                //The image name includes the directory
-                if (imageName.Split('/').Length > 0)
+                lock (InstanceLock)
                 {
-                    CreateDirectoryFromFilePath(imageName);
-                }
-
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
-                {
-                    using (var fileStream = new IsolatedStorageFileStream(imageName, fileMode, isf))
-                    {
-                        using (var streamWriter = new StreamWriter(fileStream))
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
-                            var encoder = new PngEncoder();
-                            var writeableBitmap = image.ToBitmap();
-                            encoder.Encode(writeableBitmap.ToImage(), streamWriter.BaseStream);
-                        }
-                    }
+                            //The image name includes the directory
+                            if (imageName.Split('/').Length > 0)
+                            {
+                                CreateDirectoryFromFilePath(imageName);
+                            }
+
+                            using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                            {
+                                using (
+                                    var fileStream = new IsolatedStorageFileStream(imageName, fileMode, FileAccess.Write,
+                                                                                   isf))
+                                {
+                                    using (var streamWriter = new StreamWriter(fileStream))
+                                    {
+                                        var encoder = new PngEncoder();
+                                        var writeableBitmap = new WriteableBitmap(image.ToBitmap());
+                                        encoder.Encode(writeableBitmap.ToImage(), streamWriter.BaseStream);
+                                    }
+                                }
+                            }
+                        });
                 }
             }
             catch (IsolatedStorageException e)

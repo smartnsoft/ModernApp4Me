@@ -4,6 +4,8 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using ImageTools;
+using ImageTools.IO;
+using ImageTools.IO.Png;
 using wp4me.SnSDebugUtils;
 using wp4me.SnSIsolatedStorageUtils;
 
@@ -14,6 +16,8 @@ namespace wp4me.SnSWebServiceUtils
     /// </summary>
     public sealed class SnSRestWebService
     {
+        
+
         /*******************************************************/
         /** METHODS AND FUNCTIONS.
         /*******************************************************/
@@ -94,8 +98,9 @@ namespace wp4me.SnSWebServiceUtils
         {
             try
             {
+                Decoders.AddDecoder<PngDecoder>();
                 var image = new ExtendedImage();
-                image.LoadingCompleted += (sender, args) => SnSIsolatedStorageFile.WriteImageAsPng(imageName, image, fileMode);
+                image.LoadingCompleted += (sender, args) => SnSIsolatedStorageFile.WriteImageAsPng(imageName, sender as ExtendedImage, fileMode);
                 image.UriSource = uri;
             }
             catch (Exception e)
