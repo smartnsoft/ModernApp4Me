@@ -463,5 +463,70 @@ namespace wp4me.SnSIsolatedStorageUtils
                 return false;
             }
         }
+
+        /// <summary>
+        /// Function that return an image from the isolated storage.
+        /// </summary>
+        /// <param name="imageName"></param>
+        /// <returns></returns>
+        public static BitmapImage ReadImage(string imageName)
+        {
+            var image = new BitmapImage();
+
+            try
+            {
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    if (isf.FileExists(imageName))
+                    {
+                        using (var fileStream = isf.OpenFile(imageName, FileMode.Open, FileAccess.Read))
+                        {
+                            image.SetSource(fileStream);
+                        }
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException(imageName);
+                    }
+                }
+            }
+            catch (IsolatedStorageException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return null;
+            }
+            catch (ArgumentNullException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return null;
+            }
+            catch (ArgumentException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return null;
+            }
+            catch (OutOfMemoryException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return null;
+            }
+            catch (FileNotFoundException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return null;
+            }
+            catch (IOException e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return null;
+            }
+            catch (Exception e)
+            {
+                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                return null;
+            }
+
+            return image;
+        }
     }
 }
