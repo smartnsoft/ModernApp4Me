@@ -95,6 +95,7 @@
     <Compile Include="SnSMultiResolutionUtils\SnSResolutionHelper.cs" />
     <Compile Include="SnSNetworkUtils\SnSNetwork.cs" />
     <Compile Include="SnSApplicationLifeCycleUtils\SnSApplicationLifeCycle.cs" />
+    <Compile Include="SnSRandomUtils\SnSRandomNumber.cs" />
     <Compile Include="SnSTileUtils\SnSSecondaryTile.cs" />
     <Compile Include="SnSWebServiceUtils\SnSHttpExtensions.cs" />
     <Compile Include="SnSWebServiceUtils\SnSRestWebService.cs" />
