@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text;
 
 namespace wp4me.SnSDebugUtils
 {
@@ -14,10 +15,17 @@ namespace wp4me.SnSDebugUtils
         /// <summary>
         /// Method that writes text into the console.
         /// </summary>
+        /// <param name="methodName"></param>
         /// <param name="text"></param>
-        public static void ConsoleWriteLine(string text)
+        public static void ConsoleWriteLine(string methodName, string text)
         {
-            Debug.WriteLine(DateTime.Now.ToString("HH:mm:ss") + " " + text);
+            var message = new StringBuilder(DateTime.Now.ToString("HH:mm:ss"));
+            message.Append(' ');
+            message.Append(methodName);
+            message.Append(' ');
+            message.Append(text);
+
+            Debug.WriteLine(message.ToString());
         }
     }
 }

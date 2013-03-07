@@ -37,7 +37,7 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (KeyNotFoundException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("GetApplicationSettings(string key) : object", e.StackTrace);
                 return null;
             }
         }

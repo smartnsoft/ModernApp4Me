@@ -51,37 +51,37 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadFile(string fileName) : string", e.StackTrace);
                 return null;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadFile(string fileName) : string", e.StackTrace);
                 return null;
             }
             catch (ArgumentException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadFile(string fileName) : string", e.StackTrace);
                 return null;
             }
             catch (OutOfMemoryException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadFile(string fileName) : string", e.StackTrace);
                 return null;
             }
             catch (FileNotFoundException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadFile(string fileName) : string", e.StackTrace);
                 return null;
             }
             catch (IOException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadFile(string fileName) : string", e.StackTrace);
                 return null;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadFile(string fileName) : string", e.StackTrace);
                 return null;
             }
 
@@ -118,32 +118,32 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteFile(string fileName, string fileContent, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteFile(string fileName, string fileContent, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteFile(string fileName, string fileContent, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (ObjectDisposedException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteFile(string fileName, string fileContent, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (IOException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteFile(string fileName, string fileContent, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteFile(string fileName, string fileContent, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
 
@@ -169,27 +169,27 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("DeleteFile(string fileName) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("DeleteFile(string fileName) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("DeleteFile(string fileName) : bool", e.StackTrace);
                 return false;
             }
             catch (ObjectDisposedException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("DeleteFile(string fileName) : bool", e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("DeleteFile(string fileName) : bool", e.StackTrace);
                 return false;
             }
 
@@ -211,12 +211,12 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ClearIsolatedStorage() : bool", e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ClearIsolatedStorage() : bool", e.StackTrace);
                 return false;
             }
 
@@ -239,17 +239,17 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("IsFileExists(string fileName) : bool", e.StackTrace);
                 return false;
             }
             catch (ObjectDisposedException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("IsFileExists(string fileName) : bool", e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("IsFileExists(string fileName) : bool", e.StackTrace);
                 return false;
             }
         }
@@ -286,22 +286,22 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteImageAsPng(string imageName, BitmapImage image, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteImageAsPng(string imageName, BitmapImage image, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteImageAsPng(string imageName, BitmapImage image, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteImageAsPng(string imageName, BitmapImage image, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
 
@@ -348,22 +348,22 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteImageAsPng(string imageName, ExtendedImage image, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteImageAsPng(string imageName, ExtendedImage image, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteImageAsPng(string imageName, ExtendedImage image, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("WriteImageAsPng(string imageName, ExtendedImage image, FileMode fileMode) : bool", e.StackTrace);
                 return false;
             }
 
@@ -387,27 +387,27 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectory(string directoryName) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectory(string directoryName) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectory(string directoryName) : bool", e.StackTrace);
                 return false;
             }
             catch (ObjectDisposedException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectory(string directoryName) : bool", e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectory(string directoryName) : bool", e.StackTrace);
                 return false;
             }
         }
@@ -439,27 +439,27 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectoryFromFilePath(string filePath) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectoryFromFilePath(string filePath) : bool", e.StackTrace);
                 return false;
             }
             catch (ArgumentException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectoryFromFilePath(string filePath) : bool", e.StackTrace);
                 return false;
             }
             catch (ObjectDisposedException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectoryFromFilePath(string filePath) : bool", e.StackTrace);
                 return false;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateDirectoryFromFilePath(string filePath) : bool", e.StackTrace);
                 return false;
             }
         }
@@ -492,37 +492,37 @@ namespace wp4me.SnSIsolatedStorageUtils
             }
             catch (IsolatedStorageException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadImage(string imageName) : BitmapImage", e.StackTrace);
                 return null;
             }
             catch (ArgumentNullException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadImage(string imageName) : BitmapImage", e.StackTrace);
                 return null;
             }
             catch (ArgumentException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadImage(string imageName) : BitmapImage", e.StackTrace);
                 return null;
             }
             catch (OutOfMemoryException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadImage(string imageName) : BitmapImage", e.StackTrace);
                 return null;
             }
             catch (FileNotFoundException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadImage(string imageName) : BitmapImage", e.StackTrace);
                 return null;
             }
             catch (IOException e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadImage(string imageName) : BitmapImage", e.StackTrace);
                 return null;
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("ReadImage(string imageName) : BitmapImage", e.StackTrace);
                 return null;
             }
 

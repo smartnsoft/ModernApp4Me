@@ -42,7 +42,7 @@ namespace wp4me.SnSTileUtils
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("DeleteSecondaryTile(string navigationUri) : bool", e.StackTrace);
                 return false;
             }
 
@@ -67,7 +67,7 @@ namespace wp4me.SnSTileUtils
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("CreateSecondaryTile(StandardTileData tileData, string navigationUri) : bool", e.StackTrace);
                 return false;
             }
 

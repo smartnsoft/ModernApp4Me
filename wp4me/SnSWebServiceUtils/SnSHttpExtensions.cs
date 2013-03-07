@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace wp4me.SnSWebServiceUtils
 {
+    /// <summary>
+    /// Class that provides an extension to the HttpWebResponse to wait asynchronous web service calling.
+    /// </summary>
     public static class SnSHttpExtensions
     {
         public static Task<HttpWebResponse> GetResponseAsync(this HttpWebRequest request)
@@ -22,6 +25,7 @@ namespace wp4me.SnSWebServiceUtils
                     taskComplete.TrySetResult(failedResponse);
                 }
             }, request);
+
             return taskComplete.Task;
         }
     } 

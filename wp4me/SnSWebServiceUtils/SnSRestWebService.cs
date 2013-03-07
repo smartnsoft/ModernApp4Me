@@ -34,6 +34,11 @@ namespace wp4me.SnSWebServiceUtils
                 var request = (HttpWebRequest) WebRequest.Create(uri);
                 request.Method = "GET";
 
+                if (userAgent != "default")
+                {
+                    request.Headers["UserAgent"] += "|" + userAgent + "|";
+                }
+
                 var response = await request.GetResponseAsync();
 
                 using (var sr = new StreamReader(response.GetResponseStream()))
@@ -43,7 +48,7 @@ namespace wp4me.SnSWebServiceUtils
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("GetRequest(Uri uri, string userAgent = \"default\") : Task<string>", e.StackTrace);
                 return "";
             }
 
@@ -83,7 +88,7 @@ namespace wp4me.SnSWebServiceUtils
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("DownloadImage(Uri uri) : BitmapImage", e.StackTrace);
                 return null;
             }
         }
@@ -105,7 +110,7 @@ namespace wp4me.SnSWebServiceUtils
             }
             catch (Exception e)
             {
-                SnSDebug.ConsoleWriteLine(e.StackTrace);
+                SnSDebug.ConsoleWriteLine("DownloadAndSaveImage(Uri uri, string imageName, FileMode fileMode) : void", e.StackTrace);
             }
         }
     }
