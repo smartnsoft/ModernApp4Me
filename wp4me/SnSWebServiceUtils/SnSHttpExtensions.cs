@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
+using wp4me.SnSDebugUtils;
 
 namespace wp4me.SnSWebServiceUtils
 {
@@ -19,9 +20,10 @@ namespace wp4me.SnSWebServiceUtils
                     var someResponse = (HttpWebResponse)responseRequest.EndGetResponse(asyncResponse);
                     taskComplete.TrySetResult(someResponse);
                 }
-                catch (WebException webExc)
+                catch (WebException e)
                 {
-                    var failedResponse = (HttpWebResponse)webExc.Response;
+                    SnSDebug.ConsoleWriteLine("GetResponseAsync(this HttpWebRequest request) : Task<HttpWebResponse>", e.StackTrace);
+                    var failedResponse = (HttpWebResponse)e.Response;
                     taskComplete.TrySetResult(failedResponse);
                 }
             }, request);

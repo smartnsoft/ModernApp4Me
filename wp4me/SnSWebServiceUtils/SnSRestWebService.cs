@@ -36,7 +36,7 @@ namespace wp4me.SnSWebServiceUtils
 
                 if (userAgent != "default")
                 {
-                    request.Headers["UserAgent"] += "|" + userAgent + "|";
+                    request.UserAgent += userAgent;
                 }
 
                 var response = await request.GetResponseAsync();
@@ -51,28 +51,41 @@ namespace wp4me.SnSWebServiceUtils
                 SnSDebug.ConsoleWriteLine("GetRequest(Uri uri, string userAgent = \"default\") : Task<string>", e.StackTrace);
                 return "";
             }
+        }
 
-            /*var response = "";
-
-            var request = WebRequest.CreateHttp(uri);
-
-            if (userAgent != "default")
+        /// <summary>
+        /// Function that calls a REST web service with the action GET.
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <param name="userAgent"></param>
+        /// <returns>the result as a bitmap image</returns>
+        public async static Task<BitmapImage> GetRequestImage(Uri uri, string userAgent = "default")
+        {
+            try
             {
-                request.Headers["UserAgent"] = userAgent;
-            }
+                var request = (HttpWebRequest)WebRequest.Create(uri);
+                request.Method = "GET";
 
-            request.BeginGetResponse(r =>
-            {
-                var httpRequest = (HttpWebRequest) r.AsyncState;
-                var httResponse = (HttpWebResponse) httpRequest.EndGetResponse(r);
-
-                using (var streamReader = new StreamReader(httResponse.GetResponseStream()))
+                if (userAgent != "default")
                 {
-                    response = streamReader.ReadToEnd();
+                    request.UserAgent += userAgent;
                 }
-            }, request);
 
-            return response;*/
+                var response = await request.GetResponseAsync();
+
+                using (var sr = response.GetResponseStream())
+                {
+                    var image = new BitmapImage();
+                    image.SetSource(sr);
+
+                    return image;
+                }
+            }
+            catch (Exception e)
+            {
+                SnSDebug.ConsoleWriteLine("GetRequest(Uri uri, string userAgent = \"default\") : Task<string>", e.StackTrace);
+                return null;
+            }
         }
 
         /// <summary>
