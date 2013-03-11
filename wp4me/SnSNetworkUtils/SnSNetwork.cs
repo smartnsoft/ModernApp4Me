@@ -10,13 +10,6 @@ namespace wp4me.SnSNetworkUtils
         /*******************************************************/
         /** METHODS AND FUNCTIONS.
         /*******************************************************/
-        /// <summary>
-        /// Methods that indicates if the phone has a network connection (edge, 3G, wifi, etc.).
-        /// </summary>
-        /// <returns>true or false depending on the phone's network connection</returns>
-        public static bool HasNetworkConnection()
-        {
-            return NetworkInterface.GetIsNetworkAvailable();
-        }
+       
     }
 }

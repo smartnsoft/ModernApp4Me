@@ -8,12 +8,12 @@ namespace wp4me.SnSDateUtils
     public sealed class SnSDate
     {
         /// <summary>
-        /// Function that returns the number of ticks since January 1st 1970.
+        /// Function that returns the number of secondes since January 1st 1970.
         /// </summary>
         /// <returns></returns>
-        public static long GetTicksSinceJanuary1970()
+        public static double GetSecondesSinceJanuary1970()
         {
-            return new DateTime(1970, 1, 1, 0, 0, 0).Ticks;
+            return TimeSpan.FromTicks(new DateTime(1970, 1, 1, 0, 0, 0).Ticks).TotalSeconds;
         }
     }
 }
