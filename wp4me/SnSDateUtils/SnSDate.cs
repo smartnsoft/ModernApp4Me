@@ -8,12 +8,23 @@ namespace wp4me.SnSDateUtils
     public sealed class SnSDate
     {
         /// <summary>
-        /// Function that returns the number of secondes since January 1st 1970.
+        /// Function that converts an unix timestamp to a datetime.
         /// </summary>
+        /// <param name="unixTimeStamp"></param>
         /// <returns></returns>
-        public static double GetSecondesSinceJanuary1970()
+        public static DateTime UnixTimestampToDateTime(double unixTimeStamp)
         {
-            return TimeSpan.FromTicks(new DateTime(1970, 1, 1, 0, 0, 0).Ticks).TotalSeconds;
+            return new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(unixTimeStamp).ToLocalTime();
+        }
+        
+        /// <summary>
+        /// Function that converts a java timestamp to a datetime.
+        /// </summary>
+        /// <param name="javaTimeStamp"></param>
+        /// <returns></returns>
+        public static DateTime JavaTimestampToDateTime(double javaTimeStamp)
+        {
+            return new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(Math.Round(javaTimeStamp/1000)).ToLocalTime();
         }
     }
 }
