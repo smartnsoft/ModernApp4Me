@@ -17,7 +17,7 @@ namespace wp4me.SnSWebServiceUtils
     /// </summary>
     public sealed class SnSRestWebService
     {
-
+        private static readonly object Instance = new object();
 
         /*******************************************************/
         /** METHODS AND FUNCTIONS.
@@ -100,29 +100,30 @@ namespace wp4me.SnSWebServiceUtils
             try
             {
                 var image = new BitmapImage();
-
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
-                    {
-                        var request = (HttpWebRequest) WebRequest.Create(uri);
-                        request.Method = "GET";
-
-                        if (userAgent != "default")
+                lock(Instance) {
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
-                            request.UserAgent += userAgent;
-                        }
+                            var request = (HttpWebRequest) WebRequest.Create(uri);
+                            request.Method = "GET";
 
-                        request.BeginGetResponse(result =>
-                        {
-                            using (var sr = request.EndGetResponse(result))
+                            if (userAgent != "default")
                             {
-                                image.SetSource(sr.GetResponseStream());
+                                request.UserAgent += userAgent;
                             }
-                        }, null);
+
+                            request.BeginGetResponse(result =>
+                            {
+                                using (var sr = request.EndGetResponse(result))
+                                {
+                                    image.SetSource(sr.GetResponseStream());
+                                }
+                            }, null);
 
                         
-                    });
+                        });
 
-                return image;
+                    return image;
+                }
             }
             catch (Exception e)
             {
