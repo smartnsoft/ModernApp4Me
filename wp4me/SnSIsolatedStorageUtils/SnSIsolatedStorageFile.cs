@@ -15,7 +15,11 @@ namespace wp4me.SnSIsolatedStorageUtils
     /// </summary>
     public sealed class SnSIsolatedStorageFile
     {
+        /*******************************************************/
+        /** ATTRIBUTES.
+        /*******************************************************/
         private static readonly object InstanceLock = new Object();
+
 
         /*******************************************************/
         /** METHODS AND FUNCTIONS.
@@ -27,26 +31,32 @@ namespace wp4me.SnSIsolatedStorageUtils
         /// <returns>the file's content or null if an error occurred</returns>
         public static string ReadFile(string fileName)
         {
-            string fileContent;
+            string fileContent = string.Empty;
 
             try
             {
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                lock (InstanceLock)
                 {
-                    if (isf.FileExists(fileName))
-                    {
-                        using (var fileStream = new IsolatedStorageFileStream(fileName, FileMode.Open, isf))
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
-                            using (var streamReader = new StreamReader(fileStream))
+                            using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                             {
-                                fileContent = streamReader.ReadToEnd();
+                                if (isf.FileExists(fileName))
+                                {
+                                    using (var fileStream = new IsolatedStorageFileStream(fileName, FileMode.Open, isf))
+                                    {
+                                        using (var streamReader = new StreamReader(fileStream))
+                                        {
+                                            fileContent = streamReader.ReadToEnd();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    throw new FileNotFoundException(fileName);
+                                }
                             }
-                        }
-                    }
-                    else
-                    {
-                        throw new FileNotFoundException(fileName);
-                    }
+                        });
                 }
             }
             catch (IsolatedStorageException e)
@@ -99,21 +109,27 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
-                //The file name includes the directory
-                if (fileName.Split('/').Length > 0)
+                lock (InstanceLock)
                 {
-                    CreateDirectoryFromFilePath(fileName);
-                }
-
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
-                {
-                    using (var fileStream = new IsolatedStorageFileStream(fileName, fileMode, isf))
-                    {
-                        using (var streamWriter = new StreamWriter(fileStream))
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
-                            streamWriter.WriteLine(fileContent);
-                        }
-                    }
+                            //The file name includes the directory
+                            if (fileName.Split('/').Length > 0)
+                            {
+                                CreateDirectoryFromFilePath(fileName);
+                            }
+
+                            using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                            {
+                                using (var fileStream = new IsolatedStorageFileStream(fileName, fileMode, isf))
+                                {
+                                    using (var streamWriter = new StreamWriter(fileStream))
+                                    {
+                                        streamWriter.WriteLine(fileContent);
+                                    }
+                                }
+                            }
+                        });
                 }
             }
             catch (IsolatedStorageException e)
@@ -159,12 +175,18 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                lock (InstanceLock)
                 {
-                    if (isf.FileExists(fileName))
-                    {
-                        isf.DeleteFile(fileName);
-                    }
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                            {
+                                if (isf.FileExists(fileName))
+                                {
+                                    isf.DeleteFile(fileName);
+                                }
+                            }
+                        });
                 }
             }
             catch (IsolatedStorageException e)
@@ -204,9 +226,15 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                lock (InstanceLock)
                 {
-                    isf.Remove();
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                            {
+                                isf.Remove();
+                            }
+                        });
                 }
             }
             catch (IsolatedStorageException e)
@@ -232,9 +260,19 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                var returnValue = false;
+
+                lock (InstanceLock)
                 {
-                    return isf.FileExists(fileName);
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                            {
+                                returnValue = isf.FileExists(fileName);
+                            }
+                        });
+
+                    return returnValue;
                 }
             }
             catch (IsolatedStorageException e)
@@ -265,23 +303,29 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
-                //The image name includes the directory
-                if (imageName.Split('/').Length > 0)
+                lock (InstanceLock)
                 {
-                    CreateDirectoryFromFilePath(imageName);
-                }
-
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
-                {
-                    using (var fileStream = new IsolatedStorageFileStream(imageName, fileMode, isf))
-                    {
-                        using (var streamWriter = new StreamWriter(fileStream))
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
-                            var encoder = new PngEncoder();
-                            var writeableBitmap = new WriteableBitmap(image);
-                            encoder.Encode(writeableBitmap.ToImage(), streamWriter.BaseStream);
-                        }
-                    }
+                            //The image name includes the directory
+                            if (imageName.Split('/').Length > 0)
+                            {
+                                CreateDirectoryFromFilePath(imageName);
+                            }
+
+                            using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                            {
+                                using (var fileStream = new IsolatedStorageFileStream(imageName, fileMode, isf))
+                                {
+                                    using (var streamWriter = new StreamWriter(fileStream))
+                                    {
+                                        var encoder = new PngEncoder();
+                                        var writeableBitmap = new WriteableBitmap(image);
+                                        encoder.Encode(writeableBitmap.ToImage(), streamWriter.BaseStream);
+                                    }
+                                }
+                            }
+                        });
                 }
             }
             catch (IsolatedStorageException e)
@@ -379,9 +423,16 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                lock (InstanceLock)
                 {
-                    isf.CreateDirectory(directoryName);
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                            {
+                                isf.CreateDirectory(directoryName);
+                            }
+                        });
+
                     return true;
                 }
             }
@@ -421,6 +472,7 @@ namespace wp4me.SnSIsolatedStorageUtils
         {
             try
             {
+                
                 //Building the directory path
                 var directoryPathTab = filePath.Split('/');
                 var directoryPath = new StringBuilder("/");
@@ -431,11 +483,12 @@ namespace wp4me.SnSIsolatedStorageUtils
                     directoryPath.Append('/');
                 }
 
-                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
-                    {
-                        isf.CreateDirectory(directoryPath.ToString());
-                        return true;
-                    }
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    isf.CreateDirectory(directoryPath.ToString());
+                }
+
+                return true;
             }
             catch (IsolatedStorageException e)
             {
@@ -475,19 +528,25 @@ namespace wp4me.SnSIsolatedStorageUtils
 
             try
             {
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                lock (InstanceLock)
                 {
-                    if (isf.FileExists(imageName))
-                    {
-                        using (var fileStream = isf.OpenFile(imageName, FileMode.Open, FileAccess.Read))
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
-                            image.SetSource(fileStream);
-                        }
-                    }
-                    else
-                    {
-                        throw new FileNotFoundException(imageName);
-                    }
+                            using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                            {
+                                if (isf.FileExists(imageName))
+                                {
+                                    using (var fileStream = isf.OpenFile(imageName, FileMode.Open, FileAccess.Read))
+                                    {
+                                        image.SetSource(fileStream);
+                                    }
+                                }
+                                else
+                                {
+                                    throw new FileNotFoundException(imageName);
+                                }
+                            }
+                        });
                 }
             }
             catch (IsolatedStorageException e)
