@@ -9,6 +9,7 @@ using ImageTools.IO;
 using ImageTools.IO.Png;
 using wp4me.SnSDebugUtils;
 using wp4me.SnSIsolatedStorageUtils;
+using System.Threading;
 
 namespace wp4me.SnSWebServiceUtils
 {
@@ -99,31 +100,40 @@ namespace wp4me.SnSWebServiceUtils
         {
             try
             {
-                var image = new BitmapImage();
-                lock(Instance) {
-                    Deployment.Current.Dispatcher.BeginInvoke(() =>
-                        {
-                            var request = (HttpWebRequest) WebRequest.Create(uri);
-                            request.Method = "GET";
+                BitmapImage image = null;
+                AutoResetEvent bitmapInitialization = new AutoResetEvent(false);
 
-                            if (userAgent != "default")
-                            {
-                                request.UserAgent += userAgent;
-                            }
+                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    image = new BitmapImage();
 
-                            request.BeginGetResponse(result =>
-                            {
-                                using (var sr = request.EndGetResponse(result))
+                    var request = (HttpWebRequest)WebRequest.Create(uri);
+                    request.Method = "GET";
+
+                    if (userAgent != "default")
+                    {
+                        request.UserAgent += userAgent;
+                    }
+
+                    request.BeginGetResponse(result =>
+                    {
+                        var response = request.EndGetResponse(result);
+
+                        Deployment.Current.Dispatcher.BeginInvoke(() =>
                                 {
-                                    image.SetSource(sr.GetResponseStream());
-                                }
-                            }, null);
+                        using (var stream = response.GetResponseStream())
+                        {
+                            
+                                    image.SetSource(stream);
+                                    bitmapInitialization.Set();
+                                
+                        }
+                                });
+                    }, null);
+                });
 
-                        
-                        });
-
-                    return image;
-                }
+                bitmapInitialization.WaitOne();
+                return image;
             }
             catch (Exception e)
             {
