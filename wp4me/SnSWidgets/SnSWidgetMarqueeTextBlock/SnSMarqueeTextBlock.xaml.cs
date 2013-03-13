@@ -102,7 +102,7 @@ namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
         /// <param name="args"></param>
         static void OnTheMarqueeBackgroundChanged(object sender, DependencyPropertyChangedEventArgs args)
         {
-            ((SnSMarqueeTextBlock)sender).Background = (Brush)args.NewValue;
+            //((SnSMarqueeTextBlock)sender).Background = (Brush)args.NewValue;
             ((SnSMarqueeTextBlock)sender).CanvasMarquee.Background = (Brush)args.NewValue;
         }
 
@@ -145,7 +145,7 @@ namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
             //Set the animation
             _doubleAnimation = new DoubleAnimation();
             _doubleAnimation.From = CanvasMarquee.ActualWidth;
-            _doubleAnimation.To = -TxtMarquee.ActualWidth;
+            _doubleAnimation.To = -2*CanvasMarquee.ActualWidth;
             _doubleAnimation.RepeatBehavior = RepeatBehavior.Forever;
             _doubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(5));
 
