@@ -10,6 +10,6 @@
     d:DesignHeight="480" d:DesignWidth="480">
 
     <Canvas Name="CanvasMarquee" >
-        <TextBlock Name="TxtMarquee" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBlock Name="TxtMarquee" />
     </Canvas>
 </UserControl>

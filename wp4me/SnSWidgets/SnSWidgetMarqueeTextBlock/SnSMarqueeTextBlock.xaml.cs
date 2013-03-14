@@ -1,27 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
 {
-    public sealed partial class SnSMarqueeTextBlock : UserControl
+    /// <summary>
+    /// Widget that representents a marquee textblock.
+    /// </summary>
+    public sealed partial class SnSMarqueeTextBlock
     {
-        /*******************************************************/
-        /** ATTRIBUTES.
-        /*******************************************************/
-        private RectangleGeometry _rectangleGeometry;
-        private DoubleAnimation _doubleAnimation;
-        private Storyboard _storyboard;
-
-
         /*******************************************************/
         /** PROPERTIES.
         /*******************************************************/
@@ -32,8 +20,7 @@ namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
         }
 
         public static readonly DependencyProperty MarqueeContentProperty =
-            DependencyProperty.Register("MarqueeText", typeof(string), typeof(SnSMarqueeTextBlock), new PropertyMetadata("",
-                                  new PropertyChangedCallback(OnTheMarqueeTextChanged)));
+            DependencyProperty.Register("MarqueeText", typeof(string), typeof(SnSMarqueeTextBlock), new PropertyMetadata("",OnTheMarqueeTextChanged));
 
         public double MarqueeHeight
         {
@@ -42,9 +29,7 @@ namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
         }
 
         public static readonly DependencyProperty MarqueeHeightProperty =
-            DependencyProperty.Register("MarqueeHeight", typeof(double), typeof(SnSMarqueeTextBlock), new PropertyMetadata((double)10,
-                              new PropertyChangedCallback(
-                                OnTheMarqueeHeightChanged)));
+            DependencyProperty.Register("MarqueeHeight", typeof(double), typeof(SnSMarqueeTextBlock), new PropertyMetadata((double)10, OnTheMarqueeHeightChanged));
 
         public double MarqueeWidth
         {
@@ -53,9 +38,7 @@ namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
         }
 
         public static readonly DependencyProperty MarqueeWidthProperty =
-            DependencyProperty.Register("MarqueeWidth", typeof(double), typeof(SnSMarqueeTextBlock), new PropertyMetadata((double)10,
-                              new PropertyChangedCallback(
-                                OnTheMarqueeWidthChanged)));
+            DependencyProperty.Register("MarqueeWidth", typeof(double), typeof(SnSMarqueeTextBlock), new PropertyMetadata((double)10, OnTheMarqueeWidthChanged));
 
         public Brush MarqueeBackground
         {
@@ -64,9 +47,7 @@ namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
         }
 
         public static readonly DependencyProperty MarqueeBackgroundProperty =
-            DependencyProperty.Register("MarqueeBackground", typeof(Brush), typeof(SnSMarqueeTextBlock), new PropertyMetadata(new SolidColorBrush(Colors.Red),
-                            new PropertyChangedCallback(
-                              OnTheMarqueeBackgroundChanged)));
+            DependencyProperty.Register("MarqueeBackground", typeof(Brush), typeof(SnSMarqueeTextBlock), new PropertyMetadata(new SolidColorBrush(Colors.White), OnTheMarqueeBackgroundChanged));
         
 
         /*******************************************************/
@@ -79,10 +60,10 @@ namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
         {
             InitializeComponent();
 
-            CanvasMarquee.Height = Height;
-            CanvasMarquee.Width = Width;
+            CanvasMarquee.Height = ActualHeight;
+            CanvasMarquee.Width = ActualWidth;
 
-            Loaded += new RoutedEventHandler(SnSMarqueeTextBlock_Loaded);
+            Loaded += SnSMarqueeTextBlock_Loaded;
         }
 
         /// <summary>
@@ -102,7 +83,7 @@ namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
         /// <param name="args"></param>
         static void OnTheMarqueeBackgroundChanged(object sender, DependencyPropertyChangedEventArgs args)
         {
-            //((SnSMarqueeTextBlock)sender).Background = (Brush)args.NewValue;
+            ((SnSMarqueeTextBlock)sender).Background = (Brush)args.NewValue;
             ((SnSMarqueeTextBlock)sender).CanvasMarquee.Background = (Brush)args.NewValue;
         }
 
@@ -135,28 +116,27 @@ namespace wp4me.SnSWidgets.SnSWidgetMarqueeTextBlock
         /// <param name="e"></param>
         private void SnSMarqueeTextBlock_Loaded(object sender, RoutedEventArgs e)
         {
-            //Geometric properties
-            _rectangleGeometry = new RectangleGeometry();
-            _rectangleGeometry.Rect = new Rect(new Point(0, 0), new Size(CanvasMarquee.ActualWidth, CanvasMarquee.ActualHeight));
-            CanvasMarquee.Clip = _rectangleGeometry;
-            var height = CanvasMarquee.ActualHeight - TxtMarquee.ActualHeight;
-            TxtMarquee.Margin = new Thickness(0, height / 2, 0, 0);
+            var rectangleGeometry = new RectangleGeometry
+                {
+                    Rect = new Rect(new Point(0, 0), new Size(CanvasMarquee.Width, CanvasMarquee.Height))
+                };
+            CanvasMarquee.Clip = rectangleGeometry;
 
-            //Set the animation
-            _doubleAnimation = new DoubleAnimation();
-            _doubleAnimation.From = CanvasMarquee.ActualWidth;
-            _doubleAnimation.To = -2*CanvasMarquee.ActualWidth;
-            _doubleAnimation.RepeatBehavior = RepeatBehavior.Forever;
-            _doubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(5));
+            /*var height = CanvasMarquee.Height - TxtMarquee.ActualHeight;
+            TxtMarquee.Margin = new Thickness(0, height / 2, 0, 0);*/
 
-            //Set the storyboard
-            _storyboard = new Storyboard();
-            _storyboard.Children.Add(_doubleAnimation);
-            Storyboard.SetTarget(_doubleAnimation, TxtMarquee);
-            Storyboard.SetTargetProperty(_doubleAnimation, new PropertyPath("(Canvas.Left)"));
-
-            //Begin the storyboard
-            _storyboard.Begin();
+            var doubleAnimation = new DoubleAnimation
+                {
+                    From = CanvasMarquee.Width,
+                    To = -(CanvasMarquee.Width + TxtMarquee.ActualWidth),
+                    RepeatBehavior = RepeatBehavior.Forever,
+                    Duration = new Duration(TimeSpan.FromSeconds(5))
+                };
+            var storyboard = new Storyboard();
+            storyboard.Children.Add(doubleAnimation);
+            Storyboard.SetTarget(doubleAnimation, TxtMarquee);
+            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath("(Canvas.Left)"));
+            storyboard.Begin();
         }
     }
 }

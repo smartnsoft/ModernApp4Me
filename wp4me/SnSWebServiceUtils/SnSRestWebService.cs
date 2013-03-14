@@ -18,8 +18,6 @@ namespace wp4me.SnSWebServiceUtils
     /// </summary>
     public sealed class SnSRestWebService
     {
-        private static readonly object Instance = new object();
-
         /*******************************************************/
         /** METHODS AND FUNCTIONS.
         /*******************************************************/
