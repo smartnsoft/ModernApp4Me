@@ -9,6 +9,7 @@ using ImageTools.IO;
 using ImageTools.IO.Png;
 using wp4me.SnSDebugUtils;
 using wp4me.SnSIsolatedStorageUtils;
+using System.Threading;
 
 namespace wp4me.SnSWebServiceUtils
 {
@@ -17,7 +18,7 @@ namespace wp4me.SnSWebServiceUtils
     /// </summary>
     public sealed class SnSRestWebService
     {
-
+        private static readonly object Instance = new object();
 
         /*******************************************************/
         /** METHODS AND FUNCTIONS.
@@ -99,29 +100,39 @@ namespace wp4me.SnSWebServiceUtils
         {
             try
             {
-                var image = new BitmapImage();
+                BitmapImage image = null;
+                AutoResetEvent bitmapInitialization = new AutoResetEvent(false);
 
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    image = new BitmapImage();
+
+                    var request = (HttpWebRequest)WebRequest.Create(uri);
+                    request.Method = "GET";
+
+                    if (userAgent != "default")
                     {
-                        var request = (HttpWebRequest) WebRequest.Create(uri);
-                        request.Method = "GET";
+                        request.UserAgent += userAgent;
+                    }
 
-                        if (userAgent != "default")
+                    request.BeginGetResponse(result =>
+                    {
+                        var response = request.EndGetResponse(result);
+
+                        Deployment.Current.Dispatcher.BeginInvoke(() =>
+                                {
+                        using (var stream = response.GetResponseStream())
                         {
-                            request.UserAgent += userAgent;
+                            
+                                    image.SetSource(stream);
+                                    bitmapInitialization.Set();
+                                
                         }
+                                });
+                    }, null);
+                });
 
-                        request.BeginGetResponse(result =>
-                        {
-                            using (var sr = request.EndGetResponse(result))
-                            {
-                                image.SetSource(sr.GetResponseStream());
-                            }
-                        }, null);
-
-                        
-                    });
-
+                bitmapInitialization.WaitOne();
                 return image;
             }
             catch (Exception e)
