@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace wp4me.SnSModelUtils
 {
     /// <summary>
     /// Base class to implement a persistant model class.
     /// </summary>
+    [DataContract]
     public class SnSModelBase : INotifyPropertyChanged, INotifyPropertyChanging
     {
         /*******************************************************/
