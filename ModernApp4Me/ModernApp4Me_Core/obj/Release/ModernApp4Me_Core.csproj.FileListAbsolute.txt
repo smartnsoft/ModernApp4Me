@@ -1,0 +1,4 @@
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\bin\Release\ModernApp4Me_Core.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\bin\Release\ModernApp4Me_Core.pdb
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\obj\Release\ModernApp4Me_Core.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\obj\Release\ModernApp4Me_Core.pdb

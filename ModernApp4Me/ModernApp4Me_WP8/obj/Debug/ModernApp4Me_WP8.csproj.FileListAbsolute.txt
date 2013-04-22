@@ -1,0 +1,7 @@
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP8\Bin\Debug\ModernApp4Me_WP8.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP8\Bin\Debug\ModernApp4Me_WP8.pdb
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP8\Bin\Debug\ModernApp4Me_Core.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP8\Bin\Debug\ModernApp4Me_Core.pdb
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP8\obj\Debug\ModernApp4Me_WP8.csprojResolveAssemblyReference.cache
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP8\obj\Debug\ModernApp4Me_WP8.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP8\obj\Debug\ModernApp4Me_WP8.pdb
