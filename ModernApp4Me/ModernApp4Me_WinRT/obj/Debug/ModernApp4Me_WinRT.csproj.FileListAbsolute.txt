@@ -1,6 +1,8 @@
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\bin\Debug\ModernApp4Me_WinRT.dll
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\bin\Debug\ModernApp4Me_WinRT.pdb
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\bin\Debug\ModernApp4Me_WinRT.pri
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\bin\Debug\ModernApp4Me_Core.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\obj\Debug\ModernApp4Me_WinRT.csprojResolveAssemblyReference.cache
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\obj\Debug\ModernApp4Me_WinRT.dll
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\obj\Debug\ModernApp4Me_WinRT.pdb
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\obj\Debug\priconfig.xml.intermediate
@@ -12,3 +14,4 @@ C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\obj\Debug\
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\obj\Debug\resources.resfiles
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\obj\Debug\pri.resfiles
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\obj\Debug\LanguageQualifiers.txt
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WinRT\bin\Debug\ModernApp4Me_Core.pdb

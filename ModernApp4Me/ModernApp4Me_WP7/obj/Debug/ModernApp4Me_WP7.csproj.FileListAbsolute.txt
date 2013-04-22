@@ -1,5 +1,15 @@
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\ModernApp4Me_WP7.dll.config
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\ModernApp4Me_WP7.dll
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\ModernApp4Me_WP7.pdb
-C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\obj\Debug\ModernApp4Me_WP7.csprojResolveAssemblyReference.cache
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\Newtonsoft.Json.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\RestSharp.WindowsPhone.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\System.Runtime.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\System.Threading.Tasks.dll
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\Newtonsoft.Json.xml
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\RestSharp.WindowsPhone.xml
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\System.Runtime.xml
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Debug\System.Threading.Tasks.xml
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\obj\Debug\ModernApp4Me_WP7.csproj.App.config
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\obj\Debug\ModernApp4Me_WP7.dll
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\obj\Debug\ModernApp4Me_WP7.pdb
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\obj\Debug\ModernApp4Me_WP7.csprojResolveAssemblyReference.cache

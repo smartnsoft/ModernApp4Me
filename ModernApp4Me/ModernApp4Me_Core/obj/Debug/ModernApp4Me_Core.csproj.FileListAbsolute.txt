@@ -1,5 +1,5 @@
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\bin\Debug\ModernApp4Me_Core.dll
-C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\bin\Debug\ModernApp4Me_Core.pdb
-C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\obj\Debug\ModernApp4Me_Core.csprojResolveAssemblyReference.cache
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\obj\Debug\ModernApp4Me_Core.dll
 C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\obj\Debug\ModernApp4Me_Core.pdb
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\bin\Debug\ModernApp4Me_Core.pdb
+C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_Core\obj\Debug\ModernApp4Me_Core.csprojResolveAssemblyReference.cache

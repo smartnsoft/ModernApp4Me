@@ -35,9 +35,9 @@ namespace ModernApp4Me_WP7.SnSWebService
         /// <summary>
         /// Private constructor according to the singleton pattern.
         /// </summary>
-        private SnSWebServiceCaller(RestClient client, RestRequest request)
+        private SnSWebServiceCaller()
         {
-            Client = clie
+           // Client = clie
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace ModernApp4Me_WP7.SnSWebService
             return DeviceNetworkInformation.IsNetworkAvailable;
         }
 
-        public string PerformHttpRequest(Uri uri, SnSWebServiceVerbEnum verb, )
+        //public string PerformHttpRequest(Uri uri, SnSWebServiceVerbEnum verb, )
 
 
         /*******************************************************/
