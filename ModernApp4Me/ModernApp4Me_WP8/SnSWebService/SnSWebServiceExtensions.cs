@@ -12,7 +12,7 @@ namespace ModernApp4Me_WP8.SnSWebService
         {
             var taskComplete = new TaskCompletionSource<IRestResponse>();
 
-            client.ExecuteAsync(request, (response) =>
+            client.ExecuteAsync(request, response =>
             {
                 if (response.ErrorException != null)
                 {
