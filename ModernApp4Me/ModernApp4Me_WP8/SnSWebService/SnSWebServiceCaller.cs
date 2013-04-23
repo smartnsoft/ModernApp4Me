@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 
-namespace ModernApp4Me_WP7.SnSWebService
+namespace ModernApp4Me_WP8.SnSWebService
 {
     /// <summary>
     /// A basis class for making web service calls easier.
