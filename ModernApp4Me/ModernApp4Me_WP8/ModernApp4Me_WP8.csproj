@@ -97,10 +97,25 @@
     <Compile Include="SnSTile\SnSSecondaryTile.cs" />
     <Compile Include="SnSWebService\SnSWebServiceCaller.cs" />
     <Compile Include="SnSWebService\SnSWebServiceExtensions.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelector.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelectorItem.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSListLoopingDataSource.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSLoopingDataSourceBase.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSPhysicsConstants.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSSafeRaise.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml.cs">
+      <DependentUpon>SnSMarqueeTextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSListWizardDataSource.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelector.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelectorItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\WPtoolkit.4.2012.10.30\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp.WindowsPhone">
       <HintPath>..\packages\RestSharp.104.1\lib\sl4-wp71\RestSharp.WindowsPhone.dll</HintPath>
@@ -117,6 +132,19 @@
       <Project>{0BBEE225-982F-444F-851F-057E61D6168C}</Project>
       <Name>ModernApp4Me_Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
