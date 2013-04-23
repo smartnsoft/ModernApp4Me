@@ -1,4 +1,4 @@
-wp4me
+ModernApp4me
 =====
 
-Windows Phone Library
+Windows Phone 7.5, 8 and WinRT library.
