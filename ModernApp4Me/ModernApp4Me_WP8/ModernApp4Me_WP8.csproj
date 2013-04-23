@@ -98,16 +98,18 @@
     <Compile Include="SnSWebService\SnSWebServiceExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ModernApp4Me_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ModernApp4Me_Core\bin\Debug\ModernApp4Me_Core.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp.WindowsPhone">
       <HintPath>..\packages\RestSharp.104.1\lib\sl4-wp71\RestSharp.WindowsPhone.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModernApp4Me_Core\ModernApp4Me_Core.csproj">
+      <Project>{0BBEE225-982F-444F-851F-057E61D6168C}</Project>
+      <Name>ModernApp4Me_Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

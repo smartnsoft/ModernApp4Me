@@ -105,10 +105,10 @@
     <Compile Include="SnSLog\SnSSendLogTask.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ModernApp4Me_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ModernApp4Me_Core\bin\Debug\ModernApp4Me_Core.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\ModernApp4Me_Core\ModernApp4Me_Core.csproj">
+      <Project>{0bbee225-982f-444f-851f-057e61d6168c}</Project>
+      <Name>ModernApp4Me_Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
