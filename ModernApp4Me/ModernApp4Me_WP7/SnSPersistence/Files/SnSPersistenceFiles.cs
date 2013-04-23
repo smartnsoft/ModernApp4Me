@@ -16,7 +16,7 @@ namespace ModernApp4Me_WP7.SnSPersistence.Files
     /// Implementing the singleton pattern.
     /// Thread Safety because of the mutex.
     /// </summary>
-    public class SnSPersistenceFiles
+    public sealed class SnSPersistenceFiles
     {
         /*******************************************************/
         /** ATTRIBUTES.
