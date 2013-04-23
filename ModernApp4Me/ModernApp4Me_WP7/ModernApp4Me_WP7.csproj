@@ -89,7 +89,7 @@
     <Compile Include="SnSMetaData\SnSAppInfo.cs" />
     <Compile Include="SnSMetaData\SnSDeviceInfo.cs" />
     <Compile Include="SnSLog\SnSSendLogTask.cs" />
-    <Compile Include="SnSPersistence\SnSPersistenceModelBase.cs" />
+    <Compile Include="SnSPersistence\Model\SnSPersistenceModelBase.cs" />
     <Compile Include="SnSRandom\SnSRandomNumber.cs" />
     <Compile Include="SnSTile\SnSSecondaryTile.cs" />
     <Compile Include="SnSUtil\SnSDateUtil.cs" />

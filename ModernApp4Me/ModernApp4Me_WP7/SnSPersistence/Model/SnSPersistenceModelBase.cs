@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ModernApp4Me_WP7.SnSPersistence
+namespace ModernApp4Me_WP7.SnSPersistence.Model
 {
     /// <summary>
     /// Base class to implement a persistant model class.

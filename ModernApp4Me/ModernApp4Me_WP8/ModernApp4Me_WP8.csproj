@@ -93,7 +93,7 @@
     <Compile Include="SnSResolution\SnSResolutionImageConverter.cs" />
     <Compile Include="SnSResolution\SnSResolutionHelper.cs" />
     <Compile Include="SnSLog\SnSSendLogTask.cs" />
-    <Compile Include="SnSPersistence\SnSPersistenceModelBase.cs" />
+    <Compile Include="SnSPersistence\Model\SnSPersistenceModelBase.cs" />
     <Compile Include="SnSTile\SnSSecondaryTile.cs" />
     <Compile Include="SnSWebService\SnSWebServiceCaller.cs" />
     <Compile Include="SnSWebService\SnSWebServiceExtensions.cs" />
