@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using ModernApp4Me_WP7.SnSLog;
 
-namespace ModernApp4Me_WP7.SnSCache
+namespace ModernApp4Me_WP7.SnSCache.Memory
 {
     /// <summary>
     /// A class which enables to cache the result of web service calls in RAM only.

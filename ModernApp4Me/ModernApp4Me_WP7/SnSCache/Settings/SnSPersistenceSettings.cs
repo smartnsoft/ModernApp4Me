@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO.IsolatedStorage;
 using System.Threading;
-using ModernApp4Me_Core.SnSLog;
+using ModernApp4Me_WP7.SnSLog;
 
-namespace ModernApp4Me_WP8.SnSCache
+namespace ModernApp4Me_WP7.SnSCache.Settings
 {
     /// <summary>
     /// Provides functions to manipulate the IsolatedStorageSettings.

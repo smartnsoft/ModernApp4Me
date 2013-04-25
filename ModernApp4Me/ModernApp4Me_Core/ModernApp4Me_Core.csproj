@@ -34,8 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SnSCache\SnSMemoryCacher.cs" />
-    <Compile Include="SnSCache\SnSMemoryCacherObject.cs" />
+    <Compile Include="SnSCache\Memory\SnSMemoryCacher.cs" />
+    <Compile Include="SnSCache\Memory\SnSMemoryCacherObject.cs" />
     <Compile Include="SnSRandom\SnSRandomNumber.cs" />
     <Compile Include="SnSUtil\SnSDateUtil.cs" />
     <Compile Include="SnSLog\SnSLogger.cs" />

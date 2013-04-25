@@ -7,9 +7,9 @@ using System.Windows;
 using ImageTools;
 using ImageTools.IO.Png;
 using System.Windows.Media.Imaging;
-using ModernApp4Me_WP7.SnSLog;
+using ModernApp4Me_Core.SnSLog;
 
-namespace ModernApp4Me_WP7.SnSCache
+namespace ModernApp4Me_WP8.SnSCache.File
 {
     /// <summary>
     /// Provides functions to manipulate files, images, etc. from the isolated storage.

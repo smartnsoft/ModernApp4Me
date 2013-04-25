@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModernApp4Me_WP7.SnSCache
+namespace ModernApp4Me_Core.SnSCache.Memory
 {
     /// <summary>
     /// Class that reprensents an object stores into the memory cacher.

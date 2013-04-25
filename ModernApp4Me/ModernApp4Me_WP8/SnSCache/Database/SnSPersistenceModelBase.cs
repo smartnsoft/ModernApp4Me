@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ModernApp4Me_WP8.SnSCache
+namespace ModernApp4Me_WP8.SnSCache.Database
 {
     /// <summary>
     /// Base class to implement a persistant model class.
