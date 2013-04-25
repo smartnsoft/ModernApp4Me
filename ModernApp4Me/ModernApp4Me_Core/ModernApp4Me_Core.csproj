@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SnSPersistence\Cache\SnSMemoryCacher.cs" />
     <Compile Include="SnSRandom\SnSRandomNumber.cs" />
     <Compile Include="SnSUtil\SnSDateUtil.cs" />
     <Compile Include="SnSLog\SnSLogger.cs" />

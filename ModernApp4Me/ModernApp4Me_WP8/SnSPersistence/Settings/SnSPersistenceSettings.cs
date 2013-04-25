@@ -1,27 +1,79 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.IO.IsolatedStorage;
+using System.Threading;
 using ModernApp4Me_Core.SnSLog;
 
 namespace ModernApp4Me_WP8.SnSPersistence.Settings
 {
     /// <summary>
     /// Provides functions to manipulate the IsolatedStorageSettings.
+    /// Implement the singleton pattern.
+    /// Thread Safety because of the mutex.
     /// </summary>
-    public static class SnSPersistenceSettings
+    public sealed class SnSPersistenceSettings
     {
         /*******************************************************/
-        /** METHODS AND FUNCTIONS.
+        /** ATTRIBUTES.
         /*******************************************************/
+        private static volatile SnSPersistenceSettings _instance;
+        private static readonly object InstanceLock = new Object();
+        private readonly Mutex _mutex;
+
+
+        /*******************************************************/
+        /** METHODS.
+        /*******************************************************/
+        /// <summary>
+        /// Private constructor.
+        /// </summary>
+        private SnSPersistenceSettings()
+        {
+            _mutex = new Mutex(true, "settings access mutex");
+        }
+
+        /// <summary>
+        /// Returns the current instance.
+        /// </summary>
+        /// <returns></returns>
+        public SnSPersistenceSettings GetInstance()
+        {
+            if (_instance == null)
+            {
+                lock (InstanceLock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new SnSPersistenceSettings();
+                    }
+                }
+            }
+
+            return _instance;
+        }
+
         /// <summary>
         /// Saves a value into IsolatedStorageSettings.
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public static void SetSetting(string key, object value)
+        public void AddSetting(string key, object value)
         {
-            var settings = IsolatedStorageSettings.ApplicationSettings;
-            settings[key] = value;
-            settings.Save();
+            _mutex.WaitOne();
+
+            try
+            {
+                var settings = IsolatedStorageSettings.ApplicationSettings;
+                settings[key] = value;
+                settings.Save();
+            }
+            catch (Exception e)
+            {
+                SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "AddSetting");
+            }
+            finally
+            {
+                _mutex.ReleaseMutex();
+            }
         }
 
         /// <summary>
@@ -29,17 +81,26 @@ namespace ModernApp4Me_WP8.SnSPersistence.Settings
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static object GetSetting(string key)
+        public object GetSetting(string key)
         {
+            object returnValue;
+
             try
             {
-                return IsolatedStorageSettings.ApplicationSettings[key];
+                _mutex.WaitOne();
+                returnValue = IsolatedStorageSettings.ApplicationSettings[key];
             }
-            catch (KeyNotFoundException e)
+            catch (Exception e)
             {
-                SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "GetApplicationSettings");
-                return null;
+                SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "GetSetting");
+                returnValue = null;
             }
+            finally
+            {
+                _mutex.ReleaseMutex();
+            }
+
+            return returnValue;
         }
 
         /// <summary>
@@ -47,9 +108,21 @@ namespace ModernApp4Me_WP8.SnSPersistence.Settings
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static void DeleteSetting(string key)
+        public void RemoveSetting(string key)
         {
-            IsolatedStorageSettings.ApplicationSettings.Remove(key);
+            try
+            {
+                _mutex.WaitOne();
+                IsolatedStorageSettings.ApplicationSettings.Remove(key);
+            }
+            catch (Exception e)
+            {
+                SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "RemoveSetting");
+            }
+            finally
+            {
+                _mutex.ReleaseMutex();
+            }
         }
     }
 }

@@ -119,6 +119,7 @@
     <Compile Include="SnSMetaData\SnSAppInfo.cs" />
     <Compile Include="SnSMetaData\SnSDeviceInfo.cs" />
     <Compile Include="SnSLog\SnSSendLogTask.cs" />
+    <Compile Include="SnSPersistence\Cache\SnSMemoryCacher.cs" />
     <Compile Include="SnSPersistence\Files\SnSPersistenceFiles.cs" />
     <Compile Include="SnSPersistence\Model\SnSPersistenceModelBase.cs" />
     <Compile Include="SnSPersistence\Settings\SnSPersistenceSettings.cs" />
