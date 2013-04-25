@@ -17,7 +17,7 @@ namespace ModernApp4Me_Core.SnSCache
         private static readonly object InstanceLock = new Object();
         
         private readonly Mutex _mutex;
-        private readonly Dictionary<string, object> _memoryCacher;
+        private readonly Dictionary<string, SnSMemoryCacherObject> _memoryCacher;
 
 
         /*******************************************************/
@@ -28,7 +28,7 @@ namespace ModernApp4Me_Core.SnSCache
         /// </summary>
         private SnSMemoryCacher()
         {
-            _memoryCacher = new Dictionary<string, object>();
+            _memoryCacher = new Dictionary<string, SnSMemoryCacherObject>();
             _mutex = new Mutex(true, "memory cache access mutex");
         }
 
@@ -62,7 +62,7 @@ namespace ModernApp4Me_Core.SnSCache
             try
             {
                 _mutex.WaitOne();
-                _memoryCacher.Add(key, value);
+                _memoryCacher.Add(key, new SnSMemoryCacherObject {Date = DateTime.Now, Value = value});
             }
             catch (Exception e)
             {
@@ -116,6 +116,29 @@ namespace ModernApp4Me_Core.SnSCache
             catch (Exception e)
             {
                 SnSLogger.Warn(e.StackTrace, "SnSMemoryCacher", "Remove");
+            }
+            finally
+            {
+                _mutex.ReleaseMutex();
+            }
+        }
+
+        /// <summary>
+        /// Updates the memory cacher value according to the key.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public void Update(string key, object value)
+        {
+            try
+            {
+                _mutex.WaitOne();
+                _memoryCacher[key] = new SnSMemoryCacherObject {Date = DateTime.Now, Value = value};
+            }
+            catch (Exception e)
+            {
+                SnSLogger.Warn(e.StackTrace, "SnSMemoryCacher", "Update");
             }
             finally
             {
