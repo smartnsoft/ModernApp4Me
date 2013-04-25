@@ -63,12 +63,37 @@ namespace ModernApp4Me_WP8.SnSCache
             try
             {
                 var settings = IsolatedStorageSettings.ApplicationSettings;
-                settings[key] = value;
+                settings.Add(key, value);
                 settings.Save();
             }
             catch (Exception e)
             {
                 SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "AddSetting");
+            }
+            finally
+            {
+                _mutex.ReleaseMutex();
+            }
+        }
+
+        /// <summary>
+        /// Updates a value into IsolatedStorageSettings.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public void UpdateSetting(string key, object value)
+        {
+            _mutex.WaitOne();
+
+            try
+            {
+                var settings = IsolatedStorageSettings.ApplicationSettings;
+                settings[key] = value;
+                settings.Save();
+            }
+            catch (Exception e)
+            {
+                SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "UpdateSetting");
             }
             finally
             {
