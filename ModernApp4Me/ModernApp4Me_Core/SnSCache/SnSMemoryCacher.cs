@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using ModernApp4Me_Core.SnSLog;
 
-namespace ModernApp4Me_Core.SnSPersistence.Cache
+namespace ModernApp4Me_Core.SnSCache
 {
     /// <summary>
     /// A class which enables to cache the result of web service calls in RAM only.

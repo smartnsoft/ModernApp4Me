@@ -1,23 +1,23 @@
 ﻿using System;
-using System.IO.IsolatedStorage;
+using System.Collections.Generic;
 using System.Threading;
-using ModernApp4Me_Core.SnSLog;
+using ModernApp4Me_WP7.SnSLog;
 
-namespace ModernApp4Me_WP8.SnSPersistence.Settings
+namespace ModernApp4Me_WP7.SnSCache
 {
     /// <summary>
-    /// Provides functions to manipulate the IsolatedStorageSettings.
-    /// Implement the singleton pattern.
-    /// Thread Safety because of the mutex.
+    /// A class which enables to cache the result of web service calls in RAM only.
     /// </summary>
-    public sealed class SnSPersistenceSettings
+    public sealed class SnSMemoryCacher
     {
         /*******************************************************/
         /** ATTRIBUTES.
         /*******************************************************/
-        private static volatile SnSPersistenceSettings _instance;
+        private static volatile SnSMemoryCacher _instance;
         private static readonly object InstanceLock = new Object();
+        
         private readonly Mutex _mutex;
+        private readonly Dictionary<string, object> _memoryCacher;
 
 
         /*******************************************************/
@@ -26,16 +26,17 @@ namespace ModernApp4Me_WP8.SnSPersistence.Settings
         /// <summary>
         /// Private constructor.
         /// </summary>
-        private SnSPersistenceSettings()
+        private SnSMemoryCacher()
         {
-            _mutex = new Mutex(true, "settings access mutex");
+            _memoryCacher = new Dictionary<string, object>();
+            _mutex = new Mutex(true, "memory cache access mutex");
         }
 
         /// <summary>
         /// Returns the current instance.
         /// </summary>
         /// <returns></returns>
-        public SnSPersistenceSettings GetInstance()
+        public SnSMemoryCacher GetInstance()
         {
             if (_instance == null)
             {
@@ -43,7 +44,7 @@ namespace ModernApp4Me_WP8.SnSPersistence.Settings
                 {
                     if (_instance == null)
                     {
-                        _instance = new SnSPersistenceSettings();
+                        _instance = new SnSMemoryCacher();
                     }
                 }
             }
@@ -52,23 +53,20 @@ namespace ModernApp4Me_WP8.SnSPersistence.Settings
         }
 
         /// <summary>
-        /// Saves a value into IsolatedStorageSettings.
+        /// Saves a value into the memory cacher.
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public void AddSetting(string key, object value)
+        public void Add(string key, object value)
         {
-            _mutex.WaitOne();
-
             try
             {
-                var settings = IsolatedStorageSettings.ApplicationSettings;
-                settings[key] = value;
-                settings.Save();
+                _mutex.WaitOne();
+                _memoryCacher.Add(key, value);
             }
             catch (Exception e)
             {
-                SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "AddSetting");
+                SnSLogger.Warn(e.StackTrace, "SnSMemoryCacher", "Add");
             }
             finally
             {
@@ -77,22 +75,22 @@ namespace ModernApp4Me_WP8.SnSPersistence.Settings
         }
 
         /// <summary>
-        /// Returns the IsolatedStorageSettings' value according to the key.
+        /// Returns the memory cacher value according to the key.
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public object GetSetting(string key)
+        public object Get(string key)
         {
             object returnValue;
 
             try
             {
                 _mutex.WaitOne();
-                returnValue = IsolatedStorageSettings.ApplicationSettings[key];
+                returnValue = _memoryCacher[key];
             }
             catch (Exception e)
             {
-                SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "GetSetting");
+                SnSLogger.Warn(e.StackTrace, "SnSMemoryCacher", "Get");
                 returnValue = null;
             }
             finally
@@ -104,20 +102,20 @@ namespace ModernApp4Me_WP8.SnSPersistence.Settings
         }
 
         /// <summary>
-        /// Deletes the IsolatedStorageSettings' value according to the key.
+        /// Deletes the memory cacher value according to the key.
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public void RemoveSetting(string key)
+        public void Remove(string key)
         {
             try
             {
                 _mutex.WaitOne();
-                IsolatedStorageSettings.ApplicationSettings.Remove(key);
+                _memoryCacher.Remove(key);
             }
             catch (Exception e)
             {
-                SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "RemoveSetting");
+                SnSLogger.Warn(e.StackTrace, "SnSMemoryCacher", "Remove");
             }
             finally
             {
