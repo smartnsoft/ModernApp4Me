@@ -114,9 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SnSCache\File\SnSPeristenceFileContext.cs" />
     <Compile Include="SnSCache\Memory\SnSMemoryCacherObject.cs" />
     <Compile Include="SnSCache\WebService\SnSWebServiceCacheContext.cs" />
     <Compile Include="SnSColor\SnSColorTranslator.cs" />
+    <Compile Include="SnSFile\SnSFileModel.cs" />
+    <Compile Include="SnSFile\SnSFileTypeEnum.cs" />
     <Compile Include="SnSLifeCycle\SnSApplicationLifeCycle.cs" />
     <Compile Include="SnSLog\SnSLogger.cs" />
     <Compile Include="SnSMetaData\SnSAppInfo.cs" />
