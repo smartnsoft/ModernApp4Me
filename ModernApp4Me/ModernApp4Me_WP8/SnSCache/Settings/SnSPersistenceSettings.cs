@@ -35,7 +35,7 @@ namespace ModernApp4Me_WP8.SnSCache.Settings
         /// Returns the current instance.
         /// </summary>
         /// <returns></returns>
-        public SnSPersistenceSettings GetInstance()
+        public static SnSPersistenceSettings GetInstance()
         {
             if (_instance == null)
             {

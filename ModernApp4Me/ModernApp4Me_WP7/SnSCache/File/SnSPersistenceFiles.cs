@@ -41,7 +41,7 @@ namespace ModernApp4Me_WP7.SnSCache.File
         /// Returns the current instance.
         /// </summary>
         /// <returns></returns>
-        public SnSPersistenceFiles GetInstance()
+        public static SnSPersistenceFiles GetInstance()
         {
             if (_instance == null)
             {
