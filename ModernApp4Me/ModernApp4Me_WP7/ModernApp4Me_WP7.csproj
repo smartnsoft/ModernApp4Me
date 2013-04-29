@@ -146,9 +146,6 @@
     <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSLoopingDataSourceBase.cs" />
     <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSPhysicsConstants.cs" />
     <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSSafeRaise.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml.cs">
-      <DependentUpon>SnSMarqueeTextBlock.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SnSWidgets\SnSWidgetWizard\SnSListWizardDataSource.cs" />
     <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelector.cs" />
     <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelectorItem.cs" />
@@ -157,19 +154,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </CodeAnalysisDictionary>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />
