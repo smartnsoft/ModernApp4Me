@@ -130,6 +130,7 @@
     <Compile Include="SnSCache\Database\SnSPersistenceModelBase.cs" />
     <Compile Include="SnSCache\Settings\SnSPersistenceSettings.cs" />
     <Compile Include="SnSRandom\SnSRandomNumber.cs" />
+    <Compile Include="SnSTemplate\SnSDataTemplateSelectorBase.cs" />
     <Compile Include="SnSTile\SnSSecondaryTile.cs" />
     <Compile Include="SnSUtil\SnSDateUtil.cs" />
     <Compile Include="SnSViewModel\SnSViewModelBase.cs" />
