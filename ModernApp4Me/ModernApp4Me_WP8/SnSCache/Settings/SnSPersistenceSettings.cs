@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO.IsolatedStorage;
-using System.Threading;
 using ModernApp4Me_Core.SnSLog;
 
 namespace ModernApp4Me_WP8.SnSCache.Settings
@@ -17,7 +16,6 @@ namespace ModernApp4Me_WP8.SnSCache.Settings
         /*******************************************************/
         private static volatile SnSPersistenceSettings _instance;
         private static readonly object InstanceLock = new Object();
-        private readonly Mutex _mutex;
 
 
         /*******************************************************/
@@ -26,10 +24,7 @@ namespace ModernApp4Me_WP8.SnSCache.Settings
         /// <summary>
         /// Private constructor.
         /// </summary>
-        private SnSPersistenceSettings()
-        {
-            _mutex = new Mutex(true, "settings access mutex");
-        }
+        private SnSPersistenceSettings() { }
 
         /// <summary>
         /// Returns the current instance.
@@ -58,8 +53,6 @@ namespace ModernApp4Me_WP8.SnSCache.Settings
         /// <param name="value"></param>
         public void AddSetting(string key, object value)
         {
-            _mutex.WaitOne();
-
             try
             {
                 var settings = IsolatedStorageSettings.ApplicationSettings;
@@ -70,10 +63,6 @@ namespace ModernApp4Me_WP8.SnSCache.Settings
             {
                 SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "AddSetting");
             }
-            finally
-            {
-                _mutex.ReleaseMutex();
-            }
         }
 
         /// <summary>
@@ -83,8 +72,6 @@ namespace ModernApp4Me_WP8.SnSCache.Settings
         /// <param name="value"></param>
         public void UpdateSetting(string key, object value)
         {
-            _mutex.WaitOne();
-
             try
             {
                 var settings = IsolatedStorageSettings.ApplicationSettings;
@@ -94,10 +81,6 @@ namespace ModernApp4Me_WP8.SnSCache.Settings
             catch (Exception e)
             {
                 SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "UpdateSetting");
-            }
-            finally
-            {
-                _mutex.ReleaseMutex();
             }
         }
 
@@ -112,17 +95,12 @@ namespace ModernApp4Me_WP8.SnSCache.Settings
 
             try
             {
-                _mutex.WaitOne();
                 returnValue = IsolatedStorageSettings.ApplicationSettings[key];
             }
             catch (Exception e)
             {
                 SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "GetSetting");
                 returnValue = null;
-            }
-            finally
-            {
-                _mutex.ReleaseMutex();
             }
 
             return returnValue;
@@ -137,16 +115,11 @@ namespace ModernApp4Me_WP8.SnSCache.Settings
         {
             try
             {
-                _mutex.WaitOne();
                 IsolatedStorageSettings.ApplicationSettings.Remove(key);
             }
             catch (Exception e)
             {
                 SnSLogger.Warn(e.StackTrace, "SnSPersistenceSettings", "RemoveSetting");
-            }
-            finally
-            {
-                _mutex.ReleaseMutex();
             }
         }
     }

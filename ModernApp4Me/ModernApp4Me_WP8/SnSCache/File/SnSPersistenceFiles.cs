@@ -174,8 +174,6 @@ namespace ModernApp4Me_WP8.SnSCache.File
                         }
                     }
                 });
-
-                _mutex.ReleaseMutex();
             }
             catch (Exception e)
             {
