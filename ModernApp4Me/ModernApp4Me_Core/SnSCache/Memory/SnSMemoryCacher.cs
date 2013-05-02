@@ -29,7 +29,7 @@ namespace ModernApp4Me_Core.SnSCache.Memory
         private SnSMemoryCacher()
         {
             _memoryCacher = new Dictionary<string, SnSMemoryCacherObject>();
-            _mutex = new Mutex(true, "memory cache access mutex");
+            _mutex = new Mutex(false, "memory cache access mutex");
         }
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace ModernApp4Me_Core.SnSCache.Memory
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public object Get(string key)
+        public SnSMemoryCacherObject Get(string key)
         {
-            object returnValue;
+            SnSMemoryCacherObject returnValue;
 
             try
             {
