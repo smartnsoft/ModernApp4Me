@@ -34,7 +34,7 @@ namespace ModernApp4Me_WP7.SnSCache.File
         /// </summary>
         private SnSPersistenceFiles()
         {
-            _mutex = new Mutex(true, "isolated storage file mutex");
+            _mutex = new Mutex(false, "isolated storage file mutex");
         }
 
         /// <summary>
@@ -64,31 +64,29 @@ namespace ModernApp4Me_WP7.SnSCache.File
         /// <returns>the file's content or null if an error occurred</returns>
         public string ReadFile(string fileName)
         {
-            string fileContent = null;
+            string fileContent;
 
             try
             {
                 _mutex.WaitOne();
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
+               
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    if (isf.FileExists(fileName))
                     {
-                        using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                        using (var fileStream = new IsolatedStorageFileStream(fileName, FileMode.Open, isf))
                         {
-                            if (isf.FileExists(fileName))
+                            using (var streamReader = new StreamReader(fileStream))
                             {
-                                using (var fileStream = new IsolatedStorageFileStream(fileName, FileMode.Open, isf))
-                                {
-                                    using (var streamReader = new StreamReader(fileStream))
-                                    {
-                                        fileContent = streamReader.ReadToEnd();
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                throw new FileNotFoundException(fileName);
+                                fileContent = streamReader.ReadToEnd();
                             }
                         }
-                    });
+                    }
+                    else
+                    {
+                        throw new Exception(fileName);
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -117,26 +115,23 @@ namespace ModernApp4Me_WP7.SnSCache.File
             try
             {
                 _mutex.WaitOne();
-
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
+               
+                //The file name includes the directory
+                if (fileName.Split('/').Length > 1)
                 {
-                    //The file name includes the directory
-                    if (fileName.Split('/').Length > 1)
-                    {
-                        CreateDirectoryFromFilePath(fileName);
-                    }
+                    CreateDirectoryFromFilePath(fileName);
+                }
 
-                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    using (var fileStream = new IsolatedStorageFileStream(fileName, fileMode, isf))
                     {
-                        using (var fileStream = new IsolatedStorageFileStream(fileName, fileMode, isf))
+                        using (var streamWriter = new StreamWriter(fileStream))
                         {
-                            using (var streamWriter = new StreamWriter(fileStream))
-                            {
-                                streamWriter.WriteLine(fileContent);
-                            }
+                            streamWriter.Write(fileContent);
                         }
                     }
-                });
+                }
             }
             catch (Exception e)
             {
@@ -164,16 +159,13 @@ namespace ModernApp4Me_WP7.SnSCache.File
             {
                 _mutex.WaitOne();
 
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                    if (isf.FileExists(fileName))
                     {
-                        if (isf.FileExists(fileName))
-                        {
-                            isf.DeleteFile(fileName);
-                        }
+                        isf.DeleteFile(fileName);
                     }
-                });
+                }
             }
             catch (Exception e)
             {
@@ -200,13 +192,10 @@ namespace ModernApp4Me_WP7.SnSCache.File
             {
                 _mutex.WaitOne();
 
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
-                    {
-                        isf.Remove();
-                    }
-                });
+                    isf.Remove();
+                }
             }
             catch (Exception e)
             {
@@ -234,13 +223,10 @@ namespace ModernApp4Me_WP7.SnSCache.File
             {
                 _mutex.WaitOne();
 
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
-                    {
-                        isFileExists = isf.FileExists(fileName);
-                    }
-                });
+                    isFileExists = isf.FileExists(fileName);
+                }
             }
             catch (Exception e)
             {
@@ -433,48 +419,47 @@ namespace ModernApp4Me_WP7.SnSCache.File
         }
 
         /// <summary>
-        /// Returns an image from the isolated storage.
+        /// Returns a memory stream from the isolated storage.
         /// </summary>
-        /// <param name="imageName"></param>
+        /// <param name="fileName"></param>
         /// <returns></returns>
-        public BitmapImage ReadImage(string imageName)
+        public MemoryStream ReadBinary(string fileName)
         {
-            BitmapImage image = null;
+            MemoryStream stream;
 
             try
             {
                 _mutex.WaitOne();
-                   
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
+
+                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                    if (isf.FileExists(fileName))
                     {
-                        if (isf.FileExists(imageName))
+                        using (var fileStream = isf.OpenFile(fileName, FileMode.Open, FileAccess.Read))
                         {
-                            using (var fileStream = isf.OpenFile(imageName, FileMode.Open, FileAccess.Read))
-                            {
-                                image = new BitmapImage();
-                                image.SetSource(fileStream);
-                            }
-                        }
-                        else
-                        {
-                            throw new FileNotFoundException(imageName);
+                            stream = new MemoryStream();
+                            fileStream.CopyTo(stream);
+                            fileStream.Close();
+                            stream.Position = 0;
                         }
                     }
-                });
+                    else
+                    {
+                        throw new Exception(fileName);
+                    }
+                }
             }
             catch (Exception e)
             {
                 SnSLogger.Warn(e.StackTrace, "SnSPersistenceFiles", "ReadImage");
-                image = null;
+                stream = null;
             }
             finally
             {
                 _mutex.ReleaseMutex();
             }
 
-            return image;
+            return stream;
         }
     }
 }

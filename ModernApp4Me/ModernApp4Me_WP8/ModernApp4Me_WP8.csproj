@@ -85,13 +85,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SnSCache\File\SnSPeristenceFileContext.cs" />
+    <Compile Include="SnSCache\File\SnSPersistenceFiles.cs" />
     <Compile Include="SnSCache\WebService\SnSWebServiceCacheContext.cs" />
     <Compile Include="SnSColor\SnSColorTranslator.cs" />
     <Compile Include="SnSFile\SnSFileModel.cs" />
     <Compile Include="SnSFile\SnSFileTypeEnum.cs" />
     <Compile Include="SnSMetaData\SnSAppInfo.cs" />
     <Compile Include="SnSMetaData\SnSDeviceInfo.cs" />
-    <Compile Include="SnSCache\File\SnSPersistenceFiles.cs" />
     <Compile Include="SnSCache\Settings\SnSPersistenceSettings.cs" />
     <Compile Include="SnSResolution\SnSResolutionEnum.cs" />
     <Compile Include="SnSResolution\SnSResolutionImageChooser.cs" />
