@@ -121,7 +121,7 @@ namespace ModernApp4Me_WP8.SnSCache.File
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
                     //The file name includes the directory
-                    if (fileName.Split('/').Length > 0)
+                    if (fileName.Split('/').Length > 1)
                     {
                         CreateDirectoryFromFilePath(fileName);
                     }
@@ -273,7 +273,7 @@ namespace ModernApp4Me_WP8.SnSCache.File
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
                     //The image name includes the directory
-                    if (imageName.Split('/').Length > 0)
+                    if (imageName.Split('/').Length > 1)
                     {
                         CreateDirectoryFromFilePath(imageName);
                     }
@@ -323,7 +323,7 @@ namespace ModernApp4Me_WP8.SnSCache.File
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
                     //The image name includes the directory
-                    if (imageName.Split('/').Length > 0)
+                    if (imageName.Split('/').Length > 1)
                     {
                         CreateDirectoryFromFilePath(imageName);
                     }
