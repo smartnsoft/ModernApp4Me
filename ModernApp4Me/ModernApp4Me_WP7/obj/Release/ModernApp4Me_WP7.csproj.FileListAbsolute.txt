@@ -1,5 +1,0 @@
-C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Release\ModernApp4Me_WP7.dll
-C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\Bin\Release\ModernApp4Me_WP7.pdb
-C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\obj\Release\ModernApp4Me_WP7.csprojResolveAssemblyReference.cache
-C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\obj\Release\ModernApp4Me_WP7.dll
-C:\Users\ludov_000\Source\Repos\wp4me\ModernApp4Me\ModernApp4Me_WP7\obj\Release\ModernApp4Me_WP7.pdb
