@@ -93,11 +93,6 @@
     <Compile Include="SnSMetaData\SnSAppInfo.cs" />
     <Compile Include="SnSMetaData\SnSDeviceInfo.cs" />
     <Compile Include="SnSCache\Settings\SnSPersistenceSettings.cs" />
-    <Compile Include="SnSResolution\SnSResolutionEnum.cs" />
-    <Compile Include="SnSResolution\SnSResolutionImageChooser.cs" />
-    <Compile Include="SnSResolution\SnSResolutionBrushConverter.cs" />
-    <Compile Include="SnSResolution\SnSResolutionImageConverter.cs" />
-    <Compile Include="SnSResolution\SnSResolutionHelper.cs" />
     <Compile Include="SnSLog\SnSSendLogTask.cs" />
     <Compile Include="SnSCache\Database\SnSPersistenceModelBase.cs" />
     <Compile Include="SnSTemplate\SnSDataTemplateSelectorBase.cs" />
@@ -165,12 +160,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ModernApp4Me_Core\ModernApp4Me_Core.csproj">
-      <Project>{0BBEE225-982F-444F-851F-057E61D6168C}</Project>
-      <Name>ModernApp4Me_Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml">

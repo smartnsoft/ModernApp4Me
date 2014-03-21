@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Phone.Shell;
-using ModernApp4Me_Core.SnSLog;
+using ModernApp4Me.Core.SnSLog;
 
 namespace ModernApp4Me_WP8.SnSTile
 {

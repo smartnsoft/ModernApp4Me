@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO.IsolatedStorage;
 using System.Threading;
-using ModernApp4Me_Core.SnSLog;
+using ModernApp4Me.Core.SnSLog;
 
 namespace ModernApp4Me_WP8.SnSCache.Settings
 {

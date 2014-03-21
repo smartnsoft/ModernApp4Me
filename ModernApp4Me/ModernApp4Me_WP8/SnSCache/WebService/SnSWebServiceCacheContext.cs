@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.Linq;
-using ModernApp4Me_Core.SnSLog;
+using ModernApp4Me.Core.SnSLog;
 using ModernApp4Me_WP8.SnSWebService;
 
 namespace ModernApp4Me_WP8.SnSCache.WebService

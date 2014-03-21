@@ -121,7 +121,6 @@
     <Compile Include="SnSFile\SnSFileModel.cs" />
     <Compile Include="SnSFile\SnSFileTypeEnum.cs" />
     <Compile Include="SnSLifeCycle\SnSApplicationLifeCycle.cs" />
-    <Compile Include="SnSLog\SnSLogger.cs" />
     <Compile Include="SnSMetaData\SnSAppInfo.cs" />
     <Compile Include="SnSMetaData\SnSDeviceInfo.cs" />
     <Compile Include="SnSLog\SnSSendLogTask.cs" />
