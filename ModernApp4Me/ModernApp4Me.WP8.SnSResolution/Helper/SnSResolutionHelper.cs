@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Text;
+using System.Windows;
 
 namespace ModernApp4Me.WP8.SnSResolution.Helper
 {
@@ -58,7 +60,15 @@ namespace ModernApp4Me.WP8.SnSResolution.Helper
                 return SnSResolutionEnum.HD720P;
             }
 
-            SnSLogger.Warn("Unknown resolution", "SnSMultiResolutionHelper", "CurrentResolution");
+            var log = new StringBuilder("[WARN ]");
+            log.Append(DateTime.Now.ToString("HH:mm:ss"));
+            log.Append("\n");
+            log.Append("File : '").Append("SnSMultiResolutionHelper.cs").Append("'\n");
+            log.Append("Method : '").Append("CurrentResolution").Append("'\n\t");
+            log.Append("Cannot determinate the current device resolution.");
+
+            System.Diagnostics.Debug.WriteLine(log.ToString());
+
             return SnSResolutionEnum.WVGA;
         }
 

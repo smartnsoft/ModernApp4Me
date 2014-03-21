@@ -7,3 +7,15 @@ ModernApp4Me/ModernApp4Me_WP7/obj
 ModernApp4Me/ModernApp4Me_WP8/Bin
 ModernApp4Me/ModernApp4Me_WP8/obj
 ModernApp4Me/ModernApp4Me.v11.suo
+/ModernApp4Me/ModernApp4Me.Core/bin
+/ModernApp4Me/ModernApp4Me.Core/obj
+/ModernApp4Me/ModernApp4Me.WP7.SnSLogger/Bin/Debug
+/ModernApp4Me/ModernApp4Me.WP7.SnSLogger/obj/Debug
+/ModernApp4Me/ModernApp4Me.WP7.SnSViewModel/Bin/Debug
+/ModernApp4Me/ModernApp4Me.WP7.SnSViewModel/obj/Debug
+/ModernApp4Me/ModernApp4Me.WP7.SnSWebService
+/ModernApp4Me/ModernApp4Me.WP8.SnSResolution/Bin/Debug
+/ModernApp4Me/ModernApp4Me.WP8.SnSResolution/obj/Debug
+/ModernApp4Me/ModernApp4Me.WP8.SnSWebService/Bin/Debug
+/ModernApp4Me/ModernApp4Me.WP8.SnSWebService/obj/Debug
+*.db

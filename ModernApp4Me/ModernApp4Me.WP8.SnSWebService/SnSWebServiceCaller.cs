@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 
-namespace ModernApp4Me.WP7.SnSWebServiceCaller
+namespace ModernApp4Me.WP8.SnSWebService
 {
 
     /// <summary>

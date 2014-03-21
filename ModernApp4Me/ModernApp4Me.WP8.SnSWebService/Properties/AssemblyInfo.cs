@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Resources;
 
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("ModernApp4Me.WP7.SnSWebServiceCaller")]
+[assembly: AssemblyTitle("ModernApp4Me.WP8.SnSWebService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ModernApp4Me.WP7.SnSWebServiceCaller")]
+[assembly: AssemblyProduct("ModernApp4Me.WP8.SnSWebService")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("df70f7c8-8a85-4e45-8857-711e551d0047")]
+[assembly: Guid("68bec0c8-f812-4400-9c8a-5f8c082a7276")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //
@@ -29,8 +30,8 @@ using System.Runtime.InteropServices;
 //      Numéro de build
 //      Révision
 //
-// Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut 
+// Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de révision et de build par défaut 
 // en utilisant '*', comme indiqué ci-dessous :
-// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguageAttribute("fr-FR")]

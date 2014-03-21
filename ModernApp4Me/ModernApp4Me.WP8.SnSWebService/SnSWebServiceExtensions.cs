@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 using RestSharp;
 
-namespace ModernApp4Me.WP7.SnSWebServiceCaller
+namespace ModernApp4Me.WP8.SnSWebService
 {
+
     /// <summary>
     /// Extension fot the RestClient class to avoid callback.
     /// </summary>

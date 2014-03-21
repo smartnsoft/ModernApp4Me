@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using ModernApp4Me.Core.SnSLog;
 using ModernApp4Me.WP8.SnSResolution.Helper;
 
 namespace ModernApp4Me.WP8.SnSResolution.Chooser
@@ -41,7 +40,16 @@ namespace ModernApp4Me.WP8.SnSResolution.Chooser
 
                 default :
                     bestImageNameBuilder.Append("-WVGA.");
-                    SnSLogger.Warn("Unknown resolution type", "SnSMultiResolutionImageChooser", "BestResolutionImage");
+
+                    var log = new StringBuilder("[WARN ]");
+                    log.Append(DateTime.Now.ToString("HH:mm:ss"));
+                    log.Append("\n");
+                    log.Append("File : '").Append("SnSResolutionImageChooser.cs").Append("'\n");
+                    log.Append("Method : '").Append("BestResolutionImage").Append("'\n\t");
+                    log.Append("Cannot determinate the current device resolution.");
+
+                    System.Diagnostics.Debug.WriteLine(log.ToString());
+
                     break;
             }
 
