@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("ModernApp4Me.WP7.SnSViewModel")]
+[assembly: AssemblyTitle("ModernApp4Me.WP7.SnSWebServiceCaller")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ModernApp4Me.WP7.SnSViewModel")]
+[assembly: AssemblyProduct("ModernApp4Me.WP7.SnSWebServiceCaller")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("84953a4a-8334-4f03-a9d4-276b3127f1c0")]
+[assembly: Guid("df70f7c8-8a85-4e45-8857-711e551d0047")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //

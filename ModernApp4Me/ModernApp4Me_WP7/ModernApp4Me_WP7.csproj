@@ -132,10 +132,6 @@
     <Compile Include="SnSTemplate\SnSDataTemplateSelectorBase.cs" />
     <Compile Include="SnSTile\SnSSecondaryTile.cs" />
     <Compile Include="SnSUtil\SnSDateUtil.cs" />
-    <Compile Include="SnSWebService\SnSWebServiceCaller.cs" />
-    <Compile Include="SnSWebService\SnSWebServiceExtensions.cs" />
-    <Compile Include="SnSWebService\SnSWebServiceModel.cs" />
-    <Compile Include="SnSWebService\SnSWebServiceTypeEnum.cs" />
     <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlockDesignerHelper.cs" />
     <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlock.cs" />
     <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlockExtensions.cs" />

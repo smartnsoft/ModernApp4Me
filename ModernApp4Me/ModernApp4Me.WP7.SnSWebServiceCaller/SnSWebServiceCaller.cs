@@ -1,22 +1,19 @@
 ﻿using RestSharp;
 
-namespace ModernApp4Me_WP8.SnSWebService
+namespace ModernApp4Me.WP7.SnSWebServiceCaller
 {
+
     /// <summary>
     /// A basis class for making web service calls easier.
-    /// Uses RestSharp.
+    /// Use RestSharp.
     /// </summary>
+    /// <author>Ludovic ROLAND</author>
+    /// <since>2014.03.21</since>
     public abstract class SnSWebServiceCaller
     {
-        /*******************************************************/
-        /** PROPERTIES.
-        /*******************************************************/
+
         public RestClient Client { get; private set; }
 
-
-        /*******************************************************/
-        /** METHODS.
-        /*******************************************************/
         /// <summary>
         /// Constructor without authenticator.
         /// </summary>
@@ -36,5 +33,7 @@ namespace ModernApp4Me_WP8.SnSWebService
         {
             Client = new RestClient(baseUrl) { Authenticator = new HttpBasicAuthenticator(username, password) };
         }
+
     }
+
 }
