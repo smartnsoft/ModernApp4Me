@@ -132,7 +132,6 @@
     <Compile Include="SnSTemplate\SnSDataTemplateSelectorBase.cs" />
     <Compile Include="SnSTile\SnSSecondaryTile.cs" />
     <Compile Include="SnSUtil\SnSDateUtil.cs" />
-    <Compile Include="SnSViewModel\SnSViewModelBase.cs" />
     <Compile Include="SnSWebService\SnSWebServiceCaller.cs" />
     <Compile Include="SnSWebService\SnSWebServiceExtensions.cs" />
     <Compile Include="SnSWebService\SnSWebServiceModel.cs" />

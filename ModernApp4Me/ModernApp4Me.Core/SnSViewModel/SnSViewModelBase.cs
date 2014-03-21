@@ -1,35 +1,24 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ModernApp4Me_Core.SnSViewModel
+namespace ModernApp4Me.Core.SnSViewModel
 {
+
     /// <summary>
     /// Base class to implement the MVVM pattern.
     /// </summary>
-    public class SnSViewModelBase : INotifyPropertyChanged
+    /// <author>Ludovic ROLAND</author>
+    /// <since>2014.03.21</since>
+    public abstract class SnSViewModelBase : INotifyPropertyChanged
     {
-        /*******************************************************/
-        /** PROPERTIES.
-        /*******************************************************/
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-
-        /*******************************************************/
-        /** METHODS.
-        /*******************************************************/
-        /// <summary>
-        /// Raises the OnPropertyChanged methods with in a secure way.
-        /// </summary>
-        /// <param name="propertyName"></param>
         protected void RaiseOnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             OnPropertyChanged(propertyName);
         }
         
-        /// <summary>
-        /// Notifies that a property has changed.
-        /// </summary>
-        /// <param name="propertyName"></param>
         public void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -37,5 +26,7 @@ namespace ModernApp4Me_Core.SnSViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
     }
+
 }

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernApp4Me.WP8.SnSResolut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernApp4Me.Core", "ModernApp4Me.Core\ModernApp4Me.Core.csproj", "{0BBEE225-982F-444F-851F-057E61D6168C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernApp4Me.WP7.SnSViewModel", "ModernApp4Me.WP7.SnSViewModel\ModernApp4Me.WP7.SnSViewModel.csproj", "{726D4B7D-5F33-4977-AA12-D06601E7CE15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,16 @@ Global
 		{0BBEE225-982F-444F-851F-057E61D6168C}.Release|ARM.ActiveCfg = Release|Any CPU
 		{0BBEE225-982F-444F-851F-057E61D6168C}.Release|x64.ActiveCfg = Release|Any CPU
 		{0BBEE225-982F-444F-851F-057E61D6168C}.Release|x86.ActiveCfg = Release|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Release|ARM.ActiveCfg = Release|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Release|x64.ActiveCfg = Release|Any CPU
+		{726D4B7D-5F33-4977-AA12-D06601E7CE15}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

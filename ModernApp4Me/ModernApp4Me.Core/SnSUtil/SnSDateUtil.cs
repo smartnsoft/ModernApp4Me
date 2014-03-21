@@ -5,6 +5,8 @@ namespace ModernApp4Me_Core.SnSUtil
     /// <summary>
     /// Util class to manipulate the dates.
     /// </summary>
+    /// </summary>
+    /// 
     public static class SnSDateUtil
     {
         /// <summary>
