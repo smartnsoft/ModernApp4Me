@@ -7,7 +7,7 @@ using System.Resources;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("ModerApp4Me.WP8")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The specific part for Windows Phone 8 of the framework ModernApp4Me.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ModerApp4Me.WP8")]

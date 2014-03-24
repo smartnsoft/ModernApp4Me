@@ -1,16 +1,14 @@
 ﻿using System.Resources;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("ModernApp4Me_Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("ModernApp4Me.Core")]
+[assembly: AssemblyDescription("The core of the framework ModernApp4Me for Windows Phone 8 and Windows 8.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ModernApp4Me_Core")]
+[assembly: AssemblyCompany("Smart&Soft")]
+[assembly: AssemblyProduct("ModernApp4Me.Core")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

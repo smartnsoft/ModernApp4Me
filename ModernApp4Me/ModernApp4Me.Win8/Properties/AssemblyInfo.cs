@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("ModernApp4Me.Win8")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The specific part for Windows 8 of the framework ModernApp4Me.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ModernApp4Me.Win8")]

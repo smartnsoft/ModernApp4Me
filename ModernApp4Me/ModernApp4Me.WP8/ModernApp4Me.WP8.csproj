@@ -116,12 +116,6 @@
     <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelectorItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModernApp4Me.Core\ModernApp4Me.Core.csproj">
-      <Project>{0BBEE225-982F-444F-851F-057E61D6168C}</Project>
-      <Name>ModernApp4Me.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -151,6 +145,10 @@
     </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernApp4Me.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ModernApp4Me.Core.1.0.0.0\lib\portable-win+net45+wp80\ModernApp4Me.Core.dll</HintPath>
     </Reference>
     <Reference Include="PhoneCodeContractsAssemblies">
       <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\PhoneCodeContractsAssemblies.dll</HintPath>
