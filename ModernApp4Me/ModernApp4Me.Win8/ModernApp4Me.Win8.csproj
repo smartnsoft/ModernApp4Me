@@ -105,9 +105,9 @@
     <Compile Include="SnSUtil\SnSColorUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ModernApp4Me.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ModernApp4Me.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ModernApp4Me.Core.1.0.0.0\lib\portable-win+net45+wp80\ModernApp4Me.Core.dll</HintPath>
+      <HintPath>..\packages\ModernApp4Me.Core.1.0.1.0\lib\portable-win+net45+wp80\ModernApp4Me.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
