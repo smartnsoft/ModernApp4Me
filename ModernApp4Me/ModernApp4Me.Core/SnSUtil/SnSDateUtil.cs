@@ -1,14 +1,16 @@
 ﻿using System;
 
-namespace ModernApp4Me_Core.SnSUtil
+namespace ModernApp4Me.Core.SnSUtil
 {
+
     /// <summary>
     /// Util class to manipulate the dates.
     /// </summary>
-    /// </summary>
-    /// 
+    /// <author>Ludovic ROLAND</author>
+    /// <since>2014.03.24</since>
     public static class SnSDateUtil
     {
+
         /// <summary>
         /// Converts an unix timestamp to a datetime.
         /// </summary>
@@ -28,5 +30,7 @@ namespace ModernApp4Me_Core.SnSUtil
         {
             return new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(Math.Round(javaTimeStamp/1000)).ToLocalTime();
         }
+
     }
+
 }

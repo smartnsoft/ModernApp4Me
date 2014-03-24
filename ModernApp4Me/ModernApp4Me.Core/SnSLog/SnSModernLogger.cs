@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace ModernApp4Me.Core.SnSLog
 {
@@ -15,7 +14,7 @@ namespace ModernApp4Me.Core.SnSLog
 
         private static volatile SnSModernLogger instance;
 
-        private static readonly object Sync = new Object();
+        private static readonly object InstanceLock = new Object();
 
         private SnSModernLogger() { }
 
@@ -25,7 +24,7 @@ namespace ModernApp4Me.Core.SnSLog
             {
                 if (instance == null)
                 {
-                    lock (Sync)
+                    lock (InstanceLock)
                     {
                         if (instance == null)
                         {
@@ -127,60 +126,6 @@ namespace ModernApp4Me.Core.SnSLog
         public override bool IsFatalEnabled()
         {
             return LogLevel >= SnSLogLevel.Error;
-        }
-
-        private StringBuilder BuildHeader(SnSLogLevel logLevel,string callerMemberName, string callerFilePath, int callerLineNumber)
-        {
-            var header = new StringBuilder();
-
-            switch (logLevel)
-            {
-                case SnSLogLevel.Debug:
-                    header.Append("[DEBUG] ");
-                    break;
-
-                case SnSLogLevel.Info:
-                    header.Append("[INFO] ");
-                    break;
-
-                case SnSLogLevel.Warn:
-                    header.Append("[WARN] ");
-                    break;
-
-                case SnSLogLevel.Error:
-                    header.Append("[ERROR] ");
-                    break;
-            }
-
-            header.Append(DateTime.Now.ToString("HH:mm:ss"));
-
-            if (callerFilePath.Equals("") == false && callerMemberName.Equals("") == false)
-            {
-                header.Append("\n");
-                header.Append("File : '").Append(callerFilePath).Append("'\n");
-                header.Append("Method : '").Append(callerMemberName).Append("'");
-
-                if (callerLineNumber != -1)
-                {
-                    header.Append(" at line '").Append(callerLineNumber).Append("'");
-                }
-            }
-
-            return header;
-        }
-
-        private void DisplayLog(SnSLogLevel logLevel, string message, string callerMemberName, string callerFilePath, int callerLineNumber)
-        {
-            var header = BuildHeader(logLevel, callerMemberName, callerFilePath, callerLineNumber);
-
-            System.Diagnostics.Debug.WriteLine("{0} \n\t {1} ", header, message);
-        }
-
-        private void DisplayLog(SnSLogLevel logLevel, string message, Exception exception, string callerMemberName , string callerFilePath, int callerLineNumber)
-        {
-            var header = BuildHeader(logLevel, callerMemberName, callerFilePath, callerLineNumber);
-
-            System.Diagnostics.Debug.WriteLine("{0} \n\t {1} \n\t {2} ", header, message, exception.StackTrace);
         }
 
     }

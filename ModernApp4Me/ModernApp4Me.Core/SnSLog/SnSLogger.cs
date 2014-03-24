@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace ModernApp4Me.Core.SnSLog
 {
@@ -37,6 +38,60 @@ namespace ModernApp4Me.Core.SnSLog
         public abstract bool IsErrorEnabled();
 
         public abstract bool IsFatalEnabled();
+
+        private StringBuilder BuildHeader(SnSLogLevel logLevel, string callerMemberName, string callerFilePath, int callerLineNumber)
+        {
+            var header = new StringBuilder();
+
+            switch (logLevel)
+            {
+                case SnSLogLevel.Debug:
+                    header.Append("[DEBUG] ");
+                    break;
+
+                case SnSLogLevel.Info:
+                    header.Append("[INFO] ");
+                    break;
+
+                case SnSLogLevel.Warn:
+                    header.Append("[WARN] ");
+                    break;
+
+                case SnSLogLevel.Error:
+                    header.Append("[ERROR] ");
+                    break;
+            }
+
+            header.Append(DateTime.Now.ToString("HH:mm:ss"));
+
+            if (callerFilePath.Equals("") == false && callerMemberName.Equals("") == false)
+            {
+                header.Append("\n");
+                header.Append("File : '").Append(callerFilePath).Append("'\n");
+                header.Append("Method : '").Append(callerMemberName).Append("'");
+
+                if (callerLineNumber != -1)
+                {
+                    header.Append(" at line '").Append(callerLineNumber).Append("'");
+                }
+            }
+
+            return header;
+        }
+
+        protected void DisplayLog(SnSLogLevel logLevel, string message, string callerMemberName, string callerFilePath, int callerLineNumber)
+        {
+            var header = BuildHeader(logLevel, callerMemberName, callerFilePath, callerLineNumber);
+
+            System.Diagnostics.Debug.WriteLine("{0} \n\t {1} ", header, message);
+        }
+
+        protected void DisplayLog(SnSLogLevel logLevel, string message, Exception exception, string callerMemberName, string callerFilePath, int callerLineNumber)
+        {
+            var header = BuildHeader(logLevel, callerMemberName, callerFilePath, callerLineNumber);
+
+            System.Diagnostics.Debug.WriteLine("{0} \n\t {1} \n\t {2} ", header, message, exception.StackTrace);
+        }
 
     }
 

@@ -19,3 +19,6 @@ ModernApp4Me/ModernApp4Me.v11.suo
 /ModernApp4Me/ModernApp4Me.WP8.SnSWebService/Bin/Debug
 /ModernApp4Me/ModernApp4Me.WP8.SnSWebService/obj/Debug
 *.db
+/ModernApp4Me/ModernApp4Me.Win8/obj/Debug
+/ModernApp4Me/ModernApp4Me.WP7/obj/Debug
+/ModernApp4Me/ModernApp4Me.WP8/obj/Debug

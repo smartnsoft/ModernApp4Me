@@ -3,53 +3,51 @@ using System.Collections.Generic;
 using System.Threading;
 using ModernApp4Me.Core.SnSLog;
 
-namespace ModernApp4Me_Core.SnSCache.Memory
+namespace ModernApp4Me.Core.SnSCache.Memory
 {
+
     /// <summary>
     /// A class which enables to cache the result of web service calls in RAM only.
     /// </summary>
+    /// <author>Ludovic ROLAND</author>
+    /// <since>2014.03.24</since>
     public sealed class SnSMemoryCacher
     {
-        /*******************************************************/
-        /** ATTRIBUTES.
-        /*******************************************************/
-        private static volatile SnSMemoryCacher _instance;
+
+        private static volatile SnSMemoryCacher instance;
+
         private static readonly object InstanceLock = new Object();
         
-        private readonly Mutex _mutex;
-        private readonly Dictionary<string, SnSMemoryCacherObject> _memoryCacher;
+        private readonly Mutex mutex;
 
+        private readonly Dictionary<string, SnSMemoryCacherObject> memoryCacher;
 
-        /*******************************************************/
-        /** METHODS.
-        /*******************************************************/
         /// <summary>
         /// Private constructor.
         /// </summary>
         private SnSMemoryCacher()
         {
-            _memoryCacher = new Dictionary<string, SnSMemoryCacherObject>();
-            _mutex = new Mutex(false, "memory cache access mutex");
+            memoryCacher = new Dictionary<string, SnSMemoryCacherObject>();
+            mutex = new Mutex(false, "memory cache access mutex");
         }
 
-        /// <summary>
-        /// Returns the current instance.
-        /// </summary>
-        /// <returns></returns>
-        public SnSMemoryCacher GetInstance()
+        public static SnSMemoryCacher Instance
         {
-            if (_instance == null)
+            get
             {
-                lock (InstanceLock)
+                if (instance == null)
                 {
-                    if (_instance == null)
+                    lock (InstanceLock)
                     {
-                        _instance = new SnSMemoryCacher();
+                        if (instance == null)
+                        {
+                            instance = new SnSMemoryCacher();
+                        }
                     }
                 }
-            }
 
-            return _instance;
+                return instance;
+            }
         }
 
         /// <summary>
@@ -57,45 +55,50 @@ namespace ModernApp4Me_Core.SnSCache.Memory
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public void Add(string key, object value)
+        /// <returns>true in case of success, false otherwise</returns>
+        public bool Add(string key, object value)
         {
+            var isAdded = true;
+
             try
             {
-                _mutex.WaitOne();
-                _memoryCacher.Add(key, new SnSMemoryCacherObject {Date = DateTime.Now, Value = value});
+                mutex.WaitOne();
+                memoryCacher.Add(key, new SnSMemoryCacherObject {Date = DateTime.Now, Value = value});
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                SnSLogger.Warn(e.StackTrace, "SnSMemoryCacher", "Add");
+                isAdded = false;
+                SnSModernLogger.Instance.Warn("Cannot add the entry with key '" + key + "'", exception);
             }
             finally
             {
-                _mutex.ReleaseMutex();
+                mutex.ReleaseMutex();
             }
+
+            return isAdded;
         }
 
         /// <summary>
         /// Returns the memory cacher value according to the key.
         /// </summary>
         /// <param name="key"></param>
-        /// <returns></returns>
+        /// <returns>the value or null</returns>
         public SnSMemoryCacherObject Get(string key)
         {
-            SnSMemoryCacherObject returnValue;
+            SnSMemoryCacherObject returnValue = null;
 
             try
             {
-                _mutex.WaitOne();
-                returnValue = _memoryCacher[key];
+                mutex.WaitOne();
+                returnValue = memoryCacher[key];
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                SnSLogger.Warn(e.StackTrace, "SnSMemoryCacher", "Get");
-                returnValue = null;
+                SnSModernLogger.Instance.Warn("Cannot get the entry with key '" + key + "'", exception);
             }
             finally
             {
-                _mutex.ReleaseMutex();
+                mutex.ReleaseMutex();
             }
 
             return returnValue;
@@ -105,22 +108,27 @@ namespace ModernApp4Me_Core.SnSCache.Memory
         /// Deletes the memory cacher value according to the key.
         /// </summary>
         /// <param name="key"></param>
-        /// <returns></returns>
-        public void Remove(string key)
+        /// <returns>true in case of success, false otherwise</returns>
+        public bool Remove(string key)
         {
+            var isRemoved = true;
+
             try
             {
-                _mutex.WaitOne();
-                _memoryCacher.Remove(key);
+                mutex.WaitOne();
+                memoryCacher.Remove(key);
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                SnSLogger.Warn(e.StackTrace, "SnSMemoryCacher", "Remove");
+                isRemoved = false;
+                SnSModernLogger.Instance.Warn("Cannot remove the entry with key '" + key + "'", exception);
             }
             finally
             {
-                _mutex.ReleaseMutex();
+                mutex.ReleaseMutex();
             }
+
+            return isRemoved;
         }
 
         /// <summary>
@@ -128,22 +136,37 @@ namespace ModernApp4Me_Core.SnSCache.Memory
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        /// <returns></returns>
-        public void Update(string key, object value)
+        /// <returns>true in case of success, false otherwise</returns>
+        public bool Update(string key, object value)
         {
+            var isUpdated = true;
+
             try
             {
-                _mutex.WaitOne();
-                _memoryCacher[key] = new SnSMemoryCacherObject {Date = DateTime.Now, Value = value};
+                mutex.WaitOne();
+                memoryCacher[key] = new SnSMemoryCacherObject {Date = DateTime.Now, Value = value};
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                SnSLogger.Warn(e.StackTrace, "SnSMemoryCacher", "Update");
+                isUpdated = false;
+                SnSModernLogger.Instance.Warn("Cannot update the entry with key '" + key + "'", exception);
             }
             finally
             {
-                _mutex.ReleaseMutex();
+                mutex.ReleaseMutex();
             }
+
+            return isUpdated;
+        }
+
+        /// <summary>
+        /// Checks if the key is already used in the memory cacher.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>true is the key exists.</returns>
+        public bool IsKeyExists(string key)
+        {
+            return memoryCacher.ContainsKey(key);
         }
     }
 }

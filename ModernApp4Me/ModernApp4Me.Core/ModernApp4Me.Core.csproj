@@ -36,10 +36,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SnSCache\Memory\SnSMemoryCacher.cs" />
     <Compile Include="SnSCache\Memory\SnSMemoryCacherObject.cs" />
+    <Compile Include="SnSLog\SnSLoggerWrapper.cs" />
     <Compile Include="SnSLog\SnSLogger.cs" />
     <Compile Include="SnSLog\SnSLogLevel.cs" />
     <Compile Include="SnSLog\SnSModernLogger.cs" />
-    <Compile Include="SnSRandom\SnSRandomNumber.cs" />
     <Compile Include="SnSUtil\SnSDateUtil.cs" />
     <Compile Include="SnSViewModel\SnSViewModelBase.cs" />
   </ItemGroup>
