@@ -34,6 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SnSApp\SnSConnectivityException.cs" />
+    <Compile Include="SnSApp\SnSI18N.cs" />
+    <Compile Include="SnSApp\SnSExceptionHandlers.cs" />
+    <Compile Include="SnSApp\SnSBusinessObjectUnavailableException.cs" />
     <Compile Include="SnSCache\Memory\SnSMemoryCacher.cs" />
     <Compile Include="SnSCache\Memory\SnSMemoryCacherObject.cs" />
     <Compile Include="SnSLog\SnSLoggerWrapper.cs" />
