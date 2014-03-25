@@ -2,9 +2,11 @@
 using System.Windows;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Net.NetworkInformation;
 using Microsoft.Phone.Shell;
 using ModernApp4Me.Core.SnSApp;
 using ModernApp4Me.Core.SnSLog;
+using Windows.Networking.Connectivity;
 
 namespace ModernApp4Me.WP8.SnSApp
 {
@@ -20,6 +22,8 @@ namespace ModernApp4Me.WP8.SnSApp
         public SnSLoggerWrapper LoggerWrapper { get; private set; }
 
         public SnSExceptionHandler ExceptionHandler { get; private set; }
+
+        public bool IsConnected { get; private set; }
 
         /// <summary>
         /// Constructeur pour l'objet Application.
@@ -61,6 +65,10 @@ namespace ModernApp4Me.WP8.SnSApp
         // Ce code ne s'exécute pas lorsque l'application est réactivée
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            IsConnected = NetworkInterface.GetIsNetworkAvailable();
+
+            NetworkInformation.NetworkStatusChanged+=NetworkInformation_NetworkStatusChanged;
+
             ExceptionHandler = SetupExceptionHandlers();
 
             SetupAnalytics();
@@ -68,6 +76,11 @@ namespace ModernApp4Me.WP8.SnSApp
             LoggerWrapper = SetupLogger();
 
             LaunchingCustom();
+        }
+
+        void NetworkInformation_NetworkStatusChanged(object sender)
+        {
+            IsConnected = NetworkInterface.GetIsNetworkAvailable();
         }
 
         // Code à exécuter lorsque l'application est activée (affichée au premier plan)
