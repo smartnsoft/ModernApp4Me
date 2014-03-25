@@ -23,7 +23,7 @@ namespace ModernApp4Me.WP7.SnSApp
             }
             else if (exception is SnSConnectivityException)
             {
-                ShowMessageBox(I18N.InhandledProblemHint);
+                ShowMessageBox(I18N.ConnectivityProblemHint);
             }
             else
             {

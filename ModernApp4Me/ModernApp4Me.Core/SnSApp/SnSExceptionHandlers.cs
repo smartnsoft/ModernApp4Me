@@ -24,7 +24,7 @@ namespace ModernApp4Me.Core.SnSApp
             }
             else if (exception is SnSConnectivityException)
             {
-                ShowMessageBox(I18N.InhandledProblemHint);
+                ShowMessageBox(I18N.ConnectivityProblemHint);
             }
             else
             {

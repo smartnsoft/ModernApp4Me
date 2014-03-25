@@ -1,4 +1,9 @@
-﻿using RestSharp;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Microsoft.Phone.Net.NetworkInformation;
+using ModernApp4Me.Core.SnSApp;
+using ModernApp4Me.Core.SnSLog;
+using RestSharp;
 
 namespace ModernApp4Me.WP8.SnSWebService
 {
@@ -32,6 +37,42 @@ namespace ModernApp4Me.WP8.SnSWebService
         protected SnSWebServiceCaller(string baseUrl, string username, string password)
         {
             Client = new RestClient(baseUrl) { Authenticator = new HttpBasicAuthenticator(username, password) };
+        }
+
+        /// <summary>
+        /// Executes a call to a web method without any persistence.
+        /// </summary>
+        /// <param name="restRequest"></param>
+        /// <returns>The content of the </returns>
+        protected async Task<string> ExecuteHttpRequest(RestRequest restRequest)
+        {
+            var rawResponse = await Client.ExecuteTaskAsync(restRequest);
+
+            if (rawResponse.StatusCode != HttpStatusCode.OK)
+            {
+                OnHttpStatusCodeNotOk(rawResponse);
+            }
+
+            return rawResponse.Content;
+        }
+
+        /// <summary>
+        /// Private function that raises an exception when the result code to a web method id not OK (not 20X).
+        /// </summary>
+        /// <param name="rawResponse"></param>
+        private void OnHttpStatusCodeNotOk(IRestResponse rawResponse)
+        {
+            var message = "The error code of the call to the web method '" + rawResponse.Request.Resource +
+                          "' is not OK (not 20X). Status: '" + rawResponse.StatusCode + "'";
+
+            SnSLoggerWrapper.Instance.Logger.Error(message);
+
+            if (rawResponse.StatusCode == HttpStatusCode.NotFound && NetworkInterface.GetIsNetworkAvailable() == false)
+            {
+                throw new SnSCallException(message);
+            }
+
+            throw new SnSCallException(message);
         }
 
     }

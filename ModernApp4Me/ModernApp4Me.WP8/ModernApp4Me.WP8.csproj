@@ -101,6 +101,7 @@
     <Compile Include="SnSTemplate\SnSTemplateSelector.cs" />
     <Compile Include="SnSTile\SnSSecondaryTile.cs" />
     <Compile Include="SnSUtil\SnSColorUtil.cs" />
+    <Compile Include="SnSWebService\SnSCallException.cs" />
     <Compile Include="SnSWebService\SnSWebServiceCaller.cs" />
     <Compile Include="SnSWebService\SnSWebServiceExtensions.cs" />
     <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlock.cs" />
