@@ -65,9 +65,9 @@ namespace ModernApp4Me.WP8.SnSApp
         // Ce code ne s'exécute pas lorsque l'application est réactivée
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            IsConnected = NetworkInterface.GetIsNetworkAvailable();
+            IsConnected = DeviceNetworkInformation.IsNetworkAvailable;
 
-            NetworkInformation.NetworkStatusChanged+=NetworkInformation_NetworkStatusChanged;
+            DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
 
             ExceptionHandler = SetupExceptionHandlers();
 
@@ -78,9 +78,10 @@ namespace ModernApp4Me.WP8.SnSApp
             LaunchingCustom();
         }
 
-        void NetworkInformation_NetworkStatusChanged(object sender)
+        void DeviceNetworkInformation_NetworkAvailabilityChanged(object sender, NetworkNotificationEventArgs e)
         {
-            IsConnected = NetworkInterface.GetIsNetworkAvailable();
+            throw new NotImplementedException();
+
         }
 
         // Code à exécuter lorsque l'application est activée (affichée au premier plan)
