@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Net.NetworkInformation;
@@ -36,11 +38,14 @@ namespace ModernApp4Me.WP8.SnSApp
             // Standard Silverlight initialization
             InitializeComponent();
 
+            // Initialisation de l'affichage de la langue
+            InitializeLanguage();
+
             // Initialisation spécifique au téléphone
             InitializePhoneApplication();
 
             // Affichez des informations de profilage graphique lors du débogage.
-            if (System.Diagnostics.Debugger.IsAttached)
+            if (Debugger.IsAttached)
             {
                 // Affichez les compteurs de fréquence des trames actuels.
                 Application.Current.Host.Settings.EnableFrameRateCounter = true;
@@ -147,6 +152,9 @@ namespace ModernApp4Me.WP8.SnSApp
             // Gérer les erreurs de navigation
             RootFrame.NavigationFailed += RootFrame_NavigationFailed;
 
+            // Gérer les requêtes de réinitialisation pour effacer la pile arrière
+            RootFrame.Navigated += CheckForResetNavigation;
+
             // Garantir de ne pas retenter l'initialisation
             phoneApplicationInitialized = true;
         }
@@ -162,9 +170,93 @@ namespace ModernApp4Me.WP8.SnSApp
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
         }
 
+        private void CheckForResetNavigation(object sender, NavigationEventArgs e)
+        {
+            // Si l'application a reçu une navigation de « réinitialisation », nous devons vérifier
+            // sur la navigation suivante pour voir si la pile de la page doit être réinitialisée
+            if (e.NavigationMode == NavigationMode.Reset)
+                RootFrame.Navigated += ClearBackStackAfterReset;
+        }
+
+        private void ClearBackStackAfterReset(object sender, NavigationEventArgs e)
+        {
+            // Désinscrire l'événement pour qu'il ne soit plus appelé
+            RootFrame.Navigated -= ClearBackStackAfterReset;
+
+            // Effacer uniquement la pile des « nouvelles » navigations (avant) et des actualisations
+            if (e.NavigationMode != NavigationMode.New && e.NavigationMode != NavigationMode.Refresh)
+                return;
+
+            // Pour une interface utilisateur cohérente, effacez toute la pile de la page
+            while (RootFrame.RemoveBackEntry() != null)
+            {
+                ; // ne rien faire
+            }
+        }
+
+        // Initialise la police de l'application et le sens du flux tels qu'ils sont définis dans ses chaînes de ressource localisées.
+        //
+        // Pour vous assurer que la police de votre application est alignée avec les langues prises en charge et que le
+        // FlowDirection pour chacune de ces langues respecte le sens habituel, ResourceLanguage
+        // et ResourceFlowDirection doivent être initialisés dans chaque fichier resx pour faire correspondre ces valeurs avec la
+        // culture du fichier. Par exemple :
+        //
+        // AppResources.es-ES.resx
+        //    La valeur de ResourceLanguage doit être « es-ES »
+        //    La valeur de ResourceFlowDirection doit être « LeftToRight »
+        //
+        // AppResources.ar-SA.resx
+        //     La valeur de ResourceLanguage doit être « ar-SA »
+        //     La valeur de ResourceFlowDirection doit être « RightToLeft »
+        //
+        // Pour plus d'informations sur la localisation des applications Windows Phone, consultez le site http://go.microsoft.com/fwlink/?LinkId=262072.
+        //
+        private void InitializeLanguage()
+        {
+            try
+            {
+                // Définissez la police pour qu'elle corresponde à la langue d'affichage définie par la
+                // chaîne de ressource ResourceLanguage pour chaque langue prise en charge.
+                //
+                // Rétablit la police de la langue neutre si la langue d'affichage
+                // du téléphone n'est pas prise en charge.
+                //
+                // Si une erreur de compilateur est détectée, ResourceLanguage est manquant dans
+                // le fichier de ressources.
+                RootFrame.Language = XmlLanguage.GetLanguage(GetLanguage());
+
+                // Définit FlowDirection pour tous les éléments sous le frame racine en fonction de la
+                // de la chaîne de ressource ResourceFlowDirection pour chaque
+                // langue prise en charge.
+                //
+                // Si une erreur de compilateur est détectée, ResourceFlowDirection est manquant dans
+                // le fichier de ressources.
+                FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), GetResourceFlowDirection());
+                RootFrame.FlowDirection = flow;
+            }
+            catch
+            {
+                // Si une exception est détectée ici, elle est probablement due au fait que
+                // ResourceLanguage n'est pas correctement défini sur un code de langue pris en charge
+                // ou que ResourceFlowDirection est défini sur une valeur différente de LeftToRight
+                // ou RightToLeft.
+
+                if (Debugger.IsAttached)
+                {
+                    Debugger.Break();
+                }
+
+                throw;
+            }
+        }
+
         #endregion
 
         #region functions to override
+
+        protected abstract string GetLanguage();
+
+        protected abstract string GetResourceFlowDirection();
 
         /// <summary>
         /// Allows the user to easily custom the root frame.
@@ -178,11 +270,6 @@ namespace ModernApp4Me.WP8.SnSApp
         protected abstract SnSExceptionHandler SetupExceptionHandlers();
 
         /// <summary>
-        /// Function where the analitycs agents are initialized.
-        /// </summary>
-        protected abstract void SetupAnalytics();
-
-        /// <summary>
         /// Function where the logger of the app is initialized.
         /// </summary>
         /// <returns>An instance of SnsLoggerWrapper</returns>
@@ -192,7 +279,7 @@ namespace ModernApp4Me.WP8.SnSApp
         /// This method will be invoked at the end of the Application_Launching method, once the framework initialization is over.
         /// You can override this method, which does nothing by default, in order to initialize your application specific variables, invoke some services.
         /// </summary>
-        protected void LaunchingCustom()
+        protected virtual void LaunchingCustom()
         {
         }
 
@@ -200,7 +287,7 @@ namespace ModernApp4Me.WP8.SnSApp
         /// This method will be invoked at the end of the Application_Activated method, once the framework initialization is over.
         /// You can override this method, which does nothing by default, in order to initialize your application specific variables, invoke some services.
         /// </summary>
-        protected void ActivatedCustom()
+        protected virtual void ActivatedCustom()
         {
         }
 
@@ -208,7 +295,7 @@ namespace ModernApp4Me.WP8.SnSApp
         /// This method will be invoked at the end of the Application_Deactivated method, once the framework initialization is over.
         /// You can override this method, which does nothing by default, in order to initialize your application specific variables, invoke some services.
         /// </summary>
-        protected void DeactivatedCustom()
+        protected virtual void DeactivatedCustom()
         {
         }
 
@@ -216,7 +303,7 @@ namespace ModernApp4Me.WP8.SnSApp
         /// This method will be invoked at the end of the Application_Closing method, once the framework initialization is over.
         /// You can override this method, which does nothing by default, in order to initialize your application specific variables, invoke some services.
         /// </summary>
-        protected void ClosingCustom()
+        protected virtual void ClosingCustom()
         {
         }
 
@@ -224,7 +311,14 @@ namespace ModernApp4Me.WP8.SnSApp
         /// This method will be invoked when an unhandled exception or a root frame navigation failed exception occurs.
         /// This method serves as a fallback on the framework, in order to log the error.
         /// </summary>
-        protected void UnhandledExceptionCustom(Exception exception)
+        protected virtual void UnhandledExceptionCustom(Exception exception)
+        {
+        }
+
+        /// <summary>
+        /// Function where the analitycs agents are initialized.
+        /// </summary>
+        protected virtual void SetupAnalytics()
         {
         }
 

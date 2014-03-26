@@ -68,7 +68,7 @@ namespace ModernApp4Me.Core.SnSCache.Memory
             catch (Exception exception)
             {
                 isAdded = false;
-                SnSModernLogger.Instance.Warn("Cannot add the entry with key '" + key + "'", exception);
+                SnSLoggerWrapper.Instance.Logger.Warn("Cannot add the entry with key '" + key + "'", exception);
             }
             finally
             {
@@ -94,7 +94,7 @@ namespace ModernApp4Me.Core.SnSCache.Memory
             }
             catch (Exception exception)
             {
-                SnSModernLogger.Instance.Warn("Cannot get the entry with key '" + key + "'", exception);
+                SnSLoggerWrapper.Instance.Logger.Warn("Cannot get the entry with key '" + key + "'", exception);
             }
             finally
             {
@@ -121,7 +121,7 @@ namespace ModernApp4Me.Core.SnSCache.Memory
             catch (Exception exception)
             {
                 isRemoved = false;
-                SnSModernLogger.Instance.Warn("Cannot remove the entry with key '" + key + "'", exception);
+                SnSLoggerWrapper.Instance.Logger.Warn("Cannot remove the entry with key '" + key + "'", exception);
             }
             finally
             {
@@ -149,7 +149,7 @@ namespace ModernApp4Me.Core.SnSCache.Memory
             catch (Exception exception)
             {
                 isUpdated = false;
-                SnSModernLogger.Instance.Warn("Cannot update the entry with key '" + key + "'", exception);
+                SnSLoggerWrapper.Instance.Logger.Warn("Cannot update the entry with key '" + key + "'", exception);
             }
             finally
             {

@@ -12,31 +12,6 @@ namespace ModernApp4Me.WP7.SnSLog
     public class SnSModernLogger : SnSLogger
     {
 
-        private static volatile SnSModernLogger instance;
-
-        private static readonly object Sync = new Object();
-
-        private SnSModernLogger() { }
-
-        public static SnSModernLogger Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (Sync)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new SnSModernLogger();
-                        }
-                    }
-                }
-
-                return instance;
-            }
-        }
-
         public SnSLogLevel LogLevel { get; set; }
 
         public override void Debug(string message)

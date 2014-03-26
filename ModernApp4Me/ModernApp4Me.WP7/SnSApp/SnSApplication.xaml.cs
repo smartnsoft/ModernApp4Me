@@ -175,11 +175,6 @@ namespace ModernApp4Me.WP7.SnSApp
         protected abstract SnSExceptionHandler SetupExceptionHandlers();
 
         /// <summary>
-        /// Function where the analitycs agents are initialized.
-        /// </summary>
-        protected abstract void SetupAnalytics();
-
-        /// <summary>
         /// Function where the logger of the app is initialized.
         /// </summary>
         /// <returns>An instance of SnsLoggerWrapper</returns>
@@ -189,7 +184,7 @@ namespace ModernApp4Me.WP7.SnSApp
         /// This method will be invoked at the end of the Application_Launching method, once the framework initialization is over.
         /// You can override this method, which does nothing by default, in order to initialize your application specific variables, invoke some services.
         /// </summary>
-        protected void LaunchingCustom()
+        protected virtual void LaunchingCustom()
         {
         }
 
@@ -197,7 +192,7 @@ namespace ModernApp4Me.WP7.SnSApp
         /// This method will be invoked at the end of the Application_Activated method, once the framework initialization is over.
         /// You can override this method, which does nothing by default, in order to initialize your application specific variables, invoke some services.
         /// </summary>
-        protected void ActivatedCustom()
+        protected virtual void ActivatedCustom()
         {
         }
 
@@ -205,7 +200,7 @@ namespace ModernApp4Me.WP7.SnSApp
         /// This method will be invoked at the end of the Application_Deactivated method, once the framework initialization is over.
         /// You can override this method, which does nothing by default, in order to initialize your application specific variables, invoke some services.
         /// </summary>
-        protected void DeactivatedCustom()
+        protected virtual void DeactivatedCustom()
         {
         }
 
@@ -213,7 +208,7 @@ namespace ModernApp4Me.WP7.SnSApp
         /// This method will be invoked at the end of the Application_Closing method, once the framework initialization is over.
         /// You can override this method, which does nothing by default, in order to initialize your application specific variables, invoke some services.
         /// </summary>
-        protected void ClosingCustom()
+        protected virtual void ClosingCustom()
         {
         }
 
@@ -221,7 +216,14 @@ namespace ModernApp4Me.WP7.SnSApp
         /// This method will be invoked when an unhandled exception or a root frame navigation failed exception occurs.
         /// This method serves as a fallback on the framework, in order to log the error.
         /// </summary>
-        protected void UnhandledExceptionCustom(Exception exception)
+        protected virtual void UnhandledExceptionCustom(Exception exception)
+        {
+        }
+
+        /// <summary>
+        /// Function where the analitycs agents are initialized.
+        /// </summary>
+        protected virtual void SetupAnalytics()
         {
         }
 

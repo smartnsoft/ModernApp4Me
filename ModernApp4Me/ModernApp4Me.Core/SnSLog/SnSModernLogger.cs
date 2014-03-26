@@ -12,31 +12,6 @@ namespace ModernApp4Me.Core.SnSLog
     public class SnSModernLogger : SnSLogger
     {
 
-        private static volatile SnSModernLogger instance;
-
-        private static readonly object InstanceLock = new Object();
-
-        private SnSModernLogger() { }
-
-        public static SnSModernLogger Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (InstanceLock)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new SnSModernLogger();
-                        }
-                    }
-                }
-
-                return instance;
-            }
-        }
-
         public SnSLogLevel LogLevel { get; set; }
 
         public override void Debug(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
