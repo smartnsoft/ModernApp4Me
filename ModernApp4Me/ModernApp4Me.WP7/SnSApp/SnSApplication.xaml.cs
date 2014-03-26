@@ -17,8 +17,6 @@ namespace ModernApp4Me.WP7.SnSApp
         /// <returns>Frame racine de l'application téléphonique.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
 
-        public SnSLoggerWrapper LoggerWrapper { get; private set; }
-
         public SnSExceptionHandler ExceptionHandler { get; private set; }
 
         public bool IsConnected { get; private set; }
@@ -70,8 +68,6 @@ namespace ModernApp4Me.WP7.SnSApp
             ExceptionHandler = SetupExceptionHandlers();
 
             SetupAnalytics();
-
-            LoggerWrapper = SetupLogger();
 
             LaunchingCustom();
         }
@@ -178,7 +174,7 @@ namespace ModernApp4Me.WP7.SnSApp
         /// Function where the logger of the app is initialized.
         /// </summary>
         /// <returns>An instance of SnsLoggerWrapper</returns>
-        protected abstract SnSLoggerWrapper SetupLogger();
+        protected abstract void SetupLogger();
 
         /// <summary>
         /// This method will be invoked at the end of the Application_Launching method, once the framework initialization is over.

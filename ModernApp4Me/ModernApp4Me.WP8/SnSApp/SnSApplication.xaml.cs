@@ -7,8 +7,6 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Net.NetworkInformation;
 using Microsoft.Phone.Shell;
 using ModernApp4Me.Core.SnSApp;
-using ModernApp4Me.Core.SnSLog;
-using Windows.Networking.Connectivity;
 
 namespace ModernApp4Me.WP8.SnSApp
 {
@@ -21,55 +19,47 @@ namespace ModernApp4Me.WP8.SnSApp
         /// <returns>Frame racine de l'application téléphonique.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
 
-        public SnSLoggerWrapper LoggerWrapper { get; private set; }
-
         public SnSExceptionHandler ExceptionHandler { get; private set; }
 
         public bool IsConnected { get; private set; }
 
-        /// <summary>
-        /// Constructeur pour l'objet Application.
-        /// </summary>
         protected SnSApplication()
         {
-            // Global handler for uncaught exceptions. 
+            // Gestionnaire global pour les exceptions non interceptées.
             UnhandledException += Application_UnhandledException;
 
-            // Standard Silverlight initialization
+            // Initialisation du XAML standard
             InitializeComponent();
-
-            // Initialisation de l'affichage de la langue
-            InitializeLanguage();
 
             // Initialisation spécifique au téléphone
             InitializePhoneApplication();
+
+            // Initialisation de l'affichage de la langue
+            InitializeLanguage();
 
             // Affichez des informations de profilage graphique lors du débogage.
             if (Debugger.IsAttached)
             {
                 // Affichez les compteurs de fréquence des trames actuels.
-                Application.Current.Host.Settings.EnableFrameRateCounter = true;
-
-                // Affichez les zones de l'application qui sont redessinées dans chaque frame.
-                //Application.Current.Host.Settings.EnableRedrawRegions = true;
-
-                // Enable non-production analysis visualization mode, 
-                // qui montre les zones d'une page sur lesquelles une accélération GPU est produite avec une superposition colorée.
-                //Application.Current.Host.Settings.EnableCacheVisualization = true;
-
-                // Disable the application idle detection by setting the UserIdleDetectionMode property of the
-                // application's PhoneApplicationService object to Disabled.
-                // Attention :- À utiliser uniquement en mode de débogage. Les applications qui désactivent la détection d'inactivité de l'utilisateur continueront de s'exécuter
-                // et seront alimentées par la batterie lorsque l'utilisateur ne se sert pas du téléphone.
-                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+                Current.Host.Settings.EnableFrameRateCounter = true;
             }
 
         }
 
         // Code à exécuter lorsque l'application démarre (par exemple, à partir de Démarrer)
         // Ce code ne s'exécute pas lorsque l'application est réactivée
-        private void Application_Launching(object sender, LaunchingEventArgs e)
+        protected void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            // Affichez des informations de profilage graphique lors du débogage.
+            if (Debugger.IsAttached)
+            {
+                // Empêche l'écran de s'éteindre lorsque le débogueur est utilisé en désactivant
+                // la détection de l'état inactif de l'application.
+                // Attention :- À utiliser uniquement en mode de débogage. Les applications qui désactivent la détection d'inactivité de l'utilisateur continueront de s'exécuter
+                // et seront alimentées par la batterie lorsque l'utilisateur ne se sert pas du téléphone.
+                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+            }
+
             IsConnected = DeviceNetworkInformation.IsNetworkAvailable;
 
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
@@ -78,34 +68,31 @@ namespace ModernApp4Me.WP8.SnSApp
 
             SetupAnalytics();
 
-            LoggerWrapper = SetupLogger();
-
             LaunchingCustom();
         }
 
-        void DeviceNetworkInformation_NetworkAvailabilityChanged(object sender, NetworkNotificationEventArgs e)
+        private void DeviceNetworkInformation_NetworkAvailabilityChanged(object sender, NetworkNotificationEventArgs e)
         {
-            throw new NotImplementedException();
-
+            IsConnected = DeviceNetworkInformation.IsNetworkAvailable;
         }
 
         // Code à exécuter lorsque l'application est activée (affichée au premier plan)
         // Ce code ne s'exécute pas lorsque l'application est démarrée pour la première fois
-        private void Application_Activated(object sender, ActivatedEventArgs e)
+        protected void Application_Activated(object sender, ActivatedEventArgs e)
         {
             ActivatedCustom();
         }
 
         // Code à exécuter lorsque l'application est désactivée (envoyée à l'arrière-plan)
         // Ce code ne s'exécute pas lors de la fermeture de l'application
-        private void Application_Deactivated(object sender, DeactivatedEventArgs e)
+        protected void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
             DeactivatedCustom();
         }
 
         // Code à exécuter lors de la fermeture de l'application (par exemple, lorsque l'utilisateur clique sur Précédent)
         // Ce code ne s'exécute pas lorsque l'application est désactivée
-        private void Application_Closing(object sender, ClosingEventArgs e)
+        protected void Application_Closing(object sender, ClosingEventArgs e)
         {
             ClosingCustom();
         }
@@ -273,7 +260,7 @@ namespace ModernApp4Me.WP8.SnSApp
         /// Function where the logger of the app is initialized.
         /// </summary>
         /// <returns>An instance of SnsLoggerWrapper</returns>
-        protected abstract SnSLoggerWrapper SetupLogger();
+        protected abstract void SetupLogger();
 
         /// <summary>
         /// This method will be invoked at the end of the Application_Launching method, once the framework initialization is over.
