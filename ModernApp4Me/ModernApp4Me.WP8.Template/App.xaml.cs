@@ -3,6 +3,7 @@ using Microsoft.Phone.Controls;
 using ModernApp4Me.Core.SnSApp;
 using ModernApp4Me.Core.SnSLog;
 using ModernApp4Me.WP8.SnSApp;
+using ModernApp4Me.WP8.SnSDownload.BitmapDownloader;
 using ModernApp4Me.WP8.Template.Resources;
 
 namespace ModernApp4Me.WP8.Template
@@ -57,6 +58,18 @@ namespace ModernApp4Me.WP8.Template
         protected override void UnhandledExceptionCustom(Exception exception)
         {
             //TODO: report exception with the bug tracker here.
+        }
+
+        protected override void LaunchingCustom()
+        {
+            //TODO : init BitmapDownloader here for example :
+            SnSBitmapDownloader.Configuration = new SnSBitmapDownloader.SnSBitmapDownloaderConfiguration()
+                {
+                    ExpirationDelay = TimeSpan.FromDays(1),
+                    MemoryCacheCapacity = 10,
+                    Name = "BitmapDownloader",
+                    Type = SnSBitmapDownloader.SnSBitmapDownloaderType.PersistentImageCache
+                };
         }
 
     }
