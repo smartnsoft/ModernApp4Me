@@ -32,7 +32,7 @@ namespace ModernApp4Me.WP7.SnSDownload.BitmapDownloader
 
         public static SnSBitmapDownloaderConfiguration Configuration { get; set; }
 
-        public static SnSBitmapDownloader GetInstance
+        public static SnSBitmapDownloader Instance
         {
             get
             {

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Microsoft.Phone.Controls;
+using Microsoft.Xna.Framework;
 
 namespace ModernApp4Me.WP7.SnSApp
 {
@@ -17,7 +18,12 @@ namespace ModernApp4Me.WP7.SnSApp
             {
                 if (RootFrame.CanGoBack == true)
                 {
-                    RootFrame.RemoveBackEntry();
+                    RootFrame.GoBack();
+                }
+                else
+                {
+                    var game = new Game();
+                    game.Exit();
                 }
             }
         }

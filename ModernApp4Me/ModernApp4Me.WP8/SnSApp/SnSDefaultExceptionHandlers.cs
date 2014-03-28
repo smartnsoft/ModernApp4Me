@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using ModernApp4Me.Core.SnSApp;
 
@@ -19,7 +18,11 @@ namespace ModernApp4Me.WP8.SnSApp
             {
                 if (RootFrame.CanGoBack == true)
                 {
-                    RootFrame.RemoveBackEntry();
+                    RootFrame.GoBack();
+                }
+                else
+                {
+                    Application.Current.Terminate();
                 }
             }
         }
