@@ -59,7 +59,7 @@ namespace ModernApp4Me.WP8.SnSWebService
         /// Private function that raises an exception when the result code to a web method id not OK (not 20X).
         /// </summary>
         /// <param name="rawResponse"></param>
-        private void OnHttpStatusCodeNotOk(IRestResponse rawResponse)
+        protected void OnHttpStatusCodeNotOk(IRestResponse rawResponse)
         {
             var message = "The error code of the call to the web method '" + rawResponse.Request.Resource +
                           "' is not OK (not 20X). Status: '" + rawResponse.StatusCode + "'";
