@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Phone.Net.NetworkInformation;
+using ModernApp4Me.WP7.SnSApp;
 using ModernApp4Me.WP7.SnSLog;
 using RestSharp;
 
@@ -68,7 +69,7 @@ namespace ModernApp4Me.WP7.SnSWebService
 
             if (rawResponse.StatusCode == HttpStatusCode.NotFound && DeviceNetworkInformation.IsNetworkAvailable == false)
             {
-                throw new SnSCallException(message);
+                throw new SnSConnectivityException(message);
             }
 
             throw new SnSCallException(message);
