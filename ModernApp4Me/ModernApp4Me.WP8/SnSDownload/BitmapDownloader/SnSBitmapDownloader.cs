@@ -53,18 +53,18 @@ namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
 
         private SnSBitmapDownloader()
         {
-            //if (Configuration.Type == SnSBitmapDownloaderType.PersistentImageCache)
-            //{
+            if (Configuration.Type == SnSBitmapDownloaderType.PersistentImageCache)
+            {
                 cache = new PersistentImageCache(Configuration.Name)
                     {
                         ExpirationDelay = Configuration.ExpirationDelay,
                         MemoryCacheCapacity = Configuration.MemoryCacheCapacity
                     };
-            //}
-            //else
-            //{
-            //    cache = new SystemImageCache(Configuration.Name);
-            //}
+            }
+            else
+            {
+                cache = new SystemImageCache(Configuration.Name);
+            }
         }
 
         public ImageSource GetImage(string imageUri)
