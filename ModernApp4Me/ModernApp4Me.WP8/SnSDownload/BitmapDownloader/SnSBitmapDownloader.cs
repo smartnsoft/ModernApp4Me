@@ -3,6 +3,12 @@ using System.Windows.Media;
 
 namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
 {
+
+    /// <summary>
+    /// Image downloading and caching singleton class.
+    /// </summary>
+    /// <author>Ludovic ROLAND</author>
+    /// <since>2014.03.24</since>
     public sealed class SnSBitmapDownloader
     {
 
@@ -71,5 +77,7 @@ namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
         {
             return cache.Get(imageUri);
         }
+
     }
+
 }
