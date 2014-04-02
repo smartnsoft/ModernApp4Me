@@ -124,6 +124,7 @@
     <Compile Include="SnSDownload\BitmapDownloader\PersistentImageCache.cs" />
     <Compile Include="SnSDownload\BitmapDownloader\SnSBitmapDownloader.cs" />
     <Compile Include="SnSDownload\BitmapDownloader\SystemImageCache.cs" />
+    <Compile Include="SnSMedia\SnSMediaHubManager.cs" />
     <Compile Include="SnSMedia\SnSMediaManager.cs" />
     <Compile Include="SnSMetaData\SnSLog\SnSLogger.cs" />
     <Compile Include="SnSMetaData\SnSLog\SnSLoggerWrapper.cs" />

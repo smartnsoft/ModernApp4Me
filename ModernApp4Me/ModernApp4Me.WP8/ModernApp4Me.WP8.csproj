@@ -93,6 +93,7 @@
     <Compile Include="SnSCache\Database\SnSDatabase.cs" />
     <Compile Include="SnSCache\File\SnSFile.cs" />
     <Compile Include="SnSCache\Settings\SnSSettings.cs" />
+    <Compile Include="SnSMedia\SnSMediaHubManager.cs" />
     <Compile Include="SnSMedia\SnSMediaManager.cs" />
     <Compile Include="SnSMetaData\SnSAppInfo.cs" />
     <Compile Include="SnSMetaData\SnSDeviceInfo.cs" />
