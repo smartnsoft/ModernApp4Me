@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Info;
+﻿using System;
+using Microsoft.Phone.Info;
 
 namespace ModernApp4Me.WP8.SnSMetaData
 {
@@ -29,6 +30,15 @@ namespace ModernApp4Me.WP8.SnSMetaData
         public static string Name
         {
             get { return DeviceStatus.DeviceName; }
+        }
+
+        public static string Uuid
+        {
+            get
+            {
+                var deviceId = (byte[])DeviceExtendedProperties.GetValue("DeviceUniqueId");
+                return Convert.ToBase64String(deviceId);
+            }
         }
 
     }

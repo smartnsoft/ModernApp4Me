@@ -126,10 +126,10 @@
     <Compile Include="SnSDownload\BitmapDownloader\SystemImageCache.cs" />
     <Compile Include="SnSMedia\SnSMediaHubManager.cs" />
     <Compile Include="SnSMedia\SnSMediaManager.cs" />
-    <Compile Include="SnSMetaData\SnSLog\SnSLogger.cs" />
-    <Compile Include="SnSMetaData\SnSLog\SnSLoggerWrapper.cs" />
-    <Compile Include="SnSMetaData\SnSLog\SnSLogLevel.cs" />
-    <Compile Include="SnSMetaData\SnSLog\SnSModernLogger.cs" />
+    <Compile Include="SnSLog\SnSLogger.cs" />
+    <Compile Include="SnSLog\SnSLoggerWrapper.cs" />
+    <Compile Include="SnSLog\SnSLogLevel.cs" />
+    <Compile Include="SnSLog\SnSModernLogger.cs" />
     <Compile Include="SnSMetaData\SnSAppInfo.cs" />
     <Compile Include="SnSMetaData\SnSDeviceInfo.cs" />
     <Compile Include="SnSTemplate\SnSTemplateSelector.cs" />

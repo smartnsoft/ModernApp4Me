@@ -9,7 +9,7 @@ namespace ModernApp4Me.WP7.SnSUtil
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public static class SnSColorTranslator
+    public static class SnSColorUtil
     {
 
         /// <summary>
