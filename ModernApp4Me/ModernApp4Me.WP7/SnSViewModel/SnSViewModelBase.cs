@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ModernApp4Me.Core.SnSViewModel
+namespace ModernApp4Me.WP7.SnSViewModel
 {
 
     /// <summary>
     /// Base class to implement the MVVM pattern.
     /// </summary>
     /// <author>Ludovic ROLAND</author>
-    /// <since>2014.03.21</since>
+    /// <since>2014.04.24</since>
     public class SnSViewModelBase : INotifyPropertyChanged
     {
 
