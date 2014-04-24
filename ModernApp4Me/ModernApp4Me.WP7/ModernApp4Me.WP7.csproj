@@ -119,6 +119,7 @@
     <Compile Include="SnSCache\Memory\SnSMemoryCacher.cs" />
     <Compile Include="SnSCache\Memory\SnSMemoryCacherObject.cs" />
     <Compile Include="SnSCache\Settings\SnSSettings.cs" />
+    <Compile Include="SnSConverter\SnSUpperCaseConverter.cs" />
     <Compile Include="SnSDownload\BitmapDownloader\ImageCache.cs" />
     <Compile Include="SnSDownload\BitmapDownloader\OneShotDispatcherTimer.cs" />
     <Compile Include="SnSDownload\BitmapDownloader\PersistentImageCache.cs" />
