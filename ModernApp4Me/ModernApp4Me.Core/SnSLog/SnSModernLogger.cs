@@ -9,7 +9,7 @@ namespace ModernApp4Me.Core.SnSLog
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.21</since>
-    public class SnSModernLogger : SnSLogger
+    public abstract class SnSModernLogger : SnSLogger
     {
 
         public SnSLogLevel LogLevel { get; set; }
@@ -80,27 +80,27 @@ namespace ModernApp4Me.Core.SnSLog
 
         public override bool IsDebugEnabled()
         {
-            return LogLevel >= SnSLogLevel.Debug;
+            return LogLevel <= SnSLogLevel.Debug;
         }
 
         public override bool IsInfoEnabled()
         {
-            return LogLevel >= SnSLogLevel.Info;
+            return LogLevel <= SnSLogLevel.Info;
         }
 
         public override bool IsWarnEnabled()
         {
-            return LogLevel >= SnSLogLevel.Warn;
+            return LogLevel <= SnSLogLevel.Warn;
         }
 
         public override bool IsErrorEnabled()
         {
-            return LogLevel >= SnSLogLevel.Error;
+            return LogLevel <= SnSLogLevel.Error;
         }
 
         public override bool IsFatalEnabled()
         {
-            return LogLevel >= SnSLogLevel.Error;
+            return LogLevel <= SnSLogLevel.Error;
         }
 
     }

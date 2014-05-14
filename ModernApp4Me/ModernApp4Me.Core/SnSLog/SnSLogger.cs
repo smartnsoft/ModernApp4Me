@@ -39,7 +39,7 @@ namespace ModernApp4Me.Core.SnSLog
 
         public abstract bool IsFatalEnabled();
 
-        private StringBuilder BuildHeader(SnSLogLevel logLevel, string callerMemberName, string callerFilePath, int callerLineNumber)
+        protected StringBuilder BuildHeader(SnSLogLevel logLevel, string callerMemberName, string callerFilePath, int callerLineNumber)
         {
             var header = new StringBuilder();
 
@@ -79,19 +79,11 @@ namespace ModernApp4Me.Core.SnSLog
             return header;
         }
 
-        protected void DisplayLog(SnSLogLevel logLevel, string message, string callerMemberName, string callerFilePath, int callerLineNumber)
-        {
-            var header = BuildHeader(logLevel, callerMemberName, callerFilePath, callerLineNumber);
+        protected abstract void DisplayLog(SnSLogLevel logLevel, string message, string callerMemberName,
+                                           string callerFilePath, int callerLineNumber);
 
-            System.Diagnostics.Debug.WriteLine("{0} \n\t {1} ", header, message);
-        }
-
-        protected void DisplayLog(SnSLogLevel logLevel, string message, Exception exception, string callerMemberName, string callerFilePath, int callerLineNumber)
-        {
-            var header = BuildHeader(logLevel, callerMemberName, callerFilePath, callerLineNumber);
-
-            System.Diagnostics.Debug.WriteLine("{0} \n\t {1} \n\t {2} ", header, message, exception.StackTrace);
-        }
+        protected abstract void DisplayLog(SnSLogLevel logLevel, string message, Exception exception,
+                                           string callerMemberName, string callerFilePath, int callerLineNumber);
 
     }
 
