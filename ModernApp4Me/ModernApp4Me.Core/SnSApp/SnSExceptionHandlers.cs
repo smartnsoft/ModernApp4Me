@@ -16,7 +16,7 @@ namespace ModernApp4Me.Core.SnSApp
 
         public SnSI18N I18N { get; set; }
 
-        public void AnalyseException(Exception exception)
+        public virtual void AnalyseException(Exception exception)
         {
             if (exception is SnSBusinessObjectUnavailableException)
             {
