@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Capptain.Agent.WP</name>
+    </assembly>
+    <members>
+        <member name="T:Capptain.Agent.CapptainAgent">
+            <summary>
+            Capptain Agent for Windows Phone.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.CapptainAgent.OnTombstoned(Microsoft.Phone.Shell.ActivatedEventArgs)">
+            <summary>
+            Restore Capptain after an application activation from a tombstoned state.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Capptain.Agent.CapptainAgent.#ctor">
+            <summary>
+            Create a CapptainAgent.
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.DeviceStatus">
+            <summary>
+            Device status.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.DeviceStatus.REGEX_PHONE">
+            <summary>
+            Contain a regex to identify a phone number.
+            Simply look for a plus sign followed by a sequence of digits/spaces/parenthesis/dash.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.#ctor">
+            <summary>
+            Create a new device status.
+            Should be run in a task.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.GetTechnicals">
+            <summary>
+            Get all technical information regarding the device.
+            </summary>
+            <returns>An array conataining all technicals.</returns>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.GetDeviceId">
+            <summary>
+            Get the device unique identifier.
+            </summary>
+            <returns>The unique device identifer.</returns>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.GetScreenSize">
+            <summary>
+            Get the screen size.
+            Synchrone method, can take up to 2s.
+            </summary>
+            <returns>A WxH string, where W is the width, and H the height.</returns>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetSDKVersion">
+            <summary>
+            SDK version.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetFirmware">
+            <summary>
+            Device firmware.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetPhoneModel">
+            <summary>
+            Phone model.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetPhoneManufacturer">
+            <summary>
+            Phone manufacturer.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetNetwork">
+            <summary>
+            Network.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetCarrier">
+            <summary>
+            Carrier.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetLocale">
+            <summary>
+            Locale.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetTimezoneOffset">
+            <summary>
+            Timezone offset.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetScreenSize">
+            <summary>
+            Screen size.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetApplicationVersionName">
+            <summary>
+            Application version name.
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.NetworkStatus">
+            <summary>
+            INetworkStatus implementation.
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.CapptainPage">
+            <summary>
+            Helper class used to replace Windows Phone's PhoneApplicationPage class.
+            Automatically starts a new Capptain activity when displayed.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.CapptainPage.OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs)">
+            <summary>
+            Send an activity to the capptain backend when the page is displayed (not loaded).
+            </summary>
+            <param name="e">Navigation event argument.</param>
+        </member>
+        <member name="M:Capptain.Agent.CapptainPage.GetCapptainPageName">
+            <summary>
+            Override this to specify the name reported by your page. 
+            The default implementation returns the simple name of the class 
+            and removes the "Page" suffix if any (e.g. "MainPage" -> "Main").
+            </summary>
+            <returns>The page name reported by the Capptain service.</returns>
+        </member>
+        <member name="M:Capptain.Agent.CapptainPage.GetCapptainPageExtra">
+            <summary>
+            Override this to attach extra information to your page. 
+            The default implementation attaches no extra information (i.e. return null).
+            </summary>
+            <returns>Page extra information, null or empty if no extra.</returns>
+        </member>
+        <member name="T:Capptain.Agent.HMACSHA1">
+            <summary>
+            HMACSHA1 implementation.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.HMACSHA1.mEncoder">
+            <summary>
+            String encoder.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.HMACSHA1.#ctor">
+            <summary>
+            Create a new HMACSHA1 implementation.
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.ApplicationLifecycleManager">
+            <summary>
+            Application lifecycle management for Windows Phone.
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.DeviceIdentification">
+            <summary>
+            Device identification manager.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.DeviceIdentification.sDeviceId">
+            <summary>
+            Device id.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceIdentification.GetDeviceId">
+            <summary>
+            Find the device id of the current device
+            </summary>
+            <returns>The device id as a MD5</returns>
+        </member>
+        <member name="T:Capptain.Agent.WindowsPhoneProvider">
+            <summary>
+            Windows Phone PlatformProvider implementation.
+            </summary>
+        </member>
+    </members>
+</doc>
