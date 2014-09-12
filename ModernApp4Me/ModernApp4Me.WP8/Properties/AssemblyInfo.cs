@@ -5,7 +5,7 @@ using System.Resources;
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("ModerApp4Me.WP8")]
+[assembly: AssemblyTitle("ModernApp4Me.WP8")]
 [assembly: AssemblyDescription("The specific part for Windows Phone 8 of the framework ModernApp4Me.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
@@ -31,6 +31,6 @@ using System.Resources;
 //
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de révision et de build par défaut 
 // en utilisant '*', comme indiqué ci-dessous :
-[assembly: AssemblyVersion("1.0.9.0")]
-[assembly: AssemblyFileVersion("1.0.9.0")]
+[assembly: AssemblyVersion("1.0.10.0")]
+[assembly: AssemblyFileVersion("1.0.10.0")]
 [assembly: NeutralResourcesLanguageAttribute("fr-FR")]
