@@ -74,7 +74,10 @@ namespace ModernApp4Me.WP8.SnSApp
                 connectivityContainer.Visibility = Visibility.Collapsed;
             }
 
-            mainContener.Visibility = Visibility.Visible;
+            if (mainContener != null)
+            {
+                mainContener.Visibility = Visibility.Visible;
+            }
 
             if (IsManagingProgressIndicatorItself == false)
             {
@@ -163,7 +166,10 @@ namespace ModernApp4Me.WP8.SnSApp
                     connectivityContainer.Visibility = Visibility.Collapsed;
                 }
 
-                mainContener.Visibility = Visibility.Visible;
+                if (mainContener != null)
+                {
+                    mainContener.Visibility = Visibility.Visible;
+                }
 
                 if (IsManagingProgressIndicatorItself == false)
                 {
