@@ -62,10 +62,10 @@ namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
             if (Configuration.Type == SnSBitmapDownloaderType.PersistentImageCache)
             {
                 cache = new PersistentImageCache(Configuration.Name)
-                    {
-                        ExpirationDelay = Configuration.ExpirationDelay,
-                        MemoryCacheCapacity = Configuration.MemoryCacheCapacity
-                    };
+                {
+                    ExpirationDelay = Configuration.ExpirationDelay,
+                    MemoryCacheCapacity = Configuration.MemoryCacheCapacity
+                };
             }
             else
             {
@@ -76,6 +76,11 @@ namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
         public ImageSource GetImage(string imageUri)
         {
             return cache.Get(imageUri);
+        }
+
+        public void LoadImage(string imageUri)
+        {
+            cache.Get(imageUri);
         }
 
     }

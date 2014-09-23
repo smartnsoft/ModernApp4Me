@@ -77,5 +77,10 @@ namespace ModernApp4Me.WP7.SnSDownload.BitmapDownloader
         {
             return cache.Get(imageUri);
         }
+
+        public void LoadImage(string imageUri)
+        {
+            cache.Get(imageUri);
+        }
     }
 }
