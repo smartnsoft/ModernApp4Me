@@ -2,9 +2,10 @@
 {
 
     /// <summary>
-    /// Enumeration.
+    /// Enumerates various log levels.
     /// </summary>
-    /// <author>Ludovic ROLAND</author>
+    /// 
+    /// <author>Ludovic Roland</author>
     /// <since>2014.03.21</since> 
     public enum M4MLogLevel
     {

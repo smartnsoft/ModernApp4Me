@@ -5,11 +5,12 @@ namespace ModernApp4Me.Core.ViewModel
 {
 
     /// <summary>
-    /// Base class to implement the MVVM pattern.
+    /// A class base that should be extend in order to implement the MVVM pattern.
     /// </summary>
-    /// <author>Ludovic ROLAND</author>
+    /// 
+    /// <author>Ludovic Roland</author>
     /// <since>2014.03.21</since>
-    public class M4MViewModelBase : INotifyPropertyChanged
+    public class M4MBaseViewModel : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -27,7 +28,7 @@ namespace ModernApp4Me.Core.ViewModel
             }
         }
 
-        public M4MViewModelBase() { }
+        public M4MBaseViewModel() { }
 
     }
 

@@ -4,9 +4,10 @@ namespace ModernApp4Me.Core.Log
 {
 
     /// <summary>
-    /// Wrapper to hold an instance of a SnSLogger.
+    /// A class which enables to wrap a <see cref="M4MLogger"/>, and to delegate all its interface methods to its underlying logger.
     /// </summary>
-    /// <author>Ludovic ROLAND</author>
+    /// 
+    /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
     public sealed class M4MLoggerWrapper
     {

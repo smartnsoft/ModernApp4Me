@@ -8,7 +8,8 @@ namespace ModernApp4Me.Core.Log
     /// <summary>
     /// Just in order to have various loggers.
     /// </summary>
-    /// <author>Ludovic ROLAND</author>
+    /// 
+    /// <author>Ludovic Roland</author>
     /// <since>2014.03.21</since>
     public abstract class M4MLogger
     {

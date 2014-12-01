@@ -1,15 +1,17 @@
 ﻿using System;
+using ModernApp4Me.Core.LifeCycle;
 using ModernApp4Me.Core.Log;
 
 namespace ModernApp4Me.Core.App
 {
 
     /// <summary>
-    /// A class base for a SnSExceptionHandler which pops-up error dialog boxes and toasts.
+    /// A class base that should be extend in order to implement an exception handler which pops-up error dialog boxes.
     /// </summary>
-    /// <author>Ludovic ROLAND</author>
+    /// 
+    /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
-    public abstract class SnSExceptionHandler
+    public abstract class M4MExceptionHandlers
     {
 
         public M4MLogger Logger { get; set; }

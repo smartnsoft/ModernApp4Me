@@ -1,15 +1,18 @@
 ﻿using System;
 
-namespace ModernApp4Me.Core.App
+namespace ModernApp4Me.Core.LifeCycle
 {
 
     /// <summary>
-    /// This exception should be triggered when the user do not have an internet connection.
+    /// This exception should be triggered on the framework methods which allow to throw it, when a business object is not accessible.
+    /// This exception should be triggered on the framework methods which allow to throw it, when the user do not have an internet connection.
     /// </summary>
-    /// <author>Ludovic ROLAND</author>
+    /// 
+    /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
     public sealed class M4MConnectivityException : Exception
     {
+
         /// <summary>
         /// The error code associated with the exception. Is equal to 0 by default.
         /// </summary>
@@ -47,5 +50,7 @@ namespace ModernApp4Me.Core.App
         {
             Code = code;
         }
+
     }
+
 }

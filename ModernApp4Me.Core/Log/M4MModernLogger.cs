@@ -5,9 +5,11 @@ namespace ModernApp4Me.Core.Log
 {
 
     /// <summary>
-    /// The default logger.
+    /// The default logger implementation.
+    /// <para>This implementation can only be used when the code integrating the library runs in debug mode.</para>
     /// </summary>
-    /// <author>Ludovic ROLAND</author>
+    /// 
+    /// <author>Ludovic Roland</author>
     /// <since>2014.03.21</since>
     public abstract class M4MModernLogger : M4MLogger
     {
