@@ -5,8 +5,7 @@ namespace ModernApp4Me.Core.Log
 {
 
     /// <summary>
-    /// The default logger implementation.
-    /// <para>This implementation can only be used when the code integrating the library runs in debug mode.</para>
+    /// The default base logger implementation.
     /// </summary>
     /// 
     /// <author>Ludovic Roland</author>
