@@ -9,7 +9,7 @@ namespace ModernApp4Me.Core.Log
     /// 
     /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
-    public sealed class M4MLoggerWrapper
+    public class M4MLoggerWrapper
     {
 
         private static volatile M4MLoggerWrapper instance;

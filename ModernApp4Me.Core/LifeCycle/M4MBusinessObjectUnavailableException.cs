@@ -9,7 +9,7 @@ namespace ModernApp4Me.Core.LifeCycle
     /// 
     /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
-    public sealed class M4MBusinessObjectUnavailableException : Exception
+    public class M4MBusinessObjectUnavailableException : Exception
     {
 
         /// <summary>

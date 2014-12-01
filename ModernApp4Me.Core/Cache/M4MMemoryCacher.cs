@@ -12,7 +12,7 @@ namespace ModernApp4Me.Core.Cache
     /// 
     /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
-    public sealed class M4MMemoryCacher
+    public class M4MMemoryCacher
     {
 
         /// <summary>
