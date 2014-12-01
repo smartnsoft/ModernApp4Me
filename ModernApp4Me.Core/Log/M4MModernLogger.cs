@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace ModernApp4Me.Core.SnSLog
+namespace ModernApp4Me.Core.Log
 {
 
     /// <summary>
@@ -9,16 +9,16 @@ namespace ModernApp4Me.Core.SnSLog
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.21</since>
-    public abstract class SnSModernLogger : SnSLogger
+    public abstract class M4MModernLogger : M4MLogger
     {
 
-        public SnSLogLevel LogLevel { get; set; }
+        public M4MLogLevel LogLevel { get; set; }
 
         public override void Debug(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
             if (IsDebugEnabled() == true)
             {
-                DisplayLog(SnSLogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber);
+                DisplayLog(M4MLogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber);
             }
         }
 
@@ -26,7 +26,7 @@ namespace ModernApp4Me.Core.SnSLog
         {
             if (IsInfoEnabled() == true)
             {
-                DisplayLog(SnSLogLevel.Info, message, callerMemberName, callerFilePath, callerLineNumber);
+                DisplayLog(M4MLogLevel.Info, message, callerMemberName, callerFilePath, callerLineNumber);
             }
         }
 
@@ -34,7 +34,7 @@ namespace ModernApp4Me.Core.SnSLog
         {
             if (IsWarnEnabled() == true)
             {
-                DisplayLog(SnSLogLevel.Warn, message, callerMemberName, callerFilePath, callerLineNumber);
+                DisplayLog(M4MLogLevel.Warn, message, callerMemberName, callerFilePath, callerLineNumber);
             }
         }
 
@@ -42,7 +42,7 @@ namespace ModernApp4Me.Core.SnSLog
         {
             if (IsWarnEnabled() == true)
             {
-                DisplayLog(SnSLogLevel.Warn, message, exception, callerMemberName, callerFilePath, callerLineNumber);
+                DisplayLog(M4MLogLevel.Warn, message, exception, callerMemberName, callerFilePath, callerLineNumber);
             }
         }
 
@@ -50,7 +50,7 @@ namespace ModernApp4Me.Core.SnSLog
         {
             if (IsErrorEnabled() == true)
             {
-                DisplayLog(SnSLogLevel.Error, message, callerMemberName, callerFilePath, callerLineNumber);
+                DisplayLog(M4MLogLevel.Error, message, callerMemberName, callerFilePath, callerLineNumber);
             }
         }
 
@@ -58,7 +58,7 @@ namespace ModernApp4Me.Core.SnSLog
         {
             if (IsErrorEnabled() == true)
             {
-                DisplayLog(SnSLogLevel.Error, message, exception, callerMemberName, callerFilePath, callerLineNumber);
+                DisplayLog(M4MLogLevel.Error, message, exception, callerMemberName, callerFilePath, callerLineNumber);
             }
         }
 
@@ -66,7 +66,7 @@ namespace ModernApp4Me.Core.SnSLog
         {
             if (IsErrorEnabled() == true)
             {
-                DisplayLog(SnSLogLevel.Error, message, callerMemberName, callerFilePath, callerLineNumber);
+                DisplayLog(M4MLogLevel.Error, message, callerMemberName, callerFilePath, callerLineNumber);
             }
         }
 
@@ -74,33 +74,33 @@ namespace ModernApp4Me.Core.SnSLog
         {
             if (IsErrorEnabled() == true)
             {
-                DisplayLog(SnSLogLevel.Error, message, exception, callerMemberName, callerFilePath, callerLineNumber);
+                DisplayLog(M4MLogLevel.Error, message, exception, callerMemberName, callerFilePath, callerLineNumber);
             }
         }
 
         public override bool IsDebugEnabled()
         {
-            return LogLevel <= SnSLogLevel.Debug;
+            return LogLevel <= M4MLogLevel.Debug;
         }
 
         public override bool IsInfoEnabled()
         {
-            return LogLevel <= SnSLogLevel.Info;
+            return LogLevel <= M4MLogLevel.Info;
         }
 
         public override bool IsWarnEnabled()
         {
-            return LogLevel <= SnSLogLevel.Warn;
+            return LogLevel <= M4MLogLevel.Warn;
         }
 
         public override bool IsErrorEnabled()
         {
-            return LogLevel <= SnSLogLevel.Error;
+            return LogLevel <= M4MLogLevel.Error;
         }
 
         public override bool IsFatalEnabled()
         {
-            return LogLevel <= SnSLogLevel.Error;
+            return LogLevel <= M4MLogLevel.Error;
         }
 
     }

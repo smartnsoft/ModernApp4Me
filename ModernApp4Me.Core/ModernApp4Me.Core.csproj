@@ -34,18 +34,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SnSApp\SnSConnectivityException.cs" />
-    <Compile Include="SnSApp\SnSI18N.cs" />
-    <Compile Include="SnSApp\SnSExceptionHandlers.cs" />
-    <Compile Include="SnSApp\SnSBusinessObjectUnavailableException.cs" />
-    <Compile Include="SnSCache\Memory\SnSMemoryCacher.cs" />
-    <Compile Include="SnSCache\Memory\SnSMemoryCacherObject.cs" />
-    <Compile Include="SnSLog\SnSLoggerWrapper.cs" />
-    <Compile Include="SnSLog\SnSLogger.cs" />
-    <Compile Include="SnSLog\SnSLogLevel.cs" />
-    <Compile Include="SnSLog\SnSModernLogger.cs" />
-    <Compile Include="SnSUtil\SnSDateUtil.cs" />
-    <Compile Include="SnSViewModel\SnSViewModelBase.cs" />
+    <Compile Include="App\M4MConnectivityException.cs" />
+    <Compile Include="App\M4Mi18N.cs" />
+    <Compile Include="App\M4MExceptionHandlers.cs" />
+    <Compile Include="App\M4MBusinessObjectUnavailableException.cs" />
+    <Compile Include="Cache\M4MMemoryCacher.cs" />
+    <Compile Include="Cache\M4MMemoryCacherObject.cs" />
+    <Compile Include="Log\M4MLoggerWrapper.cs" />
+    <Compile Include="Log\M4MLogger.cs" />
+    <Compile Include="Log\M4MLogLevel.cs" />
+    <Compile Include="Log\M4MModernLogger.cs" />
+    <Compile Include="Util\M4MDateUtil.cs" />
+    <Compile Include="ViewModel\M4MViewModelBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

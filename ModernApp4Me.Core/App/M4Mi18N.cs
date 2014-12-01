@@ -1,4 +1,4 @@
-﻿namespace ModernApp4Me.Core.SnSApp
+﻿namespace ModernApp4Me.Core.App
 {
 
     /// <summary>
@@ -6,7 +6,7 @@
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public sealed class SnSI18N
+    public sealed class M4Mi18N
     {
 
         public string DialogBoxErrorTitle { get; set; }

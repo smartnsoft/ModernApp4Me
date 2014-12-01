@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModernApp4Me.Core.SnSUtil
+namespace ModernApp4Me.Core.Util
 {
 
     /// <summary>
@@ -8,7 +8,7 @@ namespace ModernApp4Me.Core.SnSUtil
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public static class SnSDateUtil
+    public static class M4MDateUtil
     {
 
         /// <summary>

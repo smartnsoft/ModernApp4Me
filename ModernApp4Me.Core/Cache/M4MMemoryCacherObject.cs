@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModernApp4Me.Core.SnSCache.Memory
+namespace ModernApp4Me.Core.Cache
 {
 
     /// <summary>
@@ -8,7 +8,7 @@ namespace ModernApp4Me.Core.SnSCache.Memory
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public sealed class SnSMemoryCacherObject
+    public sealed class M4MMemoryCacherObject
     {
 
         public DateTime Date { get; set; }

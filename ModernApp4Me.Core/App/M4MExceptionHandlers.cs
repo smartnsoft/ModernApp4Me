@@ -1,7 +1,7 @@
 ﻿using System;
-using ModernApp4Me.Core.SnSLog;
+using ModernApp4Me.Core.Log;
 
-namespace ModernApp4Me.Core.SnSApp
+namespace ModernApp4Me.Core.App
 {
 
     /// <summary>
@@ -12,17 +12,17 @@ namespace ModernApp4Me.Core.SnSApp
     public abstract class SnSExceptionHandler
     {
 
-        public SnSLogger Logger { get; set; }
+        public M4MLogger Logger { get; set; }
 
-        public SnSI18N I18N { get; set; }
+        public M4Mi18N I18N { get; set; }
 
         public virtual void AnalyseException(Exception exception)
         {
-            if (exception is SnSBusinessObjectUnavailableException)
+            if (exception is M4MBusinessObjectUnavailableException)
             {
                 ShowMessageBox(I18N.InhandledProblemHint);
             }
-            else if (exception is SnSConnectivityException)
+            else if (exception is M4MConnectivityException)
             {
                 ShowMessageBox(I18N.ConnectivityProblemHint);
             }

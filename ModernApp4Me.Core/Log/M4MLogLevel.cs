@@ -1,4 +1,4 @@
-﻿namespace ModernApp4Me.Core.SnSLog
+﻿namespace ModernApp4Me.Core.Log
 {
 
     /// <summary>
@@ -6,7 +6,7 @@
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.21</since> 
-    public enum SnSLogLevel
+    public enum M4MLogLevel
     {
         Debug = 0, Info = 1, Warn = 2, Error = 3
     }

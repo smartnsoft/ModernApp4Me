@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModernApp4Me.Core.SnSLog
+namespace ModernApp4Me.Core.Log
 {
 
     /// <summary>
@@ -8,16 +8,16 @@ namespace ModernApp4Me.Core.SnSLog
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public sealed class SnSLoggerWrapper
+    public sealed class M4MLoggerWrapper
     {
 
-        private static volatile SnSLoggerWrapper instance;
+        private static volatile M4MLoggerWrapper instance;
 
         private static readonly object InstanceLock = new Object();
 
-        private SnSLoggerWrapper() { }
+        private M4MLoggerWrapper() { }
 
-        public static SnSLoggerWrapper Instance
+        public static M4MLoggerWrapper Instance
         {
             get
             {
@@ -27,7 +27,7 @@ namespace ModernApp4Me.Core.SnSLog
                     {
                         if (instance == null)
                         {
-                            instance = new SnSLoggerWrapper();
+                            instance = new M4MLoggerWrapper();
                         }
                     }
                 }
@@ -36,7 +36,7 @@ namespace ModernApp4Me.Core.SnSLog
             }
         }
 
-        public SnSLogger Logger { get; set; }
+        public M4MLogger Logger { get; set; }
 
     }
 

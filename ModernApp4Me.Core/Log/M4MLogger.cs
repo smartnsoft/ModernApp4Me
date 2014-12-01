@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace ModernApp4Me.Core.SnSLog
+namespace ModernApp4Me.Core.Log
 {
 
     /// <summary>
@@ -10,7 +10,7 @@ namespace ModernApp4Me.Core.SnSLog
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.21</since>
-    public abstract class SnSLogger
+    public abstract class M4MLogger
     {
 
         public abstract void Debug(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1);
@@ -39,25 +39,25 @@ namespace ModernApp4Me.Core.SnSLog
 
         public abstract bool IsFatalEnabled();
 
-        protected StringBuilder BuildHeader(SnSLogLevel logLevel, string callerMemberName, string callerFilePath, int callerLineNumber)
+        protected StringBuilder BuildHeader(M4MLogLevel logLevel, string callerMemberName, string callerFilePath, int callerLineNumber)
         {
             var header = new StringBuilder();
 
             switch (logLevel)
             {
-                case SnSLogLevel.Debug:
+                case M4MLogLevel.Debug:
                     header.Append("[DEBUG] ");
                     break;
 
-                case SnSLogLevel.Info:
+                case M4MLogLevel.Info:
                     header.Append("[INFO] ");
                     break;
 
-                case SnSLogLevel.Warn:
+                case M4MLogLevel.Warn:
                     header.Append("[WARN] ");
                     break;
 
-                case SnSLogLevel.Error:
+                case M4MLogLevel.Error:
                     header.Append("[ERROR] ");
                     break;
             }
@@ -79,10 +79,10 @@ namespace ModernApp4Me.Core.SnSLog
             return header;
         }
 
-        protected abstract void DisplayLog(SnSLogLevel logLevel, string message, string callerMemberName,
+        protected abstract void DisplayLog(M4MLogLevel logLevel, string message, string callerMemberName,
                                            string callerFilePath, int callerLineNumber);
 
-        protected abstract void DisplayLog(SnSLogLevel logLevel, string message, Exception exception,
+        protected abstract void DisplayLog(M4MLogLevel logLevel, string message, Exception exception,
                                            string callerMemberName, string callerFilePath, int callerLineNumber);
 
     }

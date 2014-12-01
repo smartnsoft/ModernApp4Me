@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using ModernApp4Me.Core.SnSLog;
+using ModernApp4Me.Core.Log;
 
-namespace ModernApp4Me.Core.SnSCache.Memory
+namespace ModernApp4Me.Core.Cache
 {
 
     /// <summary>
@@ -11,27 +11,27 @@ namespace ModernApp4Me.Core.SnSCache.Memory
     /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public sealed class SnSMemoryCacher
+    public sealed class M4MMemoryCacher
     {
 
-        private static volatile SnSMemoryCacher instance;
+        private static volatile M4MMemoryCacher instance;
 
         private static readonly object InstanceLock = new Object();
         
         private readonly Mutex mutex;
 
-        private readonly Dictionary<string, SnSMemoryCacherObject> memoryCacher;
+        private readonly Dictionary<string, M4MMemoryCacherObject> memoryCacher;
 
         /// <summary>
         /// Private constructor.
         /// </summary>
-        private SnSMemoryCacher()
+        private M4MMemoryCacher()
         {
-            memoryCacher = new Dictionary<string, SnSMemoryCacherObject>();
+            memoryCacher = new Dictionary<string, M4MMemoryCacherObject>();
             mutex = new Mutex(false, "memory cache access mutex");
         }
 
-        public static SnSMemoryCacher Instance
+        public static M4MMemoryCacher Instance
         {
             get
             {
@@ -41,7 +41,7 @@ namespace ModernApp4Me.Core.SnSCache.Memory
                     {
                         if (instance == null)
                         {
-                            instance = new SnSMemoryCacher();
+                            instance = new M4MMemoryCacher();
                         }
                     }
                 }
@@ -63,12 +63,12 @@ namespace ModernApp4Me.Core.SnSCache.Memory
             try
             {
                 mutex.WaitOne();
-                memoryCacher.Add(key, new SnSMemoryCacherObject {Date = DateTime.Now, Value = value});
+                memoryCacher.Add(key, new M4MMemoryCacherObject {Date = DateTime.Now, Value = value});
             }
             catch (Exception exception)
             {
                 isAdded = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot add the entry with key '" + key + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot add the entry with key '" + key + "'", exception);
             }
             finally
             {
@@ -83,9 +83,9 @@ namespace ModernApp4Me.Core.SnSCache.Memory
         /// </summary>
         /// <param name="key"></param>
         /// <returns>the value or null</returns>
-        public SnSMemoryCacherObject Get(string key)
+        public M4MMemoryCacherObject Get(string key)
         {
-            SnSMemoryCacherObject returnValue = null;
+            M4MMemoryCacherObject returnValue = null;
 
             try
             {
@@ -94,7 +94,7 @@ namespace ModernApp4Me.Core.SnSCache.Memory
             }
             catch (Exception exception)
             {
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot get the entry with key '" + key + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot get the entry with key '" + key + "'", exception);
             }
             finally
             {
@@ -121,7 +121,7 @@ namespace ModernApp4Me.Core.SnSCache.Memory
             catch (Exception exception)
             {
                 isRemoved = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot remove the entry with key '" + key + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot remove the entry with key '" + key + "'", exception);
             }
             finally
             {
@@ -144,12 +144,12 @@ namespace ModernApp4Me.Core.SnSCache.Memory
             try
             {
                 mutex.WaitOne();
-                memoryCacher[key] = new SnSMemoryCacherObject {Date = DateTime.Now, Value = value};
+                memoryCacher[key] = new M4MMemoryCacherObject {Date = DateTime.Now, Value = value};
             }
             catch (Exception exception)
             {
                 isUpdated = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot update the entry with key '" + key + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot update the entry with key '" + key + "'", exception);
             }
             finally
             {
