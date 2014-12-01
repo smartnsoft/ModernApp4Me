@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BADBB4B-47DC-44FA-B0FF-76728631124D}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModernApp4Me.WP8</RootNamespace>
+    <AssemblyName>ModernApp4Me.WP8</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="SnSApp\SnSPage.cs" />
+    <Compile Include="SnSConverter\SnSTimeSpanToSecondsConverter.cs" />
+    <Compile Include="SnSConverter\SnSUpperCaseConverter.cs" />
+    <Compile Include="SnSDownload\BitmapDownloader\ImageCache.cs" />
+    <Compile Include="SnSDownload\BitmapDownloader\OneShotDispatcherTimer.cs" />
+    <Compile Include="SnSDownload\BitmapDownloader\PersistentImageCache.cs" />
+    <Compile Include="SnSDownload\BitmapDownloader\SnSBitmapDownloader.cs" />
+    <Compile Include="SnSDownload\BitmapDownloader\SystemImageCache.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SnSApp\SnSDefaultExceptionHandlers.cs" />
+    <Compile Include="SnSCache\Database\SnSDatabase.cs" />
+    <Compile Include="SnSCache\File\SnSFile.cs" />
+    <Compile Include="SnSCache\Settings\SnSSettings.cs" />
+    <Compile Include="SnSMedia\SnSMediaHubManager.cs" />
+    <Compile Include="SnSMedia\SnSMediaManager.cs" />
+    <Compile Include="SnSMetaData\SnSAppInfo.cs" />
+    <Compile Include="SnSMetaData\SnSDeviceInfo.cs" />
+    <Compile Include="SnSResolution\Chooser\SnSResolutionImageChooser.cs" />
+    <Compile Include="SnSResolution\Converter\SnSResolutionBrushConverter.cs" />
+    <Compile Include="SnSResolution\Converter\SnSResolutionImageConverter.cs" />
+    <Compile Include="SnSResolution\Helper\SnSResolutionHelper.cs" />
+    <Compile Include="SnSResolution\SnSResolutionEnum.cs" />
+    <Compile Include="SnSTemplate\SnSTemplateSelector.cs" />
+    <Compile Include="SnSTile\SnSSecondaryTile.cs" />
+    <Compile Include="SnSUtil\SnSColorUtil.cs" />
+    <Compile Include="SnSUtil\SnSMemoryHelper.cs" />
+    <Compile Include="SnSWebService\SnSCallException.cs" />
+    <Compile Include="SnSWebService\SnSWebServiceCaller.cs" />
+    <Compile Include="SnSWebService\SnSWebServiceExtensions.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlock.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlockDesignerHelper.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlockExtensions.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelector.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelectorItem.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSListLoopingDataSource.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSLoopingDataSourceBase.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSPhysicsConstants.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSSafeRaise.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml.cs">
+      <DependentUpon>SnSMarqueeTextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSListWizardDataSource.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelector.cs" />
+    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelectorItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Capptain.Agent.Portable">
+      <HintPath>..\packages\Capptain.WindowsPhone.1.0.3\lib\windowsphone8\Capptain.Agent.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Capptain.Agent.WP">
+      <HintPath>..\packages\Capptain.WindowsPhone.1.0.3\lib\windowsphone8\Capptain.Agent.WP.dll</HintPath>
+    </Reference>
+    <Reference Include="Capptain.Reach.Portable">
+      <HintPath>..\packages\Capptain.WindowsPhone.1.0.3\lib\windowsphone8\Capptain.Reach.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Capptain.Reach.WP">
+      <HintPath>..\packages\Capptain.WindowsPhone.1.0.3\lib\windowsphone8\Capptain.Reach.WP.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZLib.Phone">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ICSharpCode.SharpZLib.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Controls">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Filtering">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Filtering.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Bmp">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.IO.Bmp.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Gif">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.IO.Gif.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Png">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.IO.Png.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Utils">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernApp4Me.Core, Version=1.0.4.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ModernApp4Me.Core.1.0.4.2\lib\portable-win+net45+wp80\ModernApp4Me.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PhoneCodeContractsAssemblies">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\PhoneCodeContractsAssemblies.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.WindowsPhone">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\sl4-wp71\RestSharp.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Xml.XPath.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\CapptainIconCancel.png" />
+    <Content Include="Resources\CapptainIconCloseDark.png" />
+    <Content Include="Resources\CapptainIconCloseLight.png" />
+    <Content Include="Resources\CapptainIconNotification.png" />
+    <Content Include="Resources\CapptainIconOk.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <ProjectExtensions />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

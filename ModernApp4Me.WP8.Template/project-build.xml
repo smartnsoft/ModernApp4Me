@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This Ant buildfile requires that you have included the following Ant library extensions:
+<ul>
+  <li><a href="http://ant-contrib.sourceforge.net/">Ant-Contrib</a></li>
+ </ul>
+ -->
+<project
+  name="parcasterix-wp"
+  default="project.clean"
+  basedir="."
+>
+
+  <description>The aim of this Ant buildfile is to propose services for handling the 'Parc Asterix' Windows Phone project.</description>
+
+  <loadproperties srcfile="parcasterix.properties"/>
+
+  <!-- The AntContrib library extends Ant. -->
+  <taskdef resource="net/sf/antcontrib/antlib.xml"/>
+
+  <target
+    name="project.init"
+    depends=""
+    description="Default target, which should always be called first be other targets."
+  >
+    <property
+      name="configuration"
+      value="Release"
+    />
+    <property
+      name="platform"
+      value="Any CPU"
+    />
+  </target>
+
+  <target
+    name="project.clean"
+    depends="project.init"
+  >
+    <echo level="info">Cleaning ...</echo>
+    <exec executable="msbuild" dir="." 
+      failonerror="true">
+	  <arg line="${solutionName}/${solutionName}.sln"/>
+      <arg line="/p:Configuration=${configuration}"/>
+      <arg line="/t:clean" />
+    </exec>
+  </target>
+
+  <target
+    name="project.build"
+    depends="project.init, project.clean"
+    description="Compiles the project."
+  >
+    <echo level="info">Compiling...</echo>
+    <exec executable="msbuild" dir="." 
+      failonerror="true">
+	  <arg line="${solutionName}/${solutionName}.sln"/>
+	  <arg line="/p:Configuration=${configuration}"/>
+	  <arg line="/p:Platfrom='${platform}'"/>
+    </exec>
+  </target>
+
+  <!--                                              -->
+  <!-- The section specific to the software factory -->
+  <!--                    TeamCity                  -->
+  <target
+    name="sf.init"
+    depends=""
+    description="Initializes the software factory properties."
+  >
+    <macrodef name="propertycopyIf">
+      <attribute name="name"/>
+      <attribute name="from"/>
+      <sequential>
+        <if>
+          <isset property="@{from}"/>
+          <then>
+            <propertycopy
+              name="@{name}"
+              from="@{from}"
+            />
+          </then>
+        </if>
+      </sequential>
+    </macrodef>
+    <propertycopyIf
+      name="key.alias.password"
+      from="${projectPrefix}.key.alias.password"
+    />
+    <propertycopyIf
+      name="key.store.password"
+      from="${projectPrefix}.key.store.password"
+    />
+    <propertycopyIf
+      name="ftp.hostName"
+      from="${projectPrefix}.ftp.hostName"
+    />
+    <propertycopyIf
+      name="ftp.directoryName"
+      from="${projectPrefix}.ftp.directoryName"
+    />
+    <propertycopyIf
+      name="ftp.login"
+      from="${projectPrefix}.ftp.login"
+    />
+    <propertycopyIf
+      name="ftp.password"
+      from="${projectPrefix}.ftp.password"
+    />
+  </target>
+</project>
