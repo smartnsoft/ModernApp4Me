@@ -2,9 +2,15 @@
 using Microsoft.Phone.Controls;
 using ModernApp4Me.Core.SnSApp;
 
-namespace ModernApp4Me.WP8.SnSApp
+namespace ModernApp4Me.WP8.App
 {
 
+    /// <summary>
+    /// A extension implementation for Windows Phone, which displays MessageBoxes.
+    /// </summary>
+    /// 
+    /// <author>Ludovic Roland</author>
+    /// <since>2014.03.24</since>
     public class SnSDefaultExceptionHandler : SnSExceptionHandler
     {
 
@@ -23,6 +29,19 @@ namespace ModernApp4Me.WP8.SnSApp
                 else
                 {
                     Application.Current.Terminate();
+                }
+            }
+        }
+
+        protected override void ShowConnectivityMessageBox(string message)
+        {
+            var result = MessageBox.Show(message, I18N.DialogBoxErrorTitle, MessageBoxButton.OK);
+
+            if (result == MessageBoxResult.OK)
+            {
+                if (RootFrame.CanGoBack == true)
+                {
+                    RootFrame.GoBack();
                 }
             }
         }

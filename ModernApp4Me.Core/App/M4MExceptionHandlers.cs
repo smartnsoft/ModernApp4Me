@@ -26,7 +26,7 @@ namespace ModernApp4Me.Core.App
             }
             else if (exception is M4MConnectivityException)
             {
-                ShowMessageBox(I18N.ConnectivityProblemHint);
+                ShowConnectivityMessageBox(I18N.ConnectivityProblemHint);
             }
             else
             {
@@ -35,6 +35,8 @@ namespace ModernApp4Me.Core.App
         }
 
         protected abstract void ShowMessageBox(string message);
+
+        protected abstract void ShowConnectivityMessageBox(string message);
 
     }
 

@@ -7,7 +7,7 @@ using Microsoft.Phone.Shell;
 using ModernApp4Me.Core.SnSApp;
 using ModernApp4Me.Core.SnSViewModel;
 
-namespace ModernApp4Me.WP8.SnSApp
+namespace ModernApp4Me.WP8.App
 {
 
     /// <author>Ludovic ROLAND</author>
