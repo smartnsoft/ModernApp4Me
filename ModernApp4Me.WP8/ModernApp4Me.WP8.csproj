@@ -98,8 +98,7 @@
     <Compile Include="Cache\M4MSettingsPersistence.cs" />
     <Compile Include="Media\M4MMediaHubManager.cs" />
     <Compile Include="Media\M4MMediaManager.cs" />
-    <Compile Include="SnSMetaData\SnSAppInfo.cs" />
-    <Compile Include="SnSMetaData\SnSDeviceInfo.cs" />
+    <Compile Include="Metadata\M4MDeviceInfo.cs" />
     <Compile Include="SnSResolution\Chooser\SnSResolutionImageChooser.cs" />
     <Compile Include="SnSResolution\Converter\SnSResolutionBrushConverter.cs" />
     <Compile Include="SnSResolution\Converter\SnSResolutionImageConverter.cs" />

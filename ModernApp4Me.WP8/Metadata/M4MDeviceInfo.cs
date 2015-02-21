@@ -1,15 +1,16 @@
 ﻿using System;
 using Microsoft.Phone.Info;
 
-namespace ModernApp4Me.WP8.SnSMetaData
+namespace ModernApp4Me.WP8.Metadata
 {
 
     /// <summary>
-    /// A class that provides information about the device (name, constructor, etc...).
+    /// Provides information about the device.
     /// </summary>
+    /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public static class SnSDeviceInfo
+    public static class M4MDeviceInfo
     {
 
         public static string FirmwareVersion
