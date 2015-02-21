@@ -1,33 +1,34 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Phone.Shell;
-using ModernApp4Me.Core.Log;
 
-namespace ModernApp4Me.WP8.SnSTile
+namespace ModernApp4Me.WP8.Tile
 {
 
     /// <summary>
-    /// Provides functions to manipulate secondary tiles.
+    /// Enables the manipulation of secondary tiles.
     /// </summary>
+    /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public static class SnSSecondaryTile
+    //TODO : manage correctly the exception
+    public static class M4MSecondaryTileManager
     {
 
         /// <summary>
-        /// Checks is a secondary tile exists.
+        /// Checks if a secondary tile at the specified URI already exists.
         /// </summary>
-        /// <param name="navigationUri"></param>
-        /// <returns></returns>
+        /// <param name="navigationUri">the URI of the tile</param>
+        /// <returns>true if secondary tile already exists, false otherwife.</returns>
         public static bool IsSecondaryTileExists(string navigationUri)
         {
             return ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains(navigationUri)) != null;
         }
 
         /// <summary>
-        /// Deletes a secondary tile.
+        /// Tries to delete the secondary tile at the specified URI.
         /// </summary>
-        /// <param name="navigationUri"></param>
+        /// <param name="navigationUri">the URI of the tile</param>
         /// <returns>true in case of success, false otherwise</returns>
         public static bool DeleteSecondaryTile(string navigationUri)
         {
@@ -41,33 +42,33 @@ namespace ModernApp4Me.WP8.SnSTile
                     return true;
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot remove the tile with the navigation URI '" + navigationUri + "'", exception);
+                //TODO : manage correctly the exception
             }
 
             return false;
         }
 
         /// <summary>
-        /// Creates a secondary tile.
+        /// Tries to create a secondary tile.
         /// </summary>
-        /// <param name="tileData"></param>
-        /// <param name="navigationUri"></param>
+        /// <param name="tileData">the tile data</param>
+        /// <param name="navigationUri">the URI of the tile</param>
         /// <returns>true in case of success, false otherwise</returns>
         public static bool CreateSecondaryTile(StandardTileData tileData, string navigationUri)
         {
             try
             {
-                if (!IsSecondaryTileExists(navigationUri))
+                if (IsSecondaryTileExists(navigationUri) == false)
                 {
                     ShellTile.Create(new Uri(navigationUri, UriKind.Relative), tileData);
                     return true;
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot create the tile with the navigation URI '" + navigationUri + "'", exception);
+                //TODO : manage correctly the exception
             }
 
             return false;
