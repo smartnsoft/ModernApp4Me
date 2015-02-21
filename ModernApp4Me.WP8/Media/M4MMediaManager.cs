@@ -3,18 +3,19 @@ using Microsoft.Devices.Radio;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
 
-namespace ModernApp4Me.WP8.SnSMedia
+namespace ModernApp4Me.WP8.Media
 {
 
     /// <summary>
-    /// Singleton class. to manage the currents user media that are playing music and pass the validation point number 6.5.1
+    /// Manages the medias source like the radio or the music player in order to be compliant with the validation point number 6.5.1
     /// </summary>
+    /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.04.02</since>
-    public sealed class SnSMediaManager
+    public sealed class M4MMediaManager
     {
 
-        private static volatile SnSMediaManager instance;
+        private static volatile M4MMediaManager instance;
 
         private static readonly object InstanceLock = new Object();
 
@@ -24,7 +25,7 @@ namespace ModernApp4Me.WP8.SnSMedia
 
         public bool HasAccepted { get; set; }
 
-        public static SnSMediaManager Instance
+        public static M4MMediaManager Instance
         {
             get
             {
@@ -34,7 +35,7 @@ namespace ModernApp4Me.WP8.SnSMedia
                     {
                         if (instance == null)
                         {
-                            instance = new SnSMediaManager();
+                            instance = new M4MMediaManager();
                         }
                     }
                 }
@@ -43,11 +44,14 @@ namespace ModernApp4Me.WP8.SnSMedia
             }
         }
 
-        private SnSMediaManager()
+        private M4MMediaManager()
         {
             ResetMediaManager();
         }
 
+        /// <summary>
+        /// Resets the <see cref="M4MMediaManager"/> parameters.
+        /// </summary>
         public void ResetMediaManager()
         {
             IsRadioPlaying = false;
@@ -55,6 +59,9 @@ namespace ModernApp4Me.WP8.SnSMedia
             HasAccepted = false;
         }
 
+        /// <summary>
+        /// Scans the <see cref="MediaPlayer"/> and the <see cref="FMRadio"/> in order to update the <see cref="M4MMediaManager"/> parameters.
+        /// </summary>
         public void ScanForUserMedias()
         {
             FrameworkDispatcher.Update();
@@ -80,6 +87,9 @@ namespace ModernApp4Me.WP8.SnSMedia
             }
         }
 
+        /// <summary>
+        /// Resumes the <see cref="FMRadio"/> or the <see cref="MediaPlayer"/>.
+        /// </summary>
         public void ResumeUserMedia()
         {
             if (IsMediaPlayerPlaying == true)
