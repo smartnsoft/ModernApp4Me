@@ -293,12 +293,12 @@ namespace ModernApp4Me.WP8.Template
 
         protected void SetupBitmapDownloader()
         {
-            BitmapDownloader.Configuration = new BitmapDownloader.BitmapDownloaderConfiguration()
+            M4MBitmapDownloader.Configuration = new M4MBitmapDownloader.BitmapDownloaderConfiguration()
             {
                 ExpirationDelay = TimeSpan.FromDays(1),
                 MemoryCacheCapacity = 10,
                 Name = "BitmapDownloader",
-                Type = BitmapDownloader.BitmapDownloaderType.PersistentImageCache
+                Type = M4MBitmapDownloader.BitmapDownloaderType.PersistentImageCache
             };
         }
 

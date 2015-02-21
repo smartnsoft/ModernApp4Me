@@ -11,7 +11,7 @@ namespace ModernApp4Me.WP8.Download
     /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public sealed class BitmapDownloader
+    public sealed class M4MBitmapDownloader
     {
 
         public enum BitmapDownloaderType
@@ -32,7 +32,7 @@ namespace ModernApp4Me.WP8.Download
 
         }
 
-        private static volatile BitmapDownloader instance;
+        private static volatile M4MBitmapDownloader instance;
 
         private static readonly object InstanceLock = new Object();
 
@@ -40,7 +40,7 @@ namespace ModernApp4Me.WP8.Download
 
         public static BitmapDownloaderConfiguration Configuration { get; set; }
 
-        public static BitmapDownloader Instance
+        public static M4MBitmapDownloader Instance
         {
             get
             {
@@ -50,7 +50,7 @@ namespace ModernApp4Me.WP8.Download
                     {
                         if (instance == null)
                         {
-                            instance = new BitmapDownloader();
+                            instance = new M4MBitmapDownloader();
                         }
                     }
                 }
@@ -59,7 +59,7 @@ namespace ModernApp4Me.WP8.Download
             }
         }
 
-        private BitmapDownloader()
+        private M4MBitmapDownloader()
         {
             if (Configuration.Type == BitmapDownloaderType.PersistentImageCache)
             {
