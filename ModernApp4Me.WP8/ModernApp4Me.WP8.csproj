@@ -105,8 +105,8 @@
     <Compile Include="Metadata\M4MDeviceResolution.cs" />
     <Compile Include="Framework\M4MTemplateSelector.cs" />
     <Compile Include="Tile\M4MSecondaryTileManager.cs" />
-    <Compile Include="SnSUtil\SnSColorUtil.cs" />
-    <Compile Include="SnSUtil\SnSMemoryHelper.cs" />
+    <Compile Include="Util\M4MColorToolbox.cs" />
+    <Compile Include="Util\SnSMemoryHelper.cs" />
     <Compile Include="SnSWebService\SnSCallException.cs" />
     <Compile Include="SnSWebService\SnSWebServiceCaller.cs" />
     <Compile Include="SnSWebService\SnSWebServiceExtensions.cs" />
