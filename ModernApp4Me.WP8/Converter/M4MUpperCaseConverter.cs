@@ -4,17 +4,18 @@ using System.Windows.Data;
 namespace ModernApp4Me.WP8.Converter
 {
 
+    /// <summary>
+    /// Enables to convert a <see cref="string"/> to uppercase.
+    /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.04.24</since>
-    /// <summary>Converter to use in a Control to display the content in uppercase (because of charactercasing does not always exist).</summary>
     public sealed class M4MUpperCaseConverter : IValueConverter
     {
 
         public object Convert(object value, System.Type targetType, object parameter, CultureInfo culture)
         {
-            var stringToUpperCase = (string) value;
-
-            return stringToUpperCase.ToUpperInvariant();
+            var content = (string) value;
+            return content.ToUpperInvariant();
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, CultureInfo culture)
