@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using ModernApp4Me.WP8.Image;
+using ModernApp4Me.WP8.Util;
 
 namespace ModernApp4Me.WP8.Converter
 {

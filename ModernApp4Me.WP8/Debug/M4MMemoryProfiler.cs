@@ -2,25 +2,22 @@
 using System.Threading;
 using Microsoft.Phone.Info;
 
-namespace ModernApp4Me.WP8.SnSUtil
+namespace ModernApp4Me.WP8.Debug
 {
 
+    /// <summary>
+    /// Enables to profile the usage of the memory.
+    /// </summary>
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.09.08</since>
-    public abstract class SnSMemoryHelper
+    // Inpired by http://developer.nokia.com/community/wiki/Techniques_for_memory_analysis_of_Windows_Phone_apps
+    public abstract class M4MMemoryProfiler
     {
-
-        private static Timer timer = null;
-
-        public static void BeginRecording()
+        
+        public void BeginRecording()
         {
-            // before we start recording we can clean up the previous session.
-            // e.g. Get a logging file from IsoStore and upload to the server 
-
-            // start a timer to report memory conditions every 2 seconds
-            timer = new Timer(state =>
+            new Timer(state =>
             {
-                // every 2 seconds do something 
                 var report =
                     DateTime.Now.ToLongTimeString() + " memory conditions: " +
                     Environment.NewLine +
@@ -33,12 +30,13 @@ namespace ModernApp4Me.WP8.SnSUtil
                     "\tApplicationMemoryUsageLimit: " +
                         DeviceStatus.ApplicationMemoryUsageLimit +
                         Environment.NewLine +
-                    "\tDeviceTotalMemory: " + DeviceStatus.DeviceTotalMemory + Environment.NewLine +
+                    "\tDeviceTotalMemory: " + 
+                        DeviceStatus.DeviceTotalMemory + 
+                        Environment.NewLine +
                     "\tApplicationWorkingSetLimit: " +
                         DeviceExtendedProperties.GetValue("ApplicationWorkingSetLimit") +
                         Environment.NewLine;
 
-                // write to IsoStore or debug conolse
                 WriteReport(report);
             },
                 null,
@@ -46,10 +44,11 @@ namespace ModernApp4Me.WP8.SnSUtil
                 TimeSpan.FromSeconds(2));
         }
 
-        protected static void WriteReport(string report)
-        {
-            //This method should be hidden using the 'new' keyword
-        }
+        /// <summary>
+        /// Enables to write the memory state where you want like the isostore or the debug console.
+        /// </summary>
+        /// <param name="report">the memory state</param>
+        protected abstract void WriteReport(string report);
 
     }
 

@@ -3,7 +3,7 @@ using System.Text;
 using ModernApp4Me.WP8.Resolution;
 using ModernApp4Me.WP8.Resolution.Helper;
 
-namespace ModernApp4Me.WP8.Image
+namespace ModernApp4Me.WP8.Util
 {
 
     /// <summary>

@@ -99,14 +99,14 @@
     <Compile Include="Media\M4MMediaHubManager.cs" />
     <Compile Include="Media\M4MMediaManager.cs" />
     <Compile Include="Metadata\M4MDeviceInfo.cs" />
-    <Compile Include="Image\M4MResolutionImageChooser.cs" />
+    <Compile Include="Util\M4MResolutionImageChooser.cs" />
     <Compile Include="Converter\M4MResolutionImageBrushConverter.cs" />
     <Compile Include="Converter\M4MResolutionBitmapImageConverter.cs" />
     <Compile Include="Metadata\M4MDeviceResolution.cs" />
     <Compile Include="Framework\M4MTemplateSelector.cs" />
     <Compile Include="Tile\M4MSecondaryTileManager.cs" />
     <Compile Include="Util\M4MColorToolbox.cs" />
-    <Compile Include="Util\SnSMemoryHelper.cs" />
+    <Compile Include="Debug\M4MMemoryProfiler.cs" />
     <Compile Include="SnSWebService\SnSCallException.cs" />
     <Compile Include="SnSWebService\SnSWebServiceCaller.cs" />
     <Compile Include="SnSWebService\SnSWebServiceExtensions.cs" />

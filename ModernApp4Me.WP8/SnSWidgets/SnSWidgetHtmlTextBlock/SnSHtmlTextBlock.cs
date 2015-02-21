@@ -508,7 +508,7 @@ namespace ModernApp4Me.WP8.SnSWidgets.SnSWidgetHtmlTextBlock
                     break;
                 default:
 // ReSharper disable RedundantStringFormatCall
-                    Debug.WriteLine(String.Format("Element {0} not implemented", node.Name));
+                    //Debug.WriteLine(String.Format("Element {0} not implemented", node.Name));
 // ReSharper restore RedundantStringFormatCall
                     break;
             }
