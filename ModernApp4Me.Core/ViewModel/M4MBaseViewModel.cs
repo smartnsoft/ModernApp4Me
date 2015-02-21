@@ -5,7 +5,7 @@ namespace ModernApp4Me.Core.ViewModel
 {
 
     /// <summary>
-    /// A class base that should be extend in order to implement the MVVM pattern.
+    /// A class base that should be extended in order to implement the MVVM pattern.
     /// </summary>
     /// 
     /// <author>Ludovic Roland</author>

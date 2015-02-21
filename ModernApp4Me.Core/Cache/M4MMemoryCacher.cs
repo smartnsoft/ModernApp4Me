@@ -7,7 +7,8 @@ namespace ModernApp4Me.Core.Cache
 {
 
     /// <summary>
-    /// A class which enables to cache data in RAM only. This class implements the singleton pattern.
+    /// A class which enables to cache data in RAM only.
+    /// This class implements the singleton pattern and is thread safe !
     /// </summary>
     /// 
     /// <author>Ludovic Roland</author>

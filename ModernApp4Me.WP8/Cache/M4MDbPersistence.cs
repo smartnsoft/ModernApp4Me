@@ -1,14 +1,15 @@
 ﻿using System.ComponentModel;
 
-namespace ModernApp4Me.WP8.SnSCache.Database
+namespace ModernApp4Me.WP8.Cache.Database
 {
 
     /// <summary>
-    /// Class base to implement a persistant model class.
+    /// A class base that should be extended in order to implement a persistant model which can be store into a SQL Server Compact Edition database.
     /// </summary>
+    /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public abstract class SnSDatabase : INotifyPropertyChanged, INotifyPropertyChanging
+    public abstract class M4MDbPersistence : INotifyPropertyChanged, INotifyPropertyChanging
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

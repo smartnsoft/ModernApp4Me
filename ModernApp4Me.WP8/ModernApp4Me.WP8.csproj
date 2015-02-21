@@ -94,8 +94,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App\M4MDefaultExceptionHandlers.cs" />
     <Compile Include="Cache\M4MDbPersistence.cs" />
-    <Compile Include="Cache\SnSFile.cs" />
-    <Compile Include="Cache\SnSSettings.cs" />
+    <Compile Include="Cache\M4MFilePersistence.cs" />
+    <Compile Include="Cache\M4MSettingsPersistence.cs" />
     <Compile Include="SnSMedia\SnSMediaHubManager.cs" />
     <Compile Include="SnSMedia\SnSMediaManager.cs" />
     <Compile Include="SnSMetaData\SnSAppInfo.cs" />

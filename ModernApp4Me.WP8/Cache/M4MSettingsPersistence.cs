@@ -7,10 +7,10 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
 {
 
     /// <summary>
-    /// Provides functions to manipulate the IsolatedStorageSettings.
-    /// Implement the singleton pattern.
-    /// Thread Safety because of the mutex.
+    /// Enables to store some contents into on the <see cref="IsolatedStorageSettings.ApplicationSettings"/>.
+    /// The classe implements the singleton pattern and is thread safe !
     /// </summary>
+    /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
     public sealed class SnSSettings
@@ -22,9 +22,6 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
 
         private readonly Mutex mutex;
 
-        /// <summary>
-        /// Private constructor.
-        /// </summary>
         private SnSSettings()
         {
             mutex = new Mutex(false, "settings access mutex");
@@ -49,12 +46,6 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
             }
         }
 
-        /// <summary>
-        /// Saves a value into IsolatedStorageSettings.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns>true in case of success, false otherwise</returns>
         public bool AddSetting(string key, object value)
         {
             var isAdded = true;
@@ -80,12 +71,6 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
             return isAdded;
         }
 
-        /// <summary>
-        /// Updates a value into IsolatedStorageSettings.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns>true in case of success, false otherwise</returns>
         public bool UpdateSetting(string key, object value)
         {
             var isUpdated = true;
@@ -111,11 +96,6 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
             return isUpdated;
         }
 
-        /// <summary>
-        /// Returns the IsolatedStorageSettings' value according to the key.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
         public object GetSetting(string key)
         {
             object value = null;
@@ -137,11 +117,6 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
             return value;
         }
 
-        /// <summary>
-        /// Deletes the IsolatedStorageSettings' value according to the key.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns>true in case of success, false otherwise</returns>
         public bool RemoveSetting(string key)
         {
             var isRemoved = true;

@@ -13,12 +13,13 @@ namespace ModernApp4Me.WP8.SnSCache.File
 {
 
     /// <summary>
-    /// Provides functions to manipulate files, images, etc. from the isolated storage.
-    /// Implementing the singleton pattern.
-    /// Thread Safety because of the mutex.
+    /// Enables to store some contents into the <see cref="IsolatedStorageFile"/>.
+    /// The classe implements the singleton pattern and is thread safe !
     /// </summary>
+    ///
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
+    // TODO : reworks totally this class.
     public sealed class SnSFile
     {
         private static volatile SnSFile instance;
@@ -27,10 +28,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
 
         private readonly Mutex mutex;
 
-
-        /// <summary>
-        /// Private constructor.
-        /// </summary>
         private SnSFile()
         {
             mutex = new Mutex(false, "isolated storage file mutex");
@@ -55,11 +52,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             }
         }
         
-        /// <summary>
-        /// Reads the param file's content.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns>the file's content or null if an error occurred</returns>
         public string ReadFile(string fileName)
         {
             string fileContent = null;
@@ -98,13 +90,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             return fileContent;
         }
 
-        /// <summary>
-        /// Function that writes into a file.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="fileContent"></param>
-        /// <param name="fileMode"></param>
-        /// <returns>true in case of success</returns>
         public bool WriteFile(string fileName, string fileContent, FileMode fileMode)
         {
             var isWritten = true;
@@ -143,11 +128,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             return isWritten;
         }
 
-        /// <summary>
-        /// Deletes a file from the isolated storage.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns>true in case of success</returns>
         public bool DeleteFile(string fileName)
         {
             var isDeleted = true;
@@ -177,10 +157,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             return isDeleted;
         }
 
-        /// <summary>
-        /// Clears all the isolatedStorage.
-        /// </summary>
-        /// <returns>true in case of success</returns>
         public bool ClearIsolatedStorage()
         {
             var isCleaned = true;
@@ -207,11 +183,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             return isCleaned;
         }
 
-        /// <summary>
-        /// Checks if a file exists.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
         public bool IsFileExists(string fileName)
         {
             var isFileExists = true;
@@ -238,13 +209,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             return isFileExists;
         }
 
-        /// <summary>
-        /// Saves a PNG Image into the isolated storage.
-        /// </summary>
-        /// <param name="imageName"></param>
-        /// <param name="image"></param>
-        /// <param name="fileMode"></param>
-        /// <returns></returns>
         public bool WriteImageAsPng(string imageName, BitmapImage image, FileMode fileMode)
         {
             var isSucceed = true;
@@ -288,13 +252,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             return isSucceed;
         }
 
-        /// <summary>
-        /// Saves a PNG Image into the isolated storage.
-        /// </summary>
-        /// <param name="imageName"></param>
-        /// <param name="image"></param>
-        /// <param name="fileMode"></param>
-        /// <returns></returns>
         public bool WriteImageAsPng(string imageName, ExtendedImage image, FileMode fileMode)
         {
             var isSucceed = true;
@@ -340,11 +297,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             return isSucceed;
         }
 
-        /// <summary>
-        /// Creates a directory.
-        /// </summary>
-        /// <param name="directoryName"></param>
-        /// <returns>true in case of success</returns>
         public bool CreateDirectory(string directoryName)
         {
             var isSucceed = true;
@@ -374,11 +326,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             return isSucceed;
         }
 
-        /// <summary>
-        /// Creates a directory from the complete file path.
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// <returns>true in case of success</returns>
         public bool CreateDirectoryFromFilePath(string filePath)
         {
             var isSucceed = true;
@@ -415,11 +362,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             return isSucceed;
         }
 
-        /// <summary>
-        /// Returns a memory stream from the isolated storage.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
         public MemoryStream ReadBinary(string fileName)
         {
             MemoryStream stream;
