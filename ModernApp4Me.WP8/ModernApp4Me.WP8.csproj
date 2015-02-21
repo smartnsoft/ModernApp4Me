@@ -99,11 +99,10 @@
     <Compile Include="Media\M4MMediaHubManager.cs" />
     <Compile Include="Media\M4MMediaManager.cs" />
     <Compile Include="Metadata\M4MDeviceInfo.cs" />
-    <Compile Include="SnSResolution\Chooser\SnSResolutionImageChooser.cs" />
-    <Compile Include="SnSResolution\Converter\SnSResolutionBrushConverter.cs" />
-    <Compile Include="SnSResolution\Converter\SnSResolutionImageConverter.cs" />
-    <Compile Include="SnSResolution\Helper\SnSResolutionHelper.cs" />
-    <Compile Include="SnSResolution\SnSResolutionEnum.cs" />
+    <Compile Include="Image\M4MResolutionImageChooser.cs" />
+    <Compile Include="Converter\M4MResolutionImageBrushConverter.cs" />
+    <Compile Include="Converter\M4MResolutionBitmapImageConverter.cs" />
+    <Compile Include="Metadata\M4MDeviceResolution.cs" />
     <Compile Include="SnSTemplate\SnSTemplateSelector.cs" />
     <Compile Include="SnSTile\SnSSecondaryTile.cs" />
     <Compile Include="SnSUtil\SnSColorUtil.cs" />
@@ -143,13 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml">
