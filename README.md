@@ -1,4 +1,4 @@
 ModernApp4me
 =====
 
-Windows Phone 7.5, 8 and WinRT library.
+ModernApp4Me is a framework library dedicated to the development of Windows Phone and Windows Store applications.
