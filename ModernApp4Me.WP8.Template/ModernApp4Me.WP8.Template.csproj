@@ -122,7 +122,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
@@ -149,13 +148,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="project-build.xml" />
-    <Content Include="README_FIRST.txt" />
     <Content Include="READ_ME.txt" />
-    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -171,48 +164,14 @@
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZLib.Phone">
-      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ICSharpCode.SharpZLib.Phone.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools">
-      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools.Controls">
-      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools.Filtering">
-      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Filtering.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools.IO.Bmp">
-      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.IO.Bmp.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools.IO.Gif">
-      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.IO.Gif.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools.IO.Png">
-      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.IO.Png.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools.Utils">
-      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Utils.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="ModernApp4Me.Core">
-      <HintPath>..\packages\ModernApp4Me.Core.1.0.2.0\lib\portable-win+net45+wp80\ModernApp4Me.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="ModernApp4Me.WP8">
-      <HintPath>..\packages\ModernApp4Me.WP8.1.0.2.0\lib\wp80\ModernApp4Me.WP8.dll</HintPath>
-    </Reference>
-    <Reference Include="PhoneCodeContractsAssemblies">
-      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\PhoneCodeContractsAssemblies.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp.WindowsPhone">
-      <HintPath>..\packages\RestSharp.104.4.0\lib\sl4-wp71\RestSharp.WindowsPhone.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\ModernApp4Me.Core\ModernApp4Me.Core.csproj">
+      <Project>{0BBEE225-982F-444F-851F-057E61D6168C}</Project>
+      <Name>ModernApp4Me.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModernApp4Me.WP8\ModernApp4Me.WP8.csproj">
+      <Project>{1BADBB4B-47DC-44FA-B0FF-76728631124D}</Project>
+      <Name>ModernApp4Me.WP8</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

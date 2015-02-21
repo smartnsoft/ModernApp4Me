@@ -1,4 +1,4 @@
-﻿using ModernApp4Me.Core.SnSLog;
+﻿using ModernApp4Me.Core.Log;
 
 namespace ModernApp4Me.WP8.Template
 {
@@ -17,7 +17,7 @@ namespace ModernApp4Me.WP8.Template
         /// <summary>
         /// The logging level of the application.
         /// </summary>
-        public static readonly SnSLogLevel LOG_LEVEL = Constants.DEVELOPMENT_MODE == true ? SnSLogLevel.Debug : SnSLogLevel.Warn;
+        public static readonly M4MLogLevel LOG_LEVEL = Constants.DEVELOPMENT_MODE == true ? M4MLogLevel.Debug : M4MLogLevel.Warn;
 
         /// <summary>
         /// Indicates whether the analytics are enabled.

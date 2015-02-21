@@ -6,9 +6,9 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Net.NetworkInformation;
 using Microsoft.Phone.Shell;
-using ModernApp4Me.Core.SnSApp;
-using ModernApp4Me.Core.SnSLog;
-using ModernApp4Me.WP8.SnSApp;
+using ModernApp4Me.Core.App;
+using ModernApp4Me.Core.Log;
+using ModernApp4Me.WP8.App;
 using ModernApp4Me.WP8.SnSDownload.BitmapDownloader;
 using ModernApp4Me.WP8.Template.Resources;
 
@@ -24,7 +24,7 @@ namespace ModernApp4Me.WP8.Template
         /// <returns>Frame racine de l'application téléphonique.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
-        public SnSExceptionHandler ExceptionHandler { get; private set; }
+        public M4MExceptionHandlers ExceptionHandler { get; private set; }
 
         public bool IsConnected { get; private set; }
 
@@ -261,16 +261,17 @@ namespace ModernApp4Me.WP8.Template
             //TODO : init the analytics here.
         }
 
-        protected SnSExceptionHandler SetupExceptionHandlers()
+        protected M4MExceptionHandlers SetupExceptionHandlers()
         {
             //TODO : init bugtracker like bugsense here.
 
             return new SnSDefaultExceptionHandler()
             {
                 RootFrame = RootFrame,
-                Logger = new SnSModernLogger() { LogLevel = Constants.LOG_LEVEL },
+                //TODO
+                //Logger = new M4MModernLogger() { LogLevel = Constants.LOG_LEVEL },
                 I18N =
-                    new SnSI18N()
+                    new M4Mi18N()
                     {
                         DialogBoxErrorTitle = AppResources.Problem,
                         InhandledProblemHint = AppResources.UnhandledProblem,
@@ -281,7 +282,8 @@ namespace ModernApp4Me.WP8.Template
 
         protected void SetupLogger()
         {
-            SnSLoggerWrapper.Instance.Logger = new SnSModernLogger() { LogLevel = Constants.LOG_LEVEL };
+            //TODO
+            //M4MLoggerWrapper.Instance.Logger = new M4MLoggerWrapper() { LogLevel = Constants.LOG_LEVEL };
         }
 
         protected void UnhandledExceptionCustom(Exception exception)
