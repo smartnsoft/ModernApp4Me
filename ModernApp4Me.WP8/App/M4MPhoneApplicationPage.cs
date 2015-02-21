@@ -8,7 +8,7 @@ using ModernApp4Me.Core.ViewModel;
 using Microsoft.Phone.Controls;
 using ModernApp4Me.Core.LifeCycle;
 
-namespace ModernApp4Me.WP8.SApp
+namespace ModernApp4Me.WP8.App
 {
 
     /// <summary>
