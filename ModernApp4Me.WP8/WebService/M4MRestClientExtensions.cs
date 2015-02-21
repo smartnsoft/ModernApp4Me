@@ -1,15 +1,16 @@
 ﻿using System.Threading.Tasks;
 using RestSharp;
 
-namespace ModernApp4Me.WP8.SnSWebService
+namespace ModernApp4Me.WP8.WebService
 {
 
     /// <summary>
-    /// Extension fot the RestClient class to avoid callback.
+    /// Extension for the RestClient class to avoid callback.
     /// </summary>
+    /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.21</since>
-    public static class SnSWebServiceExtensions
+    public static class M4MRestClientExtensions
     {
 
         public static Task<IRestResponse> ExecuteTaskAsync(this RestClient client, RestRequest request)

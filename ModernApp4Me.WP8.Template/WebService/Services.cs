@@ -1,5 +1,5 @@
 ﻿using System;
-using ModernApp4Me.WP8.SnSWebService;
+using ModernApp4Me.WP8.WebService;
 
 namespace ModernApp4Me.WP8.Template.WebService
 {
@@ -7,7 +7,7 @@ namespace ModernApp4Me.WP8.Template.WebService
     /// <summary>
     /// A single point of access to the web services.
     /// </summary>
-    public sealed class Services : SnSWebServiceCaller
+    public sealed class Services : M4MWebServiceCaller
     {
 
         private static volatile Services instance;
