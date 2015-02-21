@@ -1,26 +1,28 @@
-﻿using System;
+﻿using ModernApp4Me.WP8.Download;
+using System;
 using System.Windows.Media;
 
-namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
+namespace ModernApp4Me.WP8.Download
 {
 
     /// <summary>
-    /// Image downloading and caching singleton class.
+    /// Responsible for downloading the bitmaps in dedicated threads.
     /// </summary>
+    /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public sealed class SnSBitmapDownloader
+    public sealed class BitmapDownloader
     {
 
-        public enum SnSBitmapDownloaderType
+        public enum BitmapDownloaderType
         {
             SystemImageCache, PersistentImageCache
         }
 
-        public sealed class SnSBitmapDownloaderConfiguration
+        public sealed class BitmapDownloaderConfiguration
         {
 
-            public SnSBitmapDownloaderType Type { get; set; }
+            public BitmapDownloaderType Type { get; set; }
 
             public string Name { get; set; }
 
@@ -30,15 +32,15 @@ namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
 
         }
 
-        private static volatile SnSBitmapDownloader instance;
+        private static volatile BitmapDownloader instance;
 
         private static readonly object InstanceLock = new Object();
 
         private readonly ImageCache cache;
 
-        public static SnSBitmapDownloaderConfiguration Configuration { get; set; }
+        public static BitmapDownloaderConfiguration Configuration { get; set; }
 
-        public static SnSBitmapDownloader Instance
+        public static BitmapDownloader Instance
         {
             get
             {
@@ -48,7 +50,7 @@ namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
                     {
                         if (instance == null)
                         {
-                            instance = new SnSBitmapDownloader();
+                            instance = new BitmapDownloader();
                         }
                     }
                 }
@@ -57,9 +59,9 @@ namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
             }
         }
 
-        private SnSBitmapDownloader()
+        private BitmapDownloader()
         {
-            if (Configuration.Type == SnSBitmapDownloaderType.PersistentImageCache)
+            if (Configuration.Type == BitmapDownloaderType.PersistentImageCache)
             {
                 cache = new PersistentImageCache(Configuration.Name)
                 {
@@ -73,11 +75,20 @@ namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
             }
         }
 
+        /// <summary>
+        /// Downloads and returns the <see cref="ImageSource"/>.
+        /// </summary>
+        /// <param name="imageUri">The URI of the image</param>
+        /// <returns>The <see cref="ImageSource"/> that has been downloaded</returns>
         public ImageSource GetImage(string imageUri)
         {
             return cache.Get(imageUri);
         }
 
+        /// <summary>
+        /// Downloads the image to the cache.
+        /// </summary>
+        /// <param name="imageUri">The URI of the image</param>
         public void LoadImage(string imageUri)
         {
             cache.Get(imageUri);

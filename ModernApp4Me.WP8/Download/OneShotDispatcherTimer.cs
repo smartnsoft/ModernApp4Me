@@ -15,7 +15,7 @@
 using System;
 using System.Windows.Threading;
 
-namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
+namespace ModernApp4Me.WP8.Download
 {
     /// <summary>
     /// Provides a one-shot timer integrated to the Dispatcher queue.

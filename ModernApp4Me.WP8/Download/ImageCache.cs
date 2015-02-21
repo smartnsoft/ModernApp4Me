@@ -16,7 +16,7 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 
-namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
+namespace ModernApp4Me.WP8.Download
 {
     /// <summary>
     /// Defines the base clase for image cache implementations.

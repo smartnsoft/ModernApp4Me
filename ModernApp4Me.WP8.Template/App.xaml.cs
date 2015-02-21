@@ -9,7 +9,7 @@ using Microsoft.Phone.Shell;
 using ModernApp4Me.Core.App;
 using ModernApp4Me.Core.Log;
 using ModernApp4Me.WP8.App;
-using ModernApp4Me.WP8.SnSDownload.BitmapDownloader;
+using ModernApp4Me.WP8.Download;
 using ModernApp4Me.WP8.Template.Resources;
 
 namespace ModernApp4Me.WP8.Template
@@ -293,12 +293,12 @@ namespace ModernApp4Me.WP8.Template
 
         protected void SetupBitmapDownloader()
         {
-            SnSBitmapDownloader.Configuration = new SnSBitmapDownloader.SnSBitmapDownloaderConfiguration()
+            BitmapDownloader.Configuration = new BitmapDownloader.BitmapDownloaderConfiguration()
             {
                 ExpirationDelay = TimeSpan.FromDays(1),
                 MemoryCacheCapacity = 10,
                 Name = "BitmapDownloader",
-                Type = SnSBitmapDownloader.SnSBitmapDownloaderType.PersistentImageCache
+                Type = BitmapDownloader.BitmapDownloaderType.PersistentImageCache
             };
         }
 

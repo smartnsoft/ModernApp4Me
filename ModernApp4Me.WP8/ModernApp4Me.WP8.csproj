@@ -86,11 +86,11 @@
     <Compile Include="App\M4MPhoneApplicationPage.cs" />
     <Compile Include="Converter\M4MTimeSpanToSecondsConverter.cs" />
     <Compile Include="Converter\M4MUpperCaseConverter.cs" />
-    <Compile Include="SnSDownload\BitmapDownloader\ImageCache.cs" />
-    <Compile Include="SnSDownload\BitmapDownloader\OneShotDispatcherTimer.cs" />
-    <Compile Include="SnSDownload\BitmapDownloader\PersistentImageCache.cs" />
-    <Compile Include="SnSDownload\BitmapDownloader\SnSBitmapDownloader.cs" />
-    <Compile Include="SnSDownload\BitmapDownloader\SystemImageCache.cs" />
+    <Compile Include="Download\ImageCache.cs" />
+    <Compile Include="Download\OneShotDispatcherTimer.cs" />
+    <Compile Include="Download\PersistentImageCache.cs" />
+    <Compile Include="Download\BitmapDownloader.cs" />
+    <Compile Include="Download\SystemImageCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App\M4MDefaultExceptionHandlers.cs" />
     <Compile Include="Cache\M4MDbPersistence.cs" />

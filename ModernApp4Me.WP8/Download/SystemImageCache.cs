@@ -16,7 +16,7 @@ using System;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
+namespace ModernApp4Me.WP8.Download
 {
     /// <summary>
     /// Implements an <see cref="ImageCache"/> using the cache mechanism provided by the system.

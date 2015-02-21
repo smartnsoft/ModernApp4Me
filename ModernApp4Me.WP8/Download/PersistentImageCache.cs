@@ -24,7 +24,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace ModernApp4Me.WP8.SnSDownload.BitmapDownloader
+namespace ModernApp4Me.WP8.Download
 {
     /// <summary>
     /// Implements an <see cref="ImageCache"/> on top of the isolated storage.
