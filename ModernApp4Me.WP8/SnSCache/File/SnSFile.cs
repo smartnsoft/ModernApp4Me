@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using ImageTools;
 using ImageTools.IO.Png;
-using ModernApp4Me.Core.SnSLog;
+using ModernApp4Me.Core.Log;
 
 namespace ModernApp4Me.WP8.SnSCache.File
 {
@@ -88,7 +88,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             }
             catch (Exception exception)
             {
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot read the file '"+fileName+"'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot read the file '"+fileName+"'", exception);
             }
             finally
             {
@@ -133,7 +133,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             catch (Exception exception)
             {
                 isWritten = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot write into the file '" + fileName + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot write into the file '" + fileName + "'", exception);
             }
             finally
             {
@@ -167,7 +167,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             catch (Exception exception)
             {
                 isDeleted = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot delete the file '" + fileName + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot delete the file '" + fileName + "'", exception);
             }
            finally
             {
@@ -197,7 +197,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             catch (Exception exception)
             {
                 isCleaned = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot clean-up the isolated storage", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot clean-up the isolated storage", exception);
             }
             finally
             {
@@ -228,7 +228,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             catch (Exception exception)
             {
                 isFileExists = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot check if the file '" + fileName + "' exists", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot check if the file '" + fileName + "' exists", exception);
             }
             finally
             {
@@ -278,7 +278,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             catch (Exception exception)
             {
                 isSucceed = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot write the image '" + imageName + "' as PNG image", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot write the image '" + imageName + "' as PNG image", exception);
             }
             finally
             {
@@ -330,7 +330,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             catch (Exception exception)
             {
                 isSucceed = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot write the image '" + imageName + "' as PNG image", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot write the image '" + imageName + "' as PNG image", exception);
             }
             finally
             {
@@ -364,7 +364,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             catch (Exception exception)
             {
                 isSucceed = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot create the directory '" + directoryName + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot create the directory '" + directoryName + "'", exception);
             }
             finally
             {
@@ -405,7 +405,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             catch (Exception exception)
             {
                 isSucceed = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot create the directory with path '" + filePath + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot create the directory with path '" + filePath + "'", exception);
             }
             finally
             {
@@ -449,7 +449,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
             catch (Exception exception)
             {
                 stream = null;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot read the binary file '" + fileName + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot read the binary file '" + fileName + "'", exception);
             }
             finally
             {

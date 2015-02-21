@@ -2,22 +2,27 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Capptain.Agent;
 using Microsoft.Phone.Shell;
-using ModernApp4Me.Core.SnSApp;
-using ModernApp4Me.Core.SnSViewModel;
+using ModernApp4Me.Core.App;
+using ModernApp4Me.Core.ViewModel;
+using Microsoft.Phone.Controls;
+using ModernApp4Me.Core.LifeCycle;
 
-namespace ModernApp4Me.WP8.App
+namespace ModernApp4Me.WP8.SApp
 {
 
+    /// <summary>
+    /// The basis class for all PhoneApplicationPages available in the framework.
+    /// </summary>
+    /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.09.08</since>
-    public abstract class SnSPage : CapptainPage
+    public abstract class M4MPhoneApplicationPage : PhoneApplicationPage
     {
 
         private const string VIEW_MODEL_KEY = "viewModelKey";
 
-        protected SnSViewModelBase viewModel;
+        protected M4MBaseViewModel viewModel;
 
         protected ProgressIndicator progressIndicator;
 
@@ -40,7 +45,7 @@ namespace ModernApp4Me.WP8.App
                 progressIndicator.IsVisible = true;
             }
 
-            OnNavigatedToAnalytics();
+            SendPage();
 
             mainContener = RetrieveMainContainer();
             connectivityContainer = RetrieveConnectivityContainer();
@@ -51,9 +56,9 @@ namespace ModernApp4Me.WP8.App
             {
                 if (viewModel == null && IsMVVMUsed == true)
                 {
-                    if (State.ContainsKey(SnSPage.VIEW_MODEL_KEY) == true)
+                    if (State.ContainsKey(M4MPhoneApplicationPage.VIEW_MODEL_KEY) == true)
                     {
-                        viewModel = State[SnSPage.VIEW_MODEL_KEY] as SnSViewModelBase;
+                        viewModel = State[M4MPhoneApplicationPage.VIEW_MODEL_KEY] as M4MBaseViewModel;
                     }
                     else
                     {
@@ -61,10 +66,10 @@ namespace ModernApp4Me.WP8.App
                     }
                 }
             }
-            catch (SnSConnectivityException exception)
+            catch (M4MConnectivityException exception)
             {
                 OnDisplayConnectivityLayout();
-                throw new SnSConnectivityException(exception);
+                throw new M4MConnectivityException(exception);
             }
 
             OnFullfillDisplayObjects();
@@ -87,10 +92,16 @@ namespace ModernApp4Me.WP8.App
             base.OnNavigatedTo(e);
         }
 
-        protected virtual void OnNavigatedToAnalytics()
+        /// <summary>
+        /// Override this in order to send the PhoneApplicationPage when it is displayed.
+        /// </summary>
+        protected virtual void SendPage()
         {
         }
 
+        /// <summary>
+        /// Override this in order to personnalize the user experience when a <see cref="M4MConnectivityException"/> occurs.
+        /// </summary>
         protected virtual void OnDisplayConnectivityLayout()
         {
             if (IsManagingProgressIndicatorItself == false)
@@ -110,36 +121,72 @@ namespace ModernApp4Me.WP8.App
 
             if (e.NavigationMode != NavigationMode.Back && viewModel != null)
             {
-                State[SnSPage.VIEW_MODEL_KEY] = viewModel;
+                State[M4MPhoneApplicationPage.VIEW_MODEL_KEY] = viewModel;
             }
         }
 
-        protected abstract Task<SnSViewModelBase> ComputeViewModel();
+        /// <summary>
+        /// This is the place where to load the business objects, from memory, local persistence, via web services, necessary for the entity processing.
+        /// This callback is invoked from a background thread, and not the UI thread.
+        /// This method is invoked only once during the <see cref="M4MPhoneApplicationPage"/> life cycle.
+        /// Never invoke this method, only the framework should, because this is a callback!
+        /// </summary>
+        /// <returns>a class that implements <see cref="M4MBaseViewModel"/> or null if you set <see cref="M4MPhoneApplicationPage.IsMVVMUsed"/> to false</returns>
+        protected abstract Task<M4MBaseViewModel> ComputeViewModel();
 
+        /// <summary>
+        /// This is the place where the implementing class can initialize the previously retrieved graphical objects.
+        /// This method is invoked only once during the <see cref="M4MPhoneApplicationPage"/> life cycle.
+        /// It is ensured that this method will be invoked from the UI thread!
+        /// Never invoke this method, only the framework should, because this is a callback!
+        /// </summary>
         protected abstract void OnFullfillDisplayObjects();
 
+        /// <summary>
+        /// Returns the <see cref="Panel"/> in which data are displayed.
+        /// This <see cref="Panel"/> will be displayed or hidden automatically by the <see cref="M4MPhoneApplicationPage"/> during the life cycle.
+        /// </summary>
+        /// <returns>the <see cref="Panel"/> in which data are displayed</returns>
         protected abstract Panel RetrieveMainContainer();
 
+        /// <summary>
+        /// Override this in order to return the <see cref="Panel"/> which displays a particular message when a <see cref="M4MConnectivityException"/> is thrown.
+        /// This <see cref="Panel"/> will be displayed or hidden automatically by the <see cref="M4MPhoneApplicationPage"/> during the life cycle.
+        /// </summary>
+        /// <returns>the <see cref="Panel"/> which display the message or null</returns>
         protected virtual Panel RetrieveConnectivityContainer()
         {
             return null;
         }
 
+        /// <summary>
+        /// Returns the <see cref="ProgressIndicator"/> of the <see cref="M4MPhoneApplicationPage"/>.
+        /// </summary>
+        /// <returns>a <see cref="ProgressIndicator"/> or null if you set <see cref="M4MPhoneApplicationPage.IsManagingProgressIndicatorItself" /> to true</returns>
         protected abstract ProgressIndicator RetrieveProgressIndicator();
 
+        /// <summary>
+        /// This is the place where to retrieve data from the <see cref="NavigationContext.QueryString"/>.
+        /// This method is invoked before the <see cref="M4MPhoneApplicationPage.ComputeViewModel()"/>.
+        /// </summary>
         protected virtual void LoadQueryString()
         {
         }
 
-        protected virtual void SaveQueryString()
-        {
-        }
-
+        /// <summary>
+        /// This is the place where you can update the <see cref="M4MPhoneApplicationPage.viewModel"/> after the invokation of the method <see cref="M4MPhoneApplicationPage.Refresh()"/>.
+        /// This callback is invoked from a background thread, and not the UI thread.
+        /// Never invoke this method, only the framework should, because this is a callback!
+        /// </summary>
         protected virtual Task RefreshViewModel()
         {
             return null;
         }
 
+        /// <summary>
+        /// Invokes this method when you want to reload the business objects, from memory, local persistence, via web services, necessary for the entity processing.
+        /// </summary>
+        /// <returns></returns>
         protected async Task Refresh()
         {
             if (IsManagingProgressIndicatorItself == false)
@@ -153,10 +200,10 @@ namespace ModernApp4Me.WP8.App
                 {
                     viewModel = await ComputeViewModel();
                 }
-                catch (SnSConnectivityException exception)
+                catch (M4MConnectivityException exception)
                 {
                     OnDisplayConnectivityLayout();
-                    throw new SnSConnectivityException(exception);
+                    throw new M4MConnectivityException(exception);
                 }
 
                 OnFullfillDisplayObjects();
@@ -182,14 +229,14 @@ namespace ModernApp4Me.WP8.App
                 {
                     await RefreshViewModel();
                 }
-                catch (SnSConnectivityException exception)
+                catch (M4MConnectivityException exception)
                 {
                     if (IsManagingProgressIndicatorItself == false)
                     {
                         progressIndicator.IsVisible = false;
                     }
 
-                    throw new SnSConnectivityException(exception);
+                    throw new M4MConnectivityException(exception);
                 }
 
             }

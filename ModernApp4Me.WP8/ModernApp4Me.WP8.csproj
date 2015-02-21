@@ -83,7 +83,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App\SnSPage.cs" />
+    <Compile Include="App\M4MPhoneApplicationPage.cs" />
     <Compile Include="SnSConverter\SnSTimeSpanToSecondsConverter.cs" />
     <Compile Include="SnSConverter\SnSUpperCaseConverter.cs" />
     <Compile Include="SnSDownload\BitmapDownloader\ImageCache.cs" />
@@ -129,18 +129,6 @@
     <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelectorItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Capptain.Agent.Portable">
-      <HintPath>..\packages\Capptain.WindowsPhone.1.0.3\lib\windowsphone8\Capptain.Agent.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Capptain.Agent.WP">
-      <HintPath>..\packages\Capptain.WindowsPhone.1.0.3\lib\windowsphone8\Capptain.Agent.WP.dll</HintPath>
-    </Reference>
-    <Reference Include="Capptain.Reach.Portable">
-      <HintPath>..\packages\Capptain.WindowsPhone.1.0.3\lib\windowsphone8\Capptain.Reach.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Capptain.Reach.WP">
-      <HintPath>..\packages\Capptain.WindowsPhone.1.0.3\lib\windowsphone8\Capptain.Reach.WP.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -171,10 +159,6 @@
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="ModernApp4Me.Core, Version=1.0.4.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ModernApp4Me.Core.1.0.4.2\lib\portable-win+net45+wp80\ModernApp4Me.Core.dll</HintPath>
-    </Reference>
     <Reference Include="PhoneCodeContractsAssemblies">
       <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\PhoneCodeContractsAssemblies.dll</HintPath>
     </Reference>
@@ -189,11 +173,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\CapptainIconCancel.png" />
-    <Content Include="Resources\CapptainIconCloseDark.png" />
-    <Content Include="Resources\CapptainIconCloseLight.png" />
-    <Content Include="Resources\CapptainIconNotification.png" />
-    <Content Include="Resources\CapptainIconOk.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -206,15 +185,15 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ModernApp4Me.Core\ModernApp4Me.Core.csproj">
+      <Project>{0BBEE225-982F-444F-851F-057E61D6168C}</Project>
+      <Name>ModernApp4Me.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

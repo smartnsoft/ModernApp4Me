@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using Microsoft.Phone.Controls;
-using ModernApp4Me.Core.SnSApp;
+using ModernApp4Me.Core.App;
 
 namespace ModernApp4Me.WP8.App
 {
@@ -11,7 +11,7 @@ namespace ModernApp4Me.WP8.App
     /// 
     /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
-    public class SnSDefaultExceptionHandler : SnSExceptionHandler
+    public class SnSDefaultExceptionHandler : M4MExceptionHandlers
     {
 
         public PhoneApplicationFrame RootFrame { get; set; }

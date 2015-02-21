@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Phone.Shell;
-using ModernApp4Me.Core.SnSLog;
+using ModernApp4Me.Core.Log;
 
 namespace ModernApp4Me.WP8.SnSTile
 {
@@ -43,7 +43,7 @@ namespace ModernApp4Me.WP8.SnSTile
             }
             catch (Exception exception)
             {
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot remove the tile with the navigation URI '" + navigationUri + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot remove the tile with the navigation URI '" + navigationUri + "'", exception);
             }
 
             return false;
@@ -67,7 +67,7 @@ namespace ModernApp4Me.WP8.SnSTile
             }
             catch (Exception exception)
             {
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot create the tile with the navigation URI '" + navigationUri + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot create the tile with the navigation URI '" + navigationUri + "'", exception);
             }
 
             return false;

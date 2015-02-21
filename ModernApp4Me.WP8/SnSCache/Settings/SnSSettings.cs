@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO.IsolatedStorage;
 using System.Threading;
-using ModernApp4Me.Core.SnSLog;
+using ModernApp4Me.Core.Log;
 
 namespace ModernApp4Me.WP8.SnSCache.Settings
 {
@@ -70,7 +70,7 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
             catch (Exception exception)
             {
                 isAdded = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot add the settings with the key '"+ key + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot add the settings with the key '"+ key + "'", exception);
             }
             finally
             {
@@ -101,7 +101,7 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
             catch (Exception exception)
             {
                 isUpdated = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot update the settings with the key '" + key + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot update the settings with the key '" + key + "'", exception);
             }
             finally
             {
@@ -127,7 +127,7 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
             }
             catch (Exception exception)
             {
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot add the settings with the key '" + key + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot add the settings with the key '" + key + "'", exception);
             }
             finally
             {
@@ -155,7 +155,7 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
             catch (Exception exception)
             {
                 isRemoved = false;
-                SnSLoggerWrapper.Instance.Logger.Warn("Cannot remove the settings with the key '" + key + "'", exception);
+                M4MLoggerWrapper.Instance.Logger.Warn("Cannot remove the settings with the key '" + key + "'", exception);
             }
             finally
             {

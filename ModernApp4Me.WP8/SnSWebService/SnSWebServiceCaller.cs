@@ -1,9 +1,10 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Phone.Net.NetworkInformation;
-using ModernApp4Me.Core.SnSApp;
-using ModernApp4Me.Core.SnSLog;
+using ModernApp4Me.Core.App;
+using ModernApp4Me.Core.Log;
 using RestSharp;
+using ModernApp4Me.Core.LifeCycle;
 
 namespace ModernApp4Me.WP8.SnSWebService
 {
@@ -65,11 +66,11 @@ namespace ModernApp4Me.WP8.SnSWebService
             var message = "The error code of the call to the web method '" + rawResponse.Request.Resource +
                           "' is not OK (not 20X). Status: '" + rawResponse.StatusCode + "'";
 
-            SnSLoggerWrapper.Instance.Logger.Error(message);
+            M4MLoggerWrapper.Instance.Logger.Error(message);
 
             if (rawResponse.StatusCode == HttpStatusCode.NotFound && DeviceNetworkInformation.IsNetworkAvailable == false)
             {
-                throw new SnSConnectivityException(message);
+                throw new M4MConnectivityException(message);
             }
 
             throw new SnSCallException(message);
