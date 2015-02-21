@@ -103,7 +103,7 @@
     <Compile Include="Converter\M4MResolutionImageBrushConverter.cs" />
     <Compile Include="Converter\M4MResolutionBitmapImageConverter.cs" />
     <Compile Include="Metadata\M4MDeviceResolution.cs" />
-    <Compile Include="SnSTemplate\SnSTemplateSelector.cs" />
+    <Compile Include="Framework\M4MTemplateSelector.cs" />
     <Compile Include="SnSTile\SnSSecondaryTile.cs" />
     <Compile Include="SnSUtil\SnSColorUtil.cs" />
     <Compile Include="SnSUtil\SnSMemoryHelper.cs" />

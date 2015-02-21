@@ -1,29 +1,29 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace ModernApp4Me.WP8.SnSTemplate
+namespace ModernApp4Me.WP8.Framework
 {
 
     /// <summary>
-    /// Class base for the template selector classes.
+    /// A class base that should be extended in order to create template selectors.
     /// </summary>
+    /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public abstract class SnSTemplateSelector : ContentControl
+    public abstract class M4MTemplateSelector : ContentControl
     {
 
         /// <summary>
-        /// Virtual method that return the selected template.
+        /// Returns the selected template.
         /// </summary>
-        /// <param name="item"></param>
-        /// <param name="container"></param>
+        /// <param name="item">The item</param>
+        /// <param name="container">the container wich is a <see cref="DependencyObject"/></param>
         /// <returns>The selected template</returns>
         public abstract DataTemplate SelectTemplate(object item, DependencyObject container);
 
         protected override void OnContentChanged(object oldContent, object newContent)
         {
             base.OnContentChanged(oldContent, newContent);
-
             ContentTemplate = SelectTemplate(newContent, this);
         }
 
