@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ModernApp4Me.WP8.Cache.Database
+namespace ModernApp4Me.WP8.Cache
 {
 
     /// <summary>

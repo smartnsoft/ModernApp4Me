@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using ModernApp4Me.Core.Log;
 
-namespace ModernApp4Me.WP8.SnSCache.File
+namespace ModernApp4Me.WP8.Cache
 {
 
     /// <summary>
@@ -18,20 +18,20 @@ namespace ModernApp4Me.WP8.SnSCache.File
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
     // TODO : reworks totally this class.
-    public sealed class SnSFile
+    public sealed class M4MFilePersistence
     {
-        private static volatile SnSFile instance;
+        private static volatile M4MFilePersistence instance;
 
         private static readonly object InstanceLock = new Object();
 
         private readonly Mutex mutex;
 
-        private SnSFile()
+        private M4MFilePersistence()
         {
             mutex = new Mutex(false, "isolated storage file mutex");
         }
 
-        public static SnSFile Instance
+        public static M4MFilePersistence Instance
         {
             get
             {
@@ -41,7 +41,7 @@ namespace ModernApp4Me.WP8.SnSCache.File
                     {
                         if (instance == null)
                         {
-                            instance = new SnSFile();
+                            instance = new M4MFilePersistence();
                         }
                     }
                 }

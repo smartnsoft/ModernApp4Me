@@ -84,8 +84,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App\M4MPhoneApplicationPage.cs" />
-    <Compile Include="SnSConverter\SnSTimeSpanToSecondsConverter.cs" />
-    <Compile Include="SnSConverter\SnSUpperCaseConverter.cs" />
+    <Compile Include="Converter\M4MTimeSpanToSecondsConverter.cs" />
+    <Compile Include="Converter\M4MUpperCaseConverter.cs" />
     <Compile Include="SnSDownload\BitmapDownloader\ImageCache.cs" />
     <Compile Include="SnSDownload\BitmapDownloader\OneShotDispatcherTimer.cs" />
     <Compile Include="SnSDownload\BitmapDownloader\PersistentImageCache.cs" />

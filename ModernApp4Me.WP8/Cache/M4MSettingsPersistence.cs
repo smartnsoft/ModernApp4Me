@@ -3,7 +3,7 @@ using System.IO.IsolatedStorage;
 using System.Threading;
 using ModernApp4Me.Core.Log;
 
-namespace ModernApp4Me.WP8.SnSCache.Settings
+namespace ModernApp4Me.WP8.Cache
 {
 
     /// <summary>
@@ -13,21 +13,21 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
     /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    public sealed class SnSSettings
+    public sealed class M4MSettingsPersistence
     {
 
-        private static volatile SnSSettings instance;
+        private static volatile M4MSettingsPersistence instance;
 
         private static readonly object InstanceLock = new Object();
 
         private readonly Mutex mutex;
 
-        private SnSSettings()
+        private M4MSettingsPersistence()
         {
             mutex = new Mutex(false, "settings access mutex");
         }
 
-        public static SnSSettings Instance
+        public static M4MSettingsPersistence Instance
         {
             get
             {
@@ -37,7 +37,7 @@ namespace ModernApp4Me.WP8.SnSCache.Settings
                     {
                         if (instance == null)
                         {
-                            instance = new SnSSettings();
+                            instance = new M4MSettingsPersistence();
                         }
                     }
                 }
