@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using ImageTools;
-using ImageTools.IO.Png;
 using ModernApp4Me.Core.Log;
 
 namespace ModernApp4Me.WP8.SnSCache.File
@@ -207,94 +205,6 @@ namespace ModernApp4Me.WP8.SnSCache.File
             }
 
             return isFileExists;
-        }
-
-        public bool WriteImageAsPng(string imageName, BitmapImage image, FileMode fileMode)
-        {
-            var isSucceed = true;
-
-            try
-            {
-                mutex.WaitOne();
-
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
-                {
-                    //The image name includes the directory
-                    if (imageName.Split('/').Length > 1)
-                    {
-                        CreateDirectoryFromFilePath(imageName);
-                    }
-
-                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
-                    {
-                        using (var fileStream = new IsolatedStorageFileStream(imageName, fileMode, isf))
-                        {
-                            using (var streamWriter = new StreamWriter(fileStream))
-                            {
-                                var encoder = new PngEncoder();
-                                var writeableBitmap = new WriteableBitmap(image);
-                                encoder.Encode(writeableBitmap.ToImage(), streamWriter.BaseStream);
-                            }
-                        }
-                    }
-                });
-            }
-            catch (Exception exception)
-            {
-                isSucceed = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot write the image '" + imageName + "' as PNG image", exception);
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
-
-            return isSucceed;
-        }
-
-        public bool WriteImageAsPng(string imageName, ExtendedImage image, FileMode fileMode)
-        {
-            var isSucceed = true;
-
-            try
-            {
-                mutex.WaitOne();
-
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
-                {
-                    //The image name includes the directory
-                    if (imageName.Split('/').Length > 1)
-                    {
-                        CreateDirectoryFromFilePath(imageName);
-                    }
-
-                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
-                    {
-                        using (
-                            var fileStream = new IsolatedStorageFileStream(imageName, fileMode, FileAccess.Write,
-                                                                            isf))
-                        {
-                            using (var streamWriter = new StreamWriter(fileStream))
-                            {
-                                var encoder = new PngEncoder();
-                                var writeableBitmap = new WriteableBitmap(image.ToBitmap());
-                                encoder.Encode(writeableBitmap.ToImage(), streamWriter.BaseStream);
-                            }
-                        }
-                    }
-                });
-            }
-            catch (Exception exception)
-            {
-                isSucceed = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot write the image '" + imageName + "' as PNG image", exception);
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
-
-            return isSucceed;
         }
 
         public bool CreateDirectory(string directoryName)
