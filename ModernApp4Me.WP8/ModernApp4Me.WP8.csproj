@@ -84,6 +84,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App\M4MPhoneApplicationPage.cs" />
+    <Compile Include="Cache\M4MMemoryCacher.cs" />
     <Compile Include="Converter\M4MTimeSpanToSecondsConverter.cs" />
     <Compile Include="Converter\M4MUpperCaseConverter.cs" />
     <Compile Include="Download\ImageCache.cs" />

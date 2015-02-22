@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using ModernApp4Me.Core.Log;
 
-namespace ModernApp4Me.Core.Cache
+namespace ModernApp4Me.WP8.Cache
 {
 
     /// <summary>

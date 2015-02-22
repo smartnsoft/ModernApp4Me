@@ -1,11 +1,8 @@
-﻿using System;
+﻿using ModernApp4Me.WP8.Log;
+using System;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Text;
-using System.Threading;
-using System.Windows;
-using System.Windows.Media.Imaging;
-using ModernApp4Me.Core.Log;
 
 namespace ModernApp4Me.WP8.Cache
 {
@@ -23,13 +20,6 @@ namespace ModernApp4Me.WP8.Cache
         private static volatile M4MFilePersistence instance;
 
         private static readonly object InstanceLock = new Object();
-
-        private readonly Mutex mutex;
-
-        private M4MFilePersistence()
-        {
-            mutex = new Mutex(false, "isolated storage file mutex");
-        }
 
         public static M4MFilePersistence Instance
         {
@@ -52,256 +42,256 @@ namespace ModernApp4Me.WP8.Cache
         
         public string ReadFile(string fileName)
         {
-            string fileContent = null;
-
-            try
+            lock (InstanceLock)
             {
-                mutex.WaitOne();
-               
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                M4MModernLogger.Instance.Debug("Reading the file with the name : '" + fileName + "'");
+
+                string fileContent = null;
+
+                try
                 {
-                    if (isf.FileExists(fileName))
+                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        using (var fileStream = new IsolatedStorageFileStream(fileName, FileMode.Open, isf))
+                        if (isf.FileExists(fileName) == true)
                         {
-                            using (var streamReader = new StreamReader(fileStream))
+                            using (var fileStream = new IsolatedStorageFileStream(fileName, FileMode.Open, isf))
                             {
-                                fileContent = streamReader.ReadToEnd();
+                                using (var streamReader = new StreamReader(fileStream))
+                                {
+                                    fileContent = streamReader.ReadToEnd();
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        throw new FileNotFoundException(fileName);
+                        else
+                        {
+                            M4MModernLogger.Instance.Error("The file with the name : '" + fileName + "' cannot be found");
+                            throw new FileNotFoundException(fileName);
+                        }
                     }
                 }
-            }
-            catch (Exception)
-            {
-                
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                catch (Exception exception)
+                {
+                    M4MModernLogger.Instance.Error("An error occurs while reading the file with the name : '" + fileName + "'", exception);
+                }
 
-            return fileContent;
+                return fileContent;
+            }
         }
 
         public bool WriteFile(string fileName, string fileContent, FileMode fileMode)
         {
-            var isWritten = true;
-
-            try
+            lock (InstanceLock)
             {
-                mutex.WaitOne();
-               
-                //The file name includes the directory
-                if (fileName.Split('/').Length > 1)
-                {
-                    CreateDirectoryFromFilePath(fileName);
-                }
+                M4MModernLogger.Instance.Debug("Writing into the file with the name : '" + fileName + "'");
 
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                var isWritten = true;
+
+                try
                 {
-                    using (var fileStream = new IsolatedStorageFileStream(fileName, fileMode, isf))
+                    //The file name includes the directory
+                    if (fileName.Split('/').Length > 1)
                     {
-                        using (var streamWriter = new StreamWriter(fileStream))
+                        CreateDirectoryFromFilePath(fileName);
+                    }
+
+                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                    {
+                        using (var fileStream = new IsolatedStorageFileStream(fileName, fileMode, isf))
                         {
-                            streamWriter.Write(fileContent);
+                            using (var streamWriter = new StreamWriter(fileStream))
+                            {
+                                streamWriter.Write(fileContent);
+                            }
                         }
                     }
                 }
-            }
-            catch (Exception)
-            {
-                isWritten = false;
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                catch (Exception exception)
+                {
+                    M4MModernLogger.Instance.Error("An error occurs while writing into the file with the name : '" + fileName + "'", exception);
+                    isWritten = false;
+                }
 
-            return isWritten;
+                return isWritten;
+            }
         }
 
         public bool DeleteFile(string fileName)
         {
-            var isDeleted = true;
-
-            try
+            lock (InstanceLock)
             {
-                mutex.WaitOne();
+                M4MModernLogger.Instance.Debug("Deleting the file with the name : '" + fileName + "'");
+                var isDeleted = true;
 
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                try
                 {
-                    if (isf.FileExists(fileName))
+                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        isf.DeleteFile(fileName);
+                        if (isf.FileExists(fileName) == true)
+                        {
+                            isf.DeleteFile(fileName);
+                        }
+                        else
+                        {
+                            throw new FileNotFoundException(fileName);
+                        }
                     }
                 }
-            }
-            catch (Exception)
-            {
-                isDeleted = false;
-            }
-           finally
-            {
-                mutex.ReleaseMutex();
-            }
+                catch (Exception exception)
+                {
+                    M4MModernLogger.Instance.Error("An error occurs while deleting the file with the name : '" + fileName + "'", exception);
+                    isDeleted = false;
+                }
 
-            return isDeleted;
+                return isDeleted;
+            }
         }
 
-        public bool ClearIsolatedStorage()
+        public bool CleanupIsolatedStorage()
         {
-            var isCleaned = true;
-
-            try
+            lock (InstanceLock)
             {
-                mutex.WaitOne();
+                M4MModernLogger.Instance.Debug("Cleaning-up the isolated storage");
 
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                var isCleaned = true;
+
+                try
                 {
-                    isf.Remove();
+                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                    {
+                        isf.Remove();
+                    }
                 }
-            }
-            catch (Exception)
-            {
-                isCleaned = false;
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                catch (Exception exception)
+                {
+                    M4MModernLogger.Instance.Error("An error occurs while cleaning-up the isolated storage", exception);
+                    isCleaned = false;
+                }
 
-            return isCleaned;
+                return isCleaned;
+            }
         }
 
         public bool IsFileExists(string fileName)
         {
-            var isFileExists = true;
-
-            try
+            lock (InstanceLock)
             {
-                mutex.WaitOne();
+                M4MModernLogger.Instance.Debug("Checking if the file '" + fileName + "' exists");
 
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                var isFileExists = true;
+
+                try
                 {
-                    isFileExists = isf.FileExists(fileName);
+                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                    {
+                        isFileExists = isf.FileExists(fileName);
+                    }
                 }
-            }
-            catch (Exception)
-            {
-                isFileExists = false;
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                catch (Exception exception)
+                {
+                    M4MModernLogger.Instance.Error("An error occurs while checking if the file with the name : '" + fileName + "' exists", exception);
+                    isFileExists = false;
+                }
 
-            return isFileExists;
+                return isFileExists;
+            }
         }
 
         public bool CreateDirectory(string directoryName)
         {
-            var isSucceed = true;
-
-            try
+            lock (InstanceLock)
             {
-                mutex.WaitOne();
-                
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                M4MModernLogger.Instance.Debug("Creating the directory with the name '" + directoryName + "'");
+
+                var isSucceed = true;
+
+                try
                 {
                     using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                     {
                         isf.CreateDirectory(directoryName);
                     }
-                });
-            }
-            catch (Exception)
-            {
-                isSucceed = false;
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                }
+                catch (Exception exception)
+                {
+                    M4MModernLogger.Instance.Error("An error occurs while creating the directory with the name : '" + directoryName + "' exists", exception);
+                    isSucceed = false;
+                }
 
-            return isSucceed;
+                return isSucceed;
+            }
         }
 
         public bool CreateDirectoryFromFilePath(string filePath)
         {
-            var isSucceed = true;
-
-            try
+            lock (InstanceLock)
             {
-                //Building the directory path
-                var directoryPathTab = filePath.Split('/');
-                var directoryPath = new StringBuilder("/");
+                M4MModernLogger.Instance.Debug("Creating the directory from file path '" + filePath + "'");
 
-                for (var i = 0; i < directoryPathTab.Length - 1; i++)
+                var isSucceed = true;
+
+                try
                 {
-                    directoryPath.Append(directoryPathTab[i]);
-                    directoryPath.Append('/');
+                    //Building the directory path
+                    var directoryPathTab = filePath.Split('/');
+                    var directoryPath = new StringBuilder("/");
+
+                    for (var i = 0; i < directoryPathTab.Length - 1; i++)
+                    {
+                        directoryPath.Append(directoryPathTab[i]);
+                        directoryPath.Append('/');
+                    }
+
+                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                    {
+                        isf.CreateDirectory(directoryPath.ToString());
+                    }
+                }
+                catch (Exception exception)
+                {
+                    M4MModernLogger.Instance.Error("An error occurs while creating the directory from file path the name : '" + filePath + "' exists", exception);
+                    isSucceed = false;
                 }
 
-                mutex.WaitOne();
-                
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
-                {
-                    isf.CreateDirectory(directoryPath.ToString());
-                }
+                return isSucceed;
             }
-            catch (Exception)
-            {
-                isSucceed = false;
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
-
-            return isSucceed;
         }
 
         public MemoryStream ReadBinary(string fileName)
         {
-            MemoryStream stream;
-
-            try
+            lock (InstanceLock)
             {
-                mutex.WaitOne();
+                M4MModernLogger.Instance.Debug("Reading the binary with name '" + fileName + "'");
 
-                using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+                MemoryStream stream;
+
+                try
                 {
-                    if (isf.FileExists(fileName))
+                    using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        using (var fileStream = isf.OpenFile(fileName, FileMode.Open, FileAccess.Read))
+                        if (isf.FileExists(fileName) == true)
                         {
-                            stream = new MemoryStream();
-                            fileStream.CopyTo(stream);
-                            fileStream.Close();
-                            stream.Position = 0;
+                            using (var fileStream = isf.OpenFile(fileName, FileMode.Open, FileAccess.Read))
+                            {
+                                stream = new MemoryStream();
+                                fileStream.CopyTo(stream);
+                                fileStream.Close();
+                                stream.Position = 0;
+                            }
+                        }
+                        else
+                        {
+                            throw new FileNotFoundException(fileName);
                         }
                     }
-                    else
-                    {
-                        throw new Exception(fileName);
-                    }
                 }
-            }
-            catch (Exception)
-            {
-                stream = null;
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                catch (Exception exception)
+                {
+                    M4MModernLogger.Instance.Error("An error occurs while reading the the file with name : '" + fileName + "'", exception);
+                    stream = null;
+                }
 
-            return stream;
+                return stream;
+            }
         }
     }
 }
