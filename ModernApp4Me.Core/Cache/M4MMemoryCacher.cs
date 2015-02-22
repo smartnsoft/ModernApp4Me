@@ -13,6 +13,7 @@ namespace ModernApp4Me.Core.Cache
     /// 
     /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
+    // TODO : add logs
     public class M4MMemoryCacher
     {
 
@@ -79,10 +80,9 @@ namespace ModernApp4Me.Core.Cache
                 mutex.WaitOne();
                 memoryCacher.Add(key, new M4MMemoryCacherObject {Date = DateTime.Now, Value = value});
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isAdded = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot add the entry with key '" + key + "'", exception);
             }
             finally
             {
@@ -106,9 +106,8 @@ namespace ModernApp4Me.Core.Cache
                 mutex.WaitOne();
                 returnValue = memoryCacher[key];
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot get the entry with key '" + key + "'", exception);
             }
             finally
             {
@@ -132,10 +131,9 @@ namespace ModernApp4Me.Core.Cache
                 mutex.WaitOne();
                 memoryCacher.Remove(key);
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isRemoved = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot remove the entry with key '" + key + "'", exception);
             }
             finally
             {
@@ -160,10 +158,9 @@ namespace ModernApp4Me.Core.Cache
                 mutex.WaitOne();
                 memoryCacher[key] = new M4MMemoryCacherObject {Date = DateTime.Now, Value = value};
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isUpdated = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot update the entry with key '" + key + "'", exception);
             }
             finally
             {

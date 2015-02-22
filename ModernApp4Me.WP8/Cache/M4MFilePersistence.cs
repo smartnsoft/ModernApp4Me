@@ -76,9 +76,9 @@ namespace ModernApp4Me.WP8.Cache
                     }
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot read the file '"+fileName+"'", exception);
+                
             }
             finally
             {
@@ -113,10 +113,9 @@ namespace ModernApp4Me.WP8.Cache
                     }
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isWritten = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot write into the file '" + fileName + "'", exception);
             }
             finally
             {
@@ -142,10 +141,9 @@ namespace ModernApp4Me.WP8.Cache
                     }
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isDeleted = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot delete the file '" + fileName + "'", exception);
             }
            finally
             {
@@ -168,10 +166,9 @@ namespace ModernApp4Me.WP8.Cache
                     isf.Remove();
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isCleaned = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot clean-up the isolated storage", exception);
             }
             finally
             {
@@ -194,10 +191,9 @@ namespace ModernApp4Me.WP8.Cache
                     isFileExists = isf.FileExists(fileName);
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isFileExists = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot check if the file '" + fileName + "' exists", exception);
             }
             finally
             {
@@ -223,10 +219,9 @@ namespace ModernApp4Me.WP8.Cache
                     }
                 });
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isSucceed = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot create the directory '" + directoryName + "'", exception);
             }
             finally
             {
@@ -259,10 +254,9 @@ namespace ModernApp4Me.WP8.Cache
                     isf.CreateDirectory(directoryPath.ToString());
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isSucceed = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot create the directory with path '" + filePath + "'", exception);
             }
             finally
             {
@@ -298,10 +292,9 @@ namespace ModernApp4Me.WP8.Cache
                     }
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 stream = null;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot read the binary file '" + fileName + "'", exception);
             }
             finally
             {

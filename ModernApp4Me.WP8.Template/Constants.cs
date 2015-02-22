@@ -17,7 +17,7 @@ namespace ModernApp4Me.WP8.Template
         /// <summary>
         /// The logging level of the application.
         /// </summary>
-        public static readonly M4MLogLevel LOG_LEVEL = Constants.DEVELOPMENT_MODE == true ? M4MLogLevel.Debug : M4MLogLevel.Warn;
+        public static readonly M4MLogger.LogLevel LOG_LEVEL = Constants.DEVELOPMENT_MODE == true ? M4MLogger.LogLevel.Debug : M4MLogger.LogLevel.Warn;
 
         /// <summary>
         /// Indicates whether the analytics are enabled.

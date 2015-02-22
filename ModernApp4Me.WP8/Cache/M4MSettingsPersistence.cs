@@ -2,6 +2,7 @@
 using System.IO.IsolatedStorage;
 using System.Threading;
 using ModernApp4Me.Core.Log;
+using ModernApp4Me.WP8.Log;
 
 namespace ModernApp4Me.WP8.Cache
 {
@@ -48,27 +49,24 @@ namespace ModernApp4Me.WP8.Cache
 
         public bool AddSetting(string key, object value)
         {
-            var isAdded = true;
-
-            try
+            lock (InstanceLock)
             {
-                mutex.WaitOne();
+                M4MModernLogger.Instance.Debug("Adding the value : '" + value.ToString() + "'");
+                var isAdded = true;
 
-                var settings = IsolatedStorageSettings.ApplicationSettings;
-                settings.Add(key, value);
-                settings.Save();
-            }
-            catch (Exception exception)
-            {
-                isAdded = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot add the settings with the key '"+ key + "'", exception);
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                try
+                {
+                    var settings = IsolatedStorageSettings.ApplicationSettings;
+                    settings.Add(key, value);
+                    settings.Save();
+                }
+                catch (Exception)
+                {
+                    isAdded = false;
+                }
 
-            return isAdded;
+                return isAdded;
+            }            
         }
 
         public bool UpdateSetting(string key, object value)
@@ -83,10 +81,9 @@ namespace ModernApp4Me.WP8.Cache
                 settings[key] = value;
                 settings.Save();
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isUpdated = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot update the settings with the key '" + key + "'", exception);
             }
             finally
             {
@@ -105,9 +102,8 @@ namespace ModernApp4Me.WP8.Cache
                 mutex.WaitOne();
                 value = IsolatedStorageSettings.ApplicationSettings[key];
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot add the settings with the key '" + key + "'", exception);
             }
             finally
             {
@@ -127,10 +123,9 @@ namespace ModernApp4Me.WP8.Cache
 
                 IsolatedStorageSettings.ApplicationSettings.Remove(key);
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 isRemoved = false;
-                M4MLoggerWrapper.Instance.Logger.Warn("Cannot remove the settings with the key '" + key + "'", exception);
             }
             finally
             {

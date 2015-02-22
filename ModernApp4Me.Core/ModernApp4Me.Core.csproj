@@ -39,10 +39,7 @@
     <Compile Include="App\M4MExceptionHandlers.cs" />
     <Compile Include="LifeCycle\M4MBusinessObjectUnavailableException.cs" />
     <Compile Include="Cache\M4MMemoryCacher.cs" />
-    <Compile Include="Log\M4MLoggerWrapper.cs" />
     <Compile Include="Log\M4MLogger.cs" />
-    <Compile Include="Log\M4MLogLevel.cs" />
-    <Compile Include="Log\M4MModernLogger.cs" />
     <Compile Include="Util\M4MDateUtil.cs" />
     <Compile Include="ViewModel\M4MBaseViewModel.cs" />
   </ItemGroup>

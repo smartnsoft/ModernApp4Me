@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ModernApp4Me.Core.Log;
+using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace ModernApp4Me.Core.Log
+namespace ModernApp4Me.WP8.Log
 {
 
     /// <summary>
@@ -10,24 +12,52 @@ namespace ModernApp4Me.Core.Log
     /// 
     /// <author>Ludovic Roland</author>
     /// <since>2014.03.21</since>
-    public abstract class M4MModernLogger : M4MLogger
+    public sealed class M4MModernLogger : M4MLogger
     {
 
-        public M4MLogLevel LogLevel { get; set; }
+        private static volatile M4MModernLogger instance;
+
+        private static readonly object InstanceLock = new Object();
+
+        public LogLevel ModernLogLevel { get; set; }
+
+        public static M4MModernLogger Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (InstanceLock)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new M4MModernLogger();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        public M4MModernLogger()
+        {
+            Debugger.Launch();
+        }
 
         public override void Debug(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsDebugEnabled() == true)
+            if (IsDebugEnabled() == true && Debugger.IsLogging() == true)
             {
-                DisplayLog(M4MLogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber);
+                Debugger.Log(0, LogLevel.Debug.ToString(), BuildLog(LogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber));
             }
         }
 
         public override void Info(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsInfoEnabled() == true)
+            if (IsInfoEnabled() == true && Debugger.IsLogging() == true)
             {
-                DisplayLog(M4MLogLevel.Info, message, callerMemberName, callerFilePath, callerLineNumber);
+                Debugger.Log(1, LogLevel.Debug.ToString(), BuildLog(LogLevel.Info, message, callerMemberName, callerFilePath, callerLineNumber));
             }
         }
 
@@ -35,7 +65,7 @@ namespace ModernApp4Me.Core.Log
         {
             if (IsWarnEnabled() == true)
             {
-                DisplayLog(M4MLogLevel.Warn, message, callerMemberName, callerFilePath, callerLineNumber);
+                Debugger.Log(2, LogLevel.Debug.ToString(), BuildLog(LogLevel.Warn, message, callerMemberName, callerFilePath, callerLineNumber));
             }
         }
 
@@ -43,7 +73,7 @@ namespace ModernApp4Me.Core.Log
         {
             if (IsWarnEnabled() == true)
             {
-                DisplayLog(M4MLogLevel.Warn, message, exception, callerMemberName, callerFilePath, callerLineNumber);
+                Debugger.Log(2, LogLevel.Debug.ToString(), BuildLog(LogLevel.Warn, message, exception.Message, exception.StackTrace, callerMemberName, callerFilePath, callerLineNumber));
             }
         }
 
@@ -51,7 +81,7 @@ namespace ModernApp4Me.Core.Log
         {
             if (IsErrorEnabled() == true)
             {
-                DisplayLog(M4MLogLevel.Error, message, callerMemberName, callerFilePath, callerLineNumber);
+                Debugger.Log(3, LogLevel.Debug.ToString(), BuildLog(ModernLogLevel, message, callerMemberName, callerFilePath, callerLineNumber));
             }
         }
 
@@ -59,7 +89,7 @@ namespace ModernApp4Me.Core.Log
         {
             if (IsErrorEnabled() == true)
             {
-                DisplayLog(M4MLogLevel.Error, message, exception, callerMemberName, callerFilePath, callerLineNumber);
+                Debugger.Log(3, LogLevel.Debug.ToString(), BuildLog(LogLevel.Warn, message, exception.Message, exception.StackTrace, callerMemberName, callerFilePath, callerLineNumber));
             }
         }
 
@@ -67,7 +97,7 @@ namespace ModernApp4Me.Core.Log
         {
             if (IsErrorEnabled() == true)
             {
-                DisplayLog(M4MLogLevel.Error, message, callerMemberName, callerFilePath, callerLineNumber);
+                Debugger.Log(4, LogLevel.Debug.ToString(), BuildLog(ModernLogLevel, message, callerMemberName, callerFilePath, callerLineNumber));
             }
         }
 
@@ -75,33 +105,33 @@ namespace ModernApp4Me.Core.Log
         {
             if (IsErrorEnabled() == true)
             {
-                DisplayLog(M4MLogLevel.Error, message, exception, callerMemberName, callerFilePath, callerLineNumber);
+                Debugger.Log(4, LogLevel.Debug.ToString(), BuildLog(LogLevel.Warn, message, exception.Message, exception.StackTrace, callerMemberName, callerFilePath, callerLineNumber));
             }
         }
 
         public override bool IsDebugEnabled()
         {
-            return LogLevel <= M4MLogLevel.Debug;
+            return ModernLogLevel <= LogLevel.Debug;
         }
 
         public override bool IsInfoEnabled()
         {
-            return LogLevel <= M4MLogLevel.Info;
+            return ModernLogLevel <= LogLevel.Info;
         }
 
         public override bool IsWarnEnabled()
         {
-            return LogLevel <= M4MLogLevel.Warn;
+            return ModernLogLevel <= LogLevel.Warn;
         }
 
         public override bool IsErrorEnabled()
         {
-            return LogLevel <= M4MLogLevel.Error;
+            return ModernLogLevel <= LogLevel.Error;
         }
 
         public override bool IsFatalEnabled()
         {
-            return LogLevel <= M4MLogLevel.Error;
+            return ModernLogLevel <= LogLevel.Error;
         }
 
     }
