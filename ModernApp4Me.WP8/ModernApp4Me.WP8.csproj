@@ -110,21 +110,6 @@
     <Compile Include="WebService\M4MCallException.cs" />
     <Compile Include="WebService\M4MWebServiceCaller.cs" />
     <Compile Include="WebService\M4MRestClientExtensions.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlock.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlockDesignerHelper.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetHtmlTextBlock\SnSHtmlTextBlockExtensions.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelector.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetHorizontalLoopingSelector\SnSHorizontalLoopingSelectorItem.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSListLoopingDataSource.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSLoopingDataSourceBase.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSPhysicsConstants.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetLoopingSelector\SnSWidgetLoopingSelectorCore\SnSSafeRaise.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml.cs">
-      <DependentUpon>SnSMarqueeTextBlock.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSListWizardDataSource.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelector.cs" />
-    <Compile Include="SnSWidgets\SnSWidgetWizard\SnSWizardSelectorItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
@@ -142,12 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="SnSWidgets\SnSWidgetMarqueeTextBlock\SnSMarqueeTextBlock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModernApp4Me.Core\ModernApp4Me.Core.csproj">
