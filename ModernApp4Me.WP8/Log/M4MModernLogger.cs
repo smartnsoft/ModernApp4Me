@@ -21,6 +21,11 @@ namespace ModernApp4Me.WP8.Log
 
         public LogLevel ModernLogLevel { get; set; }
 
+        private M4MModernLogger()
+        {
+            Debugger.Launch();
+        }
+
         public static M4MModernLogger Instance
         {
             get
@@ -38,12 +43,7 @@ namespace ModernApp4Me.WP8.Log
 
                 return instance;
             }
-        }
-
-        public M4MModernLogger()
-        {
-            Debugger.Launch();
-        }
+        } 
 
         public override void Debug(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {

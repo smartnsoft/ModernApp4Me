@@ -20,6 +20,10 @@ namespace ModernApp4Me.WP8.Cache
 
         private static readonly object InstanceLock = new Object();
 
+        private M4MFilePersistence()
+        {
+        }
+
         public static M4MFilePersistence Instance
         {
             get

@@ -40,6 +40,23 @@ namespace ModernApp4Me.WP8.Download
 
         public static BitmapDownloaderConfiguration Configuration { get; set; }
 
+
+        private M4MBitmapDownloader()
+        {
+            if (Configuration.Type == BitmapDownloaderType.PersistentImageCache)
+            {
+                cache = new PersistentImageCache(Configuration.Name)
+                {
+                    ExpirationDelay = Configuration.ExpirationDelay,
+                    MemoryCacheCapacity = Configuration.MemoryCacheCapacity
+                };
+            }
+            else
+            {
+                cache = new SystemImageCache(Configuration.Name);
+            }
+        }
+
         public static M4MBitmapDownloader Instance
         {
             get
@@ -56,22 +73,6 @@ namespace ModernApp4Me.WP8.Download
                 }
 
                 return instance;
-            }
-        }
-
-        private M4MBitmapDownloader()
-        {
-            if (Configuration.Type == BitmapDownloaderType.PersistentImageCache)
-            {
-                cache = new PersistentImageCache(Configuration.Name)
-                {
-                    ExpirationDelay = Configuration.ExpirationDelay,
-                    MemoryCacheCapacity = Configuration.MemoryCacheCapacity
-                };
-            }
-            else
-            {
-                cache = new SystemImageCache(Configuration.Name);
             }
         }
 

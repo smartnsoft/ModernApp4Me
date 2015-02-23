@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO.IsolatedStorage;
-using System.Threading;
 using ModernApp4Me.Core.Log;
 using ModernApp4Me.WP8.Log;
 
@@ -21,11 +20,8 @@ namespace ModernApp4Me.WP8.Cache
 
         private static readonly object InstanceLock = new Object();
 
-        private readonly Mutex mutex;
-
         private M4MSettingsPersistence()
         {
-            mutex = new Mutex(false, "settings access mutex");
         }
 
         public static M4MSettingsPersistence Instance
