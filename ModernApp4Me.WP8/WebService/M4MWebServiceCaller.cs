@@ -43,7 +43,7 @@ namespace ModernApp4Me.WP8.WebService
         /// </summary>
         /// <param name="restRequest"></param>
         /// <returns>The content of the </returns>
-        protected async Task<IRestResponse> ExecuteHttpRequest(RestRequest restRequest, int attempsCount = 0)
+        public async Task<IRestResponse> ExecuteHttpRequest(RestRequest restRequest, int attempsCount = 0)
         {
             attempsCount++;
             var callType = restRequest.Method.ToString();
