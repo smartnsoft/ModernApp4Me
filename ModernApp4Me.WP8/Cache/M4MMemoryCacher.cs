@@ -149,7 +149,7 @@ namespace ModernApp4Me.WP8.Cache
                 {
                     memoryCacher.Remove(key);
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
                     if (M4MModernLogger.Instance.IsErrorEnabled() == true)
                     {
