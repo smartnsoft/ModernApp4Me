@@ -393,7 +393,7 @@ namespace ModernApp4Me.WP8.Cache
                 {
                     if (M4MModernLogger.Instance.IsErrorEnabled() == true)
                     {
-                        M4MModernLogger.Instance.Error("An error occurs while reading the the file with name : '" + fileName + "'", exception);
+                        M4MModernLogger.Instance.Error("An error occurs while reading the file with name : '" + fileName + "'", exception);
                     }
 
                     stream = null;

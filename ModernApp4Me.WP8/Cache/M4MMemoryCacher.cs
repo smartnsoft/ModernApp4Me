@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
-using ModernApp4Me.Core.Log;
+using ModernApp4Me.WP8.Log;
 
 namespace ModernApp4Me.WP8.Cache
 {
@@ -36,14 +35,11 @@ namespace ModernApp4Me.WP8.Cache
 
         private static readonly object InstanceLock = new Object();
         
-        private readonly Mutex mutex;
-
         private readonly Dictionary<string, M4MMemoryCacherObject> memoryCacher;
 
         private M4MMemoryCacher()
         {
             memoryCacher = new Dictionary<string, M4MMemoryCacherObject>();
-            mutex = new Mutex(false, "memory cache access mutex");
         }
 
         public static M4MMemoryCacher Instance
@@ -73,23 +69,31 @@ namespace ModernApp4Me.WP8.Cache
         /// <returns>true in case of success, false otherwise</returns>
         public bool Add(string key, object value)
         {
-            var isAdded = true;
+            lock (Instance)
+            {
+                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
+                {
+                    M4MModernLogger.Instance.Debug("Adding an object with the key '" + key + "' into the Memory Cacher");
+                }
 
-            try
-            {
-                mutex.WaitOne();
-                memoryCacher.Add(key, new M4MMemoryCacherObject {Date = DateTime.Now, Value = value});
-            }
-            catch (Exception)
-            {
-                isAdded = false;
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                var isAdded = true;
 
-            return isAdded;
+                try
+                {
+                    memoryCacher.Add(key, new M4MMemoryCacherObject { Date = DateTime.Now, Value = value });
+                }
+                catch (Exception exception)
+                {
+                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
+                    {
+                        M4MModernLogger.Instance.Error("An error occurs while adding an object with the key : '" + key + "' into the Memory Cacher", exception);
+                    }
+
+                    isAdded = false;
+                }
+
+                return isAdded;
+            }
         }
 
         /// <summary>
@@ -99,22 +103,31 @@ namespace ModernApp4Me.WP8.Cache
         /// <returns>a <see cref="M4MMemoryCacherObject"/> which can be null</returns>
         public M4MMemoryCacherObject Get(string key)
         {
-            M4MMemoryCacherObject returnValue = null;
+            lock (Instance)
+            {
+                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
+                {
+                    M4MModernLogger.Instance.Debug("Getting the object with the key '" + key + "' from the Memory Cacher");
+                }
 
-            try
-            {
-                mutex.WaitOne();
-                returnValue = memoryCacher[key];
-            }
-            catch (Exception)
-            {
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                M4MMemoryCacherObject returnValue = null;
 
-            return returnValue;
+                try
+                {
+                    returnValue = memoryCacher[key];
+                }
+                catch (Exception exception)
+                {
+                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
+                    {
+                        M4MModernLogger.Instance.Error("An error occurs while reading the object with the key : '" + key + "' from the Memory Cacher", exception);
+                    }
+
+                    returnValue = null;
+                }
+
+                return returnValue;
+            }
         }
 
         /// <summary>
@@ -124,23 +137,31 @@ namespace ModernApp4Me.WP8.Cache
         /// <returns>true in case of success, false otherwise</returns>
         public bool Remove(string key)
         {
-            var isRemoved = true;
+            lock (Instance)
+            {
+                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
+                {
+                    M4MModernLogger.Instance.Debug("Removing the object with the key '" + key + "' from the Memory Cacher");
+                }
 
-            try
-            {
-                mutex.WaitOne();
-                memoryCacher.Remove(key);
-            }
-            catch (Exception)
-            {
-                isRemoved = false;
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                var isRemoved = true;
 
-            return isRemoved;
+                try
+                {
+                    memoryCacher.Remove(key);
+                }
+                catch (Exception)
+                {
+                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
+                    {
+                        M4MModernLogger.Instance.Error("An error occurs while removing the object with the key : '" + key + "' from the Memory Cacher", exception);
+                    }
+
+                    isRemoved = false;
+                }
+
+                return isRemoved;
+            }
         }
 
         /// <summary>
@@ -151,23 +172,31 @@ namespace ModernApp4Me.WP8.Cache
         /// <returns>true in case of success, false otherwise</returns>
         public bool Update(string key, object value)
         {
-            var isUpdated = true;
+            lock (Instance)
+            {
+                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
+                {
+                    M4MModernLogger.Instance.Debug("Updating the object with the key '" + key + "' into the Memory Cacher");
+                }
 
-            try
-            {
-                mutex.WaitOne();
-                memoryCacher[key] = new M4MMemoryCacherObject {Date = DateTime.Now, Value = value};
-            }
-            catch (Exception)
-            {
-                isUpdated = false;
-            }
-            finally
-            {
-                mutex.ReleaseMutex();
-            }
+                var isUpdated = true;
 
-            return isUpdated;
+                try
+                {
+                    memoryCacher[key] = new M4MMemoryCacherObject { Date = DateTime.Now, Value = value };
+                }
+                catch (Exception exception)
+                {
+                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
+                    {
+                        M4MModernLogger.Instance.Error("An error occurs while updating the object with the key : '" + key + "' intro the Memory Cacher", exception);
+                    }
+
+                    isUpdated = false;
+                }
+
+                return isUpdated;
+            }
         }
 
         /// <summary>
@@ -177,7 +206,10 @@ namespace ModernApp4Me.WP8.Cache
         /// <returns>true is the key exists, false otherwise</returns>
         public bool IsKeyExists(string key)
         {
-            return memoryCacher.ContainsKey(key);
+            lock (Instance)
+            {
+                return memoryCacher.ContainsKey(key);
+            }
         }
 
     }
