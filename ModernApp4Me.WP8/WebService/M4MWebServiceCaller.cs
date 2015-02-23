@@ -5,6 +5,8 @@ using ModernApp4Me.Core.App;
 using ModernApp4Me.Core.Log;
 using RestSharp;
 using ModernApp4Me.Core.LifeCycle;
+using ModernApp4Me.WP8.Log;
+using System;
 
 namespace ModernApp4Me.WP8.WebService
 {
@@ -20,9 +22,10 @@ namespace ModernApp4Me.WP8.WebService
     /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.21</since>
-    // TODO : Add some logs
     public abstract class M4MWebServiceCaller
     {
+
+        private const int ATTEMPTS_COUNT_MAX = 1;
 
         public RestClient Client { get; private set; }
 
@@ -40,28 +43,51 @@ namespace ModernApp4Me.WP8.WebService
         /// </summary>
         /// <param name="restRequest"></param>
         /// <returns>The content of the </returns>
-        protected async Task<string> ExecuteHttpRequest(RestRequest restRequest)
+        protected async Task<IRestResponse> ExecuteHttpRequest(RestRequest restRequest, int attempsCount = 0)
         {
-            var rawResponse = await Client.ExecuteTaskAsync(restRequest);
+            attempsCount++;
+            var callType = restRequest.Method.ToString();
+            var resource = restRequest.Resource;
 
-            if (rawResponse.StatusCode != HttpStatusCode.OK)
+            if (M4MModernLogger.Instance.IsDebugEnabled() == true)
             {
-                OnHttpStatusCodeNotOk(rawResponse);
+                M4MModernLogger.Instance.Debug("Running the HTTP '" + callType + "' request '" + resource + "'");
             }
 
-            return rawResponse.Content;
+            var start = DateTime.Now.Ticks;
+            var rawResponse = await Client.ExecuteTaskAsync(restRequest);
+            var statusCode = rawResponse.StatusCode;
+
+            if (M4MModernLogger.Instance.IsDebugEnabled() == true)
+            {
+                M4MModernLogger.Instance.Debug("The call to the HTTP " + callType + " request '" + resource + "' took " + (DateTime.Now.Ticks - start) + " ms and returned the status code '" + statusCode + "'");
+            }
+
+            if (statusCode != HttpStatusCode.OK)
+            {
+                if (attempsCount < M4MWebServiceCaller.ATTEMPTS_COUNT_MAX)
+                {
+                    rawResponse = await ExecuteHttpRequest(restRequest, attempsCount);
+                }
+                else
+                {
+                    OnHttpStatusCodeNotOk(resource, statusCode);
+                }
+            }
+
+            return rawResponse;
         }
 
         /// <summary>
         /// Private function that raises an exception when the result code to a web method id not OK (not 20X).
         /// </summary>
         /// <param name="rawResponse"></param>
-        protected void OnHttpStatusCodeNotOk(IRestResponse rawResponse)
+        protected void OnHttpStatusCodeNotOk(string resource, HttpStatusCode statusCode)
         {
-            var message = "The error code of the call to the web method '" + rawResponse.Request.Resource +
-                          "' is not OK (not 20X). Status: '" + rawResponse.StatusCode + "'";
+            var message = "The error code of the call to the web method '" + resource +
+                          "' is not OK (not 20X). Status: '" + statusCode + "'";
 
-            if (rawResponse.StatusCode == HttpStatusCode.NotFound && DeviceNetworkInformation.IsNetworkAvailable == false)
+            if (statusCode == HttpStatusCode.NotFound && DeviceNetworkInformation.IsNetworkAvailable == false)
             {
                 throw new M4MConnectivityException(message);
             }
