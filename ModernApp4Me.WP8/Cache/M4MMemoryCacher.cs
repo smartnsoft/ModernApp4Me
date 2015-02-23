@@ -12,7 +12,6 @@ namespace ModernApp4Me.WP8.Cache
     /// 
     /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
-    // TODO : add logs
     public class M4MMemoryCacher
     {
 

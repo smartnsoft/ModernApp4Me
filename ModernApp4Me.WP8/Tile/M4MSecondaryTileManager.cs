@@ -1,28 +1,51 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Phone.Shell;
+using ModernApp4Me.WP8.Log;
 
 namespace ModernApp4Me.WP8.Tile
 {
 
     /// <summary>
     /// Enables the manipulation of secondary tiles.
+    /// Tread-safe
     /// </summary>
     /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2014.03.24</since>
-    //TODO : manage correctly the exception
     public static class M4MSecondaryTileManager
     {
+
+        private static readonly object InstanceLock = new Object();
 
         /// <summary>
         /// Checks if a secondary tile at the specified URI already exists.
         /// </summary>
         /// <param name="navigationUri">the URI of the tile</param>
         /// <returns>true if secondary tile already exists, false otherwife.</returns>
-        public static bool IsSecondaryTileExists(string navigationUri)
+        public static bool IsExist(string navigationUri)
         {
-            return ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains(navigationUri)) != null;
+            lock (InstanceLock)
+            {
+                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
+                {
+                    M4MModernLogger.Instance.Debug("Checking if a secondary tile with the uri '" + navigationUri + "' exists");
+                }
+
+                try
+                {
+                    return ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains(navigationUri)) != null;
+                }
+                catch (Exception exception)
+                {
+                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
+                    {
+                        M4MModernLogger.Instance.Error("An error occurs while checking if a secondary tile with the uri : '" + navigationUri + "' exists", exception);
+                    }
+
+                    return false;
+                }
+            }
         }
 
         /// <summary>
@@ -30,24 +53,46 @@ namespace ModernApp4Me.WP8.Tile
         /// </summary>
         /// <param name="navigationUri">the URI of the tile</param>
         /// <returns>true in case of success, false otherwise</returns>
-        public static bool DeleteSecondaryTile(string navigationUri)
+        public static bool Delete(string navigationUri)
         {
-            try
+            lock (InstanceLock)
             {
-                var tile = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains(navigationUri));
-
-                if (tile != null)
+                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
                 {
-                    tile.Delete();
-                    return true;
+                    M4MModernLogger.Instance.Debug("Deleting the secondary tile with the uri '" + navigationUri + "'");
                 }
-            }
-            catch (Exception)
-            {
-                //TODO : manage correctly the exception
-            }
 
-            return false;
+                try
+                {
+                    var tile = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains(navigationUri));
+
+                    if (tile != null)
+                    {
+                        tile.Delete();
+
+                        return true;
+                    }
+                    else
+                    {
+                        if (M4MModernLogger.Instance.IsWarnEnabled() == true)
+                        {
+                            M4MModernLogger.Instance.Warn("Cannot find the secondary tile with the uri : '" + navigationUri + "'");
+                        }
+
+                        return false;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
+                    {
+                        M4MModernLogger.Instance.Error("An error occurs while deleting the secondary tile with the uri : '" + navigationUri + "'", exception);
+                    }
+
+                    return false;
+                }
+                
+            }
         }
 
         /// <summary>
@@ -56,22 +101,43 @@ namespace ModernApp4Me.WP8.Tile
         /// <param name="tileData">the tile data</param>
         /// <param name="navigationUri">the URI of the tile</param>
         /// <returns>true in case of success, false otherwise</returns>
-        public static bool CreateSecondaryTile(StandardTileData tileData, string navigationUri)
+        public static bool Create(StandardTileData tileData, string navigationUri)
         {
-            try
+            lock (InstanceLock)
             {
-                if (IsSecondaryTileExists(navigationUri) == false)
+                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
                 {
-                    ShellTile.Create(new Uri(navigationUri, UriKind.Relative), tileData);
-                    return true;
+                    M4MModernLogger.Instance.Debug("Creating a secondary tile with the uri '" + navigationUri + "'");
+                }
+
+                try
+                {
+                    if (IsExist(navigationUri) == false)
+                    {
+                        ShellTile.Create(new Uri(navigationUri, UriKind.Relative), tileData);
+
+                        return true;
+                    }
+                    else
+                    {
+                        if (M4MModernLogger.Instance.IsWarnEnabled() == true)
+                        {
+                            M4MModernLogger.Instance.Warn("Cannot create the secondary tile with the uri : '" + navigationUri + "'");
+                        }
+
+                        return false;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
+                    {
+                        M4MModernLogger.Instance.Error("An error occurs while creating the secondary tile with the uri : '" + navigationUri + "'", exception);
+                    }
+
+                    return false;
                 }
             }
-            catch (Exception)
-            {
-                //TODO : manage correctly the exception
-            }
-
-            return false;
         }
     }
 }
