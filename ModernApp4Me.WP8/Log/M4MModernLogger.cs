@@ -47,7 +47,7 @@ namespace ModernApp4Me.WP8.Log
 
         public override void Debug(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsDebugEnabled() == true && Debugger.IsLogging() == true)
+            if (Debugger.IsLogging() == true)
             {
                 Debugger.Log(0, LogLevel.Debug.ToString(), BuildLog(LogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber));
             }
@@ -55,7 +55,7 @@ namespace ModernApp4Me.WP8.Log
 
         public override void Info(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsInfoEnabled() == true && Debugger.IsLogging() == true)
+            if (Debugger.IsLogging() == true)
             {
                 Debugger.Log(1, LogLevel.Debug.ToString(), BuildLog(LogLevel.Info, message, callerMemberName, callerFilePath, callerLineNumber));
             }
@@ -63,7 +63,7 @@ namespace ModernApp4Me.WP8.Log
 
         public override void Warn(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsWarnEnabled() == true)
+            if (Debugger.IsLogging() == true)
             {
                 Debugger.Log(2, LogLevel.Debug.ToString(), BuildLog(LogLevel.Warn, message, callerMemberName, callerFilePath, callerLineNumber));
             }
@@ -71,7 +71,7 @@ namespace ModernApp4Me.WP8.Log
 
         public override void Warn(string message, Exception exception, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsWarnEnabled() == true)
+            if (Debugger.IsLogging() == true)
             {
                 Debugger.Log(2, LogLevel.Debug.ToString(), BuildLog(LogLevel.Warn, message, exception.Message, exception.StackTrace, callerMemberName, callerFilePath, callerLineNumber));
             }
@@ -79,7 +79,7 @@ namespace ModernApp4Me.WP8.Log
 
         public override void Error(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsErrorEnabled() == true)
+            if (Debugger.IsLogging() == true)
             {
                 Debugger.Log(3, LogLevel.Debug.ToString(), BuildLog(ModernLogLevel, message, callerMemberName, callerFilePath, callerLineNumber));
             }
@@ -87,7 +87,7 @@ namespace ModernApp4Me.WP8.Log
 
         public override void Error(string message, Exception exception, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsErrorEnabled() == true)
+            if (Debugger.IsLogging() == true)
             {
                 Debugger.Log(3, LogLevel.Debug.ToString(), BuildLog(LogLevel.Warn, message, exception.Message, exception.StackTrace, callerMemberName, callerFilePath, callerLineNumber));
             }
@@ -95,7 +95,7 @@ namespace ModernApp4Me.WP8.Log
 
         public override void Fatal(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsErrorEnabled() == true)
+            if (Debugger.IsLogging() == true)
             {
                 Debugger.Log(4, LogLevel.Debug.ToString(), BuildLog(ModernLogLevel, message, callerMemberName, callerFilePath, callerLineNumber));
             }
@@ -103,7 +103,7 @@ namespace ModernApp4Me.WP8.Log
 
         public override void Fatal(string message, Exception exception, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
         {
-            if (IsErrorEnabled() == true)
+            if (Debugger.IsLogging() == true)
             {
                 Debugger.Log(4, LogLevel.Debug.ToString(), BuildLog(LogLevel.Warn, message, exception.Message, exception.StackTrace, callerMemberName, callerFilePath, callerLineNumber));
             }
