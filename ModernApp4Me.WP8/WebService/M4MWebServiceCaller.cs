@@ -31,9 +31,11 @@ namespace ModernApp4Me.WP8.WebService
         /// Basis constructor.
         /// </summary>
         /// <param name="baseUrl">The base URL of the web service API</param>
-        protected M4MWebServiceCaller(string baseUrl)
+        /// <param name="timeout">The response time-out</param>
+        protected M4MWebServiceCaller(string baseUrl, int timeout)
         {
             Client = new RestClient(baseUrl);
+            Client.Timeout = timeout;
         }
 
         /// <summary>
