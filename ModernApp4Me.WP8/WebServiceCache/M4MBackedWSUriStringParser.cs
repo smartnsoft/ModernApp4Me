@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Globalization;
 using System.Threading.Tasks;
-using ModernApp4Me.WP8.WebService;
 using Newtonsoft.Json;
+using ModernApp4Me.Core.WebService;
 using Q42.WinRT.Data;
-using RestSharp;
+using ModernApp4Me.Core.WebServiceCache;
 
 namespace ModernApp4Me.WP8.WebServiceCache
 {
@@ -15,31 +15,16 @@ namespace ModernApp4Me.WP8.WebServiceCache
     /// 
     /// <author>Ludovic ROLAND</author>
     /// <since>2015.02.24</since>
-    public abstract class M4MBackedWSUriStringParser<TResult, TParameter, TWebServiceCaller> where TWebServiceCaller : M4MWebServiceCaller
+    public abstract class M4MBackedWSUriStringParser<TResult, TParameter, TWebServiceCaller> : M4MBaseBackedWSUriStringParser<TResult, TParameter, TWebServiceCaller> where TWebServiceCaller : M4MBaseWebServiceCaller
     {
 
-        public TWebServiceCaller WebServiceCaller { get; set; }
-
-        protected abstract RestRequest ComputeRestRequest(TParameter parameter);
-
-        protected abstract TResult Parse(string response);
-
-        public async Task<TResult> GetRetentionValue(bool fromCache, DateTime expirationDelay, TParameter parameter)
+        public override async Task<TResult> GetRetentionValue(bool fromCache, DateTime expirationDelay, TParameter parameter)
         {
             var restRequest = ComputeRestRequest(parameter);
             var response = await DataCache.GetAsync(restRequest.GetHashCode().ToString(CultureInfo.InvariantCulture), () => WebServiceCaller.ExecuteHttpRequest(restRequest), expirationDelay, fromCache == false);
             return Parse(response);
         }
 
-        public async Task<TResult> GetValue(TParameter parameter)
-        {
-            return await GetRetentionValue(false, DateTime.Now, parameter);
-        }
-
-        protected TResult DeserializeObject(string response)
-        {
-            return JsonConvert.DeserializeObject<TResult>(response);
-        }
     }
 
 }
