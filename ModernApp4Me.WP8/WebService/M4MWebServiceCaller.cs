@@ -39,33 +39,36 @@ namespace ModernApp4Me.WP8.WebService
         /// <summary>
         /// Executes a call to a web method without any persistence.
         /// </summary>
-        /// <param name="restRequest"></param>
+        /// <param name="restRequest">the <see cref="RestRequest"/></param>
+        /// <param name="attempsCount">the current attemp number</param>
         /// <returns>The content of the </returns>
-        public async Task<IRestResponse> ExecuteHttpRequest(RestRequest restRequest, int attempsCount = 0)
+        public async Task<string> ExecuteHttpRequest(RestRequest restRequest, int attempsCount = 0)
         {
             attempsCount++;
             var callType = restRequest.Method.ToString();
-            var resource = restRequest.Resource;
+            var resource = Client.BuildUri(restRequest).AbsoluteUri;
 
             if (M4MModernLogger.Instance.IsDebugEnabled() == true)
             {
                 M4MModernLogger.Instance.Debug("Running the HTTP '" + callType + "' request '" + resource + "'");
             }
 
-            var start = DateTime.Now.Ticks;
+            var start = TimeSpan.FromTicks(DateTime.Now.Ticks);
             var rawResponse = await Client.ExecuteTaskAsync(restRequest);
+            var end = TimeSpan.FromTicks(DateTime.Now.Ticks);
+            var content = rawResponse.Content;
             var statusCode = rawResponse.StatusCode;
 
             if (M4MModernLogger.Instance.IsDebugEnabled() == true)
             {
-                M4MModernLogger.Instance.Debug("The call to the HTTP " + callType + " request '" + resource + "' took " + (DateTime.Now.Ticks - start) + " ms and returned the status code '" + statusCode + "'");
+                M4MModernLogger.Instance.Debug("The call to the HTTP " + callType + " request '" + resource + "' took " + (end - start).TotalMilliseconds + " ms and returned the status code '" + statusCode + "'");
             }
 
             if (statusCode != HttpStatusCode.OK)
             {
                 if (attempsCount < M4MWebServiceCaller.ATTEMPTS_COUNT_MAX)
                 {
-                    rawResponse = await ExecuteHttpRequest(restRequest, attempsCount);
+                    content = await ExecuteHttpRequest(restRequest, attempsCount);
                 }
                 else
                 {
@@ -73,13 +76,14 @@ namespace ModernApp4Me.WP8.WebService
                 }
             }
 
-            return rawResponse;
+            return content;
         }
 
         /// <summary>
         /// Private function that raises an exception when the result code to a web method id not OK (not 20X).
         /// </summary>
-        /// <param name="rawResponse"></param>
+        /// <param name="resource">The uri</param>
+        /// <param name="statusCode">the <see cref="HttpStatusCode"/></param>
         protected void OnHttpStatusCodeNotOk(string resource, HttpStatusCode statusCode)
         {
             var message = "The error code of the call to the web method '" + resource +
