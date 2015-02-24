@@ -109,6 +109,7 @@
     <Compile Include="Tile\M4MSecondaryTileManager.cs" />
     <Compile Include="Util\M4MColorToolbox.cs" />
     <Compile Include="Debug\M4MMemoryProfiler.cs" />
+    <Compile Include="WebServiceCache\M4MBackedWSUriStringParser.cs" />
     <Compile Include="WebService\M4MCallException.cs" />
     <Compile Include="WebService\M4MWebServiceCaller.cs" />
     <Compile Include="WebService\M4MRestClientExtensions.cs" />
