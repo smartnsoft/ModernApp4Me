@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Shell;
-using ModernApp4Me.Core.App;
 using ModernApp4Me.Core.ViewModel;
 using Microsoft.Phone.Controls;
 using ModernApp4Me.Core.LifeCycle;
@@ -26,9 +25,9 @@ namespace ModernApp4Me.WP8.App
 
         protected ProgressIndicator progressIndicator;
 
-        protected bool IsMVVMUsed = true;
+        protected bool isMVVMUsed = true;
 
-        protected bool IsManagingProgressIndicatorItself = false;
+        protected bool isManagingProgressIndicatorItself = false;
 
         protected Panel mainContener;
 
@@ -40,7 +39,7 @@ namespace ModernApp4Me.WP8.App
         {
             progressIndicator = RetrieveProgressIndicator();
 
-            if (IsManagingProgressIndicatorItself == false)
+            if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = true;
             }
@@ -54,7 +53,7 @@ namespace ModernApp4Me.WP8.App
 
             try
             {
-                if (viewModel == null && IsMVVMUsed == true)
+                if (viewModel == null && isMVVMUsed == true)
                 {
                     if (State.ContainsKey(M4MPhoneApplicationPage.VIEW_MODEL_KEY) == true)
                     {
@@ -84,7 +83,7 @@ namespace ModernApp4Me.WP8.App
                 mainContener.Visibility = Visibility.Visible;
             }
 
-            if (IsManagingProgressIndicatorItself == false)
+            if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = false;
             }
@@ -104,7 +103,7 @@ namespace ModernApp4Me.WP8.App
         /// </summary>
         protected virtual void OnDisplayConnectivityLayout()
         {
-            if (IsManagingProgressIndicatorItself == false)
+            if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = false;
             }
@@ -189,7 +188,7 @@ namespace ModernApp4Me.WP8.App
         /// <returns></returns>
         protected async Task Refresh()
         {
-            if (IsManagingProgressIndicatorItself == false)
+            if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = true;
             }
@@ -218,7 +217,7 @@ namespace ModernApp4Me.WP8.App
                     mainContener.Visibility = Visibility.Visible;
                 }
 
-                if (IsManagingProgressIndicatorItself == false)
+                if (isManagingProgressIndicatorItself == false)
                 {
                     progressIndicator.IsVisible = false;
                 }
@@ -231,7 +230,7 @@ namespace ModernApp4Me.WP8.App
                 }
                 catch (M4MConnectivityException exception)
                 {
-                    if (IsManagingProgressIndicatorItself == false)
+                    if (isManagingProgressIndicatorItself == false)
                     {
                         progressIndicator.IsVisible = false;
                     }
@@ -241,7 +240,7 @@ namespace ModernApp4Me.WP8.App
 
             }
 
-            if (IsManagingProgressIndicatorItself == false)
+            if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = false;
             }

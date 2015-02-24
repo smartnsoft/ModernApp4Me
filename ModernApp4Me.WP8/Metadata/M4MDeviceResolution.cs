@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Text;
 using System.Windows;
 
-namespace ModernApp4Me.WP8.Resolution.Helper
+namespace ModernApp4Me.WP8.Metadata
 {
 
     /// <summary>

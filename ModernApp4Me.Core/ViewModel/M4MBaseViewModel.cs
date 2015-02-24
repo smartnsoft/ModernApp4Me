@@ -15,6 +15,8 @@ namespace ModernApp4Me.Core.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public M4MBaseViewModel() { }
+
         protected void RaiseOnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             OnPropertyChanged(propertyName);
@@ -27,8 +29,6 @@ namespace ModernApp4Me.Core.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        public M4MBaseViewModel() { }
 
     }
 

@@ -1,5 +1,4 @@
-﻿using ModernApp4Me.WP8.Download;
-using System;
+﻿using System;
 using System.Windows.Media;
 
 namespace ModernApp4Me.WP8.Download

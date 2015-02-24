@@ -1,8 +1,6 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Phone.Net.NetworkInformation;
-using ModernApp4Me.Core.App;
-using ModernApp4Me.Core.Log;
 using RestSharp;
 using ModernApp4Me.Core.LifeCycle;
 using ModernApp4Me.WP8.Log;

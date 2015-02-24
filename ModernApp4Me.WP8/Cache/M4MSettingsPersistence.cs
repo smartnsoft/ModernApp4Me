@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO.IsolatedStorage;
-using ModernApp4Me.Core.Log;
 using ModernApp4Me.WP8.Log;
 
 namespace ModernApp4Me.WP8.Cache
