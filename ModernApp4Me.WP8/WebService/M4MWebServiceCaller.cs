@@ -1,9 +1,7 @@
 ﻿using System.Net;
-using System.Threading.Tasks;
 using Microsoft.Phone.Net.NetworkInformation;
 using ModernApp4Me.Core.LifeCycle;
 using ModernApp4Me.WP8.Log;
-using System;
 using ModernApp4Me.Core.WebService;
 
 namespace ModernApp4Me.WP8.WebService

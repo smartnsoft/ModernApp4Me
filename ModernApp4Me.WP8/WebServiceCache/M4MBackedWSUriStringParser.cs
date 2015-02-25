@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using ModernApp4Me.Core.WebService;
 using Q42.WinRT.Data;
 using ModernApp4Me.Core.WebServiceCache;

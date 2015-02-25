@@ -1,9 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
-using ModernApp4Me.Core.LifeCycle;
 using System;
 using RestSharp.Portable;
-using System.Threading;
 
 namespace ModernApp4Me.Core.WebService
 {
