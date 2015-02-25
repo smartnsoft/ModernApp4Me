@@ -2,14 +2,14 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ModernApp4Me.Core.WebService;
-using RestSharp.Portable;
 using System.Text;
+using RestSharp.Portable;
 
 namespace ModernApp4Me.Core.WebServiceCache
 {
 
     /// <summary>
-    /// A basis class for managing cache data, making web service calls and parsing json response which uses RestSharp, Q42 and JSON.NET third party libraries.
+    /// A basis class for managing cache data, making web service calls and parsing json response which uses RestSharp.Portable and JSON.NET third party libraries.
     /// </summary>
     /// 
     /// <author>Ludovic ROLAND</author>

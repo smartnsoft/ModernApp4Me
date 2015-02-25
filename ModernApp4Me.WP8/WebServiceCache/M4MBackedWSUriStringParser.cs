@@ -9,7 +9,7 @@ namespace ModernApp4Me.WP8.WebServiceCache
 {
 
     /// <summary>
-    /// A basis class for managing cache data, making web service calls and parsing json response which uses RestSharp, Q42 and JSON.NET third party libraries.
+    /// A basis class for managing cache data, making web service calls and parsing json response which uses RestSharp.Portable, Q42 and JSON.NET third party libraries.
     /// </summary>
     /// 
     /// <author>Ludovic ROLAND</author>
