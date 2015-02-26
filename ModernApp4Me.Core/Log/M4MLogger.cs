@@ -29,56 +29,110 @@ namespace ModernApp4Me.Core.Log
     public abstract class M4MLogger
     {
 
-        public enum LogLevel
+        public enum M4MLogLevel
         {
             Debug = 0, Info = 1, Warn = 2, Error = 3
         }
 
-        public abstract void Debug(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1);
+        public M4MLogLevel LogLevel { get; set; }
 
-        public abstract void Info(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1);
+        public abstract void WriteTrace(string log);
 
-        public abstract void Warn(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1);
+        public void Debug(string message, [CallerMemberName] string callerMemberName = "",
+                          [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
+        {
+            WriteTrace(BuildLog(M4MLogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber));
+        }
 
-        public abstract void Warn(string message, Exception exception, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1);
+        public void Info(string message, [CallerMemberName] string callerMemberName = "",
+                         [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
+        {
+            WriteTrace(BuildLog(M4MLogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber));
+        }
 
-        public abstract void Error(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1);
+        public void Warn(string message, [CallerMemberName] string callerMemberName = "",
+                         [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
+        {
+            WriteTrace(BuildLog(M4MLogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber));
+        }
 
-        public abstract void Error(string message, Exception exception, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1);
+        public void Warn(string message, Exception exception, [CallerMemberName] string callerMemberName = "",
+                         [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
+        {
+            WriteTrace(BuildLog(M4MLogLevel.Debug, message, exception.Message, exception.StackTrace, callerMemberName,
+                                callerFilePath, callerLineNumber));
+        }
 
-        public abstract void Fatal(string message, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1);
+        public void Error(string message, [CallerMemberName] string callerMemberName = "",
+                          [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
+        {
+            WriteTrace(BuildLog(M4MLogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber));
+        }
 
-        public abstract void Fatal(string message, Exception exception, [CallerMemberName] string callerMemberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1);
+        public void Error(string message, Exception exception, [CallerMemberName] string callerMemberName = "",
+                          [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
+        {
+            WriteTrace(BuildLog(M4MLogLevel.Debug, message, exception.Message, exception.StackTrace, callerMemberName,
+                                callerFilePath, callerLineNumber));
+        }
 
-        public abstract bool IsDebugEnabled();
+        public void Fatal(string message, [CallerMemberName] string callerMemberName = "",
+                          [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
+        {
+            WriteTrace(BuildLog(M4MLogLevel.Debug, message, callerMemberName, callerFilePath, callerLineNumber));
+        }
 
-        public abstract bool IsInfoEnabled();
+        public void Fatal(string message, Exception exception, [CallerMemberName] string callerMemberName = "",
+                          [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
+        {
+            WriteTrace(BuildLog(M4MLogLevel.Debug, message, exception.Message, exception.StackTrace, callerMemberName,
+                                callerFilePath, callerLineNumber));
+        }
 
-        public abstract bool IsWarnEnabled();
+        public bool IsDebugEnabled()
+        {
+            return LogLevel <= M4MLogLevel.Debug;
+        }
 
-        public abstract bool IsErrorEnabled();
+        public bool IsInfoEnabled()
+        {
+            return LogLevel <= M4MLogLevel.Info;
+        }
 
-        public abstract bool IsFatalEnabled();
+        public bool IsWarnEnabled()
+        {
+            return LogLevel <= M4MLogLevel.Warn;
+        }
 
-        private StringBuilder BuildLogInternal(LogLevel logLevel, string message, string callerMemberName, string callerFilePath, int callerLineNumber)
+        public bool IsErrorEnabled()
+        {
+            return LogLevel <= M4MLogLevel.Error;
+        }
+
+        public bool IsFatalEnabled()
+        {
+            return LogLevel <= M4MLogLevel.Error;
+        }
+
+        private StringBuilder BuildLogInternal(M4MLogLevel logLevel, string message, string callerMemberName, string callerFilePath, int callerLineNumber)
         {
             var header = new StringBuilder("\n");
 
             switch (logLevel)
             {
-                case LogLevel.Debug:
+                case M4MLogLevel.Debug:
                     header.Append("[DEBUG] ");
                     break;
 
-                case LogLevel.Info:
+                case M4MLogLevel.Info:
                     header.Append("[INFO] ");
                     break;
 
-                case LogLevel.Warn:
+                case M4MLogLevel.Warn:
                     header.Append("[WARN] ");
                     break;
 
-                case LogLevel.Error:
+                case M4MLogLevel.Error:
                     header.Append("[ERROR] ");
                     break;
             }
@@ -102,12 +156,12 @@ namespace ModernApp4Me.Core.Log
             return header;
         }
 
-        protected string BuildLog(LogLevel logLevel, string message, string callerMemberName, string callerFilePath, int callerLineNumber)
+        protected string BuildLog(M4MLogLevel logLevel, string message, string callerMemberName, string callerFilePath, int callerLineNumber)
         {
             return BuildLogInternal(logLevel, message, callerMemberName, callerFilePath, callerLineNumber).ToString();
         }
 
-        protected string BuildLog(LogLevel logLevel, string message, string exceptionMessage, string stackTrace, string callerMemberName, string callerFilePath, int callerLineNumber)
+        protected string BuildLog(M4MLogLevel logLevel, string message, string exceptionMessage, string stackTrace, string callerMemberName, string callerFilePath, int callerLineNumber)
         {
             var header = BuildLogInternal(logLevel, message, callerMemberName, callerFilePath, callerLineNumber);
             header.Append("\n" + exceptionMessage).Append("\n" + stackTrace);

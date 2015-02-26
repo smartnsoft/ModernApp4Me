@@ -15,7 +15,6 @@
 
 using System;
 using System.IO.IsolatedStorage;
-using ModernApp4Me.WP8.Log;
 
 namespace ModernApp4Me.WP8.Cache
 {
@@ -67,11 +66,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (InstanceLock)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Adding an object with the key '" + key + "' into the Settings");
-                }
-
                 var isAdded = true;
 
                 try
@@ -80,13 +74,8 @@ namespace ModernApp4Me.WP8.Cache
                     settings.Add(key, value);
                     settings.Save();
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while adding an object with the key : '" + key + "' into the Settings", exception);
-                    }
-
                     isAdded = false;
                 }
 
@@ -103,24 +92,14 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (Instance)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Getting the object with the key '" + key + "' from the Settings");
-                }
-
                 object returnValue = null;
 
                 try
                 {
                     returnValue = IsolatedStorageSettings.ApplicationSettings[key];
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while reading the object with the key : '" + key + "' from the Settings", exception);
-                    }
-
                     returnValue = null;
                 }
 
@@ -137,24 +116,14 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (Instance)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Removing the object with the key '" + key + "' from the Settings");
-                }
-
                 var isRemoved = true;
 
                 try
                 {
                     IsolatedStorageSettings.ApplicationSettings.Remove(key);
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while removing the object with the key : '" + key + "' from the Settings", exception);
-                    }
-
                     isRemoved = false;
                 }
 
@@ -172,11 +141,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (Instance)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Updating the object with the key '" + key + "' into the Settings");
-                }
-
                 var isUpdated = true;
 
                 try
@@ -185,13 +149,8 @@ namespace ModernApp4Me.WP8.Cache
                     settings[key] = value;
                     settings.Save();
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while updating the object with the key : '" + key + "' intro the Settings", exception);
-                    }
-
                     isUpdated = false;
                 }
 

@@ -13,7 +13,6 @@
 // Contributors:
 //   Smart&Soft - initial API and implementation
 
-using ModernApp4Me.WP8.Log;
 using System;
 using System.IO;
 using System.IO.IsolatedStorage;
@@ -67,11 +66,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (InstanceLock)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Reading the file with the name : '" + fileName + "'");
-                }
-
                 string fileContent = null;
 
                 try
@@ -90,21 +84,14 @@ namespace ModernApp4Me.WP8.Cache
                         }
                         else
                         {
-                            if (M4MModernLogger.Instance.IsWarnEnabled() == true)
-                            {
-                                M4MModernLogger.Instance.Warn("The file with the name : '" + fileName + "' cannot be found");
-                            }
 
                             fileContent = null;
                         }
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsWarnEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while reading the file with the name : '" + fileName + "'", exception);
-                    }
+                    fileContent = null;
                 }
 
                 return fileContent;
@@ -122,11 +109,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (InstanceLock)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Writing into the file with the name : '" + fileName + "'");
-                }
-
                 var isWritten = true;
 
                 try
@@ -148,12 +130,8 @@ namespace ModernApp4Me.WP8.Cache
                         }
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while writing into the file with the name : '" + fileName + "'", exception);
-                    }
 
                     isWritten = false;
                 }
@@ -171,10 +149,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (InstanceLock)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Deleting the file with the name : '" + fileName + "'");
-                }
                 var isDeleted = true;
 
                 try
@@ -187,22 +161,12 @@ namespace ModernApp4Me.WP8.Cache
                         }
                         else
                         {
-                            if (M4MModernLogger.Instance.IsWarnEnabled() == true)
-                            {
-                                M4MModernLogger.Instance.Warn("The file with the name : '" + fileName + "' cannot be found");
-                            }
-
                             isDeleted = false;
                         }
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while deleting the file with the name : '" + fileName + "'", exception);
-                    }
-
                     isDeleted = false;
                 }
 
@@ -218,11 +182,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (InstanceLock)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Cleaning-up the isolated storage");
-                }
-
                 var isCleaned = true;
 
                 try
@@ -232,13 +191,8 @@ namespace ModernApp4Me.WP8.Cache
                         isf.Remove();
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while cleaning-up the isolated storage", exception);
-                    }
-
                     isCleaned = false;
                 }
 
@@ -255,11 +209,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (InstanceLock)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Checking if the file '" + fileName + "' exists");
-                }
-
                 var isFileExists = true;
 
                 try
@@ -269,13 +218,8 @@ namespace ModernApp4Me.WP8.Cache
                         isFileExists = isf.FileExists(fileName);
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while checking if the file with the name : '" + fileName + "' exists", exception);
-                    }
-
                     isFileExists = false;
                 }
 
@@ -292,11 +236,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (InstanceLock)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Creating the directory with the name '" + directoryName + "'");
-                }
-
                 var isSucceed = true;
 
                 try
@@ -306,13 +245,8 @@ namespace ModernApp4Me.WP8.Cache
                         isf.CreateDirectory(directoryName);
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while creating the directory with the name : '" + directoryName + "' exists", exception);
-                    }
-
                     isSucceed = false;
                 }
 
@@ -329,11 +263,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (InstanceLock)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Creating the directory from file path '" + filePath + "'");
-                }
-
                 var isSucceed = true;
 
                 try
@@ -353,13 +282,8 @@ namespace ModernApp4Me.WP8.Cache
                         isf.CreateDirectory(directoryPath.ToString());
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while creating the directory from file path the name : '" + filePath + "' exists", exception);
-                    }
-
                     isSucceed = false;
                 }
 
@@ -376,11 +300,6 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (InstanceLock)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Reading the binary with name '" + fileName + "'");
-                }
-
                 MemoryStream stream;
 
                 try
@@ -399,22 +318,12 @@ namespace ModernApp4Me.WP8.Cache
                         }
                         else
                         {
-                            if (M4MModernLogger.Instance.IsWarnEnabled() == true)
-                            {
-                                M4MModernLogger.Instance.Warn("The file with the name : '" + fileName + "' cannot be found");
-                            }
-
                             stream = null;
                         }
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while reading the file with name : '" + fileName + "'", exception);
-                    }
-
                     stream = null;
                 }
 

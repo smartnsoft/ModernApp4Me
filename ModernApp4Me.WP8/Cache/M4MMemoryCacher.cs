@@ -15,7 +15,6 @@
 
 using System;
 using System.Collections.Generic;
-using ModernApp4Me.WP8.Log;
 
 namespace ModernApp4Me.WP8.Cache
 {
@@ -85,24 +84,14 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (Instance)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Adding an object with the key '" + key + "' into the Memory Cacher");
-                }
-
                 var isAdded = true;
 
                 try
                 {
                     memoryCacher.Add(key, new M4MMemoryCacherObject { Date = DateTime.Now, Value = value });
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while adding an object with the key : '" + key + "' into the Memory Cacher", exception);
-                    }
-
                     isAdded = false;
                 }
 
@@ -119,24 +108,14 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (Instance)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Getting the object with the key '" + key + "' from the Memory Cacher");
-                }
-
                 M4MMemoryCacherObject returnValue = null;
 
                 try
                 {
                     returnValue = memoryCacher[key];
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while reading the object with the key : '" + key + "' from the Memory Cacher", exception);
-                    }
-
                     returnValue = null;
                 }
 
@@ -153,24 +132,14 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (Instance)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Removing the object with the key '" + key + "' from the Memory Cacher");
-                }
-
                 var isRemoved = true;
 
                 try
                 {
                     memoryCacher.Remove(key);
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while removing the object with the key : '" + key + "' from the Memory Cacher", exception);
-                    }
-
                     isRemoved = false;
                 }
 
@@ -188,23 +157,14 @@ namespace ModernApp4Me.WP8.Cache
         {
             lock (Instance)
             {
-                if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-                {
-                    M4MModernLogger.Instance.Debug("Updating the object with the key '" + key + "' into the Memory Cacher");
-                }
-
                 var isUpdated = true;
 
                 try
                 {
                     memoryCacher[key] = new M4MMemoryCacherObject { Date = DateTime.Now, Value = value };
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
-                    if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-                    {
-                        M4MModernLogger.Instance.Error("An error occurs while updating the object with the key : '" + key + "' intro the Memory Cacher", exception);
-                    }
 
                     isUpdated = false;
                 }

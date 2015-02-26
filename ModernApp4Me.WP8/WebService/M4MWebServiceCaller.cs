@@ -16,7 +16,6 @@
 using System.Net;
 using Microsoft.Phone.Net.NetworkInformation;
 using ModernApp4Me.Core.LifeCycle;
-using ModernApp4Me.WP8.Log;
 using ModernApp4Me.Core.WebService;
 
 namespace ModernApp4Me.WP8.WebService
@@ -61,22 +60,6 @@ namespace ModernApp4Me.WP8.WebService
             }
 
             throw new M4MCallException(message);
-        }
-
-        protected override void Debug(string message)
-        {
-            if (M4MModernLogger.Instance.IsDebugEnabled() == true)
-            {
-                M4MModernLogger.Instance.Debug(message);
-            }
-        }
-
-        protected override void Error(string message)
-        {
-            if (M4MModernLogger.Instance.IsErrorEnabled() == true)
-            {
-                M4MModernLogger.Instance.Error(message);
-            }
         }
 
     }
