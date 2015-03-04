@@ -4,12 +4,12 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>Ludovic ROLAND</authors>
+    <authors><![CDATA[Smart&Soft]]></authors>
     <owners><![CDATA[Smart&Soft]]></owners>
-    <projectUrl>https://github.com/smartnsoft/wp4me</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/smartnsoft/ModernApp4Me</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <copyright>Copyright 2014</copyright>
+    <copyright>Copyright 2015</copyright>
     <tags>Windows Phone 8 Windows 8 Framework</tags>
   </metadata>
 </package>
