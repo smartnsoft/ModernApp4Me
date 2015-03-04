@@ -4,7 +4,7 @@
 
 ModernApp4Me is a framework library dedicated to the development of Windows Phone 8 and Windows Store applications. It is developed and maintained by [Smart&Soft](http://www.smartnsoft.com).
 
-Its purpose is to speed up the development of Windows Phone 8 and Windows Store applications. We are constantly adding news features to it.
+Its purpose is to speed up the development of Windows Phone 8, Windows Phone 8.1 and Windows Store applications. We are constantly adding news features to it.
 
 ##Supported Platforms
 
@@ -12,6 +12,7 @@ Its purpose is to speed up the development of Windows Phone 8 and Windows Store 
 
 * Windows Store Apps
 * Windows Phone 8 (Silverlight)
+* Windows Phone 8.1
 
 The **Core module** can be used to developp Windows Phone 8 and Windows Store applications and has the following nuget dependencies :
 * Json.NET
