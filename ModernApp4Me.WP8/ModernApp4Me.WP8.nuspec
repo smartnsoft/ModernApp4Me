@@ -6,6 +6,7 @@
     <title>$title$</title>
     <authors><![CDATA[Smart&Soft]]></authors>
     <owners><![CDATA[Smart&Soft]]></owners>
+    <licenseUrl>http://www.gnu.org/licenses/lgpl-3.0.txt</licenseUrl>
     <projectUrl>https://github.com/smartnsoft/ModernApp4Me</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
