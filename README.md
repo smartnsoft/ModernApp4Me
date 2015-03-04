@@ -6,6 +6,13 @@ ModernApp4Me is a framework library dedicated to the development of Windows Phon
 
 Its purpose is to speed up the development of Windows Phone 8 and Windows Store applications. We are constantly adding news features to it.
 
+##Supported Platforms
+
+###ModernApp4Me.Core
+
+* Windows Store Apps
+* Windows Phone 8 (Silverlight)
+
 The **Core module** can be used to developp Windows Phone 8 and Windows Store applications and has the following nuget dependencies :
 * Json.NET
 * Microsoft Async
@@ -13,6 +20,10 @@ The **Core module** can be used to developp Windows Phone 8 and Windows Store ap
 * Microsoft BCL Portability Pack
 * Microsoft HTTP CLient Libraries
 * RestSharp.Portable
+
+###ModernApp4Me.WP8
+
+* Windows Phone 8 (Silverlight)
 
 The **WP8 module** can be used to developp Windows Phone 8 (Silverlight) apps and has the following nuget dependencies :
 * Json.NET
