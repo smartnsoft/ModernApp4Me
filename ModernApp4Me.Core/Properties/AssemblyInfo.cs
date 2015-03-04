@@ -5,7 +5,7 @@ using System.Reflection;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("ModernApp4Me.Core")]
-[assembly: AssemblyDescription("The core of the framework ModernApp4Me for Windows Phone 8 and Windows 8.")]
+[assembly: AssemblyDescription("The core module of the framework ModernApp4Me. It supports Windows Phone 8 (Silverlight), Windows Phone 8.1 and Windows Store platforms.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Smart&Soft")]
 [assembly: AssemblyProduct("ModernApp4Me.Core")]
