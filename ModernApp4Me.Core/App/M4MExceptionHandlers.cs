@@ -15,7 +15,6 @@
 
 using System;
 using ModernApp4Me.Core.LifeCycle;
-using ModernApp4Me.Core.Log;
 
 namespace ModernApp4Me.Core.App
 {
