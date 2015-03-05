@@ -35,7 +35,7 @@ namespace ModernApp4Me.Core.App
         {
             if (exception is M4MBusinessObjectUnavailableException)
             {
-                ShowMessageBox(I18N.InhandledProblemHint);
+                ShowMessageBox(I18N.BusinessObjectUnavailableHint);
             }
             else if (exception is M4MConnectivityException)
             {

@@ -31,6 +31,8 @@ namespace ModernApp4Me.Core.App
 
         public string ConnectivityProblemHint { get; set; }
 
+        public string BusinessObjectUnavailableHint { get; set; }
+
     }
 
 }
