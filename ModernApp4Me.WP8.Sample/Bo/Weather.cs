@@ -17,45 +17,49 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ModernApp4Me.WP8.Download;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ModernApp4Me.WP8.Sample.Bo
 {
 
     /// <author>Ludovic ROLAND</author>
     /// <since>2015.03.05</since>
-    public sealed class Person
+    public sealed class Weather
     {
 
-        [JsonProperty("id")]
-        public int Label { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("age")]
-        public int Age { get; set; }
-
-        [JsonProperty("avatar")]
-        public string AvatarUrl { get; set; }
-
-        [JsonIgnore]
-        public ImageSource Avatar
+        public sealed class Forecast
         {
-            get
-            {
-                var image = M4MBitmapDownloader.Instance.GetImage(AvatarUrl) as BitmapImage;
-                if (image != null)
-                {
-                    image.DecodePixelHeight = 100;
-                    return image;
-                }
 
-                return null;
+            public sealed class Information
+            {
+
+                [JsonProperty("main")]
+                public string Main { get; set; }
+
+                [JsonProperty("description")]
+                public string Description { get; set; }
+
             }
+
+            [JsonProperty("dt_txt")]
+            public string DateText { get; set; }
+
+            [JsonProperty("weather")]
+            public List<Information> Weathers { get; set; }
+
+            [JsonIgnore]
+            public Information FirstWeather
+            {
+                get
+                {
+                    return Weathers[0];
+                }
+            }
+
         }
+
+        [JsonProperty("list")]
+        public List<Forecast> Forecasts { get; set; }
 
     }
 }

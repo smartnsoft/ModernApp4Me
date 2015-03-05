@@ -24,6 +24,10 @@ using ModernApp4Me.WP8.WebService;
 using ModernApp4Me.WP8.WebServiceCache;
 using Newtonsoft.Json;
 using RestSharp.Portable;
+using System.Net;
+using Microsoft.Phone.Net.NetworkInformation;
+using ModernApp4Me.Core.LifeCycle;
+using ModernApp4Me.Core.WebService;
 
 namespace ModernApp4Me.WP8.Sample.WebService
 {
@@ -33,38 +37,35 @@ namespace ModernApp4Me.WP8.Sample.WebService
     public sealed class Services : M4MWebServiceCaller
     {
 
-        public sealed class PeopleBackedWSUriStreamParser : M4MBackedWSUriStringParser<List<Person>, Object, Services>
+        public sealed class WeatherBackedWSUriStreamParser : M4MBackedWSUriStringParser<Weather, string, Services>
         {
 
-            protected override RestRequest ComputeRestRequest(Object parameter)
+            protected override RestRequest ComputeRestRequest(string parameter)
             {
-                var body = "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"integer\",\"ipsum\":\"id\"},\"name\":{\"type\":\"string\",\"ipsum\":\"name\"},\"email\":{\"type\":\"string\",\"format\":\"email\"},\"bio\":{\"type\":\"string\",\"ipsum\":\"sentence\"},\"age\":{\"type\":\"integer\"},\"avatar\":{\"type\":\"string\",\"ipsum\":\"small image\"}}}";
-                var request = new RestRequest {Method = HttpMethod.Post};
-                request.AddHeader("Accept", "application/json");
-                request.Parameters.Clear();
-                request.AddParameter("application/json", body, ParameterType.RequestBody);
+                var request = new RestRequest("forecast?q={q}&mode=json", HttpMethod.Get);
+                request.AddUrlSegment("q", parameter);
                     
                 return request;
             }
 
-            protected override List<Person> Parse(byte[] response)
+            protected override Weather Parse(byte[] response)
             {
                 return DeserializeObject(response);
             }
 
-            protected override List<Person> DeserializeObject(byte[] response)
+            protected override Weather DeserializeObject(byte[] response)
             {
-                return JsonConvert.DeserializeObject<List<Person>>(Encoding.UTF8.GetString(response, 0, response.Length));
+                return JsonConvert.DeserializeObject<Weather>(Encoding.UTF8.GetString(response, 0, response.Length));
             }
         }
 
-        private const string URL_BASE = "http://schematic-ipsum.herokuapp.com/?n=50";
+        private const string URL_BASE = "http://api.openweathermap.org/data/2.5";
 
         private static volatile Services instance;
 
         private static readonly object InstanceLock = new Object();
 
-        private readonly PeopleBackedWSUriStreamParser peopleParser;
+        private readonly WeatherBackedWSUriStreamParser weatherParser;
 
         public static Services Instance
         {
@@ -88,7 +89,7 @@ namespace ModernApp4Me.WP8.Sample.WebService
         private Services()
             : base(Services.URL_BASE)
         {
-            peopleParser = new PeopleBackedWSUriStreamParser() {WebServiceCaller = this};
+            weatherParser = new WeatherBackedWSUriStreamParser() { WebServiceCaller = this };
         }
 
         protected override void Debug(string message)
@@ -107,9 +108,10 @@ namespace ModernApp4Me.WP8.Sample.WebService
             }
         }
 
-        public async Task<List<Person>> GetPeople()
+        public async Task<Weather> GetWeather(string city)
         {
-            return await peopleParser.GetRetentionValue(true, DateTime.Now.AddHours(1), null);
+            return await weatherParser.GetValue(city);
         }
+
     }
 }

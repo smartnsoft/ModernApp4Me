@@ -56,8 +56,8 @@ namespace ModernApp4Me.WP8.Sample.ExceptionHandler
                 throw new NullReferenceException();
             }
 
-            var people = await Services.Instance.GetPeople();
-            return new ExceptionHandlerViewModel(){People = people};
+            var weather = await Services.Instance.GetWeather("London");
+            return new ExceptionHandlerViewModel() { Forecasts = weather.Forecasts };
         }
 
         protected override void OnFullfillDisplayObjects()

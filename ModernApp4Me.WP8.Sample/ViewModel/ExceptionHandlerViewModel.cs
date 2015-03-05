@@ -25,7 +25,7 @@ namespace ModernApp4Me.WP8.Sample.ViewModel
     public sealed class ExceptionHandlerViewModel : M4MBaseViewModel
     {
 
-        public List<Person> People { get; set; }
+        public List<Weather.Forecast> Forecasts { get; set; }
 
     }
 }
