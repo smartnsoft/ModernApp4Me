@@ -46,6 +46,8 @@ Framework libraries releases are available on NuGet :
 
 ##Documentation
 
+The documentation (chm format) is available into the `doc` directory of each module.
+
 For a full example see the **WP8.Sample** app in the repository or read the [Getting Started](https://github.com/smartnsoft/ModernApp4Me/wiki/Getting-Started) wiki page.
 
 ##Help and Support
