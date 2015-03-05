@@ -26,7 +26,7 @@ namespace ModernApp4Me.WP8.App
     /// 
     /// <author>Ludovic Roland</author>
     /// <since>2014.03.24</since>
-    public class SnSDefaultExceptionHandler : M4MExceptionHandlers
+    public class M4MDefaultExceptionHandlers : M4MExceptionHandlers
     {
 
         public PhoneApplicationFrame RootFrame { get; set; }

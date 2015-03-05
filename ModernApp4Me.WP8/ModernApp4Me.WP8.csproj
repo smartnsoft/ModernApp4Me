@@ -126,9 +126,9 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
     </Reference>
-    <Reference Include="ModernApp4Me.Core, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ModernApp4Me.Core, Version=1.1.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ModernApp4Me.Core.1.1.0.1\lib\portable-net45+win+wpa81+wp80\ModernApp4Me.Core.dll</HintPath>
+      <HintPath>..\packages\ModernApp4Me.Core.1.1.0.2\lib\portable-net45+win+wpa81+wp80\ModernApp4Me.Core.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
