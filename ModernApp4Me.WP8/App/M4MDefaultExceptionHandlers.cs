@@ -33,32 +33,21 @@ namespace ModernApp4Me.WP8.App
 
         protected override void ShowMessageBox(string message)
         {
-            var result = MessageBox.Show(message, I18N.DialogBoxErrorTitle, MessageBoxButton.OK);
-
-            if (result == MessageBoxResult.OK)
+            MessageBox.Show(message, I18N.DialogBoxErrorTitle, MessageBoxButton.OK);
+            
+            if (RootFrame.CanGoBack == true)
             {
-                if (RootFrame.CanGoBack == true)
-                {
-                    RootFrame.GoBack();
-                }
-                else
-                {
-                    Application.Current.Terminate();
-                }
+                RootFrame.GoBack();
+            }
+            else
+            {
+                Application.Current.Terminate();
             }
         }
 
         protected override void ShowConnectivityMessageBox(string message)
         {
-            var result = MessageBox.Show(message, I18N.DialogBoxErrorTitle, MessageBoxButton.OK);
-
-            if (result == MessageBoxResult.OK)
-            {
-                if (RootFrame.CanGoBack == true)
-                {
-                    RootFrame.GoBack();
-                }
-            }
+            MessageBox.Show(message, I18N.DialogBoxErrorTitle, MessageBoxButton.OK);
         }
 
     }
