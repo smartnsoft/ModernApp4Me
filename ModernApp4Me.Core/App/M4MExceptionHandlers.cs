@@ -29,8 +29,6 @@ namespace ModernApp4Me.Core.App
     public abstract class M4MExceptionHandlers
     {
 
-        public M4MLogger Logger { get; set; }
-
         public M4Mi18N I18N { get; set; }
 
         public virtual void AnalyseException(Exception exception)
