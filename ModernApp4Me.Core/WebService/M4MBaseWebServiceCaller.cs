@@ -35,7 +35,7 @@ namespace ModernApp4Me.Core.WebService
 
         private const int ATTEMPTS_COUNT_MAX = 2;
 
-        private RestClient client;
+        protected RestClient client;
 
         /// <summary>
         /// Basis constructor.
@@ -43,7 +43,7 @@ namespace ModernApp4Me.Core.WebService
         /// <param name="baseUrl">The base URL of the web service API</param>
         protected M4MBaseWebServiceCaller(string baseUrl)
         {
-            client = new RestClient(baseUrl);
+            client = new RestClient(baseUrl) { IgnoreResponseStatusCode = true };
         }
 
         /// <summary>
