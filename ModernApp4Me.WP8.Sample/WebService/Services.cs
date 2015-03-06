@@ -109,5 +109,10 @@ namespace ModernApp4Me.WP8.Sample.WebService
             return await weatherParser.GetValue(city);
         }
 
+        public async Task<Weather> GetRetentionWeather(string city)
+        {
+            return await weatherParser.GetRetentionValue(true, DateTime.Now.AddMinutes(10), city);
+        }
+
     }
 }

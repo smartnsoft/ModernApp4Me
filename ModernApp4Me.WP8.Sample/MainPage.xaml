@@ -39,6 +39,12 @@
                 Content="{Binding Path=LocalizedResources.MemoryProfiler, Source={StaticResource LocalizedStrings }}" 
                 Click="BtnMemoryProfiler_Click"
             />
+            <Button 
+                x:Name="BtnBitmapDownloader" 
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Content="{Binding Path=LocalizedResources.BitmapDownloader, Source={StaticResource LocalizedStrings }}" Click="BtnBitmapDownloader_Click" 
+            />
         </StackPanel>
     </Grid>
 

@@ -95,6 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BitmapDownloader\BitmapDownloaderPage.xaml.cs">
+      <DependentUpon>BitmapDownloaderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Bo\Weather.cs" />
     <Compile Include="ExceptionHandler\ExceptionHandlerDetailPage.xaml.cs">
       <DependentUpon>ExceptionHandlerDetailPage.xaml</DependentUpon>
@@ -107,7 +110,7 @@
       <DependentUpon>MemoryProfilerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MemoryProfilerViewModel.cs" />
-    <Compile Include="ViewModel\ExceptionHandlerViewModel.cs" />
+    <Compile Include="ViewModel\ForecastsViewModel.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -125,6 +128,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="BitmapDownloader\BitmapDownloaderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ExceptionHandler\ExceptionHandlerDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

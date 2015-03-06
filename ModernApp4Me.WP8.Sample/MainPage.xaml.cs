@@ -38,5 +38,11 @@ namespace ModernApp4Me.WP8.Sample
         {
             NavigationService.Navigate(new Uri("/MemoryProfiler/MemoryProfilerPage.xaml", UriKind.Relative));
         }
+
+        private void BtnBitmapDownloader_Click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationService.Navigate(new Uri("/BitmapDownloader/BitmapDownloaderPage.xaml", UriKind.Relative));
+        }
     }
 }

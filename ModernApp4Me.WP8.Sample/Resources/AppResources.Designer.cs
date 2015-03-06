@@ -88,6 +88,15 @@ namespace ModernApp4Me.WP8.Sample.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Bitmap Downloader.
+        /// </summary>
+        public static string BitmapDownloader {
+            get {
+                return ResourceManager.GetString("BitmapDownloader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Cannot retrieve the element: this screen cannot be displayed correctly. Sorry!.
         /// </summary>
         public static string BusinessObjectProblem {

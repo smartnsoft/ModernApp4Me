@@ -13,50 +13,29 @@
 // Contributors:
 //   Smart&Soft - initial API and implementation
 
-using System;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Microsoft.Phone.Shell;
-using ModernApp4Me.Core.LifeCycle;
 using ModernApp4Me.Core.ViewModel;
 using ModernApp4Me.WP8.Sample.ViewModel;
 using ModernApp4Me.WP8.Sample.WebService;
 
-namespace ModernApp4Me.WP8.Sample.ExceptionHandler
+namespace ModernApp4Me.WP8.Sample.BitmapDownloader
 {
 
     /// <author>Ludovic ROLAND</author>
-    /// <since>2015.03.05</since>
-    public sealed partial class ExceptionHandlerDetailPage
+    /// <since>2015.03.06</since>
+    public sealed partial class BitmapDownloaderPage
     {
 
-        private string param;
-
-        public ExceptionHandlerDetailPage()
+        public BitmapDownloaderPage()
         {
             InitializeComponent();
-
-            isManagingProgressIndicatorItself = true;
-        }
-
-        protected override void LoadQueryString()
-        {
-            param = NavigationContext.QueryString["param"];
         }
 
         protected async override Task<M4MBaseViewModel> ComputeViewModel()
         {
-            if (ExceptionHandlerPage.BO.Equals(param) == true)
-            {
-                throw new M4MBusinessObjectUnavailableException();
-            }
-
-            if (ExceptionHandlerPage.EXCEPTION.Equals(param) == true)
-            {
-                throw new NullReferenceException();
-            }
-
-            var weather = await Services.Instance.GetWeather("London");
+            var weather = await Services.Instance.GetRetentionWeather("London");
             return new ForecastsViewModel() { Forecasts = weather.Forecasts };
         }
 
@@ -72,7 +51,8 @@ namespace ModernApp4Me.WP8.Sample.ExceptionHandler
 
         protected override ProgressIndicator RetrieveProgressIndicator()
         {
-            return null;
+            return ProgressIndicatorBar;
         }
+
     }
 }

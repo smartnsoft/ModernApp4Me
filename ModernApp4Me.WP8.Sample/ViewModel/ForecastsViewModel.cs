@@ -22,7 +22,7 @@ namespace ModernApp4Me.WP8.Sample.ViewModel
 
     /// <author>Ludovic ROLAND</author>
     /// <since>2015.03.05</since>
-    public sealed class ExceptionHandlerViewModel : M4MBaseViewModel
+    public sealed class ForecastsViewModel : M4MBaseViewModel
     {
 
         public List<Weather.Forecast> Forecasts { get; set; }

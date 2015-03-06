@@ -24,6 +24,7 @@ using ModernApp4Me.Core.App;
 using ModernApp4Me.Core.Log;
 using ModernApp4Me.WP8.App;
 using ModernApp4Me.WP8.Debug;
+using ModernApp4Me.WP8.Download;
 using ModernApp4Me.WP8.Sample.Log;
 using ModernApp4Me.WP8.Sample.Resources;
 
@@ -49,9 +50,9 @@ namespace ModernApp4Me.WP8.Sample
         
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
-        public static M4MExceptionHandlers ExceptionHandlers { get; private set; }
-
-        public static M4MMemoryProfiler MemoryProfiler { get; private set; }
+        public M4MExceptionHandlers ExceptionHandlers { get; private set; }
+        
+        public M4MMemoryProfiler MemoryProfiler { get; private set; }
 
         public App()
         {
@@ -70,6 +71,20 @@ namespace ModernApp4Me.WP8.Sample
 
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            SetupApp();
+        }
+
+        private void Application_Activated(object sender, ActivatedEventArgs e)
+        {
+            //We restore the application objects
+            if (e.IsApplicationInstancePreserved == false)
+            {
+                SetupApp();
+            }
+        }
+
+        private void SetupApp()
+        {
             //We setup the exception handler
             ExceptionHandlers = new M4MDefaultExceptionHandlers()
             {
@@ -80,7 +95,7 @@ namespace ModernApp4Me.WP8.Sample
                     InhandledProblemHint = AppResources.UnhandledProblem,
                     ConnectivityProblemHint = AppResources.ConnectivityProblem,
                     BusinessObjectUnavailableHint = AppResources.BusinessObjectProblem
-                    
+
                 }
             };
 
@@ -89,11 +104,16 @@ namespace ModernApp4Me.WP8.Sample
 
             //We setup and launch the memory profiler
             MemoryProfiler = new MemoryProfilerCustom();
-            //MemoryProfiler.BeginRecording();
-        }
+            MemoryProfiler.BeginRecording();
 
-        private void Application_Activated(object sender, ActivatedEventArgs e)
-        {
+            //We setup the bitmap downloader
+            M4MBitmapDownloader.Configuration = new M4MBitmapDownloader.BitmapDownloaderConfiguration()
+            {
+                ExpirationDelay = TimeSpan.FromDays(1),
+                MemoryCacheCapacity = 50,
+                Name = "BitmapDownloader",
+                Type = M4MBitmapDownloader.BitmapDownloaderType.PersistentImageCache
+            };
         }
 
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)

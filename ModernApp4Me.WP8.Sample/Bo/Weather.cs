@@ -39,6 +39,25 @@ namespace ModernApp4Me.WP8.Sample.Bo
                 [JsonProperty("description")]
                 public string Description { get; set; }
 
+                [JsonProperty("icon")]
+                public string IconUrl { get; set; }
+
+                [JsonIgnore]
+                public ImageSource Icon
+                {
+                    get
+                    {
+                        var image = M4MBitmapDownloader.Instance.GetImage("http://openweathermap.org/img/w/" + IconUrl + ".png") as BitmapImage;
+                        
+                        if (image != null)
+                        {
+                            image.DecodePixelHeight = 50;
+                        }
+
+                        return image;
+                    }
+                }
+
             }
 
             [JsonProperty("dt_txt")]
