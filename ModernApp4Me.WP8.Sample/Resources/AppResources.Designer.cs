@@ -160,6 +160,15 @@ namespace ModernApp4Me.WP8.Sample.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Memory Profiler.
+        /// </summary>
+        public static string MemoryProfiler {
+            get {
+                return ResourceManager.GetString("MemoryProfiler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à problem.
         /// </summary>
         public static string Problem {

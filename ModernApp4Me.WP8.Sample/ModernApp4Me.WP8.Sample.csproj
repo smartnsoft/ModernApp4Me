@@ -103,6 +103,10 @@
       <DependentUpon>ExceptionHandlerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Log\Logger.cs" />
+    <Compile Include="MemoryProfiler\MemoryProfilerPage.xaml.cs">
+      <DependentUpon>MemoryProfilerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\MemoryProfilerViewModel.cs" />
     <Compile Include="ViewModel\ExceptionHandlerViewModel.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -132,6 +136,10 @@
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MemoryProfiler\MemoryProfilerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +230,7 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

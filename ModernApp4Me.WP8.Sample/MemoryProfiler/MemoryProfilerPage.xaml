@@ -1,11 +1,11 @@
-﻿<phone:PhoneApplicationPage
-    x:Class="ModernApp4Me.WP8.Sample.MainPage"
+﻿<m4m:M4MPhoneApplicationPage
+    x:Class="ModernApp4Me.WP8.Sample.MemoryProfiler.MemoryProfilerPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:m4m="clr-namespace:ModernApp4Me.WP8.App;assembly=ModernApp4Me.WP8"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -21,25 +21,15 @@
 
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings }}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="{Binding Path=LocalizedResources.Home, Source={StaticResource LocalizedStrings }}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.MemoryProfiler, Source={StaticResource LocalizedStrings }}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
-        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button 
-                x:Name="BtnExceptionHandler" 
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Top"
-                Content="{Binding Path=LocalizedResources.ExceptionHandler, Source={StaticResource LocalizedStrings }}" 
-                Click="BtnExceptionHandler_Click"
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock 
+                Text="{Binding Report}"
+                TextWrapping="Wrap"
             />
-            <Button 
-                x:Name="BtnMemoryProfiler" 
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Top"
-                Content="{Binding Path=LocalizedResources.MemoryProfiler, Source={StaticResource LocalizedStrings }}" 
-                Click="BtnMemoryProfiler_Click"
-            />
-        </StackPanel>
+        </Grid>
     </Grid>
 
-</phone:PhoneApplicationPage>
+</m4m:M4MPhoneApplicationPage>

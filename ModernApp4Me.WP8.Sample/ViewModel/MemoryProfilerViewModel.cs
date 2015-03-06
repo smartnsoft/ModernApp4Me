@@ -13,30 +13,27 @@
 // Contributors:
 //   Smart&Soft - initial API and implementation
 
-using System;
-using System.Windows;
+using ModernApp4Me.Core.ViewModel;
 
-namespace ModernApp4Me.WP8.Sample
+namespace ModernApp4Me.WP8.Sample.ViewModel
 {
 
     /// <author>Ludovic ROLAND</author>
-    /// <since>2015.03.05</since>
-    public partial class MainPage
+    /// <since>2015.03.06</since>
+    public sealed class MemoryProfilerViewModel : M4MBaseViewModel
     {
 
-        public MainPage()
+        private string report;
+
+        public string Report
         {
-            InitializeComponent();
+            get { return report; }
+            set
+            {
+                report = value;
+                RaiseOnPropertyChanged();
+            }
         }
 
-        private void BtnExceptionHandler_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/ExceptionHandler/ExceptionHandlerPage.xaml", UriKind.Relative));
-        }
-
-        private void BtnMemoryProfiler_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/MemoryProfiler/MemoryProfilerPage.xaml", UriKind.Relative));
-        }
     }
 }

@@ -24,9 +24,14 @@
             <TextBlock Text="{Binding Path=LocalizedResources.ExceptionHandler, Source={StaticResource LocalizedStrings }}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
-        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Text="Wait..." Style="{StaticResource PhoneTextNormalStyle}" HorizontalAlignment="Center" />
-            <Controls:LongListSelector ItemsSource="{Binding Forecasts}" VerticalContentAlignment="Stretch">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="Wait..." Style="{StaticResource PhoneTextNormalStyle}" HorizontalAlignment="Center" />
+            <Controls:LongListSelector Grid.Row="1" ItemsSource="{Binding Forecasts}" VerticalContentAlignment="Stretch">
                 <Controls:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
@@ -37,7 +42,7 @@
                     </DataTemplate>
                 </Controls:LongListSelector.ItemTemplate>
             </Controls:LongListSelector>
-        </StackPanel>
+        </Grid>
     </Grid>
 
 </m4m:M4MPhoneApplicationPage>

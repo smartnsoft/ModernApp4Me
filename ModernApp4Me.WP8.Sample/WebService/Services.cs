@@ -24,10 +24,6 @@ using ModernApp4Me.WP8.WebService;
 using ModernApp4Me.WP8.WebServiceCache;
 using Newtonsoft.Json;
 using RestSharp.Portable;
-using System.Net;
-using Microsoft.Phone.Net.NetworkInformation;
-using ModernApp4Me.Core.LifeCycle;
-using ModernApp4Me.Core.WebService;
 
 namespace ModernApp4Me.WP8.Sample.WebService
 {

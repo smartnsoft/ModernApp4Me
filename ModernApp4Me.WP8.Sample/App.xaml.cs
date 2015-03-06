@@ -23,6 +23,7 @@ using Microsoft.Phone.Shell;
 using ModernApp4Me.Core.App;
 using ModernApp4Me.Core.Log;
 using ModernApp4Me.WP8.App;
+using ModernApp4Me.WP8.Debug;
 using ModernApp4Me.WP8.Sample.Log;
 using ModernApp4Me.WP8.Sample.Resources;
 
@@ -33,10 +34,24 @@ namespace ModernApp4Me.WP8.Sample
     /// <since>2015.03.05</since>
     public partial class App
     {
+
+        public sealed class MemoryProfilerCustom : M4MMemoryProfiler
+        {
+
+            protected override void WriteReport(string report)
+            {
+                if (Logger.Instance.IsDebugEnabled() == true)
+                {
+                    Logger.Instance.Debug(report);
+                }
+            }
+        }
         
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
         public static M4MExceptionHandlers ExceptionHandlers { get; private set; }
+
+        public static M4MMemoryProfiler MemoryProfiler { get; private set; }
 
         public App()
         {
@@ -71,6 +86,10 @@ namespace ModernApp4Me.WP8.Sample
 
             //We setup the logger
             Logger.Instance.LogLevel = M4MLogger.M4MLogLevel.Debug;
+
+            //We setup and launch the memory profiler
+            MemoryProfiler = new MemoryProfilerCustom();
+            //MemoryProfiler.BeginRecording();
         }
 
         private void Application_Activated(object sender, ActivatedEventArgs e)
@@ -103,8 +122,6 @@ namespace ModernApp4Me.WP8.Sample
         {
             ExceptionHandlers.AnalyseException(exception);
         }
-
-
 
         #region Initialisation de l'application téléphonique
 
@@ -164,7 +181,7 @@ namespace ModernApp4Me.WP8.Sample
             try
             {
                 RootFrame.Language = XmlLanguage.GetLanguage(AppResources.ResourceLanguage);
-                FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
+                var flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
                 RootFrame.FlowDirection = flow;
             }
             catch

@@ -164,4 +164,7 @@
   <data name="ExceptionHandlerNavigationException" xml:space="preserve">
     <value>Navigation Exception</value>
   </data>
+  <data name="MemoryProfiler" xml:space="preserve">
+    <value>Memory Profiler</value>
+  </data>
 </root>
