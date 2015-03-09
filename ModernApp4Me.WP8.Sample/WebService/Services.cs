@@ -15,13 +15,11 @@
 
 using System;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using ModernApp4Me.WP8.Sample.Bo;
 using ModernApp4Me.WP8.Sample.Log;
 using ModernApp4Me.WP8.WebService;
 using ModernApp4Me.WP8.WebServiceCache;
-using Newtonsoft.Json;
 using RestSharp.Portable;
 
 namespace ModernApp4Me.WP8.Sample.WebService
@@ -46,11 +44,6 @@ namespace ModernApp4Me.WP8.Sample.WebService
             protected override Weather Parse(byte[] response)
             {
                 return DeserializeObject(response);
-            }
-
-            protected override Weather DeserializeObject(byte[] response)
-            {
-                return JsonConvert.DeserializeObject<Weather>(Encoding.UTF8.GetString(response, 0, response.Length));
             }
         }
 
