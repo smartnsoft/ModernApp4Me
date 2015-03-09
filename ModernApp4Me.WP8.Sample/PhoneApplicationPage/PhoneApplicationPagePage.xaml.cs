@@ -123,7 +123,7 @@ namespace ModernApp4Me.WP8.Sample.PhoneApplicationPage
 
         private async Task<List<Weather.Forecast>> RetrieveBusinessObjects()
         {
-            var weather = await Services.Instance.GetRetentionWeather(cities[currentCity % cities.Length]);
+            var weather = await Services.Instance.GetWeather(cities[currentCity % cities.Length]);
             return weather.Forecasts;
         }
 
