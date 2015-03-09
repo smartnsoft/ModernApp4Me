@@ -208,7 +208,7 @@ namespace ModernApp4Me.WP8.App
                 progressIndicator.IsVisible = true;
             }
 
-            if (connectivityContainer != null && connectivityContainer.Visibility == Visibility.Visible)
+            if (viewModel == null)
             {
                 try
                 {
