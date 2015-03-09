@@ -25,7 +25,17 @@ namespace ModernApp4Me.WP8.Sample.ViewModel
     public sealed class ForecastsViewModel : M4MBaseViewModel
     {
 
-        public List<Weather.Forecast> Forecasts { get; set; }
+        private List<Weather.Forecast> forecasts;
+
+        public List<Weather.Forecast> Forecasts
+        {
+            get { return forecasts; }
+            set 
+            { 
+                forecasts = value;
+                RaiseOnPropertyChanged();
+            }
+        }
 
     }
 }

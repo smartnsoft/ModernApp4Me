@@ -170,4 +170,13 @@
   <data name="MemoryProfiler" xml:space="preserve">
     <value>Memory Profiler</value>
   </data>
+  <data name="ChangeCity" xml:space="preserve">
+    <value>change the city</value>
+  </data>
+  <data name="PhoneApplicationPage" xml:space="preserve">
+    <value>Phone Application Page</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>retry</value>
+  </data>
 </root>

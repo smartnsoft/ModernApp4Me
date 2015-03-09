@@ -106,6 +106,15 @@ namespace ModernApp4Me.WP8.Sample.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à change the city.
+        /// </summary>
+        public static string ChangeCity {
+            get {
+                return ResourceManager.GetString("ChangeCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Your device is not connected to the Internet.
         /// </summary>
         public static string ConnectivityProblem {
@@ -178,6 +187,15 @@ namespace ModernApp4Me.WP8.Sample.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Phone Application Page.
+        /// </summary>
+        public static string PhoneApplicationPage {
+            get {
+                return ResourceManager.GetString("PhoneApplicationPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à problem.
         /// </summary>
         public static string Problem {
@@ -201,6 +219,15 @@ namespace ModernApp4Me.WP8.Sample.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à retry.
+        /// </summary>
+        public static string Retry {
+            get {
+                return ResourceManager.GetString("Retry", resourceCulture);
             }
         }
         

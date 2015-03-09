@@ -44,5 +44,10 @@ namespace ModernApp4Me.WP8.Sample
 
             NavigationService.Navigate(new Uri("/BitmapDownloader/BitmapDownloaderPage.xaml", UriKind.Relative));
         }
+
+        private void BtnPhoneApplicationPage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/PhoneApplicationPage/PhoneApplicationPagePage.xaml", UriKind.Relative));
+        }
     }
 }

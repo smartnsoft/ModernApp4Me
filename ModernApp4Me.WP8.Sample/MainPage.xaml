@@ -43,7 +43,14 @@
                 x:Name="BtnBitmapDownloader" 
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Top"
-                Content="{Binding Path=LocalizedResources.BitmapDownloader, Source={StaticResource LocalizedStrings }}" Click="BtnBitmapDownloader_Click" 
+                Content="{Binding Path=LocalizedResources.BitmapDownloader, Source={StaticResource LocalizedStrings }}" 
+                Click="BtnBitmapDownloader_Click" 
+            />
+            <Button 
+                x:Name="BtnPhoneApplicationPage" 
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Content="{Binding Path=LocalizedResources.PhoneApplicationPage, Source={StaticResource LocalizedStrings }}" Click="BtnPhoneApplicationPage_Click" 
             />
         </StackPanel>
     </Grid>
