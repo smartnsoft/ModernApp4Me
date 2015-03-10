@@ -6,6 +6,8 @@ ModernApp4Me is a framework library dedicated to the development of Windows Phon
 
 Its purpose is to speed up the development of Windows Phone 8, Windows Phone 8.1 and Windows Store applications. We are constantly adding news features to it.
 
+**This project is is entirely managed on Github.** It means that the documentation ia available on the [Github wiki](https://github.com/smartnsoft/ModernApp4Me/wiki) and that all issues should be opened/discussed on the [Github issue page](https://github.com/smartnsoft/ModernApp4Me/issues).
+
 ##Supported Platforms
 
 ###ModernApp4Me.Core
@@ -52,9 +54,9 @@ For a full example see the **WP8.Sample** app in the repository or read the [Get
 
 ##Help and Support
 
-If you have any questions feel free to contact us via [mail](mailto:modernapp4me@smartnsoft.com).
+If you have any questions feel free to contact us via [mail](mailto:modernapp4me@smartnsoft.com) or create a ticket on [Github](https://github.com/smartnsoft/ModernApp4Me/issues).
 
-If you have a bug create an issue.
+If you have a bug create an issue directly on [Github](https://github.com/smartnsoft/ModernApp4Me/issues).
 
 ##Contributing
 
