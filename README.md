@@ -15,6 +15,7 @@ Its purpose is to speed up the development of Windows Phone 8, Windows Phone 8.1
 * Windows Store Apps
 * Windows Phone 8 (Silverlight)
 * Windows Phone 8.1
+* Universal App
 
 The **Core module** can be used to developp Windows Phone 8 and Windows Store applications and has the following nuget dependencies :
 * Json.NET
