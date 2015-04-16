@@ -1,6 +1,6 @@
-#ModernApp4me
+#ModernApp4Me
 
-##About ModernApp4me
+##About ModernApp4Me
 
 ModernApp4Me is a framework library dedicated to the development of Windows Phone 8 and Windows Store applications. It is developed and maintained by [Smart&Soft](http://www.smartnsoft.com).
 
