@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="e0be2029-3a2a-40a4-b7fe-0ad4e73de1c2" Title="ModernApp4Me.Core.App" Url="html/80b1be6d-c46e-39d0-5db6-e462c0811239.htm">
+    <HelpTOCNode Id="4537207a-917e-446d-b575-a61437d15fba" Title="M4MExceptionHandlers Class" Url="html/44160565-d839-683c-06fd-6009fdf64363.htm">
+      <HelpTOCNode Title="M4MExceptionHandlers Constructor " Url="html/a625a86d-6ea2-8d3b-4ac5-a8614c303d12.htm" />
+      <HelpTOCNode Id="a93af4eb-08a4-4d94-93ff-7e9f447c5399" Title="M4MExceptionHandlers Methods" Url="html/207989c2-8e92-e150-b2e2-72ad69cecec2.htm">
+        <HelpTOCNode Title="AnalyseException Method " Url="html/ccb53616-ff9d-219e-e712-06abb4df3e80.htm" />
+        <HelpTOCNode Title="ShowConnectivityMessageBox Method " Url="html/6282c426-4907-aca2-f1b2-210138c8e7be.htm" />
+        <HelpTOCNode Title="ShowMessageBox Method " Url="html/8bffe7b1-e39b-768e-595e-da63bb081b4f.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ba77a849-bcda-4038-b9c6-dce4bb3715df" Title="M4MExceptionHandlers Properties" Url="html/7fd6f604-35e6-e4e1-8b03-59647683c01c.htm">
+        <HelpTOCNode Title="I18N Property " Url="html/556d5cef-ddc8-db52-e2d1-1bd12badfafd.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0690a132-4c74-438e-b5df-1aa43c4573c8" Title="M4Mi18N Class" Url="html/f76c44a0-97f2-1775-b65a-79fbb42aacea.htm">
+      <HelpTOCNode Title="M4Mi18N Constructor " Url="html/237bbbdb-58b9-35c1-fa6f-ea381b8ca8be.htm" />
+      <HelpTOCNode Title="M4Mi18N Methods" Url="html/492fc4db-eadc-bfcc-f46b-0a2d2514e5e7.htm" />
+      <HelpTOCNode Id="3c04f22b-4ed0-444d-bfed-9f16fe9729de" Title="M4Mi18N Properties" Url="html/72d7cf11-b20d-890a-8f9a-fe1c1fc33e64.htm">
+        <HelpTOCNode Title="BusinessObjectUnavailableHint Property " Url="html/d60754d8-7873-d1f2-7b65-2fb3e10ca5eb.htm" />
+        <HelpTOCNode Title="ConnectivityProblemHint Property " Url="html/84c6a65f-2e60-55d3-b759-165e7e2f1416.htm" />
+        <HelpTOCNode Title="DialogBoxErrorTitle Property " Url="html/8cb1f651-ca16-5ed8-88bf-5c57374ef955.htm" />
+        <HelpTOCNode Title="InhandledProblemHint Property " Url="html/53ae7a31-f07a-0f98-fbfc-2e6618afe9c8.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="21fb530f-8d9b-483d-ad34-9f0d0597c323" Title="ModernApp4Me.Core.LifeCycle" Url="html/ab3fa433-65d8-74c4-ad1d-7cdede5cd85d.htm">
+    <HelpTOCNode Id="831e705b-54d8-41df-8f93-9df26e30ba11" Title="M4MBusinessObjectUnavailableException Class" Url="html/83aba6ce-ba0a-21b9-9f20-da7ea2619af0.htm">
+      <HelpTOCNode Id="aca8a124-21f5-47d8-8a50-15413c138a61" Title="M4MBusinessObjectUnavailableException Constructor " Url="html/30bb0865-f6d4-68c7-9ada-524fe1c4ad49.htm">
+        <HelpTOCNode Title="M4MBusinessObjectUnavailableException Constructor " Url="html/9a61287c-a8a8-f58e-2828-f9647cfb18e5.htm" />
+        <HelpTOCNode Title="M4MBusinessObjectUnavailableException Constructor (Exception)" Url="html/c77ec773-9496-5a2c-c43d-70556b92cb98.htm" />
+        <HelpTOCNode Title="M4MBusinessObjectUnavailableException Constructor (Int32)" Url="html/6f149cc7-32ae-2a6e-7aab-9d3aae6f8653.htm" />
+        <HelpTOCNode Title="M4MBusinessObjectUnavailableException Constructor (String)" Url="html/08ce8d48-8362-a390-3613-5c5f34efd7bd.htm" />
+        <HelpTOCNode Title="M4MBusinessObjectUnavailableException Constructor (Exception, Int32)" Url="html/75d99bb5-a34d-4b9a-44ed-da609bccde26.htm" />
+        <HelpTOCNode Title="M4MBusinessObjectUnavailableException Constructor (String, Exception)" Url="html/ded94382-26bd-b0ba-7992-6f2ef476678a.htm" />
+        <HelpTOCNode Title="M4MBusinessObjectUnavailableException Constructor (String, Int32)" Url="html/951cfdfa-883d-716e-3b18-3fe50aeb39bd.htm" />
+        <HelpTOCNode Title="M4MBusinessObjectUnavailableException Constructor (String, Exception, Int32)" Url="html/ac4f1dc2-5e74-3648-dd4c-9f453ecccdf1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="M4MBusinessObjectUnavailableException Methods" Url="html/cf1f25fb-f507-66ad-264b-94624671af89.htm" />
+      <HelpTOCNode Id="e9a40d19-d7fa-472e-87cf-9a6434714a7f" Title="M4MBusinessObjectUnavailableException Properties" Url="html/dc65dd9b-8d1d-785a-3c82-5e0eacda2c77.htm">
+        <HelpTOCNode Title="Code Property " Url="html/2a41ca38-c4ba-f695-ffb8-be0f2c6c988c.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8705e5b9-8e87-448b-be0e-796029c104d2" Title="M4MConnectivityException Class" Url="html/ec228a67-3303-cbf7-0358-6d950c654a2b.htm">
+      <HelpTOCNode Id="4f13b613-2313-4e0b-9be8-f92ad6c80c4a" Title="M4MConnectivityException Constructor " Url="html/d132c0e8-b25c-6d01-baf0-c27e47f9d944.htm">
+        <HelpTOCNode Title="M4MConnectivityException Constructor " Url="html/c2b766f4-2c4c-6955-8983-225712229587.htm" />
+        <HelpTOCNode Title="M4MConnectivityException Constructor (Exception)" Url="html/1d2157e0-1dfd-f5fd-819e-dc7767f67f67.htm" />
+        <HelpTOCNode Title="M4MConnectivityException Constructor (Int32)" Url="html/8be694e3-0c34-9d94-0d40-ae297c580c61.htm" />
+        <HelpTOCNode Title="M4MConnectivityException Constructor (String)" Url="html/7af6c729-d3b4-b3a3-702e-c683fb57434a.htm" />
+        <HelpTOCNode Title="M4MConnectivityException Constructor (Exception, Int32)" Url="html/f9058c53-687a-7ed6-f1fa-625e75e9db48.htm" />
+        <HelpTOCNode Title="M4MConnectivityException Constructor (String, Exception)" Url="html/4bcdc7f9-bcc9-3fd2-a8fe-3f9f9eb8b32f.htm" />
+        <HelpTOCNode Title="M4MConnectivityException Constructor (String, Int32)" Url="html/9079d702-c31d-f1e5-1483-fc22e69c9955.htm" />
+        <HelpTOCNode Title="M4MConnectivityException Constructor (String, Exception, Int32)" Url="html/d5acf597-ce13-e87f-3c6b-83119c75f07a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="M4MConnectivityException Methods" Url="html/9369004c-2f9c-05f6-8c7b-a832722d9dc3.htm" />
+      <HelpTOCNode Id="dd1dd331-c23e-46de-8412-8f7db1d8abdf" Title="M4MConnectivityException Properties" Url="html/f8d9a98c-951e-c798-7303-1561eed2f345.htm">
+        <HelpTOCNode Title="Code Property " Url="html/698edd9f-ff1e-5620-6c85-bb7cfb7c1678.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="101aecad-0f5d-4980-b007-59a2337ca3c4" Title="ModernApp4Me.Core.Log" Url="html/0b2ce78e-6672-59f6-ff39-62ef26b2cf15.htm">
+    <HelpTOCNode Id="10c9e0b9-ec64-4834-b44f-5247fc30250b" Title="M4MLogger Class" Url="html/7ddd22fa-af34-15eb-826f-51a60e0a6df7.htm">
+      <HelpTOCNode Title="M4MLogger Constructor " Url="html/83407e8f-a9ce-ba7c-2927-913c207d8706.htm" />
+      <HelpTOCNode Id="d0a83e8f-7e82-438e-868e-d304ce3cb270" Title="M4MLogger Methods" Url="html/d9d311bf-93c1-ac2c-7359-4a17b60a2f09.htm">
+        <HelpTOCNode Id="2a03a9b9-c218-477a-b213-2d75614b8b7e" Title="BuildLog Method " Url="html/97edb174-5bc0-906b-02ae-81a2f72e0763.htm">
+          <HelpTOCNode Title="BuildLog Method (M4MLogger.M4MLogLevel, String, String, String, Int32)" Url="html/5bfde5ab-ada7-bc3a-93d3-a99043c3ea26.htm" />
+          <HelpTOCNode Title="BuildLog Method (M4MLogger.M4MLogLevel, String, String, String, String, String, Int32)" Url="html/003fdf72-9cdc-573e-413f-4f61ecdcda53.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Debug Method " Url="html/d37115c3-ef8a-aaf9-f503-59c56ceda010.htm" />
+        <HelpTOCNode Id="434a21f4-b069-4dbd-bfb9-0cfe859654b5" Title="Error Method " Url="html/cdabd060-24cf-6eb8-7626-a3206b8e3c43.htm">
+          <HelpTOCNode Title="Error Method (String, String, String, Int32)" Url="html/a297781a-9bc9-c62b-c6ba-6e766064d845.htm" />
+          <HelpTOCNode Title="Error Method (String, Exception, String, String, Int32)" Url="html/dedaa7cd-3120-2136-4a82-9d44e353f459.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="981a9a5d-63da-4e03-ae71-03618ab9cf9e" Title="Fatal Method " Url="html/f23ba2ac-3e81-b457-4bbd-7d46632d18b1.htm">
+          <HelpTOCNode Title="Fatal Method (String, String, String, Int32)" Url="html/7282c7e1-da0c-98cb-d351-4b7371acbf5a.htm" />
+          <HelpTOCNode Title="Fatal Method (String, Exception, String, String, Int32)" Url="html/c6cef5b4-0487-2332-88dd-e007747a6247.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Info Method " Url="html/e49afa44-3acf-57fc-df89-f24140c5dc4b.htm" />
+        <HelpTOCNode Title="IsDebugEnabled Method " Url="html/90969d74-485c-4b2c-0584-8bc57db94e3d.htm" />
+        <HelpTOCNode Title="IsErrorEnabled Method " Url="html/055feeb2-6a04-4e36-0106-6bf1903b708b.htm" />
+        <HelpTOCNode Title="IsFatalEnabled Method " Url="html/5babc177-f489-0b06-abf2-534be53d21f5.htm" />
+        <HelpTOCNode Title="IsInfoEnabled Method " Url="html/73594cd2-b571-c243-7ff9-6ca065df9fad.htm" />
+        <HelpTOCNode Title="IsWarnEnabled Method " Url="html/90a6ebb0-455c-29cc-bf2c-f58bd575caf2.htm" />
+        <HelpTOCNode Id="0feb8636-a3e4-46be-90a3-2eace8c69108" Title="Warn Method " Url="html/49199d1b-dd4d-1fcf-199f-c7b3593aec4e.htm">
+          <HelpTOCNode Title="Warn Method (String, String, String, Int32)" Url="html/52c07298-8a9a-4a6e-895d-9446082c5f2c.htm" />
+          <HelpTOCNode Title="Warn Method (String, Exception, String, String, Int32)" Url="html/46ce51ff-00da-6903-8959-07f100ac4acb.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="WriteTrace Method " Url="html/892b07fc-64be-d94a-6499-a0413ef298b7.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e85c5ab0-1669-4e1f-856e-451c45254011" Title="M4MLogger Properties" Url="html/84906808-c9f5-fa72-8f91-fc94ea6511f2.htm">
+        <HelpTOCNode Title="LogLevel Property " Url="html/8e2c6dea-515d-e6c4-8660-d647310f31c0.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="M4MLogger.M4MLogLevel Enumeration" Url="html/03a6a6a9-3bca-7bb3-93e2-9de74f3277e5.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="427dbb63-7140-436c-b0bd-617c470885aa" Title="ModernApp4Me.Core.Util" Url="html/a7e28893-fa1c-0d4f-6ad0-3666a7148aca.htm">
+    <HelpTOCNode Id="53e2ccfd-903e-411f-846a-a55e862779d2" Title="M4MDateUtil Class" Url="html/d04d1860-3f0c-8e12-8a4c-d124ceaf5035.htm">
+      <HelpTOCNode Id="8db7df86-9e8a-40a1-8f2c-6e7341026b7e" Title="M4MDateUtil Methods" Url="html/d68c87a4-c0d0-d249-c686-be3f330a83b5.htm">
+        <HelpTOCNode Title="JavaTimestampToDateTime Method " Url="html/5abbd7a6-a21b-9a13-9be4-90e6c5a69d5a.htm" />
+        <HelpTOCNode Title="UnixTimestampToDateTime Method " Url="html/016b1002-0ec9-f4b5-d4cb-6133220441f1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="5d568496-c613-4542-b381-efc02a0e3396" Title="ModernApp4Me.Core.ViewModel" Url="html/8115ce0e-0311-b38d-fe3f-c13ca5456c61.htm">
+    <HelpTOCNode Id="2373ad35-d75e-4c6f-b43b-4a83e640db81" Title="M4MBaseViewModel Class" Url="html/dded47dc-53dc-2197-63c2-a18cc4d9d8f3.htm">
+      <HelpTOCNode Title="M4MBaseViewModel Constructor " Url="html/c8b90bd1-6514-b73d-011b-ca015a783f8a.htm" />
+      <HelpTOCNode Id="1ab3676d-e983-478f-8f06-7c89ec35325d" Title="M4MBaseViewModel Methods" Url="html/657b718a-bad4-b526-eacc-3bda44313ee2.htm">
+        <HelpTOCNode Title="OnPropertyChanged Method " Url="html/634db96f-e581-4d5c-41f4-76c8e77c6626.htm" />
+        <HelpTOCNode Title="RaiseOnPropertyChanged Method " Url="html/410c0d01-416a-c3f9-48bf-aff81da2f5a8.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c1fdd9dc-5bbe-4ba0-981e-829ad912ef90" Title="M4MBaseViewModel Events" Url="html/f6e8676c-4095-a6df-21fb-046b964025cc.htm">
+        <HelpTOCNode Title="PropertyChanged Event" Url="html/88830dff-4771-3916-a84e-88ee7662362c.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="d5b12917-0477-449f-a57c-8a9a06209a2f" Title="ModernApp4Me.Core.WebService" Url="html/de4143e6-ec94-3b43-b7c7-3bf356e88c64.htm">
+    <HelpTOCNode Id="bc0f6892-cabd-46fc-88c5-406c244a58d7" Title="M4MBaseWebServiceCaller Class" Url="html/d59447dd-c317-6040-3006-adb525aabfb8.htm">
+      <HelpTOCNode Title="M4MBaseWebServiceCaller Constructor " Url="html/7f869614-c464-b2bf-4afc-53c7873ea304.htm" />
+      <HelpTOCNode Id="5b3e343c-a303-413d-ae79-f50dc4178a06" Title="M4MBaseWebServiceCaller Fields" Url="html/4651b7f9-1514-7a26-d2fd-c899b98b5748.htm">
+        <HelpTOCNode Title="client Field" Url="html/321ae8d7-5463-6c89-4210-457b0394ade4.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="47997bef-ac9f-4174-9c5e-4a5283d03066" Title="M4MBaseWebServiceCaller Methods" Url="html/9c0f2558-f5b8-0330-09cc-cc2482692a51.htm">
+        <HelpTOCNode Title="Debug Method " Url="html/cb75674e-03b5-59e9-d134-07eaad5fbd16.htm" />
+        <HelpTOCNode Title="Error Method " Url="html/5b02ec09-8e07-6655-5418-5443d67dd975.htm" />
+        <HelpTOCNode Title="ExecuteHttpRequest Method " Url="html/a0da0dd4-f87b-48d1-e7b3-b71e0c841de1.htm" />
+        <HelpTOCNode Title="OnHttpStatusCodeNotOk Method " Url="html/a0af11a0-39ef-b12a-bf5e-992002a1cb15.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ee96ca58-3824-4d07-9d16-a8d3ae0910fc" Title="M4MCallException Class" Url="html/6bad4c4f-16c1-32a0-4c37-63e1f07379ba.htm">
+      <HelpTOCNode Id="4912089f-6735-46f1-8f8e-e80ba70f0111" Title="M4MCallException Constructor " Url="html/3da93e49-cf64-320b-0763-fb80944576f7.htm">
+        <HelpTOCNode Title="M4MCallException Constructor " Url="html/76f8592e-1dad-3313-da52-bdc6d18d3c18.htm" />
+        <HelpTOCNode Title="M4MCallException Constructor (Exception)" Url="html/66b9d939-fb36-0baf-c70b-87691f96c5bd.htm" />
+        <HelpTOCNode Title="M4MCallException Constructor (Int32)" Url="html/eb93d238-b0ac-7e79-4288-cc0975067c5e.htm" />
+        <HelpTOCNode Title="M4MCallException Constructor (String)" Url="html/f5188101-7625-5f42-b729-9e50ef2f5eaa.htm" />
+        <HelpTOCNode Title="M4MCallException Constructor (Exception, Int32)" Url="html/48b7e7de-3d1e-b4a5-deea-3bb93a1fd205.htm" />
+        <HelpTOCNode Title="M4MCallException Constructor (String, Exception)" Url="html/23e798bf-f940-26d2-36a0-7d75494b2073.htm" />
+        <HelpTOCNode Title="M4MCallException Constructor (String, Int32)" Url="html/0e4429d4-797d-e9a4-db80-1c7535e59f66.htm" />
+        <HelpTOCNode Title="M4MCallException Constructor (String, Exception, Int32)" Url="html/d5038dc3-05b1-7eed-159d-e9098f0d464d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="M4MCallException Methods" Url="html/b411c210-ce4c-5fb5-b064-08cb140167a0.htm" />
+      <HelpTOCNode Id="537da18c-d71f-4f95-88a5-117758f592f1" Title="M4MCallException Properties" Url="html/1cf59a54-c70d-c9d5-7070-9f2e38aa0cec.htm">
+        <HelpTOCNode Title="Code Property " Url="html/111c244b-b1ac-c860-ffbf-852c424d4fe5.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="d42e7a0d-79ad-4d27-a64e-470bd4d1a2bd" Title="ModernApp4Me.Core.WebServiceCache" Url="html/eb8dcd15-f4a8-8e3e-82f2-b40850c78e9c.htm">
+    <HelpTOCNode Id="8b4b6e45-5448-467e-a7bb-bb46c2af08b0" Title="M4MBaseBackedWSUriStringParser(TResult, TParameter, TWebServiceCaller) Class" Url="html/5f747f66-676e-637e-cbd3-604f513a82a2.htm">
+      <HelpTOCNode Title="M4MBaseBackedWSUriStringParser(TResult, TParameter, TWebServiceCaller) Constructor " Url="html/7211423c-ee88-bff4-4130-77cc8ee37b90.htm" />
+      <HelpTOCNode Id="f03bbcfb-d32d-4573-bece-f2afb568b339" Title="M4MBaseBackedWSUriStringParser(TResult, TParameter, TWebServiceCaller) Methods" Url="html/5212a45e-6187-bb8c-59a5-e79b0dfe8ab1.htm">
+        <HelpTOCNode Title="ComputeRestRequest Method " Url="html/b7fbecad-122f-aa65-6689-8f28aae9230e.htm" />
+        <HelpTOCNode Title="DeserializeObject Method " Url="html/5bd7f976-d0de-ad4a-62d7-d89ea71c6064.htm" />
+        <HelpTOCNode Title="GetRetentionValue Method " Url="html/52729208-d89c-4fd8-8855-b29ce401dd7b.htm" />
+        <HelpTOCNode Title="GetValue Method " Url="html/b49b9dd4-1202-ca4a-6e59-59f66b5fbc53.htm" />
+        <HelpTOCNode Title="Parse Method " Url="html/cc89ff40-868b-3fdd-c8f2-35112058238a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a98b7849-48ba-401b-9b0e-82a8f00d1513" Title="M4MBaseBackedWSUriStringParser(TResult, TParameter, TWebServiceCaller) Properties" Url="html/16784015-a262-4138-0e11-d2e1eb38dcfe.htm">
+        <HelpTOCNode Title="WebServiceCaller Property " Url="html/a4e9e5bf-150d-d20d-f71b-46fa7d7196c8.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
