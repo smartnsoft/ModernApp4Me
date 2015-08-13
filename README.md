@@ -1,10 +1,12 @@
-#ModernApp4me
+#ModernApp4Me
 
-##About ModernApp4me
+##About ModernApp4Me
 
 ModernApp4Me is a framework library dedicated to the development of Windows Phone 8 and Windows Store applications. It is developed and maintained by [Smart&Soft](http://www.smartnsoft.com).
 
 Its purpose is to speed up the development of Windows Phone 8, Windows Phone 8.1 and Windows Store applications. We are constantly adding news features to it.
+
+**This project is entirely managed on Github.** It means that the documentation ia available on the [Github wiki](https://github.com/smartnsoft/ModernApp4Me/wiki) and that all issues should be opened/discussed on the [Github issue page](https://github.com/smartnsoft/ModernApp4Me/issues).
 
 ##Supported Platforms
 
@@ -13,6 +15,7 @@ Its purpose is to speed up the development of Windows Phone 8, Windows Phone 8.1
 * Windows Store Apps
 * Windows Phone 8 (Silverlight)
 * Windows Phone 8.1
+* Universal App
 
 The **Core module** can be used to developp Windows Phone 8 and Windows Store applications and has the following nuget dependencies :
 * Json.NET
@@ -52,9 +55,9 @@ For a full example see the **WP8.Sample** app in the repository or read the [Get
 
 ##Help and Support
 
-If you have any questions feel free to contact us via [mail](mailto:modernapp4me@smartnsoft.com).
+If you have any questions feel free to contact us via [mail](mailto:modernapp4me@smartnsoft.com) or create a ticket on [Github](https://github.com/smartnsoft/ModernApp4Me/issues).
 
-If you have a bug create an issue.
+If you have a bug create an issue directly on [Github](https://github.com/smartnsoft/ModernApp4Me/issues).
 
 ##Contributing
 
