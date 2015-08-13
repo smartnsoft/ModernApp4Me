@@ -22,7 +22,7 @@ The **Core module** can be used to developp Windows Phone 8 and Windows Store ap
 * Microsoft Async
 * Microsoft BCL Build Components
 * Microsoft BCL Portability Pack
-* Microsoft HTTP CLient Libraries
+* Microsoft HTTP Client Libraries
 * RestSharp.Portable
 
 ###ModernApp4Me.WP8
@@ -34,7 +34,7 @@ The **WP8 module** can be used to developp Windows Phone 8 (Silverlight) apps an
 * Microsoft Async
 * Microsoft BCL Build Components
 * Microsoft BCL Portability Pack
-* Microsoft HTTP CLient Libraries
+* Microsoft HTTP Client Libraries
 * ModernApp4Me.Core
 * Q42.WinRT
 * Q42.WinRT.Portable
