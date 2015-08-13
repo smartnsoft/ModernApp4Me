@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="10067838-1c60-4f32-8974-cac01e99553d" Title="ModernApp4Me.WP8.App" Url="html/5e90c2de-4321-c2e5-5f4a-4f8937a54d3c.htm">
+    <HelpTOCNode Id="8421791a-d386-4280-9924-418053158622" Title="M4MDefaultExceptionHandlers Class" Url="html/137f528c-5a86-f8df-7759-d28b06db7021.htm">
+      <HelpTOCNode Title="M4MDefaultExceptionHandlers Constructor " Url="html/05c55d55-6d74-b8e8-5d90-f3dd10779ba6.htm" />
+      <HelpTOCNode Id="5ca110bb-140e-4701-aae9-845ee5edf10e" Title="M4MDefaultExceptionHandlers Methods" Url="html/67378255-e97f-c7a3-40e5-af875ba3a7bf.htm">
+        <HelpTOCNode Title="ShowConnectivityMessageBox Method " Url="html/4b59da7e-671e-bcc0-1625-3f2c87e0fa97.htm" />
+        <HelpTOCNode Title="ShowMessageBox Method " Url="html/2ef5018a-f891-409e-8f25-f261f41b4317.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="8d9f6851-7b9c-4008-b465-300f30099b9c" Title="M4MDefaultExceptionHandlers Properties" Url="html/0291e1e1-95a8-f4ef-9552-09c8f4c5bd18.htm">
+        <HelpTOCNode Title="RootFrame Property " Url="html/725e7476-8258-f618-31e1-47553884e74c.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="3a2faec2-a08b-45fe-acc5-ca50fca776d8" Title="M4MPhoneApplicationPage Class" Url="html/5186f68b-d482-84f6-1bb2-9f6dc7985ac3.htm">
+      <HelpTOCNode Title="M4MPhoneApplicationPage Constructor " Url="html/497091a8-ea83-ad6e-4768-9221f338742e.htm" />
+      <HelpTOCNode Id="1adb7b7b-203b-45a7-914d-41d82d8f9ed4" Title="M4MPhoneApplicationPage Fields" Url="html/1b4d53b1-5264-e952-8f4a-0180c58b9f2a.htm">
+        <HelpTOCNode Title="connectivityContainer Field" Url="html/a80cdb6b-21b6-7a46-a321-f75dd7c6bb49.htm" />
+        <HelpTOCNode Title="isManagingProgressIndicatorItself Field" Url="html/6d581436-dfb4-51dd-62f6-006c7407c677.htm" />
+        <HelpTOCNode Title="isMVVMUsed Field" Url="html/c6e09d37-bf6f-d12f-02f1-958365b62c5b.htm" />
+        <HelpTOCNode Title="mainContener Field" Url="html/d35e2540-6623-eeeb-7da4-eaaa86abbf39.htm" />
+        <HelpTOCNode Title="progressIndicator Field" Url="html/5990ed85-9cb8-2387-971c-c2158acfbca8.htm" />
+        <HelpTOCNode Title="viewModel Field" Url="html/374a270d-730a-2902-aeab-4a03a93208ec.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7e927c1e-5eca-4d86-a680-646e4da8bb88" Title="M4MPhoneApplicationPage Methods" Url="html/1bc284dc-a25d-b6d7-4897-d20117dea4a7.htm">
+        <HelpTOCNode Title="ComputeViewModel Method " Url="html/f77cf04c-e191-19f6-0aad-d944a6588039.htm" />
+        <HelpTOCNode Title="LoadQueryString Method " Url="html/56e556cd-c375-30ce-5da9-d4f8c2c31341.htm" />
+        <HelpTOCNode Title="OnDisplayConnectivityLayout Method " Url="html/65024558-7393-8467-77ba-0111d85b8883.htm" />
+        <HelpTOCNode Title="OnFullfillDisplayObjects Method " Url="html/013ac5a5-a4b7-0b05-13be-960659de9d20.htm" />
+        <HelpTOCNode Title="OnNavigatedFrom Method " Url="html/fe20c5d3-5a9e-b046-1065-07e8f554c12a.htm" />
+        <HelpTOCNode Title="OnNavigatedTo Method " Url="html/c6e1a41d-05ee-6887-d3ef-eb984fee5ee9.htm" />
+        <HelpTOCNode Title="Refresh Method " Url="html/5ce6d85a-8652-b683-4625-ec9760141e3f.htm" />
+        <HelpTOCNode Title="RefreshViewModel Method " Url="html/d73d4a71-d0de-b405-374f-813e9ba1e380.htm" />
+        <HelpTOCNode Title="RetrieveConnectivityContainer Method " Url="html/e326982d-4e80-01c5-e1c7-c5c6fc2b51da.htm" />
+        <HelpTOCNode Title="RetrieveMainContainer Method " Url="html/367b0245-eb92-3c02-2254-ca4f6f34fe3a.htm" />
+        <HelpTOCNode Title="RetrieveProgressIndicator Method " Url="html/d5f96f32-676f-8122-1cb4-f1dcd29eabb6.htm" />
+        <HelpTOCNode Title="SendPage Method " Url="html/dc0f16bc-cfd3-613f-3183-73e0bddb4bbc.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="M4MPhoneApplicationPage Properties" Url="html/f07cda7c-975e-285a-98d0-a4f3a6594646.htm" />
+      <HelpTOCNode Title="M4MPhoneApplicationPage Events" Url="html/04074fcd-6c25-2d2e-bd8b-d7bee9e65e39.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="d4a5d75d-a791-4e6d-86f1-e7003d31f70f" Title="ModernApp4Me.WP8.Cache" Url="html/bc1b0624-849e-086f-3d6d-6c57d336de2b.htm">
+    <HelpTOCNode Id="0cb048cc-15b4-4d6c-acce-c7ee91416a9c" Title="M4MDbPersistence Class" Url="html/2a2cca87-63dd-eb4f-69a4-def0a96c0a1e.htm">
+      <HelpTOCNode Title="M4MDbPersistence Constructor " Url="html/d898b978-28ed-1ec9-33e3-5886014a147d.htm" />
+      <HelpTOCNode Id="23b1c979-e62c-4032-87e5-f8edcab389ff" Title="M4MDbPersistence Methods" Url="html/af1608b9-0bb9-ddc9-da0f-fd304f28df6d.htm">
+        <HelpTOCNode Title="OnPropertyChanged Method " Url="html/df71efd1-7f1b-3d86-a72d-d836f99069af.htm" />
+        <HelpTOCNode Title="OnPropertyChanging Method " Url="html/80a44934-ab3d-3a3e-85fd-3640f57c0251.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d81ad086-fc02-4b3f-a732-9a7db132fd64" Title="M4MDbPersistence Events" Url="html/7c01d8f1-a5b6-7950-8782-29335478f23c.htm">
+        <HelpTOCNode Title="PropertyChanged Event" Url="html/ba7b8d53-a03e-c01f-8c24-1f4f0ef9177e.htm" />
+        <HelpTOCNode Title="PropertyChanging Event" Url="html/4b7b588a-9016-757c-2e3b-78c27aa49683.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b8fc153b-c4fb-4fc0-9f52-2af0f17eed29" Title="M4MFilePersistence Class" Url="html/e9145d3e-afc5-7992-5b7e-253296256616.htm">
+      <HelpTOCNode Id="57cb361f-8191-4f4c-8e3d-3636d361dcfe" Title="M4MFilePersistence Methods" Url="html/3bafbd52-8104-ef3a-c725-4b5e04683caa.htm">
+        <HelpTOCNode Title="CleanupIsolatedStorage Method " Url="html/8a82cb63-97a7-b715-6c02-da5ed1c0508d.htm" />
+        <HelpTOCNode Title="CreateDirectory Method " Url="html/24fa6921-5b8c-3cd1-5fba-60f3f60a7bf3.htm" />
+        <HelpTOCNode Title="CreateDirectoryFromFilePath Method " Url="html/85ce8a33-3940-5f5c-f667-dce9dbb9f4d1.htm" />
+        <HelpTOCNode Title="DeleteFile Method " Url="html/546f8dd3-c262-9a4b-4ed0-95d372b3796a.htm" />
+        <HelpTOCNode Title="IsFileExists Method " Url="html/dcdae7da-28a6-6305-497f-d927add3adcb.htm" />
+        <HelpTOCNode Title="ReadBinary Method " Url="html/824d54b9-8be3-7981-e0f8-c3739897ff35.htm" />
+        <HelpTOCNode Title="ReadFile Method " Url="html/fb4bdf11-b604-f068-4785-44bdc9b6acfd.htm" />
+        <HelpTOCNode Title="WriteFile Method " Url="html/ced34029-2ef2-5584-2544-7d9f9e20e20c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1f815d6a-e6a1-449f-9dd4-deaf5a40d62d" Title="M4MFilePersistence Properties" Url="html/541650d3-de9a-976e-cb02-0b20780b75f9.htm">
+        <HelpTOCNode Title="Instance Property " Url="html/9f7acee3-f9a6-4241-eb1f-09708a0fd73f.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="74987e08-37b5-4c06-9df7-4d8359ea23e3" Title="M4MMemoryCacher Class" Url="html/ea925059-1851-4dea-3f1e-d4fd8fd6dfd6.htm">
+      <HelpTOCNode Id="ec316a05-cf9e-489f-baa5-0b002c571448" Title="M4MMemoryCacher Methods" Url="html/8d4946a4-c773-8a49-8b3e-56a36058092b.htm">
+        <HelpTOCNode Title="Add Method " Url="html/f80dccb4-5edf-29fe-efc6-751a02f4aa2c.htm" />
+        <HelpTOCNode Title="Get Method " Url="html/6e951816-4617-4689-fc56-4b284ce32e44.htm" />
+        <HelpTOCNode Title="IsKeyExists Method " Url="html/0b278ba5-2e95-c3e9-2810-5558ff5c6241.htm" />
+        <HelpTOCNode Title="Remove Method " Url="html/6ce054c4-9767-b8be-d364-ecf2258f9963.htm" />
+        <HelpTOCNode Title="Update Method " Url="html/81dee0ba-991b-64b0-45d3-0b18ec104011.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a5c0495b-c221-463c-a77f-50589a43be96" Title="M4MMemoryCacher Properties" Url="html/662a9b70-a3cf-b10b-bc78-4cf218973a10.htm">
+        <HelpTOCNode Title="Instance Property " Url="html/eb973a3c-6720-13c8-48d7-ca200aeb3a73.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="90f8969a-9914-48df-baff-6b70b6baec23" Title="M4MMemoryCacher.M4MMemoryCacherObject Class" Url="html/2a3043d5-528d-5273-b1a5-1cec77ed4114.htm">
+      <HelpTOCNode Title="M4MMemoryCacher.M4MMemoryCacherObject Constructor " Url="html/987a173a-7b0d-7f54-9238-432f709af0ed.htm" />
+      <HelpTOCNode Title="M4MMemoryCacherObject Methods" Url="html/3ff0b374-80a4-4aec-aead-e1554f1b6e99.htm" />
+      <HelpTOCNode Id="5ba498a5-36bd-46a6-8098-adef070fb335" Title="M4MMemoryCacherObject Properties" Url="html/9428d973-faf8-7785-6230-080493e48454.htm">
+        <HelpTOCNode Title="Date Property " Url="html/8a989af9-e80f-4d1b-dbda-c7a6fe5e57ea.htm" />
+        <HelpTOCNode Title="Value Property " Url="html/bcb12c19-4426-d517-7231-0ae690b930c7.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="14ca17fb-fa62-4b32-bd0a-e8584fa1a538" Title="M4MSettingsPersistence Class" Url="html/4b268bec-cf9f-0549-ab34-b8fcaa01f75f.htm">
+      <HelpTOCNode Id="30082ad8-ac88-4a57-ac8e-6e2817ea80a2" Title="M4MSettingsPersistence Methods" Url="html/fbbd76d7-2383-5748-1d6a-f2f872b7c055.htm">
+        <HelpTOCNode Title="Add Method " Url="html/e9da71f8-923d-9276-a5c3-3a9098f9b7b4.htm" />
+        <HelpTOCNode Title="Get Method " Url="html/f83d4e0c-f544-ce93-0c48-69c027052adb.htm" />
+        <HelpTOCNode Title="Remove Method " Url="html/749b5151-7252-e58c-aa15-a5e302a214da.htm" />
+        <HelpTOCNode Title="Update Method " Url="html/161ba916-c7d4-73ab-3b76-f5960eaa7f1d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="65c136f1-0e73-4001-b04f-cc84d464fb2a" Title="M4MSettingsPersistence Properties" Url="html/0e5b5641-dee7-2d15-bb8d-509cdec6588c.htm">
+        <HelpTOCNode Title="Instance Property " Url="html/eaa1307d-1980-ef0c-8d60-0d4d68e56bb2.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="e603ebea-1cb4-4025-bfa2-e297af701134" Title="ModernApp4Me.WP8.Converter" Url="html/0c2e5810-8504-da80-27b1-1fbd22d9be07.htm">
+    <HelpTOCNode Id="19b097da-7945-4731-9e7b-71f1310ad44c" Title="M4MResolutionBitmapImageConverter Class" Url="html/f04dc239-4dfc-accc-2374-a509335518af.htm">
+      <HelpTOCNode Title="M4MResolutionBitmapImageConverter Constructor " Url="html/d020b8c1-b636-cbc7-2da9-3ea2544c70eb.htm" />
+      <HelpTOCNode Id="327824f7-b527-40b3-81f1-8040cd2ea0ab" Title="M4MResolutionBitmapImageConverter Methods" Url="html/cab84fb3-e7d2-ed5e-6176-725d5b321450.htm">
+        <HelpTOCNode Title="Convert Method " Url="html/087fe7ef-02fb-0f97-3618-56ca6ac2f1c3.htm" />
+        <HelpTOCNode Title="ConvertBack Method " Url="html/2b851b9a-0326-b7de-619e-26d15eb72312.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0bae50a2-cc8e-442c-b1f7-070eccf1266f" Title="M4MResolutionImageBrushConverter Class" Url="html/28d560ab-6437-a735-8b21-3d7a71b2e299.htm">
+      <HelpTOCNode Title="M4MResolutionImageBrushConverter Constructor " Url="html/8d93daed-0ddf-e8b3-0bb7-13a9b631ba21.htm" />
+      <HelpTOCNode Id="5edfcd6e-d861-4199-8680-eb6f8f2c0de4" Title="M4MResolutionImageBrushConverter Methods" Url="html/8634b4b1-d42d-39d7-b4f6-322f5afebc0b.htm">
+        <HelpTOCNode Title="Convert Method " Url="html/56260041-6330-21c8-7923-cf275312929d.htm" />
+        <HelpTOCNode Title="ConvertBack Method " Url="html/21191907-5a1a-a8a1-b34c-3a8c6b5ea1cc.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="987e372d-7eed-4adc-b046-49536b1acedf" Title="M4MTimeSpanToSecondsConverter Class" Url="html/65ee5a5f-4795-fe00-e1c4-51282ae7c2de.htm">
+      <HelpTOCNode Title="M4MTimeSpanToSecondsConverter Constructor " Url="html/9d654e38-bd51-3199-3717-18e5a12b9240.htm" />
+      <HelpTOCNode Id="26573a33-9f3f-42ff-b08a-8f3da0da015b" Title="M4MTimeSpanToSecondsConverter Methods" Url="html/5b6fca1f-3a4a-c355-f864-531d5f30a119.htm">
+        <HelpTOCNode Title="Convert Method " Url="html/6ec0b23c-2e59-018c-5114-15b4b8015815.htm" />
+        <HelpTOCNode Title="ConvertBack Method " Url="html/bd6fe19e-4ffe-6f5c-66f4-78aa8ee3568b.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="32c95f3c-3389-43a8-ae61-02be13c07db5" Title="M4MUpperCaseConverter Class" Url="html/d5ab3767-2884-d30b-8773-5c2561f39536.htm">
+      <HelpTOCNode Title="M4MUpperCaseConverter Constructor " Url="html/68dcd3d2-aa29-b8a1-9794-88af7c11fe81.htm" />
+      <HelpTOCNode Id="40b37724-7d7b-462a-af91-aecc869c07d8" Title="M4MUpperCaseConverter Methods" Url="html/dc11196b-4528-09bc-da64-e3d03f5fa83c.htm">
+        <HelpTOCNode Title="Convert Method " Url="html/85bd24f5-9cba-a0f8-70ef-7f2c06bd88dc.htm" />
+        <HelpTOCNode Title="ConvertBack Method " Url="html/fe39ff51-9da1-d1de-6d5d-8dffa208e5ed.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="87399592-5a19-4fa6-8310-701f4409dd7a" Title="ModernApp4Me.WP8.Debug" Url="html/f4f0e369-f310-9227-34e5-866ffb1674b4.htm">
+    <HelpTOCNode Id="c3679334-bdc7-4349-b3d4-2b8b877c708f" Title="M4MMemoryProfiler Class" Url="html/f42d73da-99d9-472e-6e5c-924d82997a8c.htm">
+      <HelpTOCNode Title="M4MMemoryProfiler Constructor " Url="html/059d6cb5-025d-8eb6-d052-5dd4b5f508eb.htm" />
+      <HelpTOCNode Id="322c80fe-2f0a-4d59-813f-de3fa05daf96" Title="M4MMemoryProfiler Methods" Url="html/666b39c9-639c-3180-3a54-df32c8451867.htm">
+        <HelpTOCNode Title="BeginRecording Method " Url="html/bb3089aa-0b0b-d24c-8fbb-9298e3121beb.htm" />
+        <HelpTOCNode Title="WriteReport Method " Url="html/ae4aaca3-65bc-32b1-c1b3-e72a273075f0.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="4c2633b5-0856-4033-8102-14aac7b7138a" Title="ModernApp4Me.WP8.Download" Url="html/4df2668c-812a-6f4b-bb78-84ef8d2ee99f.htm">
+    <HelpTOCNode Id="a6e7bc12-2201-42ba-9d79-e20c7eb7134e" Title="ImageCache Class" Url="html/79419e60-e3c3-2122-9c31-6620c929a666.htm">
+      <HelpTOCNode Title="ImageCache Constructor " Url="html/b7dab4be-171e-9a1b-ece9-cdcfd28f8e19.htm" />
+      <HelpTOCNode Id="5b4d538b-388c-43be-a978-98623ebc5ffd" Title="ImageCache Fields" Url="html/dfe6a3c7-126f-be59-ecea-9bc86ecac083.htm">
+        <HelpTOCNode Title="DefaultImageCacheName Field" Url="html/b998c500-f6a2-fbed-947c-3f10807d1992.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="29cf454a-af55-4d3e-a528-c931a690e733" Title="ImageCache Methods" Url="html/99c7fb97-4f93-4f14-ef3e-b8855b44afaf.htm">
+        <HelpTOCNode Title="Clear Method " Url="html/2f0d4a0d-5183-a941-53e9-bb3db307d0d7.htm" />
+        <HelpTOCNode Id="77ad0408-aab6-4444-a38a-eb54dfc705e9" Title="Get Method " Url="html/19694e89-2446-9e58-37d1-b816c1a0c64d.htm">
+          <HelpTOCNode Title="Get Method (String)" Url="html/1397018d-e9bd-681c-3dd0-8ae2a2a7a635.htm" />
+          <HelpTOCNode Title="Get Method (Uri)" Url="html/c5e6cb58-f896-5a97-1388-06493cc3d3cb.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GetInternal Method " Url="html/4134b879-37b6-2d85-65e6-ef6291d58c03.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/2b09cadc-9c6a-0265-a07e-914375c65dfa.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5858c52f-a85c-4363-876b-621eb546e412" Title="ImageCache Properties" Url="html/bd12ba6e-e140-b419-ab30-cc5f6da7a682.htm">
+        <HelpTOCNode Title="Default Property " Url="html/4004c8ad-aa26-ae01-6b90-498a02832e7a.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/44179a01-4b83-8a66-3d81-0d4685117761.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5a3c2985-48fd-491b-a1a5-13a81e1828e9" Title="M4MBitmapDownloader Class" Url="html/0e947d47-ada5-052c-01a2-1c2a297b11a4.htm">
+      <HelpTOCNode Id="cdfae098-6782-4b14-8d6b-6c4ad9fbade8" Title="M4MBitmapDownloader Methods" Url="html/b1642e62-da8c-c489-6c24-3676c316434d.htm">
+        <HelpTOCNode Title="GetImage Method " Url="html/5e5ae2f9-b881-3635-aada-dd1bd0076fba.htm" />
+        <HelpTOCNode Title="LoadImage Method " Url="html/d1cb7970-c8e1-28e9-6ab1-e9b624e048a1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5bab22c7-6ab1-4d11-bb05-325b98a9515a" Title="M4MBitmapDownloader Properties" Url="html/e8b04112-eab4-d71f-949a-39cbd28b0784.htm">
+        <HelpTOCNode Title="Configuration Property " Url="html/d97f844d-4547-e8d9-2fc3-f9acdebfb798.htm" />
+        <HelpTOCNode Title="Instance Property " Url="html/2381bedc-3a7c-50bf-2234-32fabb238445.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="77a30e11-f00d-4097-a481-b5b518e27af0" Title="M4MBitmapDownloader.BitmapDownloaderConfiguration Class" Url="html/6f972df2-603f-3ae3-0798-891687319ff4.htm">
+      <HelpTOCNode Title="M4MBitmapDownloader.BitmapDownloaderConfiguration Constructor " Url="html/90e11c59-5853-b115-ed25-ec79e947cf02.htm" />
+      <HelpTOCNode Title="BitmapDownloaderConfiguration Methods" Url="html/294b1a0e-ce58-6619-9720-5f88454398e5.htm" />
+      <HelpTOCNode Id="b502c824-5e26-48eb-9c69-dcbf5305c408" Title="BitmapDownloaderConfiguration Properties" Url="html/52de83aa-561f-0cf0-feb2-c983917127a9.htm">
+        <HelpTOCNode Title="ExpirationDelay Property " Url="html/9bf00d13-b729-6bf2-4e6d-8e441d2b29c9.htm" />
+        <HelpTOCNode Title="MemoryCacheCapacity Property " Url="html/5a7910ba-308f-50a6-75cb-fb5b63a3c48d.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/63f378b7-00f3-3b93-3bae-1233580651b6.htm" />
+        <HelpTOCNode Title="Type Property " Url="html/4fbdf414-e033-5db5-3707-398e80e2d97b.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="M4MBitmapDownloader.BitmapDownloaderType Enumeration" Url="html/315f9dd3-3fe4-bb8b-9ad0-47aca28be862.htm" />
+    <HelpTOCNode Id="a3ce5d3c-d60c-474c-b5c3-6b98bbe46cd1" Title="OneShotDispatcherTimer Class" Url="html/c41c5022-50f0-fdd8-b6bc-a142befe3595.htm">
+      <HelpTOCNode Title="OneShotDispatcherTimer Constructor " Url="html/dbed85f8-24e0-40d3-4b9a-c2aeec7a01dd.htm" />
+      <HelpTOCNode Id="6f47902b-4f1b-4f4c-a764-1d8ab60a0cff" Title="OneShotDispatcherTimer Methods" Url="html/89a07f25-7164-1973-a612-5a02fb0fa41e.htm">
+        <HelpTOCNode Title="CreateAndStart Method " Url="html/d95d2a85-0ee3-ce57-bd8c-4b15f6566ad8.htm" />
+        <HelpTOCNode Title="Start Method " Url="html/5bf734fb-ff42-c020-4e49-af435e220d4f.htm" />
+        <HelpTOCNode Title="Stop Method " Url="html/1b47cfa2-ec44-e759-998a-3b8316bc3c86.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f410ebd5-6bfa-4c96-af2b-95cbb77a4621" Title="OneShotDispatcherTimer Properties" Url="html/e56c92ec-c5f7-8125-7fbe-b423b9187381.htm">
+        <HelpTOCNode Title="Duration Property " Url="html/72e99ad2-fadc-1d4f-8ad4-5c55082d1cec.htm" />
+        <HelpTOCNode Title="IsStarted Property " Url="html/8c879ba7-686a-bf58-8412-e6c1e7f7803e.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d92ec00b-ae6f-4501-a6bb-f39a27739d31" Title="OneShotDispatcherTimer Events" Url="html/333bbb4c-c96a-4f81-2994-40d4c5dc9483.htm">
+        <HelpTOCNode Title="Fired Event" Url="html/5ba18a2a-f838-879f-0e84-03cce806877f.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="31969b70-2f21-4b1b-901c-cbb63a3deb04" Title="PersistentImageCache Class" Url="html/6cb7e49b-d3a9-e2db-10d6-b184e4468838.htm">
+      <HelpTOCNode Title="PersistentImageCache Constructor " Url="html/d702525a-7ee6-83b0-8022-b429843924d7.htm" />
+      <HelpTOCNode Id="f7beb096-6184-4ce9-a69f-8980946dbfed" Title="PersistentImageCache Fields" Url="html/35902729-d4e6-8df3-7e7d-b1c33a6214fc.htm">
+        <HelpTOCNode Title="DefaultExpirationDelay Field" Url="html/a2d302e3-3c28-ac7c-a0b0-5e52097e9a7a.htm" />
+        <HelpTOCNode Title="DefaultMemoryCacheCapacity Field" Url="html/a4481106-1aaa-be12-ae22-5d86fc9c158b.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ec8322c4-d55b-4d5e-9ce3-563a056e150f" Title="PersistentImageCache Methods" Url="html/a3021728-01f8-4526-5850-63542a7e67ae.htm">
+        <HelpTOCNode Title="Clear Method " Url="html/d6b50504-061f-7c65-1d8f-72a8d3db3da9.htm" />
+        <HelpTOCNode Title="GetInternal Method " Url="html/80fa9698-83ee-e19c-7b10-f90c0d1d8050.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/b6919b3f-4cb5-3594-df34-0ee8453e8b99.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="17528153-f789-4d25-8f8c-05c51d295a8a" Title="PersistentImageCache Properties" Url="html/2aebd715-3307-052d-37b9-feebe412d8fa.htm">
+        <HelpTOCNode Title="ExpirationDelay Property " Url="html/3505300b-010d-e8c8-9346-f0e2aed4be28.htm" />
+        <HelpTOCNode Title="MemoryCacheCapacity Property " Url="html/141500e4-d2a7-dc72-79b2-5881549dbfb7.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8aa381bf-9236-46e2-9c99-c240258f4d05" Title="SystemImageCache Class" Url="html/91862cd6-5749-778c-e394-55dfe9a27a53.htm">
+      <HelpTOCNode Title="SystemImageCache Constructor " Url="html/1eb2ba67-2032-5ac2-b03b-526a68402510.htm" />
+      <HelpTOCNode Id="b2463bfc-d009-4524-b033-004f44568918" Title="SystemImageCache Methods" Url="html/7c3b6053-822c-720a-899e-a3a1f404fd41.htm">
+        <HelpTOCNode Title="Clear Method " Url="html/0249b07f-a557-b254-6bf7-cc682221d1f0.htm" />
+        <HelpTOCNode Title="GetInternal Method " Url="html/79cad25e-b72b-48ff-ebf6-c45d015aa0c7.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="SystemImageCache Properties" Url="html/58502aa6-c2a0-4de0-8633-89425135fd31.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="ff304f54-6984-4b92-a891-bde69f23976c" Title="ModernApp4Me.WP8.Framework" Url="html/0910bc84-afba-f27e-ec3c-5e1804557b0b.htm">
+    <HelpTOCNode Id="3464bc47-624c-4381-9ab4-cf4c2d1323ec" Title="M4MTemplateSelector Class" Url="html/069bb93f-81ae-019f-7286-8b1546e1411d.htm">
+      <HelpTOCNode Title="M4MTemplateSelector Constructor " Url="html/b9aab2ef-c52c-f043-a648-8b2438ac83a0.htm" />
+      <HelpTOCNode Id="1b990aa8-a7b1-44c0-bdf0-732a6ebad174" Title="M4MTemplateSelector Methods" Url="html/0a022eef-aab9-f668-b233-a6c7a7ed3e5d.htm">
+        <HelpTOCNode Title="OnContentChanged Method " Url="html/4dd62184-bd78-f42b-86a3-be79d5a16787.htm" />
+        <HelpTOCNode Title="SelectTemplate Method " Url="html/9203f321-9791-7dee-9432-31ef0d270d60.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="M4MTemplateSelector Properties" Url="html/8ddfe688-9445-3b79-505f-56624a9cb952.htm" />
+      <HelpTOCNode Title="M4MTemplateSelector Events" Url="html/398da4b3-7aa1-3b5d-8e2c-c3378ef0d5a9.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="909b9630-4679-4a4e-9cff-a2bb2c6e27c0" Title="ModernApp4Me.WP8.Media" Url="html/a2173e00-1808-2871-a42a-eb6eb67e061d.htm">
+    <HelpTOCNode Id="dec15f93-91a0-4293-8671-b7ca4fb24b15" Title="M4MMediaHubManager Class" Url="html/c2aa30ed-a1db-04b6-373d-085c59012cf2.htm">
+      <HelpTOCNode Id="c0404f85-615d-4f04-8198-505882a9e95a" Title="M4MMediaHubManager Methods" Url="html/6ecd2116-3063-c902-fb1a-db34bde82693.htm">
+        <HelpTOCNode Title="AddRecentPlayTile Method " Url="html/52f0e91e-4644-e8c1-71b3-4f829c4a2dac.htm" />
+        <HelpTOCNode Title="UpdateNowPlayingTile Method " Url="html/973b384e-d6dd-0a3d-aba7-a77976bc274e.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="eb67083b-7a46-4719-8ea6-8250075a339a" Title="M4MMediaManager Class" Url="html/96868a7c-f8ad-b086-76cb-fabf1f918d31.htm">
+      <HelpTOCNode Id="b92e0014-3db6-4789-a369-2afad4206024" Title="M4MMediaManager Methods" Url="html/a5124d81-752f-f0a2-d713-dca4e64fe21c.htm">
+        <HelpTOCNode Title="ResetMediaManager Method " Url="html/7c7005c3-87cc-6f49-d1b7-387c6aa89f21.htm" />
+        <HelpTOCNode Title="ResumeUserMedia Method " Url="html/387f845e-8ff2-c142-1de7-f7f0625502a8.htm" />
+        <HelpTOCNode Title="ScanForUserMedias Method " Url="html/46b2fef2-2529-68b3-94b6-ebba639fe7a1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b6f711a0-22a8-4efb-a8dd-c38dff798de5" Title="M4MMediaManager Properties" Url="html/c9406c83-2470-dac8-203b-e553f18ad698.htm">
+        <HelpTOCNode Title="HasAccepted Property " Url="html/c32b495d-2406-4751-853e-72711b71bfba.htm" />
+        <HelpTOCNode Title="Instance Property " Url="html/4fde548c-da3f-498d-06d4-6f8a1f65a581.htm" />
+        <HelpTOCNode Title="IsMediaPlayerPlaying Property " Url="html/c42cd442-ff59-2bc0-cb46-58f73ee7b1bd.htm" />
+        <HelpTOCNode Title="IsRadioPlaying Property " Url="html/a734ebaa-56ce-1cb8-7df8-26e47dba7bf1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="86eb53b0-d22f-4c32-b5d9-a9d2b1840606" Title="ModernApp4Me.WP8.Metadata" Url="html/36bec114-87a4-f61a-5075-cc7a8ddcecf0.htm">
+    <HelpTOCNode Id="fee71741-c7e4-4518-9b9f-af70a324e571" Title="M4MDeviceInfo Class" Url="html/e95ff279-07b6-026a-6bf3-8949d37f94f0.htm">
+      <HelpTOCNode Id="aca8aeac-1763-4367-8387-215664724593" Title="M4MDeviceInfo Properties" Url="html/eb86f334-ecad-509d-1e65-5e86b2c39b77.htm">
+        <HelpTOCNode Title="FirmwareVersion Property " Url="html/0aef8f94-df6a-16ed-e20f-02c93e8e40a1.htm" />
+        <HelpTOCNode Title="HardwareVersion Property " Url="html/09679312-ff0a-526c-c270-39addfd698b6.htm" />
+        <HelpTOCNode Title="Manufacturer Property " Url="html/433251b1-b206-7ed8-05b7-7bffe4da2575.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/931ee0e0-4e57-ac6d-465d-075c480318d1.htm" />
+        <HelpTOCNode Title="Uuid Property " Url="html/06ab743c-64e6-9093-7637-c84c4f1156c1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ee118a57-0f24-4ab7-a8e0-fa88c2a576bf" Title="M4MDeviceResolution Class" Url="html/a0fb988b-bace-bae4-18f2-c4d190e54d53.htm">
+      <HelpTOCNode Id="6138728e-45df-49ab-91d4-332533b0b034" Title="M4MDeviceResolution Properties" Url="html/707621e5-a303-1177-3cea-f07173d541cc.htm">
+        <HelpTOCNode Title="CurrentResolution Property " Url="html/59908706-7300-b425-0648-15b2ae7fb81d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="M4MDeviceResolution.Resolution Enumeration" Url="html/36c0e167-f2e6-3618-2abe-fd638641e000.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="7e25b949-8f7c-4121-a993-b37e0dbc1984" Title="ModernApp4Me.WP8.Tile" Url="html/780407f7-62d6-18c6-f3e8-aac7c423be2a.htm">
+    <HelpTOCNode Id="00110f57-76a9-4220-b8e8-0df030694fea" Title="M4MSecondaryTileManager Class" Url="html/6c1a1c13-4300-b0de-549c-45bc980c8bb5.htm">
+      <HelpTOCNode Id="d830ddcf-94d1-4a14-b233-59e962305b46" Title="M4MSecondaryTileManager Methods" Url="html/233c353c-f7a9-52b0-740c-130b8a4f0c7f.htm">
+        <HelpTOCNode Title="Create Method " Url="html/0064482d-69e6-8b35-a71e-42478ffc05bf.htm" />
+        <HelpTOCNode Title="Delete Method " Url="html/4a0d89a8-09e3-a6f7-b836-0b190ac36a8a.htm" />
+        <HelpTOCNode Title="IsExist Method " Url="html/5cd09eb2-22fb-3801-b2e5-b2bcb904b0ac.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="f1b7b136-04e5-48ab-b70e-16af2f3eeac0" Title="ModernApp4Me.WP8.Util" Url="html/283d85b3-f354-9b9f-ddf3-870cdc2ea228.htm">
+    <HelpTOCNode Id="2fd85978-2a5e-4c2f-9300-90ea99a81306" Title="M4MColorToolbox Class" Url="html/da6ebc27-a928-f5a6-f63d-fb027b945e83.htm">
+      <HelpTOCNode Id="7050381b-8fe8-4576-8e43-7c8501031f44" Title="M4MColorToolbox Methods" Url="html/8cb2b0b8-bdb0-21cf-b291-c8880c4403a9.htm">
+        <HelpTOCNode Title="ColorFromHex Method " Url="html/0a13e4d2-7962-5e61-37d1-4afe366d87cc.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="cc273ab7-8900-4edc-a9d7-5065a0d2ba52" Title="M4MResolutionImageChooser Class" Url="html/c8c7f3cd-5e80-25aa-137c-99296563cb14.htm">
+      <HelpTOCNode Id="918a22f1-147e-4c60-b952-1afc919230d8" Title="M4MResolutionImageChooser Methods" Url="html/10fe8b70-a1fa-a0e7-5fff-7c54ced64304.htm">
+        <HelpTOCNode Title="GetBestResolutionImage Method " Url="html/88a69bb2-5d41-00e2-329f-cc17f564c0dd.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="8d48f2d6-0cbf-4737-973b-eaea76200306" Title="ModernApp4Me.WP8.WebService" Url="html/d163527f-348d-48eb-3c17-4b612c1ca14d.htm">
+    <HelpTOCNode Id="8f67feb9-bcc7-4651-81d3-7931e1f526bd" Title="M4MWebServiceCaller Class" Url="html/14a70db5-a6c0-3283-8ecc-de821b4a9f6d.htm">
+      <HelpTOCNode Title="M4MWebServiceCaller Constructor " Url="html/964fd02a-0a8c-9032-cc54-73752dadfed3.htm" />
+      <HelpTOCNode Title="M4MWebServiceCaller Fields" Url="html/5236f2d9-1a74-3164-6500-1bda9cc54b63.htm" />
+      <HelpTOCNode Id="c855d23f-c50c-41d4-ac2b-fbd49e05eb8e" Title="M4MWebServiceCaller Methods" Url="html/a48353dd-1409-99de-1205-8d62d6c11088.htm">
+        <HelpTOCNode Title="OnHttpStatusCodeNotOk Method " Url="html/c4169bce-242c-2e31-5684-17ff456ebb7e.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="70ec4671-f4c4-4fda-b558-db58036d30c3" Title="ModernApp4Me.WP8.WebServiceCache" Url="html/2113dee8-4a80-c77d-4aa2-399f526f6970.htm">
+    <HelpTOCNode Id="461d81f7-8d37-4868-8b60-4e4939ab9bec" Title="M4MBackedWSUriStringParser(TResult, TParameter, TWebServiceCaller) Class" Url="html/c49675e0-8f3e-fbf0-f0e6-105ace525873.htm">
+      <HelpTOCNode Title="M4MBackedWSUriStringParser(TResult, TParameter, TWebServiceCaller) Constructor " Url="html/3a8d50b1-b15c-0499-5c52-0ed37a72b533.htm" />
+      <HelpTOCNode Id="f8129149-9f1c-43cd-b019-0d663a623652" Title="M4MBackedWSUriStringParser(TResult, TParameter, TWebServiceCaller) Methods" Url="html/4dc16f1c-09b6-3550-ea9c-d04410ed0132.htm">
+        <HelpTOCNode Title="GetRetentionValue Method " Url="html/5e68310f-66ad-6678-1133-b37162dab17f.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="M4MBackedWSUriStringParser(TResult, TParameter, TWebServiceCaller) Properties" Url="html/445761a3-c130-fef7-17ca-686da06f8730.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
