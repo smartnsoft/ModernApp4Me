@@ -42,21 +42,31 @@ namespace ModernApp4Me.WP8.App
 
         protected bool isMVVMUsed = true;
 
+        protected bool displayLoaderPanelNextTime = true;
+
         protected bool isManagingProgressIndicatorItself = false;
 
         protected Panel mainContener;
 
         protected Panel connectivityContainer;
 
+        protected Panel loadingPanel;
+
         //The State should be called before any await key word to avoid the system.InvalidOperationException: You can only use State between OnNavigatedTo and OnNavigatedFrom Exception
         //http://blog.ariankulp.com/2014/04/you-can-only-use-state-between.html
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             progressIndicator = RetrieveProgressIndicator();
+            loadingPanel = RetrieveLoadingContainer();
 
             if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = true;
+
+                if(loadingPanel != null && displayLoaderPanelNextTime == true)
+                {
+                  loadingPanel.Visibility = Visibility.Visible;
+                }
             }
 
             SendPage();
@@ -101,6 +111,11 @@ namespace ModernApp4Me.WP8.App
             if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = false;
+
+                if(loadingPanel != null)
+                {
+                  loadingPanel.Visibility = Visibility.Collapsed;
+                }
             }
 
             base.OnNavigatedTo(e);
@@ -121,6 +136,11 @@ namespace ModernApp4Me.WP8.App
             if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = false;
+
+                if(loadingPanel != null)
+                {
+                  loadingPanel.Visibility = Visibility.Collapsed;
+                }
             }
 
             if (connectivityContainer != null)
@@ -174,6 +194,16 @@ namespace ModernApp4Me.WP8.App
         }
 
         /// <summary>
+        /// Override this in order to return the <see cref="Panel"/> which displays a particular message when the app is loading.
+        /// This <see cref="Panel"/> will be displayed or hidden automatically by the <see cref="M4MPhoneApplicationPage"/> during the life cycle.
+        /// </summary>
+        /// <returns>the <see cref="Panel"/> which display the message or null</returns>
+        protected virtual Panel RetrieveLoadingContainer()
+        {
+          return null;
+        }
+
+        /// <summary>
         /// Returns the <see cref="ProgressIndicator"/> of the <see cref="M4MPhoneApplicationPage"/>.
         /// </summary>
         /// <returns>a <see cref="ProgressIndicator"/> or null if you set <see cref="M4MPhoneApplicationPage.IsManagingProgressIndicatorItself" /> to true</returns>
@@ -206,6 +236,12 @@ namespace ModernApp4Me.WP8.App
             if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = true;
+
+                if(loadingPanel != null && displayLoaderPanelNextTime == true)
+                {
+                  mainContener.Visibility = Visibility.Collapsed;
+                  loadingPanel.Visibility = Visibility.Visible;
+                }
             }
 
             if (viewModel == null)
@@ -227,14 +263,19 @@ namespace ModernApp4Me.WP8.App
                     connectivityContainer.Visibility = Visibility.Collapsed;
                 }
 
+               if (isManagingProgressIndicatorItself == false)
+                {
+                    progressIndicator.IsVisible = false;
+
+                    if(loadingPanel != null)
+                    {
+                      loadingPanel.Visibility = Visibility.Collapsed;
+                    }
+                }
+
                 if (mainContener != null)
                 {
                     mainContener.Visibility = Visibility.Visible;
-                }
-
-                if (isManagingProgressIndicatorItself == false)
-                {
-                    progressIndicator.IsVisible = false;
                 }
             }
             else

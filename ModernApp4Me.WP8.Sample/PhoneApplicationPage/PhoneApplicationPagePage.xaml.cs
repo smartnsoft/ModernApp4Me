@@ -108,8 +108,8 @@ namespace ModernApp4Me.WP8.Sample.PhoneApplicationPage
             //for the example, we throw a M4MConnectivityException the first time
             if (throwException == true)
             {
-                throwException = false;
-                throw new M4MConnectivityException();
+              throwException = false;
+              throw new M4MConnectivityException();
             }
 
             var forecasts = await RetrieveBusinessObjects();
@@ -147,10 +147,16 @@ namespace ModernApp4Me.WP8.Sample.PhoneApplicationPage
             return ProgressIndicatorBar;
         }
 
+        protected override Panel RetrieveLoadingContainer()
+        {
+          return LoaderPanel;
+        }
+
         private async void RetryButton_Click(object sender, EventArgs e)
         {
             ApplicationBar = defaultApplicationBar;
             changeButton.IsEnabled = false;
+            displayLoaderPanelNextTime = false;
             await Refresh();
             changeButton.IsEnabled = true;
         }
