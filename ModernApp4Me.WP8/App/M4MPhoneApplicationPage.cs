@@ -294,7 +294,13 @@ namespace ModernApp4Me.WP8.App
                     if (isManagingProgressIndicatorItself == false)
                     {
                         progressIndicator.IsVisible = false;
+
+                        if(displayLoaderPanelNextTime == true)
+                        {
+                          OnDisplayConnectivityLayout();
+                        }
                     }
+
 
                     throw new M4MConnectivityException(exception);
                 }
