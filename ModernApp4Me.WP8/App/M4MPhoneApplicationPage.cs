@@ -239,6 +239,11 @@ namespace ModernApp4Me.WP8.App
 
                 if(loadingPanel != null && displayLoaderPanelNextTime == true)
                 {
+                  if (connectivityContainer != null)
+                  {
+                    connectivityContainer.Visibility = Visibility.Collapsed;
+                  }
+
                   mainContener.Visibility = Visibility.Collapsed;
                   loadingPanel.Visibility = Visibility.Visible;
                 }
