@@ -304,6 +304,16 @@ namespace ModernApp4Me.WP8.App
             if (isManagingProgressIndicatorItself == false)
             {
                 progressIndicator.IsVisible = false;
+
+                if (loadingPanel != null)
+                {
+                  loadingPanel.Visibility = Visibility.Collapsed;
+                }
+            }
+
+            if (mainContener != null)
+            {
+              mainContener.Visibility = Visibility.Visible;
             }
         }
 
