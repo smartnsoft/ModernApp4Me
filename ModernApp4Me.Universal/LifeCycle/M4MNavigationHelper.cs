@@ -17,7 +17,6 @@ using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ModernApp4Me.Universal.App;
 
 namespace ModernApp4Me.Universal.LifeCycle
 {
@@ -132,32 +131,36 @@ namespace ModernApp4Me.Universal.LifeCycle
       }
     }
 
-    private M4MPage Page { get; set; }
+    private Page Page { get; set; }
+
+    private M4MLifeCycle LifeCycle { get; set; }
 
     private Frame Frame { get { return Page.Frame; } }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="M4MNavigationHelper"/> class.
     /// </summary>
-    /// <param name="page">A reference to the current page used for navigation.  
+    /// <param name="lifeCycle">A reference to the <see cref="M4MLifeCycle"/> used for navigation.</param>  
+    /// <param name="page">A reference to the current <see cref="Page"/> used for navigation.
     /// This reference allows for frame manipulation and to ensure that keyboard 
     /// navigation requests only occur when the page is occupying the entire window.</param>
-    public M4MNavigationHelper(M4MPage page)
+    public M4MNavigationHelper(M4MLifeCycle lifeCycle, Page page)
     {
       Page = page;
+      LifeCycle = lifeCycle;
 
       // When this page is part of the visual tree make two changes:
       // 1) Map application view state to visual state for the page
       // 2) Handle hardware navigation requests
       Page.Loaded += (sender, e) =>
       {
-        Page.ComputeOnBackPressed();
+        LifeCycle.ComputeOnBackPressed();
       };
 
       // Undo the same changes when the page is no longer visible
       Page.Unloaded += (sender, e) =>
       {
-        Page.RemoveOnBackPressed();
+        LifeCycle.RemoveOnBackPressed();
       };
     }
 

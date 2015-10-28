@@ -23,12 +23,11 @@ using Q42.WinRT.Data;
 namespace ModernApp4Me.Universal.WebServiceCache
 {
 
+  /// <author>Ludovic ROLAND</author>
+  /// <since>2015.05.07</since>
   /// <summary>
   /// A basis class for managing cache data, making web service calls and parsing json response which uses RestSharp.Portable, Q42 and JSON.NET third party libraries.
   /// </summary>
-  /// 
-  /// <author>Ludovic ROLAND</author>
-  /// <since>2015.05.07</since>
   public abstract class M4MBackedWSUriStringParser<TResult, TParameter, TWebServiceCaller> : M4MBaseBackedWSUriStringParser<TResult, TParameter, TWebServiceCaller> where TWebServiceCaller : M4MBaseWebServiceCaller
   {
 

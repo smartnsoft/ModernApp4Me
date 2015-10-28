@@ -21,17 +21,16 @@ using ModernApp4Me.Core.WebService;
 namespace ModernApp4Me.Universal.WebService
 {
 
+  /// <author>Ludovic ROLAND</author>
+  /// <since>2015.05.07</since>
   /// <summary>
   /// A basis class for making web service calls easier which uses RestSharp.Portable on Windows Phone.
   /// When invoking an HTTP method, the caller goes through the following workflow:
-  /// The <see cref="M4MWebServiceCaller.ExecuteHttpRequest()"/> methods is invoked : if the response <see cref="HttpStatusCode"/> is OK, the body is returned ad a <see cref="string"/>.
-  /// if the <see cref="HttpStatusCode"/> is not OK, the private method <see cref="M4MWebServiceCaller.OnHttpStatusCodeNotOk()"/> is invoked.
+  /// The <see cref="M4MWebServiceCaller.ExecuteHttpRequest"/> methods is invoked : if the response <see cref="HttpStatusCode"/> is OK, the body is returned ad a <see cref="string"/>.
+  /// if the <see cref="HttpStatusCode"/> is not OK, the private method <see cref="M4MWebServiceCaller.OnHttpStatusCodeNotOk"/> is invoked.
   /// if the <see cref="HttpStatusCode"/> is NotFound and the <see cref="NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel()"/> is equals to <see cref="NetworkConnectivityLevel.None"/>, a <see cref="M4MConnectivityException"/> is thrown.
   /// Otherwife, a <see cref="M4MCallException"/> is thrown.
   /// </summary>
-  /// 
-  /// <author>Ludovic ROLAND</author>
-  /// <since>2015.05.07</since>
   public abstract class M4MWebServiceCaller : M4MBaseWebServiceCaller
   {
 
@@ -43,7 +42,6 @@ namespace ModernApp4Me.Universal.WebService
       : base(baseUrl)
     {
     }
-
 
     /// <summary>
     /// Private function that raises an exception when the result code to a web method id not OK (not 20X).

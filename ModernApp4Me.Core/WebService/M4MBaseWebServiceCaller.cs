@@ -21,15 +21,14 @@ using RestSharp.Portable;
 namespace ModernApp4Me.Core.WebService
 {
 
+    /// <author>Ludovic ROLAND</author>
+    /// <since>2015.02.24</since>
     /// <summary>
     /// A basis class for making web service calls easier which uses RestSharp.Portable.
     /// When invoking an HTTP method, the caller goes through the following workflow:
     /// The <see cref="M4MBaseWebServiceCaller.ExecuteHttpRequest()"/> methods is invoked : if the response <see cref="HttpStatusCode"/> is OK, the body is returned ad a <see cref="string"/>.
     /// if the <see cref="HttpStatusCode"/> is not OK, the private method <see cref="M4MBaseWebServiceCaller.OnHttpStatusCodeNotOk()"/> is invoked.
     /// </summary>
-    /// 
-    /// <author>Ludovic ROLAND</author>
-    /// <since>2015.02.24</since>
     public abstract class M4MBaseWebServiceCaller
     {
 

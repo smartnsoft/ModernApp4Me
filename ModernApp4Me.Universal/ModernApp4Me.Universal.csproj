@@ -48,8 +48,11 @@
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\M4MApplication.cs" />
     <Compile Include="App\M4MAsyncLock.cs" />
     <Compile Include="App\M4MDefaultExceptionHandlers.cs" />
+    <Compile Include="App\M4Mizer.cs" />
+    <Compile Include="LifeCycle\M4MLifeCycle.cs" />
     <Compile Include="App\M4MPage.cs" />
     <Compile Include="Cache\M4MFilePersistence.cs" />
     <Compile Include="LifeCycle\M4MNavigationHelper.cs" />
