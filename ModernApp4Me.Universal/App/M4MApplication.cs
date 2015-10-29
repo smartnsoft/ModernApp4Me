@@ -34,18 +34,12 @@ namespace ModernApp4Me.Universal.App
   public abstract class M4MApplication : Application
   {
 
-    private ResourceLoader loader;
-
     public M4MExceptionHandlers ExceptionHandlers { get; set; }
 
-    public ResourceLoader Loader
-    {
-      get { return loader; }
-    }
+    public ResourceLoader Loader { get; set; }
 
     protected M4MApplication()
     {
-      loader = new ResourceLoader();
       Suspending += OnSuspending;
       UnhandledException += UnhandledExceptions;
     }
@@ -71,7 +65,7 @@ namespace ModernApp4Me.Universal.App
       ExceptionHandlers = new M4MDefaultExceptionHandlers()
       {
         Frame = rootFrame,
-        I18N = SetupM4Mi18N(loader)
+        I18N = SetupM4Mi18N()
       };
     }
 
@@ -80,9 +74,8 @@ namespace ModernApp4Me.Universal.App
     /// This internationalization instance will be used to populate default dialog boxes texts popped-up by this default <see cref="M4MDefaultExceptionHandlers" />. 
     /// Hence, the method will be invoked at the application start-up.
     /// </summary>
-    /// <param name="loader">a <see cref="ResourceLoader"/> instance in order to retrieve string resources</param>
     /// <returns>an instance which contains the internationalized text strings for some built-in error dialog boxes.</returns>
-    public abstract M4Mi18N SetupM4Mi18N(ResourceLoader loader);
+    public abstract M4Mi18N SetupM4Mi18N();
 
     /// <summary>
     /// This is the place where to register exception handlers like.
