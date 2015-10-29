@@ -54,7 +54,7 @@ namespace ModernApp4Me.WP8.WebService
             var message = "The error code of the call to the web method '" + resource +
                           "' is not OK (not 20X). Status: '" + statusCode + "'";
 
-            if (statusCode == HttpStatusCode.NotFound && DeviceNetworkInformation.IsNetworkAvailable == false)
+            if (statusCode == HttpStatusCode.NotFound && NetworkInterface.GetIsNetworkAvailable() == false)
             {
                 throw new M4MConnectivityException(message);
             }
