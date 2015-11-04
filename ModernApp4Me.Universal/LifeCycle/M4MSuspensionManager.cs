@@ -112,6 +112,7 @@ namespace ModernApp4Me.Universal.LifeCycle
         {
           sessionData.Seek(0, SeekOrigin.Begin);
           await sessionData.CopyToAsync(fileStream);
+          fileStream.Dispose();
         }
       }
       catch (Exception exception)
