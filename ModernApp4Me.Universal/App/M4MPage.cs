@@ -69,45 +69,45 @@ namespace ModernApp4Me.Universal.App
     #endregion
 
     #region default implementation of the life cycle interface
-    public void OnDisplayConnectivityLayout()
+    public virtual void OnDisplayConnectivityLayout()
     {
       modern4mizer.OnDisplayConnectivityLayout();
     }
 
-    public async Task RefreshBusinessObjects()
+    public virtual async Task RefreshBusinessObjects()
     {
       await modern4mizer.RefreshBusinessObjects();
     }
 
-    public void LoadQueryString(object navigationParameter)
+    public virtual void LoadQueryString(object navigationParameter)
     {
     }
 
-    public Task<M4MBaseViewModel> ComputeViewModel()
-    {
-      return null;
-    }
-
-    public Task RefreshViewModel()
+    public virtual Task<M4MBaseViewModel> ComputeViewModel()
     {
       return null;
     }
 
-    public void OnFulfillDisplayObjects()
-    {
-    }
-
-    public Panel RetrieveMainContainer()
+    public virtual Task RefreshViewModel()
     {
       return null;
     }
 
-    public Panel RetrieveConnectivityContainer()
+    public virtual void OnFulfillDisplayObjects()
+    {
+    }
+
+    public virtual Panel RetrieveMainContainer()
     {
       return null;
     }
 
-    public ProgressRing RetrieveProgressRing()
+    public virtual Panel RetrieveConnectivityContainer()
+    {
+      return null;
+    }
+
+    public virtual ProgressRing RetrieveProgressRing()
     {
       return null;
     }
