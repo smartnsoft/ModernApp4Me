@@ -44,7 +44,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// This method is invoked only once during the <see cref="M4MPage"/> life cycle.
     /// Never invoke this method, only the framework should, because this is a callback!
     /// </summary>
-    /// <returns>a class that implements <see cref="M4MBaseViewModel"/> or null if you set <see cref="M4Mizer.isMVVMUsed"/> to false</returns>
+    /// <returns>a class that implements <see cref="M4MBaseViewModel"/> or null if you set <see cref="M4Mizer.IsMVVMUsed"/> to false</returns>
     Task<M4MBaseViewModel> ComputeViewModel();
 
     /// <summary>
@@ -53,7 +53,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// It is ensured that this method will be invoked from the UI thread!
     /// Never invoke this method, only the framework should, because this is a callback!
     /// </summary>
-    void OnFullfillDisplayObjects();
+    void OnFulfillDisplayObjects();
 
     /// <summary>
     /// This is the place where to retrieve data from the <see cref="NavigationEventArgs.Parameter"/>.
@@ -63,7 +63,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     void LoadQueryString(Object navigationParameter);
 
     /// <summary>
-    /// This is the place where you can update the <see cref="M4Mizer.viewModel"/> after the invokation of the method <see cref="Refresh()"/>.
+    /// This is the place where you can update the <see cref="M4Mizer.ViewModel"/> after the invokation of the method <see cref="RefreshBusinessObjects()"/>.
     /// This callback is invoked from a background thread, and not the UI thread.
     /// Never invoke this method, only the framework should, because this is a callback!
     /// </summary>
