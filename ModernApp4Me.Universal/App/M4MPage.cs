@@ -93,7 +93,7 @@ namespace ModernApp4Me.Universal.App
       return null;
     }
 
-    public void OnFullfillDisplayObjects()
+    public void OnFulfillDisplayObjects()
     {
     }
 

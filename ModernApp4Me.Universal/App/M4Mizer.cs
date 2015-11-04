@@ -124,7 +124,7 @@ namespace ModernApp4Me.Universal.App
         throw new M4MConnectivityException(exception);
       }
 
-      lifeCycle.OnFullfillDisplayObjects();
+      lifeCycle.OnFulfillDisplayObjects();
 
       if (connectivityPanel != null)
       {
@@ -196,7 +196,7 @@ namespace ModernApp4Me.Universal.App
           throw new M4MConnectivityException(exception);
         }
 
-        lifeCycle.OnFullfillDisplayObjects();
+        lifeCycle.OnFulfillDisplayObjects();
 
         if (connectivityPanel != null)
         {
