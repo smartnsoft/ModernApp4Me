@@ -31,31 +31,18 @@ namespace ModernApp4Me.Universal.LifeCycle
   /// SuspensionManager captures global session state to simplify process lifetime management
   /// for an application.  Note that session state will be automatically cleared under a variety
   /// of conditions and should only be used to store information that would be convenient to
-  /// carry across sessions, but that should be discarded when an application crashes or is
-  /// upgraded.
+  /// carry across sessions, but that should be discarded when an application crashes or is upgraded.
   /// </summary>
   // Taken from the HubPage template
-  public sealed class M4MSuspensionManager
-  {
-
-    public sealed class SuspensionManagerException : Exception
-    {
-
-      public SuspensionManagerException()
-      {
-      }
-
-      public SuspensionManagerException(Exception exception) : base("SuspensionManager failed", exception)
-      {
-      }
-
-    }
+  public abstract class M4MSuspensionManager<SuspensionManagerClass> 
+    where SuspensionManagerClass : M4MSuspensionManager<SuspensionManagerClass>, new()
+{
 
     private const string SESSION_STATE_FILENAME = "_sessionState.xml";
 
-    private static Dictionary<string, object> sessionState = new Dictionary<string, object>();
+    private Dictionary<string, object> sessionState = new Dictionary<string, object>();
 
-    private static List<Type> knownTypes = new List<Type>();
+    private readonly List<Type> knownTypes = new List<Type>();
 
     /// <summary>
     /// Provides access to global session state for the current session.  This state is
@@ -64,7 +51,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// <see cref="DataContractSerializer"/> and should be as compact as possible.  Strings
     /// and other self-contained data types are strongly recommended.
     /// </summary>
-    public static Dictionary<string, object> SessionState
+    public Dictionary<string, object> SessionState
     {
        get { return sessionState; }
     }
@@ -74,9 +61,32 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// reading and writing session state.  Initially empty, additional types may be
     /// added to customize the serialization process.
     /// </summary>
-    public static List<Type> KnownTypes
+    public List<Type> KnownTypes
     {
       get { return knownTypes; }
+    }
+
+    protected static volatile SuspensionManagerClass instance;
+
+    protected static readonly object InstanceLock = new Object();
+
+    public static SuspensionManagerClass Instance
+    {
+      get
+      {
+        if (instance == null)
+        {
+          lock (InstanceLock)
+          {
+            if (instance == null)
+            {
+              instance = new SuspensionManagerClass();
+            }
+          }
+        }
+
+        return instance;
+      }
     }
 
     /// <summary>
@@ -86,12 +96,12 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// to save its state.
     /// </summary>
     /// <returns>An asynchronous task that reflects when session state has been saved.</returns>
-    public static async Task SaveAsync()
+    public virtual async Task SaveAsync()
     {
       try
       {
         // Save the navigation state for all registered frames
-        foreach (var weakFrameReference in registeredFrames)
+        foreach (var weakFrameReference in RegisteredFrames)
         {
           Frame frame;
           if (weakFrameReference.TryGetTarget(out frame))
@@ -112,12 +122,11 @@ namespace ModernApp4Me.Universal.LifeCycle
         {
           sessionData.Seek(0, SeekOrigin.Begin);
           await sessionData.CopyToAsync(fileStream);
-          fileStream.Dispose();
         }
       }
       catch (Exception exception)
       {
-        throw new SuspensionManagerException(exception);
+        throw new M4MSuspensionManagerException(M4MSuspensionManagerException.SuspensionManagerOperation.Save, exception);
       }
     }
 
@@ -132,7 +141,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// <returns>An asynchronous task that reflects when session state has been read.  The
     /// content of <see cref="SessionState"/> should not be relied upon until this task
     /// completes.</returns>
-    public static async Task RestoreAsync(String sessionBaseKey = null)
+    public virtual async Task RestoreAsync(String sessionBaseKey = null)
     {
       sessionState = new Dictionary<String, Object>();
 
@@ -148,7 +157,7 @@ namespace ModernApp4Me.Universal.LifeCycle
         }
 
         // Restore any registered frames to their saved state
-        foreach (var weakFrameReference in registeredFrames)
+        foreach (var weakFrameReference in RegisteredFrames)
         {
           Frame frame;
           if (weakFrameReference.TryGetTarget(out frame) && (string)frame.GetValue(FrameSessionBaseKeyProperty) == sessionBaseKey)
@@ -160,17 +169,17 @@ namespace ModernApp4Me.Universal.LifeCycle
       }
       catch (Exception exception)
       {
-        throw new SuspensionManagerException(exception);
+        throw new M4MSuspensionManagerException(M4MSuspensionManagerException.SuspensionManagerOperation.Restore, exception);
       }
     }
 
-    private static DependencyProperty FrameSessionStateKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionStateKey", typeof(String), typeof(M4MSuspensionManager), null);
+    private static readonly DependencyProperty FrameSessionStateKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionStateKey", typeof(String), typeof(SuspensionManagerClass), null);
 
-    private static DependencyProperty FrameSessionBaseKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionBaseKeyParams", typeof(String), typeof(M4MSuspensionManager), null);
+    private static readonly DependencyProperty FrameSessionBaseKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionBaseKeyParams", typeof(String), typeof(SuspensionManagerClass), null);
 
-    private static DependencyProperty FrameSessionStateProperty = DependencyProperty.RegisterAttached("_FrameSessionState", typeof(Dictionary<String, Object>), typeof(M4MSuspensionManager), null);
+    private static readonly DependencyProperty FrameSessionStateProperty = DependencyProperty.RegisterAttached("_FrameSessionState", typeof(Dictionary<String, Object>), typeof(SuspensionManagerClass), null);
 
-    private static List<WeakReference<Frame>> registeredFrames = new List<WeakReference<Frame>>();
+    private static readonly List<WeakReference<Frame>> RegisteredFrames = new List<WeakReference<Frame>>();
 
     /// <summary>
     /// Registers a <see cref="Frame"/> instance to allow its navigation history to be saved to
@@ -186,7 +195,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// store navigation-related information.</param>
     /// <param name="sessionBaseKey">An optional key that identifies the type of session.
     /// This can be used to distinguish between multiple application launch scenarios.</param>
-    public static void RegisterFrame(Frame frame, String sessionStateKey, String sessionBaseKey = null)
+    public void RegisterFrame(Frame frame, String sessionStateKey, String sessionBaseKey = null)
     {
       if (frame.GetValue(FrameSessionStateKeyProperty) != null)
       {
@@ -207,7 +216,7 @@ namespace ModernApp4Me.Universal.LifeCycle
       // Use a dependency property to associate the session key with a frame, and keep a list of frames whose
       // navigation state should be managed
       frame.SetValue(FrameSessionStateKeyProperty, sessionStateKey);
-      registeredFrames.Add(new WeakReference<Frame>(frame));
+      RegisteredFrames.Add(new WeakReference<Frame>(frame));
 
       // Check to see if navigation state can be restored
         RestoreFrameNavigationState(frame);
@@ -220,12 +229,12 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// </summary>
     /// <param name="frame">An instance whose navigation history should no longer be
     /// managed.</param>
-    public static void UnregisterFrame(Frame frame)
+    public void UnregisterFrame(Frame frame)
     {
       // Remove session state and remove the frame from the list of frames whose navigation
       // state will be saved (along with any weak references that are no longer reachable)
       SessionState.Remove((String)frame.GetValue(FrameSessionStateKeyProperty));
-      registeredFrames.RemoveAll((weakFrameReference) =>
+      RegisteredFrames.RemoveAll((weakFrameReference) =>
       {
         Frame testFrame;
         return !weakFrameReference.TryGetTarget(out testFrame) || testFrame == frame;
@@ -245,7 +254,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// <param name="frame">The instance for which session state is desired.</param>
     /// <returns>A collection of state subject to the same serialization mechanism as
     /// <see cref="SessionState"/>.</returns>
-    public static Dictionary<String, Object> SessionStateForFrame(Frame frame)
+    public Dictionary<String, Object> SessionStateForFrame(Frame frame)
     {
       var frameState = (Dictionary<String, Object>)frame.GetValue(FrameSessionStateProperty);
 
@@ -274,7 +283,7 @@ namespace ModernApp4Me.Universal.LifeCycle
       return frameState;
     }
 
-    private static void RestoreFrameNavigationState(Frame frame)
+    private void RestoreFrameNavigationState(Frame frame)
     {
       var frameState = SessionStateForFrame(frame);
 
@@ -284,7 +293,7 @@ namespace ModernApp4Me.Universal.LifeCycle
       }
     }
 
-    private static void SaveFrameNavigationState(Frame frame)
+    private void SaveFrameNavigationState(Frame frame)
     {
       var frameState = SessionStateForFrame(frame);
       frameState["Navigation"] = frame.GetNavigationState();

@@ -27,7 +27,8 @@ namespace ModernApp4Me.Universal.App
   /// <summary>
   /// The basis class for all Pages available in the framework.
   /// </summary>
-  public abstract class M4MPage : Page, M4MLifeCycle
+  public abstract class M4MPage<SuspensionManagerClass> : Page, M4MLifeCycle
+    where SuspensionManagerClass : M4MSuspensionManager<SuspensionManagerClass>, new()
   {
 
     public M4MBaseViewModel ViewModel
@@ -42,11 +43,11 @@ namespace ModernApp4Me.Universal.App
       set { modern4mizer.IsMVVMUsed = value; }
     }
 
-    private readonly M4Mizer modern4mizer;
+    private readonly M4Mizer<SuspensionManagerClass> modern4mizer;
 
     protected M4MPage()
     {
-      modern4mizer = new M4Mizer(this, this);
+      modern4mizer = new M4Mizer<SuspensionManagerClass>(this, this);
     }
 
     #region overring methods from Page

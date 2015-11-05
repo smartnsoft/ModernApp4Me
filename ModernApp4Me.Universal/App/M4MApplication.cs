@@ -31,7 +31,8 @@ namespace ModernApp4Me.Universal.App
   /// <summary>
   /// An abstract <see cref="Application"/> to be implemented when using the framework, because it initializes some of the components, and eases the development.
   /// </summary>
-  public abstract class M4MApplication : Application
+  public abstract class M4MApplication<SuspensionManagerClass> : Application
+    where SuspensionManagerClass : M4MSuspensionManager<SuspensionManagerClass>, new()
   {
 
     public M4MExceptionHandlers ExceptionHandlers { get; set; }
@@ -120,15 +121,15 @@ namespace ModernApp4Me.Universal.App
         rootFrame = new Frame {CacheSize = 2};
         rootFrame.NavigationFailed += OnNavigationFailed;
 
-        M4MSuspensionManager.RegisterFrame(rootFrame, "AppFrame");
+        M4MSuspensionManager<SuspensionManagerClass>.Instance.RegisterFrame(rootFrame, "AppFrame");
 
         if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
         {
           try
           {
-            await M4MSuspensionManager.RestoreAsync();
+            await M4MSuspensionManager<SuspensionManagerClass>.Instance.RestoreAsync();
           }
-          catch (M4MSuspensionManager.SuspensionManagerException)
+          catch (M4MSuspensionManagerException)
           {
             // Something went wrong restoring state.
             // Assume there is no state and continue
@@ -170,7 +171,7 @@ namespace ModernApp4Me.Universal.App
     private async void OnSuspending(object sender, SuspendingEventArgs e)
     {
       var deferral = e.SuspendingOperation.GetDeferral();
-      await M4MSuspensionManager.SaveAsync();
+      await M4MSuspensionManager<SuspensionManagerClass>.Instance.SaveAsync();
       deferral.Complete();
     }
 

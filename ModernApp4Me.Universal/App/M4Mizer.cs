@@ -31,7 +31,8 @@ namespace ModernApp4Me.Universal.App
   /// <summary>
   /// The class that should be used when extending a legacy class to support the whole Modern4Me framework features.
   /// </summary>
-  public sealed class M4Mizer
+  public sealed class M4Mizer<SuspensionManagerClass>
+    where SuspensionManagerClass : M4MSuspensionManager<SuspensionManagerClass>, new()
   {
 
     private const string PAGE_KEY_SUFFIX = "Page-";
@@ -87,8 +88,8 @@ namespace ModernApp4Me.Universal.App
 
       try
       {
-        var frameState = M4MSuspensionManager.SessionStateForFrame(page.Frame);
-        navigationHelper.PageKey = M4Mizer.PAGE_KEY_SUFFIX + page.Frame.BackStackDepth;
+        var frameState = M4MSuspensionManager<SuspensionManagerClass>.Instance.SessionStateForFrame(page.Frame);
+        navigationHelper.PageKey = PAGE_KEY_SUFFIX + page.Frame.BackStackDepth;
 
         if (e.NavigationMode == NavigationMode.New)
         {
@@ -100,7 +101,7 @@ namespace ModernApp4Me.Universal.App
           while (frameState.Remove(nextPageKey) == true)
           {
             nextPageIndex++;
-            nextPageKey = M4Mizer.PAGE_KEY_SUFFIX + nextPageIndex;
+            nextPageKey = PAGE_KEY_SUFFIX + nextPageIndex;
           }
 
           if (IsMVVMUsed == true)
@@ -114,7 +115,7 @@ namespace ModernApp4Me.Universal.App
           // the same strategy for loading suspended state and recreating pages discarded
           // from cache
           ViewModel =
-            ((Dictionary<String, Object>)frameState[navigationHelper.PageKey])[M4Mizer.VIEW_MODEL_KEY] as
+            ((Dictionary<String, Object>)frameState[navigationHelper.PageKey])[VIEW_MODEL_KEY] as
               M4MBaseViewModel;
         }
       }
@@ -162,8 +163,8 @@ namespace ModernApp4Me.Universal.App
 
     public void OnNavigatedFrom()
     {
-      var frameState = M4MSuspensionManager.SessionStateForFrame(page.Frame);
-      var pageState = new Dictionary<String, Object> { { M4Mizer.VIEW_MODEL_KEY, ViewModel } };
+      var frameState = M4MSuspensionManager<SuspensionManagerClass>.Instance.SessionStateForFrame(page.Frame);
+      var pageState = new Dictionary<String, Object> { { VIEW_MODEL_KEY, ViewModel } };
       frameState[navigationHelper.PageKey] = pageState;
     }
 
