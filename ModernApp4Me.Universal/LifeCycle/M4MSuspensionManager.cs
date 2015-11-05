@@ -33,16 +33,16 @@ namespace ModernApp4Me.Universal.LifeCycle
   /// of conditions and should only be used to store information that would be convenient to
   /// carry across sessions, but that should be discarded when an application crashes or is upgraded.
   /// </summary>
-  // Taken from the HubPage template
+  // Inspired by the Suspension Manager class of the HubPage template
   public abstract class M4MSuspensionManager<SuspensionManagerClass> 
     where SuspensionManagerClass : M4MSuspensionManager<SuspensionManagerClass>, new()
 {
 
-    private const string SESSION_STATE_FILENAME = "_sessionState.xml";
+    protected const string SESSION_STATE_FILENAME = "_sessionState.xml";
 
-    private Dictionary<string, object> sessionState = new Dictionary<string, object>();
+    protected readonly List<Type> knownTypes = new List<Type>();
 
-    private readonly List<Type> knownTypes = new List<Type>();
+    protected Dictionary<string, object> sessionState = new Dictionary<string, object>();
 
     /// <summary>
     /// Provides access to global session state for the current session.  This state is
@@ -117,7 +117,7 @@ namespace ModernApp4Me.Universal.LifeCycle
         serializer.WriteObject(sessionData, sessionState);
 
         // Get an output stream for the SessionState file and write the state asynchronously
-        var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SESSION_STATE_FILENAME, CreationCollisionOption.ReplaceExisting);
+        var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(M4MSuspensionManager<SuspensionManagerClass>.SESSION_STATE_FILENAME, CreationCollisionOption.ReplaceExisting);
         using (var fileStream = await file.OpenStreamForWriteAsync())
         {
           sessionData.Seek(0, SeekOrigin.Begin);
@@ -148,7 +148,7 @@ namespace ModernApp4Me.Universal.LifeCycle
       try
       {
         // Get the input stream for the SessionState file
-        var file = await ApplicationData.Current.LocalFolder.GetFileAsync(SESSION_STATE_FILENAME);
+        var file = await ApplicationData.Current.LocalFolder.GetFileAsync(M4MSuspensionManager<SuspensionManagerClass>.SESSION_STATE_FILENAME);
         using (var inStream = await file.OpenSequentialReadAsync())
         {
           // Deserialize the Session State
@@ -173,13 +173,13 @@ namespace ModernApp4Me.Universal.LifeCycle
       }
     }
 
+    protected static readonly List<WeakReference<Frame>> RegisteredFrames = new List<WeakReference<Frame>>();
+
     private static readonly DependencyProperty FrameSessionStateKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionStateKey", typeof(String), typeof(SuspensionManagerClass), null);
 
     private static readonly DependencyProperty FrameSessionBaseKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionBaseKeyParams", typeof(String), typeof(SuspensionManagerClass), null);
 
     private static readonly DependencyProperty FrameSessionStateProperty = DependencyProperty.RegisterAttached("_FrameSessionState", typeof(Dictionary<String, Object>), typeof(SuspensionManagerClass), null);
-
-    private static readonly List<WeakReference<Frame>> RegisteredFrames = new List<WeakReference<Frame>>();
 
     /// <summary>
     /// Registers a <see cref="Frame"/> instance to allow its navigation history to be saved to
@@ -190,7 +190,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// <see cref="RestoreAsync"/> will also restore navigation history.
     /// </summary>
     /// <param name="frame">An instance whose navigation history should be managed by
-    /// <see cref="M4MSuspensionManager"/></param>
+    /// <see cref="M4MSuspensionManager{SuspensionManagerClass}"/></param>
     /// <param name="sessionStateKey">A unique key into <see cref="SessionState"/> used to
     /// store navigation-related information.</param>
     /// <param name="sessionBaseKey">An optional key that identifies the type of session.
@@ -293,7 +293,7 @@ namespace ModernApp4Me.Universal.LifeCycle
       }
     }
 
-    private void SaveFrameNavigationState(Frame frame)
+    protected void SaveFrameNavigationState(Frame frame)
     {
       var frameState = SessionStateForFrame(frame);
       frameState["Navigation"] = frame.GetNavigationState();
