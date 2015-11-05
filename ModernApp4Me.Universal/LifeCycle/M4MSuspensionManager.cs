@@ -175,11 +175,11 @@ namespace ModernApp4Me.Universal.LifeCycle
 
     protected static readonly List<WeakReference<Frame>> RegisteredFrames = new List<WeakReference<Frame>>();
 
-    private static readonly DependencyProperty FrameSessionStateKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionStateKey", typeof(String), typeof(SuspensionManagerClass), null);
+    protected static readonly DependencyProperty FrameSessionBaseKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionBaseKeyParams", typeof(String), typeof(SuspensionManagerClass), null);
 
-    private static readonly DependencyProperty FrameSessionBaseKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionBaseKeyParams", typeof(String), typeof(SuspensionManagerClass), null);
+    protected static readonly DependencyProperty FrameSessionStateKeyProperty = DependencyProperty.RegisterAttached("_FrameSessionStateKey", typeof(String), typeof(SuspensionManagerClass), null);
 
-    private static readonly DependencyProperty FrameSessionStateProperty = DependencyProperty.RegisterAttached("_FrameSessionState", typeof(Dictionary<String, Object>), typeof(SuspensionManagerClass), null);
+    protected static readonly DependencyProperty FrameSessionStateProperty = DependencyProperty.RegisterAttached("_FrameSessionState", typeof(Dictionary<String, Object>), typeof(SuspensionManagerClass), null);
 
     /// <summary>
     /// Registers a <see cref="Frame"/> instance to allow its navigation history to be saved to
@@ -283,7 +283,7 @@ namespace ModernApp4Me.Universal.LifeCycle
       return frameState;
     }
 
-    private void RestoreFrameNavigationState(Frame frame)
+    protected void RestoreFrameNavigationState(Frame frame)
     {
       var frameState = SessionStateForFrame(frame);
 
