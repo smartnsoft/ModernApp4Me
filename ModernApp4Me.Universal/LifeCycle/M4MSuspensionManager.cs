@@ -195,7 +195,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// store navigation-related information.</param>
     /// <param name="sessionBaseKey">An optional key that identifies the type of session.
     /// This can be used to distinguish between multiple application launch scenarios.</param>
-    public void RegisterFrame(Frame frame, String sessionStateKey, String sessionBaseKey = null)
+    public virtual void RegisterFrame(Frame frame, String sessionStateKey, String sessionBaseKey = null)
     {
       if (frame.GetValue(FrameSessionStateKeyProperty) != null)
       {
@@ -229,7 +229,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// </summary>
     /// <param name="frame">An instance whose navigation history should no longer be
     /// managed.</param>
-    public void UnregisterFrame(Frame frame)
+    public virtual void UnregisterFrame(Frame frame)
     {
       // Remove session state and remove the frame from the list of frames whose navigation
       // state will be saved (along with any weak references that are no longer reachable)
@@ -254,7 +254,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// <param name="frame">The instance for which session state is desired.</param>
     /// <returns>A collection of state subject to the same serialization mechanism as
     /// <see cref="SessionState"/>.</returns>
-    public Dictionary<String, Object> SessionStateForFrame(Frame frame)
+    public virtual Dictionary<String, Object> SessionStateForFrame(Frame frame)
     {
       var frameState = (Dictionary<String, Object>)frame.GetValue(FrameSessionStateProperty);
 
@@ -283,7 +283,7 @@ namespace ModernApp4Me.Universal.LifeCycle
       return frameState;
     }
 
-    protected void RestoreFrameNavigationState(Frame frame)
+    protected virtual void RestoreFrameNavigationState(Frame frame)
     {
       var frameState = SessionStateForFrame(frame);
 
@@ -293,7 +293,7 @@ namespace ModernApp4Me.Universal.LifeCycle
       }
     }
 
-    protected void SaveFrameNavigationState(Frame frame)
+    protected virtual void SaveFrameNavigationState(Frame frame)
     {
       var frameState = SessionStateForFrame(frame);
       frameState["Navigation"] = frame.GetNavigationState();

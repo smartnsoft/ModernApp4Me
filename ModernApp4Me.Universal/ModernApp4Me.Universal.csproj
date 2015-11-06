@@ -57,6 +57,7 @@
     <Compile Include="Cache\M4MFilePersistence.cs" />
     <Compile Include="LifeCycle\M4MNavigationHelper.cs" />
     <Compile Include="LifeCycle\M4MRelayCommand.cs" />
+    <Compile Include="LifeCycle\M4MDefaultSuspensionManager.cs" />
     <Compile Include="LifeCycle\M4MSuspensionManager.cs" />
     <Compile Include="LifeCycle\M4MSuspensionManagerException.cs" />
     <Compile Include="Memory\M4MMemoryProfiler.cs" />
