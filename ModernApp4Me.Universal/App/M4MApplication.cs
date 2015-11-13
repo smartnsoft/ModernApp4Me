@@ -55,19 +55,9 @@ namespace ModernApp4Me.Universal.App
     /// <param name="rootFrame">the root <see cref="Frame"/></param>
     protected virtual void SetupApp(Frame rootFrame)
     {
-      SetupDefaultExceptionHandlers(rootFrame);
-    }
-
-    private void SetupDefaultExceptionHandlers(Frame rootFrame)
-    {
       // We let the overidding application register its exception handlers
       SetupExceptionHandlers(rootFrame);
-
-      ExceptionHandlers = new M4MDefaultExceptionHandlers()
-      {
-        Frame = rootFrame,
-        I18N = SetupM4Mi18N()
-      };
+      SetupLocalExceptionHandlers(rootFrame);
     }
 
     /// <summary>
@@ -79,12 +69,24 @@ namespace ModernApp4Me.Universal.App
     public abstract M4Mi18N SetupM4Mi18N();
 
     /// <summary>
-    /// This is the place where to register exception handlers like.
-    /// The default implementation does nothing
+    /// This is the place where to register exception handlers like HockeyApp, Capptain, etc.
     /// </summary>
     /// <param name="rootFrame"></param>
     public virtual void SetupExceptionHandlers(Frame rootFrame)
     {
+    }
+
+    /// <summary>
+    /// This is the place where to register a local exception handlers.
+    /// </summary>
+    /// <param name="rootFrame"></param>
+    protected virtual void SetupLocalExceptionHandlers(Frame rootFrame)
+    {
+      ExceptionHandlers = new M4MDefaultExceptionHandlers()
+      {
+        Frame = rootFrame,
+        I18N = SetupM4Mi18N()
+      };
     }
 
     private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
