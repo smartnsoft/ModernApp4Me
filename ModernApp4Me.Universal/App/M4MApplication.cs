@@ -57,7 +57,7 @@ namespace ModernApp4Me.Universal.App
     {
       // We let the overidding application register its exception handlers
       SetupExceptionHandlers(rootFrame);
-      SetupLocalExceptionHandlers(rootFrame);
+      ExceptionHandlers = SetupLocalExceptionHandlers(rootFrame);
     }
 
     /// <summary>
@@ -80,9 +80,10 @@ namespace ModernApp4Me.Universal.App
     /// This is the place where to register a local exception handlers.
     /// </summary>
     /// <param name="rootFrame"></param>
-    protected virtual void SetupLocalExceptionHandlers(Frame rootFrame)
+    /// <returns>an instance of <see cref="M4MExceptionHandlers"/> </returns>
+    protected virtual M4MExceptionHandlers SetupLocalExceptionHandlers(Frame rootFrame)
     {
-      ExceptionHandlers = new M4MDefaultExceptionHandlers()
+      return new M4MDefaultExceptionHandlers()
       {
         Frame = rootFrame,
         I18N = SetupM4Mi18N()
