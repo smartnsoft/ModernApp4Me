@@ -15,6 +15,7 @@
 
 using System;
 using Windows.Security.ExchangeActiveSyncProvisioning;
+using Windows.UI.Xaml;
 
 namespace ModernApp4Me.Universal.Metadata
 {
@@ -102,6 +103,22 @@ namespace ModernApp4Me.Universal.Metadata
       get
       {
         return deviceInformation.Id;
+      }
+    }
+
+    public double ScreenWidth
+    {
+      get
+      {
+        return Window.Current.Bounds.Width;
+      }
+    }
+
+    public double ScreenHeight
+    {
+      get
+      {
+        return Window.Current.Bounds.Height;
       }
     }
 
