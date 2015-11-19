@@ -61,6 +61,7 @@
     <Compile Include="LifeCycle\M4MSuspensionManager.cs" />
     <Compile Include="LifeCycle\M4MSuspensionManagerException.cs" />
     <Compile Include="Memory\M4MMemoryProfiler.cs" />
+    <Compile Include="Metadata\M4MDeviceInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServiceCache\M4MBackedWSUriStringParser.cs" />
     <Compile Include="WebService\M4MWebServiceCaller.cs" />
