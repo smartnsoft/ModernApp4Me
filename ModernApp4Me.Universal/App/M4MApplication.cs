@@ -50,7 +50,7 @@ namespace ModernApp4Me.Universal.App
     /// method, which does nothing by default, in order to initialize your application specific variables, invoke some services.
     ///  Keep in mind that this method should complete very quickly, in order to prevent from hanging the GUI thread, and thus causing a bad end-user
     /// experience
-    /// By default, this method call the method <see cref="SetupDefaultExceptionHandlers"/>
+    /// By default, this method call the method <see cref="SetupLocalExceptionHandlers"/>
     /// </summary>
     /// <param name="rootFrame">the root <see cref="Frame"/></param>
     protected virtual void SetupApp(Frame rootFrame)
@@ -61,12 +61,18 @@ namespace ModernApp4Me.Universal.App
     }
 
     /// <summary>
-    /// This method will be invoked by the <see cref="SetupDefaultExceptionHandlers" /> method when building the <see cref="M4MDefaultExceptionHandlers" /> instance.
+    /// This method will be invoked by the <see cref="SetupLocalExceptionHandlers" /> method when building the <see cref="M4MDefaultExceptionHandlers" /> instance.
     /// This internationalization instance will be used to populate default dialog boxes texts popped-up by this default <see cref="M4MDefaultExceptionHandlers" />. 
     /// Hence, the method will be invoked at the application start-up.
     /// </summary>
     /// <returns>an instance which contains the internationalized text strings for some built-in error dialog boxes.</returns>
     public abstract M4Mi18N SetupM4Mi18N();
+
+    /// <summary>
+    /// Returns the main page type in order to navigate when the app is launched
+    /// </summary>
+    /// <returns>the <see cref="Type"/> of the main page</returns>
+    public abstract Type GetMainPageType();
 
     /// <summary>
     /// This is the place where to register exception handlers like HockeyApp, Capptain, etc.
@@ -90,15 +96,25 @@ namespace ModernApp4Me.Universal.App
       };
     }
 
-    private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+    /// <summary>
+    /// Default implementation of a navigation exception.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected virtual void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
     {
-      UnhandledExceptionsCustom(e.Exception);
+      UnhandledExceptionsCustom(sender, e.Exception);
       e.Handled = true;
     }
 
-    private void UnhandledExceptions(object sender, UnhandledExceptionEventArgs e)
+    /// <summary>
+    /// Default implementation of an unhandled exception.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected virtual void UnhandledExceptions(object sender, UnhandledExceptionEventArgs e)
     {
-      UnhandledExceptionsCustom(e.Exception);
+      UnhandledExceptionsCustom(sender, e.Exception);
       e.Handled = true;
     }
 
@@ -106,7 +122,7 @@ namespace ModernApp4Me.Universal.App
     /// Default entry point in order to manage errors
     /// </summary>
     /// <param name="exception"></param>
-    protected void UnhandledExceptionsCustom(Exception exception)
+    protected virtual void UnhandledExceptionsCustom(object sender, Exception exception)
     {
       ExceptionHandlers.AnalyseException(exception);
     }
@@ -161,17 +177,11 @@ namespace ModernApp4Me.Universal.App
     /// Enables to custom a part on the <see cref="OnLaunched"/> method (for windows phone foe example).
     /// </summary>
     /// <param name="e">Details about the request and the process of the launch.</param>
-    public void OnLaunchedCustom(LaunchActivatedEventArgs e)
+    public virtual void OnLaunchedCustom(LaunchActivatedEventArgs e)
     {
     }
 
-    /// <summary>
-    /// Returns the main page type in order to navigate when the app is launched
-    /// </summary>
-    /// <returns>the <see cref="Type"/> of the main page</returns>
-    public abstract Type GetMainPageType();
-
-    private async void OnSuspending(object sender, SuspendingEventArgs e)
+    protected virtual async void OnSuspending(object sender, SuspendingEventArgs e)
     {
       var deferral = e.SuspendingOperation.GetDeferral();
       await M4MSuspensionManager<SuspensionManagerClass>.Instance.SaveAsync();
