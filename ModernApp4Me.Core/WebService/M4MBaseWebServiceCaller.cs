@@ -17,6 +17,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System;
 using RestSharp.Portable;
+using RestSharp.Portable.HttpClient;
 
 namespace ModernApp4Me.Core.WebService
 {
