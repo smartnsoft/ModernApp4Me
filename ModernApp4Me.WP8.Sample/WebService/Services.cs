@@ -35,7 +35,7 @@ namespace ModernApp4Me.WP8.Sample.WebService
 
             protected override RestRequest ComputeRestRequest(string parameter)
             {
-                var request = new RestRequest("forecast?q={q}&mode=json", HttpMethod.Get);
+                var request = new RestRequest("forecast?q={q}&mode=json", Method.GET);
                 request.AddUrlSegment("q", parameter);
                     
                 return request;
