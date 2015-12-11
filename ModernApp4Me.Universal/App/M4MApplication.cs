@@ -158,6 +158,8 @@ namespace ModernApp4Me.Universal.App
         Window.Current.Content = rootFrame;
       }
 
+      SetupApp(rootFrame);
+
       if (rootFrame.Content == null)
       {
         OnLaunchedCustom(e);
@@ -167,8 +169,6 @@ namespace ModernApp4Me.Universal.App
           throw new Exception("Failed to create initial page");
         }
       }
-
-      SetupApp(rootFrame);
 
       Window.Current.Activate();
     }
