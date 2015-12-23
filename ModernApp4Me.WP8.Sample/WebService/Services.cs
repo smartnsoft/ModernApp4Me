@@ -14,7 +14,6 @@
 //   Smart&Soft - initial API and implementation
 
 using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using ModernApp4Me.WP8.Sample.Bo;
 using ModernApp4Me.WP8.Sample.Log;
