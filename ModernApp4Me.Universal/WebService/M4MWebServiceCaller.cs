@@ -55,7 +55,7 @@ namespace ModernApp4Me.Universal.WebService
 
       var internetConnectionProfile = NetworkInformation.GetInternetConnectionProfile();
 
-      if (statusCode == HttpStatusCode.NotFound && (internetConnectionProfile == null || internetConnectionProfile.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.None))
+      if ((statusCode == HttpStatusCode.NotFound || statusCode == HttpStatusCode.InternalServerError) && (internetConnectionProfile == null || internetConnectionProfile.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.None))
       {
         throw new M4MConnectivityException(message);
       }
