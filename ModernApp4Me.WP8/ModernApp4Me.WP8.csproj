@@ -119,8 +119,8 @@
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="ModernApp4Me.Core, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ModernApp4Me.Core.1.1.1.0\lib\portable-net45+win+wpa81+wp80\ModernApp4Me.Core.dll</HintPath>
+    <Reference Include="ModernApp4Me.Core, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ModernApp4Me.Core.1.1.2.0\lib\portable-net45+win+wpa81+wp80\ModernApp4Me.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
