@@ -128,14 +128,14 @@ namespace ModernApp4Me.Universal.App
         loadingPanel.Visibility = Visibility.Collapsed;
       }
 
-      if (mainPanel != null)
-      {
-        mainPanel.Visibility = Visibility.Collapsed;
-      }
-
       if (errorAndRetryPanel != null)
       {
-        errorAndRetryPanel.Visibility = Visibility.Visible;
+        errorAndRetryPanel.Visibility = Visibility.Collapsed;
+      }
+
+      if (mainPanel != null)
+      {
+        mainPanel.Visibility = Visibility.Visible;
       }
     }
 
