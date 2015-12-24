@@ -17,7 +17,6 @@ using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using ModernApp4Me.Core.LifeCycle;
 using ModernApp4Me.Core.ViewModel;
 using ModernApp4Me.Universal.App;
 
@@ -44,7 +43,7 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// This method is invoked only once during the <see cref="M4MPage"/> life cycle.
     /// Never invoke this method, only the framework should, because this is a callback!
     /// </summary>
-    /// <returns>a class that implements <see cref="M4MBaseViewModel"/> or null if you set <see cref="M4Mizer.IsMVVMUsed"/> to false</returns>
+    /// <returns>a class that implements <see cref="M4MBaseViewModel"/> or null if you set <see cref="M4Mizer{SuspensionManagerClass}.IsMVVMUsed"/> to false</returns>
     Task<M4MBaseViewModel> ComputeViewModel();
 
     /// <summary>
@@ -68,31 +67,6 @@ namespace ModernApp4Me.Universal.LifeCycle
     /// Never invoke this method, only the framework should, because this is a callback!
     /// </summary>
     Task RefreshViewModel();
-
-    /// <summary>
-    /// Returns the <see cref="Panel"/> in which data are displayed.
-    /// This <see cref="Panel"/> will be displayed or hidden automatically by the <see cref="M4MPage"/> during the life cycle.
-    /// </summary>
-    /// <returns>the <see cref="Panel"/> in which data are displayed</returns>
-    Panel RetrieveMainContainer();
-
-    /// <summary>
-    /// Override this in order to return the <see cref="Panel"/> which displays a particular message when a <see cref="M4MConnectivityException"/> is thrown.
-    /// This <see cref="Panel"/> will be displayed or hidden automatically by the <see cref="M4MPage"/> during the life cycle.
-    /// </summary>
-    /// <returns>the <see cref="Panel"/> which display the message or null</returns>
-    Panel RetrieveConnectivityContainer();
-
-    /// <summary>
-    /// Returns the <see cref="ProgressRing"/> of the <see cref="M4MPage"/>.
-    /// </summary>
-    /// <returns>a <see cref="ProgressRing"/> or null</returns>
-    ProgressRing RetrieveProgressRing();
-
-    /// <summary>
-    /// Override this in order to personnalize the user experience when a <see cref="M4MConnectivityException"/> occurs.
-    /// </summary>
-    void OnDisplayConnectivityLayout();
 
     /// <summary>
     /// Invokes this method when you want to reload the business objects, from memory, local persistence, via web services, necessary for the entity processing.

@@ -13,7 +13,9 @@
 // Contributors:
 //   Smart&Soft - initial API and implementation
 
+using System;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ModernApp4Me.Core.ViewModel;
@@ -27,7 +29,7 @@ namespace ModernApp4Me.Universal.App
   /// <summary>
   /// The basis class for all Pages available in the framework.
   /// </summary>
-  public abstract class M4MPage<SuspensionManagerClass> : Page, M4MLifeCycle
+  public abstract class M4MPage<SuspensionManagerClass> : Page, M4MLifeCycle, M4MLoadingAndErrorManager
     where SuspensionManagerClass : M4MSuspensionManager<SuspensionManagerClass>, new()
   {
 
@@ -47,7 +49,7 @@ namespace ModernApp4Me.Universal.App
 
     protected M4MPage()
     {
-      modern4mizer = new M4Mizer<SuspensionManagerClass>(this, this);
+      modern4mizer = new M4Mizer<SuspensionManagerClass>(this, this, this);
     }
 
     #region overring methods from Page
@@ -70,11 +72,6 @@ namespace ModernApp4Me.Universal.App
     #endregion
 
     #region default implementation of the life cycle interface
-    public virtual void OnDisplayConnectivityLayout()
-    {
-      modern4mizer.OnDisplayConnectivityLayout();
-    }
-
     public virtual async Task RefreshBusinessObjects()
     {
       await modern4mizer.RefreshBusinessObjects();
@@ -98,19 +95,29 @@ namespace ModernApp4Me.Universal.App
     {
     }
 
-    public virtual Panel RetrieveMainContainer()
+    #endregion
+
+    #region abstract implementation of the loading and error listener interface
+    public virtual Panel RetrieveMainPanel()
     {
       return null;
     }
 
-    public virtual Panel RetrieveConnectivityContainer()
+    public virtual Panel RetrieveErrorAndRetryPanel()
     {
       return null;
     }
 
-    public virtual ProgressRing RetrieveProgressRing()
+    public virtual Panel RetrieveLoadingPanel()
     {
       return null;
+    }
+
+    public virtual void OnDisplayErrorAndRetryPanel(Exception exception)
+    {
+      RetrieveMainPanel().Visibility = Visibility.Collapsed;
+      RetrieveLoadingPanel().Visibility = Visibility.Collapsed;
+      RetrieveErrorAndRetryPanel().Visibility = Visibility.Visible;
     }
     #endregion
 

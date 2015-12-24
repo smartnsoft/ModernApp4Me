@@ -45,6 +45,7 @@
     <Compile Include="App\M4MAsyncLock.cs" />
     <Compile Include="App\M4MDefaultExceptionHandlers.cs" />
     <Compile Include="App\M4Mizer.cs" />
+    <Compile Include="LifeCycle\M4MLoadingAndErrorManager.cs" />
     <Compile Include="LifeCycle\M4MLifeCycle.cs" />
     <Compile Include="App\M4MPage.cs" />
     <Compile Include="Cache\M4MFilePersistence.cs" />
@@ -60,8 +61,8 @@
     <Compile Include="WebService\M4MWebServiceCaller.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ModernApp4Me.Core, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ModernApp4Me.Core.1.1.1.0\lib\portable-net45+win+wpa81+wp80\ModernApp4Me.Core.dll</HintPath>
+    <Reference Include="ModernApp4Me.Core, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ModernApp4Me.Core.1.1.2.0\lib\portable-net45+win+wpa81+wp80\ModernApp4Me.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
