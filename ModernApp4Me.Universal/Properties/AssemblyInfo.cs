@@ -9,7 +9,7 @@ using System.Reflection;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ModernApp4Me.Universal")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("fr")]
@@ -24,6 +24,6 @@ using System.Reflection;
 // Vous pouvez spécifier toutes les valeurs ou utiliser par défaut les numéros de build et de version 
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.2.0.0")]
-[assembly: AssemblyFileVersion("0.2.0-beta02")]
-[assembly: AssemblyInformationalVersion("0.2.0-beta02")]
+[assembly: AssemblyVersion("0.3.0.0")]
+[assembly: AssemblyFileVersion("0.3.0-beta01")]
+[assembly: AssemblyInformationalVersion("0.3.0-beta01")]

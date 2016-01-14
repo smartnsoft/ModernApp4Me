@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>0.2.0-beta02</version>
+    <version>0.3.0-beta01</version>
     <title>ModernApp4Me.Universal</title>
     <authors><![CDATA[Smart&Soft]]></authors>
     <owners><![CDATA[Smart&Soft]]></owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/smartnsoft/ModernApp4Me</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>The specific part for Windows Universal App of the framework ModernApp4Me.</description>
-    <copyright>Copyright 2015</copyright>
+    <copyright>$copyright$</copyright>
     <tags>Windows Universal App Framework</tags>
   </metadata>
 </package>

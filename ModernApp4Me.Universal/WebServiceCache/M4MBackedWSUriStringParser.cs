@@ -35,7 +35,15 @@ namespace ModernApp4Me.Universal.WebServiceCache
     {
       var restRequest = ComputeRestRequest(parameter);
       var response = await DataCache.GetAsync(restRequest.GetHashCode().ToString(CultureInfo.InvariantCulture), () => WebServiceCaller.ExecuteHttpRequest(restRequest), expirationDelay, fromCache == false);
-      return Parse(response);
+      return Parse(response.Item1);
+    }
+
+    public override async Task<M4MInfo<TResult>> GetRetentionInfoValue(bool fromCache, DateTime expirationDelay, TParameter parameter)
+    {
+      var restRequest = ComputeRestRequest(parameter);
+      var response = await DataCache.GetAsync(restRequest.GetHashCode().ToString(CultureInfo.InvariantCulture), () => WebServiceCaller.ExecuteHttpRequest(restRequest), expirationDelay, fromCache == false);
+      var businessObject = Parse(response.Item1);
+      return new M4MInfo<TResult>() { Value = businessObject, ResponseTime = response.Item2 };
     }
 
   }
