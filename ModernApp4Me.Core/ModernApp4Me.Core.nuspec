@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/smartnsoft/ModernApp4Me</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <copyright>Copyright 2015</copyright>
+    <copyright>$Copyright$</copyright>
     <tags>Windows Phone 8 Windows 8 Framework</tags>
   </metadata>
 </package>
