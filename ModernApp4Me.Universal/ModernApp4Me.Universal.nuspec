@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/smartnsoft/ModernApp4Me</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>The specific part for Windows Universal App of the framework ModernApp4Me.</description>
-    <copyright>$copyright$</copyright>
+    <copyright>Copyright ©  2016</copyright>
     <tags>Windows Universal App Framework</tags>
   </metadata>
 </package>
