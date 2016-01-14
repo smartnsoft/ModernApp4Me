@@ -40,9 +40,16 @@ namespace ModernApp4Me.Core.WebServiceCache
 
     public abstract Task<TResult> GetRetentionValue(bool fromCache, DateTime expirationDelay, TParameter parameter);
 
+    public abstract Task<M4MInfo<TResult>> GetRetentionInfoValue(bool fromCache, DateTime expirationDelay, TParameter parameter);
+
     public async Task<TResult> GetValue(TParameter parameter)
     {
       return await GetRetentionValue(false, DateTime.Now, parameter);
+    }
+
+    public async Task<M4MInfo<TResult>> GetInfoValue(TParameter parameter)
+    {
+      return await GetRetentionInfoValue(false, DateTime.Now, parameter);
     }
 
     protected virtual TResult DeserializeObject(byte[] response)

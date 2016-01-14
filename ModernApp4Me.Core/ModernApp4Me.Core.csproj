@@ -48,6 +48,7 @@
     <Compile Include="WebServiceCache\M4MBaseBackedWSUriStringParser.cs" />
     <Compile Include="WebService\M4MCallException.cs" />
     <Compile Include="WebService\M4MBaseWebServiceCaller.cs" />
+    <Compile Include="WebService\M4MInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
