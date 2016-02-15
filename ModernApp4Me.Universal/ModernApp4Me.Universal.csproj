@@ -45,6 +45,7 @@
     <Compile Include="App\M4MAsyncLock.cs" />
     <Compile Include="App\M4MDefaultExceptionHandlers.cs" />
     <Compile Include="App\M4Mizer.cs" />
+    <Compile Include="App\M4MStrings.cs" />
     <Compile Include="LifeCycle\M4MLoadingAndErrorManager.cs" />
     <Compile Include="LifeCycle\M4MLifeCycle.cs" />
     <Compile Include="App\M4MPage.cs" />
