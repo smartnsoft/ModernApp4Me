@@ -37,7 +37,7 @@ namespace ModernApp4Me.Universal.App
 
     public M4MExceptionHandlers ExceptionHandlers { get; set; }
 
-    public ResourceLoader Loader { get; set; }
+    //public ResourceLoader Loader { get; set; }
 
     protected M4MApplication()
     {

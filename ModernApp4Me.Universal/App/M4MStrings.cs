@@ -24,15 +24,48 @@ namespace ModernApp4Me.Universal.App
   /// <since>2015.02.15</since>
   public sealed class M4MStrings
   {
-    private readonly static ResourceLoader resourceLoader;
+    private static ResourceLoader resourceLoader;
+
+    private static string resourcesName;
+
+    /// <summary>
+    /// Name of the resources files used to get strings, by default name is "Strings", but it can be overrided in applications by setting a new ResourcesName
+    /// </summary>
+    public static string ResourcesName
+    {
+      get {
+        return resourcesName;
+      }
+      set
+      {
+        if (resourcesName != value && string.IsNullOrEmpty(value) == false)
+        {
+          resourcesName = value;
+          try
+          {
+            resourceLoader = ResourceLoader.GetForViewIndependentUse(value);
+          }
+          catch { }
+        }
+      }
+    }
 
     static M4MStrings()
     {
-      resourceLoader = new ResourceLoader();
+      try
+      {
+        ResourcesName = "Strings";
+        resourceLoader = ResourceLoader.GetForViewIndependentUse(ResourcesName);
+      }
+      catch { }
     }
 
     public static string Get(string key)
     {
+      if (resourceLoader == null)
+      {
+        return null;
+      }
       return resourceLoader.GetString(key.ToString());
     }
 
