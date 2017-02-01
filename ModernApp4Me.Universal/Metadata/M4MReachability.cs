@@ -49,6 +49,7 @@ namespace ModernApp4Me.Universal.Metadata
     public static bool HasCellularConnection()
     {
       var connectionType = M4MReachability.GetCurrentConnectionType();
+
       switch (connectionType)
       {
         case InternetConnectionType.Cellular4G:
@@ -65,13 +66,15 @@ namespace ModernApp4Me.Universal.Metadata
       try
       {
         var connectionProfile = NetworkInformation.GetInternetConnectionProfile();
-        if (connectionProfile.IsWlanConnectionProfile)
+
+        if (connectionProfile.IsWlanConnectionProfile == true)
         {
           return InternetConnectionType.Wifi;
         }
-        else if (connectionProfile.IsWwanConnectionProfile)
+        else if (connectionProfile.IsWwanConnectionProfile == true)
         {
           var wwanDetails = connectionProfile.WwanConnectionProfileDetails.GetCurrentDataClass();
+
           switch (wwanDetails)
           {
             case WwanDataClass.Edge:
@@ -110,6 +113,7 @@ namespace ModernApp4Me.Universal.Metadata
     public static string GetCurrentConnectionString()
     {
       var connectionType = M4MReachability.GetCurrentConnectionType();
+
       switch (connectionType)
       {
         case InternetConnectionType.Cellular2G:
@@ -129,4 +133,5 @@ namespace ModernApp4Me.Universal.Metadata
     }
 
   }
+
 }

@@ -60,7 +60,7 @@ namespace ModernApp4Me.Universal.WebService
         throw new M4MConnectivityException(message);
       }
 
-      throw new M4MCallException(message);
+      throw new M4MCallException(message, (int) statusCode);
     }
 
   }

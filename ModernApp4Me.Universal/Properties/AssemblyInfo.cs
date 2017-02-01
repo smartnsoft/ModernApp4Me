@@ -24,6 +24,6 @@ using System.Reflection;
 // Vous pouvez spécifier toutes les valeurs ou utiliser par défaut les numéros de build et de version 
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.3.0.0")]
-[assembly: AssemblyFileVersion("0.3.0-beta06")]
-[assembly: AssemblyInformationalVersion("0.3.0-beta06")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyInformationalVersion("1.0.0.0")]

@@ -30,28 +30,35 @@ namespace ModernApp4Me.Universal.App
     public static DependencyObject GetFirstParent<T>(DependencyObject reference)
     {
       var parent = reference;
+
       while (parent != null)
       {
         parent = VisualTreeHelper.GetParent(parent);
+
         if (parent is T)
         {
           return parent;
         }
       }
+
       return null;
     }
 
     public static DependencyObject GetFirstChild<T>(DependencyObject reference)
     {
       var childrensNumber = VisualTreeHelper.GetChildrenCount(reference);
-      for (var i = 0; i < childrensNumber; i++)
+
+      for (var index = 0; index < childrensNumber; index++)
       {
-        var child = VisualTreeHelper.GetChild(reference, i);
+        var child = VisualTreeHelper.GetChild(reference, index);
+
         if (child is T)
         {
           return child;
         }
+
         child = GetFirstChild<T>(child);
+
         if (child is T)
         {
           return child;
@@ -62,4 +69,5 @@ namespace ModernApp4Me.Universal.App
     }
 
   }
+
 }
