@@ -1,6 +1,6 @@
-#ModernApp4Me
+# ModernApp4Me
 
-##About ModernApp4Me
+## About ModernApp4Me
 
 ModernApp4Me is a framework library dedicated to the development of Windows Phone 8 and Windows Store applications. It is developed and maintained by [Smart&Soft](http://www.smartnsoft.com).
 
@@ -8,60 +8,67 @@ Its purpose is to speed up the development of Windows Phone 8, Windows Phone 8.1
 
 **This project is entirely managed on Github.** It means that the documentation ia available on the [Github wiki](https://github.com/smartnsoft/ModernApp4Me/wiki) and that all issues should be opened/discussed on the [Github issue page](https://github.com/smartnsoft/ModernApp4Me/issues).
 
-##Supported Platforms
+## Supported Platforms
 
-###ModernApp4Me.Core
+### ModernApp4Me.Core
 
-* Windows Store Apps
-* Windows Phone 8 (Silverlight)
-* Windows Phone 8.1
-* Universal App
+* Windows Phone 8 (Silverlight) (deprecated)
+* Universal Windows / Phone 8.1 apps
+* UWP apps
 
 The **Core module** can be used to developp Windows Phone 8 and Windows Store applications and has the following nuget dependencies :
-* Json.NET
-* Microsoft Async
-* Microsoft BCL Build Components
-* Microsoft BCL Portability Pack
-* Microsoft HTTP Client Libraries
-* RestSharp.Portable
+* FubarCoder.RestSharp.Portable.Core
+* FubarCoder.RestSharp.Portable.WebRequest
+* Newtonsoft.Json
 
-###ModernApp4Me.WP8
+### ModernApp4Me.Universal
+
+* Universal Windows / Phone 8.1 apps
+* UWP apps
+
+The **Universal module** can be used to developp Universal Windows 8.1 apps or UWP (Windows 10) and has the following nuget dependencies :
+* FubarCoder.RestSharp.Portable.Core
+* FubarCoder.RestSharp.Portable.WebRequest
+* ModernApp4Me.Core
+* Newtonsoft.Json
+* Q42.WinRT
+* Q42.WinRT.Portable
+
+### ModernApp4Me.WP8 (deprecated)
 
 * Windows Phone 8 (Silverlight)
 
 The **WP8 module** can be used to developp Windows Phone 8 (Silverlight) apps and has the following nuget dependencies :
-* Json.NET
-* Microsoft Async
-* Microsoft BCL Build Components
-* Microsoft BCL Portability Pack
-* Microsoft HTTP Client Libraries
+* FubarCoder.RestSharp.Portable.Core
+* FubarCoder.RestSharp.Portable.WebRequest
 * ModernApp4Me.Core
+* Newtonsoft.Json
 * Q42.WinRT
 * Q42.WinRT.Portable
-* RestSharp.Portable
-* Windows Phone Toolkit
+* WPtoolkit
 
-##Usage
+## Usage
 
 Framework libraries releases are available on NuGet :
 * [ModernApp4Me.Core](https://www.nuget.org/packages/ModernApp4Me.Core)
+* [ModernApp4Me.Universal](https://www.nuget.org/packages/ModernApp4Me.Universal/)
 * [ModernApp4Me.WP8](https://www.nuget.org/packages/ModernApp4Me.WP8)
 
-##Documentation
+## Documentation
 
 The documentation (chm format) is available into the `doc` directory of each module.
 
 For a full example see the **WP8.Sample** app in the repository or read the [Getting Started](https://github.com/smartnsoft/ModernApp4Me/wiki/Getting-Started) wiki page.
 
-##Help and Support
+## Help and Support
 
 If you have any questions feel free to contact us via [mail](mailto:modernapp4me@smartnsoft.com) or create a ticket on [Github](https://github.com/smartnsoft/ModernApp4Me/issues).
 
 If you have a bug create an issue directly on [Github](https://github.com/smartnsoft/ModernApp4Me/issues).
 
-##Contributing
+## Contributing
 
-###How to
+## #How to
 
 1. Fork it ( https://github.com/smartnsoft/ModernApp4Me/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
@@ -69,25 +76,15 @@ If you have a bug create an issue directly on [Github](https://github.com/smartn
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
 
-###Contributors
+### Contributors
 
 * Andreas Saudemont
 * Smart&Soft
 
-##License
+## License
 
-```
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3 of the License, or (at your option) any later version.
+ModernApp4Me is available under the MIT license. See the LICENSE file for more info.
 
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
-```
-
-##Changelog
+## Changelog
 
 The changelog is available on the dedicated [Wiki page](https://github.com/smartnsoft/ModernApp4Me/wiki/Changelog).
